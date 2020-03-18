@@ -1,0 +1,318 @@
+\documentclass[a4paper]{article}
+
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage[pdftex]{graphicx}
+\usepackage{fancyhdr}
+\usepackage{float}
+
+\newcommand{\prog}{\texttt}
+
+\linespread{1.15}
+\pagestyle{fancy}
+\fancyhf{}
+\chead{Specyfikacja funkcjonalna}
+\cfoot{Strona \thepage \ z \pageref{end}}
+
+\title{Specyfikacja funkcjonalna\\Projekt \textit{Aplikacja OnePass} w języku Python}
+\author{Jakub Czajka (299239)\\}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\thispagestyle{empty}
+
+\section{Opis ogólny}
+
+\subsection{Nazwa programu}
+Jako nazwę programu przyjąłem wyrażenie \prog{OnePass}, które można przetłumaczyć jako \textit{One Password}, co z języka angielskiego oznacza \textit{Jedno hasło}. Jest to ścisłe nawiązanie do funkcjonalności programu, który wymaga od nas pamiętania wyłącznie jednego hasła.
+
+\subsection{Poruszany problem}
+\textit{OnePass} jest okienkową aplikacją przeznaczoną na komputery stacjonarne. Aplikacja realizuję usługę menadżera haseł. Aplikacja inspirowana jest aplikacjami typu \textit{KeePass}, \textit{1Password} lub \textit{LastPass}.\\ \\
+Użytkowanie rozpoczyna się od utworzenia konta przez podanie danych osobowych, danych kontaktowych oraz hasła, które musi spełniać najnowsze standardy bezpieczeństwa. Następnie przenoszeni jesteśmy do głównego okna aplikacji. Tam możemy rozpocząć dodawanie haseł oraz możemy skorzystać z innych usług dostarczanych przez aplikację. Wszystkie hasła składowane w aplikacji zostają szyfrowane przez co dostęp do nich z poza aplikacji jest niemożliwy. \\ \\
+Aplikacja dostarcza usługę generowania haseł, które następnie można skopiować i wykorzystać. W celu wygenerowania haseł użytkownik znajdujący się na ekranie głównym kilka w odpowiednią ikonę na pasku. Po kliknięciu otwierane jest okno pozwalające utworzyć hasło z podanych kryteriów. \\ \\
+Oprócz tego aplikacja umożliwia szyfrowanie plików tekstowych podanych przez użytkownika oraz tworzenie szyfrowanych notatek w samej aplikacji. \textit{OnePass} umożliwia również korzystanie z niego wielu użytkownikom. 
+
+\subsection{Użytkownik docelowy}
+Program dedykowany jest użytkownikom w dowolnym wieku pragnącym poprawić swoje bezpieczeństwo w sieci przez zmianę haseł na odpowiednio trudne do~złamania lub pragnących pamiętać wyłącznie jedno hasło.
+
+\section{Opis funkcjonalności}
+\subsection{Jak korzystać z programu?}
+Program należy uruchomić za pomocą kliknięcia na odpowiednią ikonę pliku w~formacie EXE.
+
+\subsection{Uruchomienie programu}
+Program posiada graficzny interfejs użytkownika. Po uruchomieniu należy zalogować się lub utworzyć nowe konto.
+
+\subsection{Możliwości programu}
+\begin{enumerate}
+    \item Utworzenie nowego użytkownika.
+    \item Haszowanie hasła.
+    \item Wczytanie zapisanego pliku z danymi użytkownika.
+    \item Sprawdzenie poprawności danych logowania.
+    \item Blokowanie konta w przypadku zbyt dużej liczby prób logowania.
+    \item Dodanie nowego pola z hasłami.
+    \item Zaszyfrowanie plików algorytmem symetrycznym.
+    \item Odszyfrowanie pliku zaszyfrowanego algorytmem symetrycznym.
+    \item Wczytanie pliku tekstowego.
+    \item Obsługiwanie błędów powstałych przy wczytywaniu plików.
+    \item Generacja haseł przy podanych kryteriach.
+    \item Tworzenie notatek w aplikacji.
+    \item Analizowanie trudności haseł.
+\end{enumerate}
+
+\section{Format danych i struktura plików}
+
+\subsection{Pojęcia}
+\begin{description}
+    \item[Gra]-- ustawienia oraz obecny stan rozgrywki.
+    \item[Gracz]-- użytkownik gry.
+    \item[Wróg]-- obiekt spadający, za którego zbicie gracz otrzymuje punkty (synonim: klocek). 
+    \item[Plansza]-- obszar gry, w którym wyświetlani są przeciwnicy, gracze oraz toczona jest rozgrywka.
+    \item[Statki]-- kosmiczne obiekty, którymi gracze poruszają.
+    \item[Laser]-- promienie wysyłane przez statki, które zbijają wrogów. Nie odbijają się one od krawędzi ekranu oraz znikają po kontakcie z wrogiem.
+\end{description}
+
+\subsection{Struktura katalogów}
+Drzewo katalogów i plików prezentuje się w następujący sposób:
+\begin{itemize}
+    \item doc \textit{(miejsce przechowywania dokumentacji programu)}
+    \begin{itemize}
+        \item[•] img \textit{(miejsce przechowywanie grafiki do dokumentacji)} 
+    \end{itemize}
+    \item src
+    \begin{itemize}
+        \item[•] main
+        \begin{itemize}
+            \item[•] java/pl/edu/pw/iem/ \textit{(miejsce przechowywanie kodu)}
+            \item[•] resources
+            \begin{itemize}
+                \item[•] fxml \textit{(miejsce przechowywania plików FXML)}
+                \item[•] styles \textit{(miejsce przechowywania plików CSS)}
+            \end{itemize} 
+        \end{itemize}
+        \item[•] test
+        \begin{itemize}
+            \item[•] java/pl/edu/pw/iem/ \textit{(miejsce przechowywania kodu testów)}
+        \end{itemize} 
+    \end{itemize}
+    \item target
+    \begin{itemize}
+        \item[•] classes
+        \begin{itemize}
+            \item[•] pl/edu/pw/iem/ \textit{(miejsce przechowywania plików )}
+            \item[•] fxml \textit{(miejsce przechowywania plików FXML)}
+            \item[•] styles \textit{(miejsce przechowywania plików CSS)}
+        \end{itemize} 
+        \item[•] generated-sources
+        \item[•] maven-archiver
+        \item[•] maven-status
+        \item GalaxyDefender-1.0-SNAPSHOT.jar
+    \end{itemize}
+    \item[--] config.txt \textit{(plik przechowujący konfigurację programu)}
+    \item[--] pom.xml
+    \item[--] README.md
+\end{itemize}
+
+\subsection{Przechowywanie danych w programie}
+Pliki przechowujemy w projektowym repozytorium kontroli wersji Git na serwerze wydziałowym.\\ \\
+Dane w programie znajdują się w zmiennych o różnych modyfikatorach dostępu.
+
+\subsection{Dane wejściowe}
+Program uwzględnia wczytywanie dwóch plików tekstowych. Pliku konfiguracyjnego podczas uruchomienia programu, co odbywa się niejawnie oraz opcjonalnego pliku stanu poprzedniej gry w celu jej kontynuacji.
+
+\subsubsection{Plik konfiguracyjny}
+Plik tekstowy przechowujący konfigurację programu postaci:\\ \\
+\prog{PrędkośćKlocków;WielkośćPoczątkowa;\\PrzyspieszenieKlocków;CoJakiCzasPrzyspieszenie;}
+
+\subsubsection{Stan gry}\label{stan}
+Plik tekstowy przechowujący stan zapisanej gry postaci:\\ \\
+\prog{NazwaPierwszegoGracza;PunktyPierwszegoGracza;\\NazwaDrugiegoGracza;PunktyDrugiegoGracza;\\CzasGry;PrędkośćKlocków;WielkośćKlocków;\\PrzyspieszenieKlocków;CoJakiCzasPrzyspieszenie;}
+
+\subsection{Dane wyjściowe}
+Program uwzględnia zapisanie do pliku tekstowego przerwanej gry w takiej samej postaci jak plik opisany w podpunkcie \ref{stan}.
+
+\section{Scenariusz działania programu}
+
+\subsection{Scenariusz ogólny}
+\begin{enumerate}
+    \item Uruchomienie programu.
+    \item Wybranie opcji:
+    \begin{enumerate}
+        \item O grze -- wyświetlany zostaje ekran z opisem gry.
+        \item Wczytaj -- wczytanie gry z podanego pliku i kontynuacja wczytanej rozgrywki.
+        \begin{enumerate}
+            \item Rozpoczęcie rozgrywki.
+            \item Możliwośc zapisania, spauzowania lub opuszczenia gry.
+            \item Wyświetlenie zwycięzcy i możliwych opcji.
+        \end{enumerate}
+        \item Nowa gra -- wczytanie domyślnych ustawień.
+        \begin{enumerate}
+            \item Podanie nazw graczy.
+            \item Rozpoczęcie rozgrywki.
+            \item Możliwość zapisania, spauzowania lub opuszczenia gry.
+            \item Wyświetlenie zwycięzcy i możliwych opcji.
+        \end{enumerate}
+    \end{enumerate}
+    \item Zakończenie działania programu.
+\end{enumerate}
+
+\subsection{Scenariusz szczegółowy}\label{ss}
+\begin{enumerate}
+	\item Uruchomienie programu.
+	\item Wyświetlenie menu głównego.
+	\item Kliknięcie w jedną z 3 ikon.
+	\item Sprawdzenie jaka opcja została wybrana:
+	\begin{enumerate}
+		\item O grze
+		\begin{enumerate}
+			\item Wyświetlenie ekranu z opisem i instrukcją gry (z możliwością powrotu do menu głównego).
+		\end{enumerate}
+		\item Wczytaj
+        \begin{enumerate}
+            \item Przejście do ekranu \textit{Wczytaj}.	
+			\item Podanie przez użytkownika ścieżki do pliku.
+			\item Sprawdzenie istnienia ścieżki i poprawności zawartości pliku (w~tym ustawień oraz nazw zawodników). W razie błędu odmowa przejścia krok dalej.
+			\item Przejście do ekranu gry.
+			\item Rozpoczęcie rozgrywki.
+        \end{enumerate}
+		\item Nowa gra
+		\begin{enumerate}
+			\item Wczytanie konfiguracji (domyślnych ustawień) z pliku przy jednoczesnym sprawdzaniu poprawności jego zawartości.
+			\item Wyświetlenie ekranu \textit{Gracze}.
+			\item Podanie nazw graczy przez użytkowników.
+			\item Sprawdzenie poprawności podanych nazw. W razie błędu odmowa dostępu do kolejnego kroku.
+			\item Przejście do ekranu gry.
+			\item Rozpoczęcie rozgrywki.
+        \end{enumerate}	
+    \end{enumerate}
+    \item W trakcie rozgrywki gracze sterują swoimi statkami przy pomocy klawiatury zgodnie z~instrukcją zamieszczoną w programie.
+    \item Możliwe jest otworzenie menu pauzy w trakcie rozgrywki (przy pomocy klawisza \textit{ESC} lub opcji \textit{PAUZA}), kliknięcie w jedną z 3 opcji i sprawdzenie jaka opcja została wybrana:\label{pauza}
+    \begin{enumerate}
+            \item Wznów
+            \begin{enumerate}
+                \item Powrót do rozgrywki.
+            \end{enumerate}			
+            \item Zapisz (tę opcję można również wywołać bezpośrednio przy pomocy przycisku \textit{ZAPISZ} w~trakcie rozgrywki)
+            \begin{enumerate}
+                \item Wyświetlenie ekranu pozwalającego na wskazanie ścieżki do katalogu, w którym ma się znaleźć plik.
+                \item Stworzenie pliku do zapisu gry.
+                \item Sprawdzenie poprawności utworzenia pliku.
+                \item Zapis gry do pliku.
+                \item Powrót do menu pauzy.
+            \end{enumerate}			
+            \item Wyjdź
+            \begin{enumerate}			
+                \item Wyświetlenie menu końca gry z opcjami:		
+                \begin{enumerate}
+					\item Jeszcze raz -- zresetowanie stanu rozgrywki i rozpoczęcie nowej gry.
+					\item Wyjdź -- zakończenie pracy programu.
+				\end{enumerate}
+            \end{enumerate}		
+    \end{enumerate}
+    \item Gra może zakończyć się automatycznie, kiedy jeden z wyników graczy wskaże liczbę ujemną. Następuje wyświetlenie ekranu końca gry z opcjami:
+    \begin{enumerate}
+        \item Jeszcze raz -- zresetowanie stanu rozgrywki i rozpoczęcie nowej gry.
+        \item Wyjdź -- zakończenie pracy programu.
+    \end{enumerate}
+    \item Praca programu może zostać zakończona w każdym momencie jego działania poprzez zamknięcie okna systemowego.
+\end{enumerate}
+
+\newpage
+
+\subsection{Ekrany działania programu}
+\paragraph{}Rysunek \ref{fig:start}. prezentuje menu główne naszego programu. Widoczne są na nim trzy ikony pozwalające wybrać jedną z opcji działania.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{img/ekran-start.png}
+    \caption{Ekran startowy}
+    \label{fig:start}
+\end{figure}
+
+\newpage
+
+\paragraph{}Na rysunku \ref{fig:gracze}. możemy dostrzec ekran pozwalający nam na wprowadzenie nazw graczy i przejście do następnego kroku.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{img/ekran-gracze.png}
+    \caption{Ekran wprowadzania imion graczy}
+    \label{fig:gracze}
+\end{figure}
+
+\newpage
+
+\paragraph{}Kolejna grafika (rys. \ref{fig:wczytaj}.) ukazuje nam ekran, przy pomocy którego możemy ręcznie wprowadzić ścieżkę do pliku w polu tekstowym. Ikona folderu przy końcu linii pozwala użytkownikowi otworzyć okno systemowe z wyborem pliku na dysku, co powinno ułatwić jego odnalezienie. Przycisk \textit{DALEJ} umożliwia przejście do następnego kroku.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{img/ekran-wczytaj.png}
+    \caption{Ekran wczytywania gry}
+    \label{fig:wczytaj}
+\end{figure}
+
+\newpage
+
+\paragraph{}Na ekranie przedstawionym na rysunku \ref{fig:o grze}. zostanie zamieszczona informacja o grze i instrukcja do niej. Istnieje możliwość powrotu do menu głównego przy pomocy przycisku \textit{WRÓĆ}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{img/ekran-o-grze.png}
+    \caption{Ekran o grze}
+    \label{fig:o grze}
+\end{figure}
+
+\newpage
+
+\paragraph{}Rysunek \ref{fig:gra}. prezentuje:
+\begin{itemize}
+    \item planszę,
+    \item spadające klocki (wrogów),
+    \item statki,
+    \item lasery,
+    \item zegar czasu gry,
+    \item liczniki punktów,
+    \item licznik poziomów,
+    \item imiona graczy,
+    \item przyciski pozwalające na przerwanie gry i/lub zapisanie jej do pliku.
+\end{itemize}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{img/ekran-gry.png}
+    \caption{Ekran gry}
+    \label{fig:gra}
+\end{figure}
+
+\newpage
+
+\paragraph{}Na rysunku \ref{fig:pauza}. możemy zaobserwować przyciski \textit{WZNÓW, ZAPISZ, WYJDŹ,} których działanie dokładnie opisane jest w podrozdziale \ref{ss} pkt \ref{pauza}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{img/ekran-pauza.png}
+    \caption{Ekran zatrzymania gry}
+    \label{fig:pauza}
+\end{figure}
+
+\newpage
+
+\paragraph{}Rysunki \ref{fig:wygrana}. i \ref{fig:game over}. reprezentują ekrany końca gry.\\
+Rysunek \ref{fig:wygrana}. zostanie wyświetlony, gdy w momencie ukończenia gry jeden z graczy ma większą liczbę punktów niż drugi. Liczba ta musi być dodatnia.\\
+Rysunek \ref{fig:game over}. zostanie wyświetlony, gdy w momencie ukończenia gry obaj gracze będą mieli ujemną liczbę punktów lub dojdzie do remisu.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{img/ekran-wygrana.png}
+    \caption{Ekran wygranej}
+    \label{fig:wygrana}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{img/ekran-game-over.png}
+    \caption{Ekran przegranej}
+    \label{fig:game over}
+\end{figure}
+
+\paragraph{}\textit{Pojedyncze elementy grafiki wektorowej i fonty użyte do przygotowania poglądowych rysunków pochodzą z otwartych źródeł. Licencje pozwalają na ich bezpłatne wykorzystanie (bez obowiązku podania autora) zarówno w projektach prywatnych jak i komercyjnych. Wszystkie powstałe do projektu wizualizacje są naszą autorską inwencją twórczą.}
+
+\section{Testowanie}
+\subsection{Ogólny przebieg testowania}
+Do przetestowania kodu użyjemy narzędzi z biblioteki AssertJ. Natomiast GUI przetestujemy ręcznie podczas tworzenia aplikacji. Dodatkowo gotowy program przetestujemy sami, grając w niego oraz przekażemy go do testów znajomym.
+\label{end}
+
+\end{document}
