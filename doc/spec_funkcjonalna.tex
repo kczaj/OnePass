@@ -65,10 +65,10 @@ Program posiada graficzny interfejs użytkownika. Po uruchomieniu należy zalogo
 
 \subsection{Pojęcia}
 \begin{description}
-    \item[Gra]-- ustawienia oraz obecny stan rozgrywki.
-    \item[Gracz]-- użytkownik gry.
-    \item[Wróg]-- obiekt spadający, za którego zbicie gracz otrzymuje punkty (synonim: klocek). 
-    \item[Plansza]-- obszar gry, w którym wyświetlani są przeciwnicy, gracze oraz toczona jest rozgrywka.
+    \item[Użytkownik]-- osoba używająca program.
+    \item[Konto]-- zpersonalizowany profil użytkownika.
+    \item[Standardy bezpieczeńswa]-- standardy mówiącę, że hasło ma być długie i skoplikowane.
+    \item[Hasło skomplikowane]-- hasło nie zawierające słów możliwych do znalezienia w słowniku. Składa się z małych i dużych liter oraz ze znaków specjalnych.
     \item[Statki]-- kosmiczne obiekty, którymi gracze poruszają.
     \item[Laser]-- promienie wysyłane przez statki, które zbijają wrogów. Nie odbijają się one od krawędzi ekranu oraz znikają po kontakcie z wrogiem.
 \end{description}
@@ -78,7 +78,7 @@ Drzewo katalogów i plików prezentuje się w następujący sposób:
 \begin{itemize}
     \item doc \textit{(miejsce przechowywania dokumentacji programu)}
     \begin{itemize}
-        \item[•] img \textit{(miejsce przechowywanie grafiki do dokumentacji)} 
+        \item[•] img \textit{(miejsce przechowywanie grafiki do dokumentacji)}
     \end{itemize}
     \item src
     \begin{itemize}
@@ -89,12 +89,12 @@ Drzewo katalogów i plików prezentuje się w następujący sposób:
             \begin{itemize}
                 \item[•] fxml \textit{(miejsce przechowywania plików FXML)}
                 \item[•] styles \textit{(miejsce przechowywania plików CSS)}
-            \end{itemize} 
+            \end{itemize}
         \end{itemize}
         \item[•] test
         \begin{itemize}
             \item[•] java/pl/edu/pw/iem/ \textit{(miejsce przechowywania kodu testów)}
-        \end{itemize} 
+        \end{itemize}
     \end{itemize}
     \item target
     \begin{itemize}
@@ -103,7 +103,7 @@ Drzewo katalogów i plików prezentuje się w następujący sposób:
             \item[•] pl/edu/pw/iem/ \textit{(miejsce przechowywania plików )}
             \item[•] fxml \textit{(miejsce przechowywania plików FXML)}
             \item[•] styles \textit{(miejsce przechowywania plików CSS)}
-        \end{itemize} 
+        \end{itemize}
         \item[•] generated-sources
         \item[•] maven-archiver
         \item[•] maven-status
@@ -115,45 +115,81 @@ Drzewo katalogów i plików prezentuje się w następujący sposób:
 \end{itemize}
 
 \subsection{Przechowywanie danych w programie}
-Pliki przechowujemy w projektowym repozytorium kontroli wersji Git na serwerze wydziałowym.\\ \\
+Pliki przechowujemy w projektowym repozytorium kontroli wersji Git na platformie GitHub.\\ \\
 Dane w programie znajdują się w zmiennych o różnych modyfikatorach dostępu.
 
 \subsection{Dane wejściowe}
-Program uwzględnia wczytywanie dwóch plików tekstowych. Pliku konfiguracyjnego podczas uruchomienia programu, co odbywa się niejawnie oraz opcjonalnego pliku stanu poprzedniej gry w celu jej kontynuacji.
+Program uwzględnia wczytywanie trzech plików tekstowych. Pliku konfiguracyjnego podczas uruchomienia programu, co odbywa się niejawnie, pliku z danymi konta po zalogowaniu się użytkownika, co również odbywa się niejawnie oraz pliku tekstowego podanego przez użytkownika do zaszyfrowania.
 
-\subsubsection{Plik konfiguracyjny}
-Plik tekstowy przechowujący konfigurację programu postaci:\\ \\
-\prog{PrędkośćKlocków;WielkośćPoczątkowa;\\PrzyspieszenieKlocków;CoJakiCzasPrzyspieszenie;}
+\subsubsection{Plik konfiguracyjny}\label{pKonf}
+Plik tekstowy przechowujący konfigurację programu jest plikiem zaszyfrowanym. Po odszyfrowaniu dane znajdują się w następującej postaci:\\ \\
+\prog{LoginUżytkownika1;ZahaszowaneHasłoUżytkownika1\\LoginUżytkownika2;ZahaszowaneHasłoUżytkownika2\\...\\LoginUżytkownikaN;ZahaszowaneHasłoUżytkownikaN}
 
-\subsubsection{Stan gry}\label{stan}
-Plik tekstowy przechowujący stan zapisanej gry postaci:\\ \\
-\prog{NazwaPierwszegoGracza;PunktyPierwszegoGracza;\\NazwaDrugiegoGracza;PunktyDrugiegoGracza;\\CzasGry;PrędkośćKlocków;WielkośćKlocków;\\PrzyspieszenieKlocków;CoJakiCzasPrzyspieszenie;}
+\subsubsection{Plik użytkownika}\label{pUzy}
+Plik tekstowy przechowujący dane użytkownika w formie zaszyfrowanej. Po odszyfrowaniu dane znajdują się w następującej postaci:\\ \\
+\prog{Imię;Nazwisko;Email;Login;ZahaszowaneHasło\\NazwaObiektu1;LoginDoObiektu1;HasłoDoObiektu1;FlagaCzyObiektUlubiony1\\NazwaObiektu2;LoginDoObiektu2;HasłoDoObiektu2;FlagaCzyObiektUlubiony2\\...\\NazwaObiektuN;LoginDoObiektN;HasłoDoObiektuN;FlagaCzyObiektUlubionyN}
 
 \subsection{Dane wyjściowe}
-Program uwzględnia zapisanie do pliku tekstowego przerwanej gry w takiej samej postaci jak plik opisany w podpunkcie \ref{stan}.
+Program zapisuje pliki wymienione w punktach \ref{pKonf} i \ref{pUzy} wcześniej je szyfrując. Program umożliwia również zaszyfrowanie pliku podanego przez użytkownika. W takim przypadku w pliku znajduje się zafrowana zawartość wpisywana ciągiem.
 
 \section{Scenariusz działania programu}
 
 \subsection{Scenariusz ogólny}
 \begin{enumerate}
     \item Uruchomienie programu.
+    \item Wybranie opcji:\label{eGłówny}
+    \begin{enumerate}
+        \item Zaloguj się-- wyświetlone zostaje okno z możliwością wpisania danych do logowania.
+        \begin{enumerate}
+            \item Uzupełnienie danych.
+            \item Zalogowanie na profil.
+            \item Wyświetlenie ekranu \textit{Home}
+        \end{enumerate}
+        \item Zarejestruj się -- wyświetlone zostaje okno z możliwością uzupełnienia formularza do rejestracji.
+        \begin{enumerate}
+            \item Uzupełnienie danych.
+            \item Zarejestrowanie się
+            \item Wyświetlenie ekranu \textit{Home}
+        \end{enumerate}
+        \item Generuj -- wyświetlone zostaje okno z możliwością wygenerowania hasła.\label{gen}
+        \begin{enumerate}
+            \item Ustawienie kryteriów.
+            \item Wygenerowanie hasła
+        \end{enumerate}
+        \item O aplikacji - wyświetlone zostaje okno z informacjami na temat aplikacji.
+    \end{enumerate}
     \item Wybranie opcji:
     \begin{enumerate}
-        \item O grze -- wyświetlany zostaje ekran z opisem gry.
-        \item Wczytaj -- wczytanie gry z podanego pliku i kontynuacja wczytanej rozgrywki.
+        \item Hasła -- wyświetlone zostaje na ekranie głównym lista  obiektów dodanych do aplikacji
         \begin{enumerate}
-            \item Rozpoczęcie rozgrywki.
-            \item Możliwośc zapisania, spauzowania lub opuszczenia gry.
-            \item Wyświetlenie zwycięzcy i możliwych opcji.
+            \item Wybranie opcji:
+            \begin{enumerate}
+                \item Dodaj -- wyświetlone zostaje okno z możliwością dodania nowego obiektu.
+                \item Edytuj -- wyświetlone zostaje okno z możliwością edycji obiektu.
+                \item Kopiuj -- zawartość pola \textit{Hasło} zostaje skopiowana do schowka
+            \end{enumerate}
         \end{enumerate}
-        \item Nowa gra -- wczytanie domyślnych ustawień.
+        \item Notatki -- wyświetlona zostaje na ekranie głównym lista notatek znajdujących się w folderu z notatkami aplikacji.
         \begin{enumerate}
-            \item Podanie nazw graczy.
-            \item Rozpoczęcie rozgrywki.
-            \item Możliwość zapisania, spauzowania lub opuszczenia gry.
-            \item Wyświetlenie zwycięzcy i możliwych opcji.
+            \item Wybranie opcji:
+            \begin{enumerate}
+                \item Dodaj -- wyświetlone zostaje na ekranie głównym okno z możliwością utworzenia nowej notatki.
+                \item Edytuj -- wyświetlone zostaje na ekranie głównym okno z możliwością edytowania notatki.
+                \item Usuń -- notatki zaznaczone zostają usunięte.
+            \end{enumerate}
+        \end{enumerate}
+        \item Generuj -- otworzone zostaje okno z punktu \ref{gen}
+        \item Szyfruj -- wyświetlone zostaje na ekranie głównym okno z możliwością wyboru pliku do zaszyfrowania/odszyfrowania.
+        \begin{enumerate}
+            \item Wybranie opcji:
+            \begin{enumerate}
+                \item Zaszyfruj -- plik podany zostaje zaszyfrowany.
+                \item Deszyfruj -- plik podany zostaje rozszyfrowany.
+            \end{enumerate}
         \end{enumerate}
     \end{enumerate}
+    \item Wybranie opcji \textit{Wyloguj}.
+    \item Wyświetlenie ekranu omawianego w punkcie \ref{eGłówny}
     \item Zakończenie działania programu.
 \end{enumerate}
 
