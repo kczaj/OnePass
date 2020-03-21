@@ -69,8 +69,6 @@ Program posiada graficzny interfejs użytkownika. Po uruchomieniu należy zalogo
     \item[Konto]-- zpersonalizowany profil użytkownika.
     \item[Standardy bezpieczeńswa]-- standardy mówiącę, że hasło ma być długie i skoplikowane.
     \item[Hasło skomplikowane]-- hasło nie zawierające słów możliwych do znalezienia w słowniku. Składa się z małych i dużych liter oraz ze znaków specjalnych.
-    \item[Statki]-- kosmiczne obiekty, którymi gracze poruszają.
-    \item[Laser]-- promienie wysyłane przez statki, które zbijają wrogów. Nie odbijają się one od krawędzi ekranu oraz znikają po kontakcie z wrogiem.
 \end{description}
 
 \subsection{Struktura katalogów}
@@ -127,10 +125,10 @@ Plik tekstowy przechowujący konfigurację programu jest plikiem zaszyfrowanym. 
 
 \subsubsection{Plik użytkownika}\label{pUzy}
 Plik tekstowy przechowujący dane użytkownika w formie zaszyfrowanej. Po odszyfrowaniu dane znajdują się w następującej postaci:\\ \\
-\prog{Imię;Nazwisko;Email;Login;ZahaszowaneHasło\\NazwaObiektu1;LoginDoObiektu1;HasłoDoObiektu1;FlagaCzyObiektUlubiony1\\NazwaObiektu2;LoginDoObiektu2;HasłoDoObiektu2;FlagaCzyObiektUlubiony2\\...\\NazwaObiektuN;LoginDoObiektN;HasłoDoObiektuN;FlagaCzyObiektUlubionyN}
+\prog{Imię;Nazwisko;Email;Login;ZahaszowaneHasło\\NazwaObiektu1;LoginDoObiektu1;HasłoDoObiektu1;TypObiektu1;FlagaCzyObiektUlubiony1\\NazwaObiektu2;LoginDoObiektu2;HasłoDoObiektu2;TypObiektu2;FlagaCzyObiektUlubiony2\\...\\NazwaObiektuN;LoginDoObiektN;HasłoDoObiektuN;TypObiektuN;FlagaCzyObiektUlubionyN}
 
 \subsection{Dane wyjściowe}
-Program zapisuje pliki wymienione w punktach \ref{pKonf} i \ref{pUzy} wcześniej je szyfrując. Program umożliwia również zaszyfrowanie pliku podanego przez użytkownika. W takim przypadku w pliku znajduje się zafrowana zawartość wpisywana ciągiem.
+Program zapisuje pliki wymienione w punktach \ref{pKonf} i \ref{pUzy} wcześniej je szyfrując. Program umożliwia również zaszyfrowanie pliku podanego przez użytkownika. W takim przypadku w pliku znajduje się zaszyfrowana zawartość wpisywana ciągiem.
 
 \section{Scenariusz działania programu}
 
@@ -165,8 +163,7 @@ Program zapisuje pliki wymienione w punktach \ref{pKonf} i \ref{pUzy} wcześniej
             \item Wybranie opcji:
             \begin{enumerate}
                 \item Dodaj -- wyświetlone zostaje okno z możliwością dodania nowego obiektu.
-                \item Edytuj -- wyświetlone zostaje okno z możliwością edycji obiektu.
-                \item Kopiuj -- zawartość pola \textit{Hasło} zostaje skopiowana do schowka
+                \item Wybierz -- wyświetlone zostaje okno z danymi obiektu.
             \end{enumerate}
         \end{enumerate}
         \item Notatki -- wyświetlona zostaje na ekranie głównym lista notatek znajdujących się w folderu z notatkami aplikacji.
@@ -175,7 +172,7 @@ Program zapisuje pliki wymienione w punktach \ref{pKonf} i \ref{pUzy} wcześniej
             \begin{enumerate}
                 \item Dodaj -- wyświetlone zostaje na ekranie głównym okno z możliwością utworzenia nowej notatki.
                 \item Edytuj -- wyświetlone zostaje na ekranie głównym okno z możliwością edytowania notatki.
-                \item Usuń -- notatki zaznaczone zostają usunięte.
+                \item Po wybraniu którejś z opcji wyświetlone zostaje okno z możliwością edycji notatki oraz możliwością usunięcia notatki
             \end{enumerate}
         \end{enumerate}
         \item Generuj -- otworzone zostaje okno z punktu \ref{gen}
@@ -206,7 +203,7 @@ Program zapisuje pliki wymienione w punktach \ref{pKonf} i \ref{pUzy} wcześniej
 		\end{enumerate}
 		\item Wczytaj
         \begin{enumerate}
-            \item Przejście do ekranu \textit{Wczytaj}.	
+            \item Przejście do ekranu \textit{Wczytaj}.
 			\item Podanie przez użytkownika ścieżki do pliku.
 			\item Sprawdzenie istnienia ścieżki i poprawności zawartości pliku (w~tym ustawień oraz nazw zawodników). W razie błędu odmowa przejścia krok dalej.
 			\item Przejście do ekranu gry.
@@ -220,7 +217,7 @@ Program zapisuje pliki wymienione w punktach \ref{pKonf} i \ref{pUzy} wcześniej
 			\item Sprawdzenie poprawności podanych nazw. W razie błędu odmowa dostępu do kolejnego kroku.
 			\item Przejście do ekranu gry.
 			\item Rozpoczęcie rozgrywki.
-        \end{enumerate}	
+        \end{enumerate}
     \end{enumerate}
     \item W trakcie rozgrywki gracze sterują swoimi statkami przy pomocy klawiatury zgodnie z~instrukcją zamieszczoną w programie.
     \item Możliwe jest otworzenie menu pauzy w trakcie rozgrywki (przy pomocy klawisza \textit{ESC} lub opcji \textit{PAUZA}), kliknięcie w jedną z 3 opcji i sprawdzenie jaka opcja została wybrana:\label{pauza}
@@ -228,7 +225,7 @@ Program zapisuje pliki wymienione w punktach \ref{pKonf} i \ref{pUzy} wcześniej
             \item Wznów
             \begin{enumerate}
                 \item Powrót do rozgrywki.
-            \end{enumerate}			
+            \end{enumerate}
             \item Zapisz (tę opcję można również wywołać bezpośrednio przy pomocy przycisku \textit{ZAPISZ} w~trakcie rozgrywki)
             \begin{enumerate}
                 \item Wyświetlenie ekranu pozwalającego na wskazanie ścieżki do katalogu, w którym ma się znaleźć plik.
@@ -236,15 +233,15 @@ Program zapisuje pliki wymienione w punktach \ref{pKonf} i \ref{pUzy} wcześniej
                 \item Sprawdzenie poprawności utworzenia pliku.
                 \item Zapis gry do pliku.
                 \item Powrót do menu pauzy.
-            \end{enumerate}			
+            \end{enumerate}
             \item Wyjdź
-            \begin{enumerate}			
-                \item Wyświetlenie menu końca gry z opcjami:		
+            \begin{enumerate}
+                \item Wyświetlenie menu końca gry z opcjami:
                 \begin{enumerate}
 					\item Jeszcze raz -- zresetowanie stanu rozgrywki i rozpoczęcie nowej gry.
 					\item Wyjdź -- zakończenie pracy programu.
 				\end{enumerate}
-            \end{enumerate}		
+            \end{enumerate}
     \end{enumerate}
     \item Gra może zakończyć się automatycznie, kiedy jeden z wyników graczy wskaże liczbę ujemną. Następuje wyświetlenie ekranu końca gry z opcjami:
     \begin{enumerate}
@@ -257,91 +254,138 @@ Program zapisuje pliki wymienione w punktach \ref{pKonf} i \ref{pUzy} wcześniej
 \newpage
 
 \subsection{Ekrany działania programu}
-\paragraph{}Rysunek \ref{fig:start}. prezentuje menu główne naszego programu. Widoczne są na nim trzy ikony pozwalające wybrać jedną z opcji działania.
+\paragraph{}Rysunek \ref{fig:startPrzed}. prezentuje ekran startowy programu przed zalogowaniem się użytkownika. Widoczne są na nim 4 ikony pozwalające rozpocząć działanie programu.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{img/ekran-start.png}
-    \caption{Ekran startowy}
-    \label{fig:start}
+    \includegraphics[width=1\textwidth]{img/ekran_przed_zalogowaniem.png}
+    \caption{Ekran startowy -- przed zalogowaniem}
+    \label{fig:startPrzed}
 \end{figure}
 
 \newpage
 
-\paragraph{}Na rysunku \ref{fig:gracze}. możemy dostrzec ekran pozwalający nam na wprowadzenie nazw graczy i przejście do następnego kroku.
+\paragraph{}Ekran na rysunku \ref{fig:logowanie}. przedstawia wygląd ekranu logowania się użytkownika. Z tego ekranu można przejść do okna rejestracji i można uruchomić mechanizm przypominania hasła. Po kliknięciu przyciku \textit{Zaloguj} zostaniemy przeniesieni do ekranu z rysunku \ref{fig:startPo}.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{img/ekran-gracze.png}
-    \caption{Ekran wprowadzania imion graczy}
-    \label{fig:gracze}
+    \includegraphics[height = 1\textwidth]{img/ekran_logowania.png}
+    \caption{Ekran logowania}
+    \label{fig:logowanie}
 \end{figure}
 
 \newpage
 
-\paragraph{}Kolejna grafika (rys. \ref{fig:wczytaj}.) ukazuje nam ekran, przy pomocy którego możemy ręcznie wprowadzić ścieżkę do pliku w polu tekstowym. Ikona folderu przy końcu linii pozwala użytkownikowi otworzyć okno systemowe z wyborem pliku na dysku, co powinno ułatwić jego odnalezienie. Przycisk \textit{DALEJ} umożliwia przejście do następnego kroku.
+\paragraph{}Rysunek \ref{fig:startPo}. przedstawia ekran startowy programu po zalogowaniu się użytkownika.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{img/ekran-wczytaj.png}
-    \caption{Ekran wczytywania gry}
-    \label{fig:wczytaj}
+    \includegraphics[width=1\textwidth]{img/ekran_po_zalogowaniu.png}
+    \caption{Ekran startowy -- po zalogowaniu}
+    \label{fig:startPo}
 \end{figure}
 
 \newpage
 
-\paragraph{}Na ekranie przedstawionym na rysunku \ref{fig:o grze}. zostanie zamieszczona informacja o grze i instrukcja do niej. Istnieje możliwość powrotu do menu głównego przy pomocy przycisku \textit{WRÓĆ}.
+\paragraph{}Kolejna grafika (rys. \ref{fig:rejestracja}.) ukazuje nam ekran, przy pomocy którego możemy zarejestrować się do aplikacji. Po rejestracji przeniesieni zostaniemy do ekranu na rysunku \ref{fig:startPo}.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{img/ekran-o-grze.png}
-    \caption{Ekran o grze}
-    \label{fig:o grze}
+    \includegraphics[height=1\textwidth]{img/ekran_rejestracji.png}
+    \caption{Ekran rejestracji}
+    \label{fig:rejestracja}
 \end{figure}
 
 \newpage
 
-\paragraph{}Rysunek \ref{fig:gra}. prezentuje:
-\begin{itemize}
-    \item planszę,
-    \item spadające klocki (wrogów),
-    \item statki,
-    \item lasery,
-    \item zegar czasu gry,
-    \item liczniki punktów,
-    \item licznik poziomów,
-    \item imiona graczy,
-    \item przyciski pozwalające na przerwanie gry i/lub zapisanie jej do pliku.
-\end{itemize}
+\paragraph{}Rysunek \ref{fig:generuj}. prezentuje ekran generowania haseł. Dostęp do tego ekranu nie wymaga zalogowania się do aplikacji.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{img/ekran-gry.png}
-    \caption{Ekran gry}
-    \label{fig:gra}
+    \includegraphics[height=1\textwidth]{img/ekran_generowania.png}
+    \caption{Ekran generowania haseł}
+    \label{fig:generuj}
 \end{figure}
 
 \newpage
 
-\paragraph{}Na rysunku \ref{fig:pauza}. możemy zaobserwować przyciski \textit{WZNÓW, ZAPISZ, WYJDŹ,} których działanie dokładnie opisane jest w podrozdziale \ref{ss} pkt \ref{pauza}.
+\paragraph{}Na ekranie przedstawionym na rysunku \ref{fig:oAplikacj}. zostanie zamieszczona informacja o aplikacaji oraz informacje o autorze. Istnieje możliwość powrotu do ekranu głównego przy pomocy przycisku strzałki lub przez zamknięcie okna.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{img/ekran-pauza.png}
-    \caption{Ekran zatrzymania gry}
-    \label{fig:pauza}
+    \includegraphics[height=1\textwidth]{img/ekran_o_aplikacji.png}
+    \caption{Ekran o aplikacji}
+    \label{fig:oAplikacj}
 \end{figure}
 
 \newpage
 
-\paragraph{}Rysunki \ref{fig:wygrana}. i \ref{fig:game over}. reprezentują ekrany końca gry.\\
-Rysunek \ref{fig:wygrana}. zostanie wyświetlony, gdy w momencie ukończenia gry jeden z graczy ma większą liczbę punktów niż drugi. Liczba ta musi być dodatnia.\\
-Rysunek \ref{fig:game over}. zostanie wyświetlony, gdy w momencie ukończenia gry obaj gracze będą mieli ujemną liczbę punktów lub dojdzie do remisu.
+\paragraph{}Na rysunku \ref{fig:profil}. widzimy ekran informacji o profilu. W tym miejscu po kliknięciu przycisku \textit{Edytuj} mamy możliwość edycji naszego profilu.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{img/ekran-wygrana.png}
-    \caption{Ekran wygranej}
-    \label{fig:wygrana}
+    \includegraphics[height=1\textwidth]{img/ekran_profilu.png}
+    \caption{Ekran informacji o profilu}
+    \label{fig:profil}
 \end{figure}
+
+\newpage
+
+\paragraph{}Rysunek \ref{fig:hasła}. przedstawia ekran listy wszystkich haseł zapisanych w aplikacji. Aby dostać się do informacji o obiekcie należy wybrać ikonę, a następnie kliknąć przycisk \textit{Wybierz}. Po kliknięciu przycisku z plusem zostaniemy przeniesieni do ekranu na rysunku \ref{fig:hasłoDodaj}.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{img/ekran-game-over.png}
-    \caption{Ekran przegranej}
-    \label{fig:game over}
+    \includegraphics[width=1\textwidth]{img/ekran_hasel.png}
+    \caption{Ekran haseł}
+    \label{fig:hasła}
+\end{figure}
+
+\newpage
+
+\paragraph{}Rysunek \ref{fig:hasłaObiekt}. przedstawia okno opisu obiektu po kliknięciu przycisku \textit{Wybierz} na ekranie z rysunku \ref{fig:hasła}. Na ekranie znajdują się 3 przyciski:
+\begin{enumerate}
+    \item Kopiuj -- przycisk kopiujący do schowka hasło.
+    \item Edytuj -- przycisk umożliwiający edycję obiektu.
+    \item Pokaż -- przycisk ujawniające niewidoczne domyślnie hasło.
+\end{enumerate}
+Dodatkowo w rogu znajduje się przycisk gwiazdki. Gdy jest "zaświecony" obiekt w liście będzie znajdował się na początku.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{img/ekran_obiektu.png}
+    \caption{Ekran obiektu}
+    \label{fig:hasłaObiekt}
+\end{figure}
+
+\newpage
+
+\paragraph{}Na rysunku \ref{fig:hasłoDodaj}. widzimy ekran dodawania nowego obiektu do listy haseł. Przy wyborze kategorii mamy możliwość wyboru ze zbioru kilku kategorii zaprogramowanych. Kategorie definują jaką ikonę otrzyma obiekt w liście haseł.
+\begin{figure}[H]
+    \centering
+    \includegraphics[height=1\textwidth]{img/ekran_dodawania_hasla.png}
+    \caption{Ekran dodawania obiektu}
+    \label{fig:hasłoDodaj}
+\end{figure}
+
+\newpage
+
+\paragraph{}Rysunek \ref{fig:notatki} przedstawia listę zaszyfrowanych notatek. Po wyborze ikony i kliknięciu \textit{Edytuj} przeniesieni zostaniemy do ekranu edycji notatek przedstawionym na rysunku \ref{fig:notatkiNowe}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{img/ekran_notatek.png}
+    \caption{Ekran listy notatek}
+    \label{fig:notatki}
+\end{figure}
+
+\newpage
+
+\paragraph{}Rysunek \ref{fig:notatkiNowe}. prezentuje ekran dodawania lub edycji notatek. W tym miejscu można usunąć istniejącą już notatkę.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{img/ekran_notatek_nowa.png}
+    \caption{Ekran dodawania lub edycji notatek}
+    \label{fig:notatkiNowe}
+\end{figure}
+
+\newpage
+
+\paragraph{}Na ekranie przedstawionym na rysunku \ref{fig:szyfrowanie}. można zaszyfrować podany przez siebie plik lub rozszyfrować plik wcześniej zaszyfrowany.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{img/ekran_szyfrowania.png}
+    \caption{Ekran szyfrowania plików podanych przez użytkownika}
+    \label{fig:szyfrowanie}
 \end{figure}
 
 \paragraph{}\textit{Pojedyncze elementy grafiki wektorowej i fonty użyte do przygotowania poglądowych rysunków pochodzą z otwartych źródeł. Licencje pozwalają na ich bezpłatne wykorzystanie (bez obowiązku podania autora) zarówno w projektach prywatnych jak i komercyjnych. Wszystkie powstałe do projektu wizualizacje są naszą autorską inwencją twórczą.}
