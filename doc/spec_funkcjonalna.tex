@@ -74,46 +74,25 @@ Program posiada graficzny interfejs użytkownika. Po uruchomieniu należy zalogo
 \subsection{Struktura katalogów}
 Drzewo katalogów i plików prezentuje się w następujący sposób:
 \begin{itemize}
-    \item doc \textit{(miejsce przechowywania dokumentacji programu)}
+    \item docs \textit{(miejsce przechowywania dokumentacji programu)}
     \begin{itemize}
         \item[•] img \textit{(miejsce przechowywanie grafiki do dokumentacji)}
     \end{itemize}
-    \item src
+    \item sample \textit{(miejsce przechowywania pakietów}
     \begin{itemize}
-        \item[•] main
-        \begin{itemize}
-            \item[•] java/pl/edu/pw/iem/ \textit{(miejsce przechowywanie kodu)}
-            \item[•] resources
-            \begin{itemize}
-                \item[•] fxml \textit{(miejsce przechowywania plików FXML)}
-                \item[•] styles \textit{(miejsce przechowywania plików CSS)}
-            \end{itemize}
-        \end{itemize}
-        \item[•] test
-        \begin{itemize}
-            \item[•] java/pl/edu/pw/iem/ \textit{(miejsce przechowywania kodu testów)}
-        \end{itemize}
+        \item[•] view \textit{(miejsce przechowywania modułów GUI)}
+        \item[•] presenter \textit{(miejsce przechowywania modułów kontrolerów)}
+        \item[•] model \textit{(miejsce przechowywania modułów obliczeń)}
     \end{itemize}
-    \item target
-    \begin{itemize}
-        \item[•] classes
-        \begin{itemize}
-            \item[•] pl/edu/pw/iem/ \textit{(miejsce przechowywania plików )}
-            \item[•] fxml \textit{(miejsce przechowywania plików FXML)}
-            \item[•] styles \textit{(miejsce przechowywania plików CSS)}
-        \end{itemize}
-        \item[•] generated-sources
-        \item[•] maven-archiver
-        \item[•] maven-status
-        \item GalaxyDefender-1.0-SNAPSHOT.jar
-    \end{itemize}
-    \item[--] config.txt \textit{(plik przechowujący konfigurację programu)}
-    \item[--] pom.xml
+    \item tests \textit{(miejsce przechowywania modułów testów jednostkowych)}
+    \item data \textit{(miejsce przechowywania danych)}
+    \item[--] requirements.txt \textit{(plik przechowujący zależności potrzebne do projektu)}
+    \item[--] setup.py
     \item[--] README.md
 \end{itemize}
 
 \subsection{Przechowywanie danych w programie}
-Pliki przechowujemy w projektowym repozytorium kontroli wersji Git na platformie GitHub.\\ \\
+Pliki będę przechowywał w projektowym repozytorium kontroli wersji Git na platformie GitHub.\\ \\
 Dane w programie znajdują się w zmiennych o różnych modyfikatorach dostępu.
 
 \subsection{Dane wejściowe}
@@ -185,71 +164,106 @@ Program zapisuje pliki wymienione w punktach \ref{pKonf} i \ref{pUzy} wcześniej
             \end{enumerate}
         \end{enumerate}
     \end{enumerate}
+    \item Wybranie opcji \textit{Zaszyfruj}.
+    \item Aplikacja szyfruje, a następnie nadpisuje wszystkie dane z aplikacji.
     \item Wybranie opcji \textit{Wyloguj}.
     \item Wyświetlenie ekranu omawianego w punkcie \ref{eGłówny}
     \item Zakończenie działania programu.
 \end{enumerate}
 
-\subsection{Scenariusz szczegółowy}\label{ss}
+\newpage
+
+\subsection{Scenariusz szczegółowy}
+
+\subsubsection{Scenariusz wyświetlenia menu} \label{wMenu}
 \begin{enumerate}
-	\item Uruchomienie programu.
-	\item Wyświetlenie menu głównego.
-	\item Kliknięcie w jedną z 3 ikon.
-	\item Sprawdzenie jaka opcja została wybrana:
-	\begin{enumerate}
-		\item O grze
-		\begin{enumerate}
-			\item Wyświetlenie ekranu z opisem i instrukcją gry (z możliwością powrotu do menu głównego).
-		\end{enumerate}
-		\item Wczytaj
-        \begin{enumerate}
-            \item Przejście do ekranu \textit{Wczytaj}.
-			\item Podanie przez użytkownika ścieżki do pliku.
-			\item Sprawdzenie istnienia ścieżki i poprawności zawartości pliku (w~tym ustawień oraz nazw zawodników). W razie błędu odmowa przejścia krok dalej.
-			\item Przejście do ekranu gry.
-			\item Rozpoczęcie rozgrywki.
-        \end{enumerate}
-		\item Nowa gra
-		\begin{enumerate}
-			\item Wczytanie konfiguracji (domyślnych ustawień) z pliku przy jednoczesnym sprawdzaniu poprawności jego zawartości.
-			\item Wyświetlenie ekranu \textit{Gracze}.
-			\item Podanie nazw graczy przez użytkowników.
-			\item Sprawdzenie poprawności podanych nazw. W razie błędu odmowa dostępu do kolejnego kroku.
-			\item Przejście do ekranu gry.
-			\item Rozpoczęcie rozgrywki.
-        \end{enumerate}
-    \end{enumerate}
-    \item W trakcie rozgrywki gracze sterują swoimi statkami przy pomocy klawiatury zgodnie z~instrukcją zamieszczoną w programie.
-    \item Możliwe jest otworzenie menu pauzy w trakcie rozgrywki (przy pomocy klawisza \textit{ESC} lub opcji \textit{PAUZA}), kliknięcie w jedną z 3 opcji i sprawdzenie jaka opcja została wybrana:\label{pauza}
-    \begin{enumerate}
-            \item Wznów
-            \begin{enumerate}
-                \item Powrót do rozgrywki.
-            \end{enumerate}
-            \item Zapisz (tę opcję można również wywołać bezpośrednio przy pomocy przycisku \textit{ZAPISZ} w~trakcie rozgrywki)
-            \begin{enumerate}
-                \item Wyświetlenie ekranu pozwalającego na wskazanie ścieżki do katalogu, w którym ma się znaleźć plik.
-                \item Stworzenie pliku do zapisu gry.
-                \item Sprawdzenie poprawności utworzenia pliku.
-                \item Zapis gry do pliku.
-                \item Powrót do menu pauzy.
-            \end{enumerate}
-            \item Wyjdź
-            \begin{enumerate}
-                \item Wyświetlenie menu końca gry z opcjami:
-                \begin{enumerate}
-					\item Jeszcze raz -- zresetowanie stanu rozgrywki i rozpoczęcie nowej gry.
-					\item Wyjdź -- zakończenie pracy programu.
-				\end{enumerate}
-            \end{enumerate}
-    \end{enumerate}
-    \item Gra może zakończyć się automatycznie, kiedy jeden z wyników graczy wskaże liczbę ujemną. Następuje wyświetlenie ekranu końca gry z opcjami:
-    \begin{enumerate}
-        \item Jeszcze raz -- zresetowanie stanu rozgrywki i rozpoczęcie nowej gry.
-        \item Wyjdź -- zakończenie pracy programu.
-    \end{enumerate}
-    \item Praca programu może zostać zakończona w każdym momencie jego działania poprzez zamknięcie okna systemowego.
+    \item Użytkownik uruchamia programu.
+    \item System rozszyfrowuję plik konfiguracyjny.
+    \item System analizuje plik konfiguracyjny
+    \item System wyświetla ekran główny przed zalogowaniem.
 \end{enumerate}
+
+\subsubsection{Scenariusz zalogowania się}
+\begin{enumerate}
+    \item Po wykonaniu poleceń z punktu \ref{wMenu}, użytkownik klika przycisk \textit{Zaloguj się}.
+    \item System wyświetla ekranu logowania. \label{ekranLog}
+    \item Użytkownik uzupełnia dane.
+    \begin{itemize}
+        \item Użytkowanik klika przycisk \textit{Zaloguj}.
+            \begin{enumerate}
+                \item System sprawdza dane:
+                \begin{itemize}
+                    \item[•] Dane poprawne:
+                    \begin{enumerate}
+                        \item System wyświetla  komunikatu o poprawnym zalogowaniu.
+                        \item System rozszyfrowuje plik użytkownika.
+                        \item System załadowuje plik użytkownika do programu.
+                        \item System wyświetla ekran główny po zalogowaniu się.
+                    \end{enumerate}
+                    \item[•] Dane niepoprawne:
+                    \begin{enumerate}
+                        \item System wświetla komunikatu o niepoprawnych danych logowania.
+                        \item Powrót do punktu \ref{ekranLog}. wykonywany maksymalnie trzy razy. Przy trzecim razie następuje blokada konta.
+                    \end{enumerate}
+                \end{itemize}
+            \end{enumerate}
+        \item Użytkowanik klika przycisk \textit{Nie pamiętasz hasła?}.
+        \begin{enumerate}
+            \item System zczytuje login.
+            \item System rozszyfrowuje plik użytkownika.
+            \item System załadowuje zawartość pliku użytkownika.
+            \item System wysyła maila z instrukcjami do zresetowania hasła.
+        \end{enumerate}
+        \item Użytkowanik klika przycisk \textit{Załóż konto}.
+        \begin{enumerate}
+            \item System wyświetla ekran rejestracji.
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
+\subsubsection{Scenariusz rejestracji}
+\begin{enumerate}
+    \item Po wykonaniu poleceń z punktu \ref{wMenu}, użytkownik klika przycisk \textit{Zarejestruj się}.
+    \item System wyświetla ekranu rejestracji. \label{ekranRej}
+    \item Użytkownik uzupełnia dane.
+    \item Użytkowanik klika przycisk \textit{Zarejestruj}.
+    \item System sprawdza dane:
+    \begin{itemize}
+        \item Dane poprawne:
+        \begin{enumerate}
+            \item System wyświetla  komunikatu o poprawnym zarejestrowaniu.
+            \item System tworzy plik użytkownika.
+            \item System wyświetla ekran główny po zalogowaniu się.
+        \end{enumerate}
+        \item Dane niepoprawne:
+        \begin{enumerate}
+            \item System wświetla komunikatu o niepoprawnych danych.
+            \item Powrót do punktu \ref{ekranRej}.
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
+\subsubsection{Scenariusz dodawania haseł}
+\begin{enumerate}
+    \item Użytkownik klika przycisk odpowiadający za dodanie nowego obiektu do listy haseł.
+    \item System wyświetla okno dodania nowego obiektu haseł.\label{noweH}
+    \item Użytkownik uzupełnia dane obiektu.
+    \item System sprawdza dane:
+    \begin{itemize}
+        \item Dane poprawne:
+        \begin{enumerate}
+            \item System wyświetla  komunikatu o poprawnym utworzeniu obiektu.
+            \item System aktualizuję listę haseł.
+            \item System wyświetla ekran haseł.
+        \end{enumerate}
+        \item Dane niepoprawne:
+        \begin{enumerate}
+            \item System wświetla komunikatu o niepoprawnych danych.
+            \item Powrót do punktu \ref{noweH}.
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
 
 \newpage
 
@@ -392,7 +406,7 @@ Dodatkowo w rogu znajduje się przycisk gwiazdki. Gdy jest "zaświecony" obiekt 
 
 \section{Testowanie}
 \subsection{Ogólny przebieg testowania}
-Do przetestowania kodu użyjemy narzędzi z biblioteki AssertJ. Natomiast GUI przetestujemy ręcznie podczas tworzenia aplikacji. Dodatkowo gotowy program przetestujemy sami, grając w niego oraz przekażemy go do testów znajomym.
+Do przetestowania kodu użyje narzędzi z biblioteki \textit{unittest}. Natomiast GUI przetestuje ręcznie podczas tworzenia aplikacji.
 \label{end}
 
 \end{document}
