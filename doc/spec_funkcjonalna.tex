@@ -30,7 +30,7 @@
 Jako nazwę programu przyjąłem wyrażenie \prog{OnePass}, które można przetłumaczyć jako \textit{One Password}, co z języka angielskiego oznacza \textit{Jedno hasło}. Jest to ścisłe nawiązanie do funkcjonalności programu, który wymaga od nas pamiętania wyłącznie jednego hasła.
 
 \subsection{Poruszany problem}
-\textit{OnePass} jest okienkową aplikacją przeznaczoną na komputery stacjonarne. Aplikacja realizuję usługę menadżera haseł. Aplikacja inspirowana jest aplikacjami typu \textit{KeePass}, \textit{1Password} lub \textit{LastPass}.\\ \\
+\textit{OnePass} jest okienkową aplikacją przeznaczoną na komputery stacjonarne. Aplikacja realizuję usługę menadżera haseł. Program inspirowany jest aplikacjami typu \textit{KeePass}, \textit{1Password} oraz \textit{LastPass}.\\ \\
 Użytkowanie rozpoczyna się od utworzenia konta przez podanie danych osobowych, danych kontaktowych oraz hasła, które musi spełniać najnowsze standardy bezpieczeństwa. Następnie przenoszeni jesteśmy do głównego okna aplikacji. Tam możemy rozpocząć dodawanie haseł oraz możemy skorzystać z innych usług dostarczanych przez aplikację. Wszystkie hasła składowane w aplikacji zostają szyfrowane przez co dostęp do nich z poza aplikacji jest niemożliwy. \\ \\
 Aplikacja dostarcza usługę generowania haseł, które następnie można skopiować i wykorzystać. W celu wygenerowania haseł użytkownik znajdujący się na ekranie głównym kilka w odpowiednią ikonę na pasku. Po kliknięciu otwierane jest okno pozwalające utworzyć hasło z podanych kryteriów. \\ \\
 Oprócz tego aplikacja umożliwia szyfrowanie plików tekstowych podanych przez użytkownika oraz tworzenie szyfrowanych notatek w samej aplikacji. \textit{OnePass} umożliwia również korzystanie z niego wielu użytkownikom.
@@ -79,7 +79,7 @@ Drzewo katalogów i plików prezentuje się w następujący sposób:
     \begin{itemize}
         \item[•] img \textit{(miejsce przechowywanie grafiki do dokumentacji)}
     \end{itemize}
-    \item sample \textit{(miejsce przechowywania pakietów}
+    \item sample \textit{(miejsce przechowywania pakietów)}
     \begin{itemize}
         \item[•] view \textit{(miejsce przechowywania modułów GUI)}
         \item[•] presenter \textit{(miejsce przechowywania modułów kontrolerów)}
@@ -97,7 +97,13 @@ Pliki będę przechowywał w projektowym repozytorium kontroli wersji Git na pla
 Dane w programie znajdują się w zmiennych o różnych modyfikatorach dostępu.
 
 \subsection{Dane wejściowe}
-Program uwzględnia wczytywanie czterech rodzajów plików tekstowych. Pliku konfiguracyjnego podczas uruchomienia programu, co odbywa się niejawnie, pliku z danymi konta po zalogowaniu się użytkownika, co również odbywa się niejawnie, pliku tekstowego podanego przez użytkownika do zaszyfrowania, plików zaszyfrowanych przez aplikację.
+Program uwzględnia wczytywanie czterech rodzajów plików tekstowych.
+\begin{itemize}
+    \item Plik konfiguracyjny -- ładowany podczas uruchomienia programu (niejawnie).
+    \item Plik z danymi konta -- ładowany po zalogowaniu się użytkownika (niejawnie).
+    \item Plik tekstowy podany przez użytkownika do zaszyfrowania (jawnie).
+    \item Plik zaszyfrowany przez aplikację (niejawnie).
+\end{itemize}
 
 \subsubsection{Plik konfiguracyjny}\label{pKonf}
 Plik tekstowy przechowujący konfigurację programu jest plikiem zaszyfrowanym. Po odszyfrowaniu dane znajdują się w następującej postaci:\\ \\
@@ -107,7 +113,7 @@ Plik tekstowy przechowujący konfigurację programu jest plikiem zaszyfrowanym. 
 Plik tekstowy przechowujący dane użytkownika w formie zaszyfrowanej. Po odszyfrowaniu dane znajdują się w następującej postaci:\\ \\
 \prog{Imię;Nazwisko;Email;Login;ZahaszowaneHasło\\NazwaObiektu1;LoginDoObiektu1;HasłoDoObiektu1;TypObiektu1;FlagaCzyObiektUlubiony1\\NazwaObiektu2;LoginDoObiektu2;HasłoDoObiektu2;TypObiektu2;FlagaCzyObiektUlubiony2\\...\\NazwaObiektuN;LoginDoObiektN;HasłoDoObiektuN;TypObiektuN;FlagaCzyObiektUlubionyN}
 
-\subsection{Plik zaszyfrowany przez aplikację}
+\subsection{Pliki zaszyfrowane przez aplikację}
 Pliki tekstowe w formie zaszyfrowanej. Wczytywane są w 2 miejscach w programie:
 \begin{itemize}
     \item Podczas edytowania istniejącej notatki.
@@ -117,6 +123,8 @@ Pliki te występują w formie opisane w sekcji \textbf{Dane wyjściowe}.
 
 \subsection{Dane wyjściowe}
 Program zapisuje pliki wymienione w punktach \ref{pKonf} i \ref{pUzy} wcześniej je szyfrując. Program umożliwia również zaszyfrowanie pliku podanego przez użytkownika. W obu przypadkach do pliku zapisywana jest zaszyfrowana zawartość ciągiem.
+
+\newpage
 
 \section{Scenariusz działania programu}
 
@@ -178,8 +186,6 @@ Program zapisuje pliki wymienione w punktach \ref{pKonf} i \ref{pUzy} wcześniej
     \item Wyświetlenie ekranu omawianego w punkcie \ref{eGłówny}
     \item Zakończenie działania programu.
 \end{enumerate}
-
-\newpage
 
 \subsection{Scenariusz szczegółowy}
 
@@ -461,7 +467,7 @@ Dodatkowo w rogu znajduje się przycisk gwiazdki. Gdy jest "zaświecony" obiekt 
     \label{fig:szyfrowanie}
 \end{figure}
 
-\paragraph{}\textit{Pojedyncze elementy grafiki wektorowej i fonty użyte do przygotowania poglądowych rysunków pochodzą z otwartych źródeł. Licencje pozwalają na ich bezpłatne wykorzystanie (bez obowiązku podania autora) zarówno w projektach prywatnych jak i komercyjnych. Wszystkie powstałe do projektu wizualizacje są naszą autorską inwencją twórczą.}
+\paragraph{}\textit{Pojedyncze elementy grafiki wektorowej i fonty użyte do przygotowania poglądowych rysunków pochodzą z otwartych źródeł. Licencje pozwalają na ich bezpłatne wykorzystanie (bez obowiązku podania autora) zarówno w projektach prywatnych jak i komercyjnych. Wszystkie powstałe do projektu wizualizacje są moją autorską inwencją twórczą.}
 
 \section{Testowanie}
 \subsection{Ogólny przebieg testowania}
