@@ -14,14 +14,15 @@
 \chead{Specyfikacja funkcjonalna}
 \cfoot{Strona \thepage \ z \pageref{end}}
 
-\title{Specyfikacja funkcjonalna\\Projekt \textit{Aplikacja OnePass} w języku Python}
-\author{Jakub Czajka (299239)\\}
+\title{Specyfikacja funkcjonalna \\ Projekt \textit{Aplikacja OnePass} w języku Python}
+\author{Jakub Czajka (299239)}
 
 \begin{document}
-
 \maketitle
-\tableofcontents
 \thispagestyle{empty}
+\tableofcontents
+
+\newpage
 
 \section{Opis ogólny}
 
@@ -32,7 +33,7 @@ Jako nazwę programu przyjąłem wyrażenie \prog{OnePass}, które można przet�
 \textit{OnePass} jest okienkową aplikacją przeznaczoną na komputery stacjonarne. Aplikacja realizuję usługę menadżera haseł. Aplikacja inspirowana jest aplikacjami typu \textit{KeePass}, \textit{1Password} lub \textit{LastPass}.\\ \\
 Użytkowanie rozpoczyna się od utworzenia konta przez podanie danych osobowych, danych kontaktowych oraz hasła, które musi spełniać najnowsze standardy bezpieczeństwa. Następnie przenoszeni jesteśmy do głównego okna aplikacji. Tam możemy rozpocząć dodawanie haseł oraz możemy skorzystać z innych usług dostarczanych przez aplikację. Wszystkie hasła składowane w aplikacji zostają szyfrowane przez co dostęp do nich z poza aplikacji jest niemożliwy. \\ \\
 Aplikacja dostarcza usługę generowania haseł, które następnie można skopiować i wykorzystać. W celu wygenerowania haseł użytkownik znajdujący się na ekranie głównym kilka w odpowiednią ikonę na pasku. Po kliknięciu otwierane jest okno pozwalające utworzyć hasło z podanych kryteriów. \\ \\
-Oprócz tego aplikacja umożliwia szyfrowanie plików tekstowych podanych przez użytkownika oraz tworzenie szyfrowanych notatek w samej aplikacji. \textit{OnePass} umożliwia również korzystanie z niego wielu użytkownikom. 
+Oprócz tego aplikacja umożliwia szyfrowanie plików tekstowych podanych przez użytkownika oraz tworzenie szyfrowanych notatek w samej aplikacji. \textit{OnePass} umożliwia również korzystanie z niego wielu użytkownikom.
 
 \subsection{Użytkownik docelowy}
 Program dedykowany jest użytkownikom w dowolnym wieku pragnącym poprawić swoje bezpieczeństwo w sieci przez zmianę haseł na odpowiednio trudne do~złamania lub pragnących pamiętać wyłącznie jedno hasło.
@@ -96,7 +97,7 @@ Pliki będę przechowywał w projektowym repozytorium kontroli wersji Git na pla
 Dane w programie znajdują się w zmiennych o różnych modyfikatorach dostępu.
 
 \subsection{Dane wejściowe}
-Program uwzględnia wczytywanie trzech plików tekstowych. Pliku konfiguracyjnego podczas uruchomienia programu, co odbywa się niejawnie, pliku z danymi konta po zalogowaniu się użytkownika, co również odbywa się niejawnie oraz pliku tekstowego podanego przez użytkownika do zaszyfrowania.
+Program uwzględnia wczytywanie czterech rodzajów plików tekstowych. Pliku konfiguracyjnego podczas uruchomienia programu, co odbywa się niejawnie, pliku z danymi konta po zalogowaniu się użytkownika, co również odbywa się niejawnie, pliku tekstowego podanego przez użytkownika do zaszyfrowania, plików zaszyfrowanych przez aplikację.
 
 \subsubsection{Plik konfiguracyjny}\label{pKonf}
 Plik tekstowy przechowujący konfigurację programu jest plikiem zaszyfrowanym. Po odszyfrowaniu dane znajdują się w następującej postaci:\\ \\
@@ -106,8 +107,16 @@ Plik tekstowy przechowujący konfigurację programu jest plikiem zaszyfrowanym. 
 Plik tekstowy przechowujący dane użytkownika w formie zaszyfrowanej. Po odszyfrowaniu dane znajdują się w następującej postaci:\\ \\
 \prog{Imię;Nazwisko;Email;Login;ZahaszowaneHasło\\NazwaObiektu1;LoginDoObiektu1;HasłoDoObiektu1;TypObiektu1;FlagaCzyObiektUlubiony1\\NazwaObiektu2;LoginDoObiektu2;HasłoDoObiektu2;TypObiektu2;FlagaCzyObiektUlubiony2\\...\\NazwaObiektuN;LoginDoObiektN;HasłoDoObiektuN;TypObiektuN;FlagaCzyObiektUlubionyN}
 
+\subsection{Plik zaszyfrowany przez aplikację}
+Pliki tekstowe w formie zaszyfrowanej. Wczytywane są w 2 miejscach w programie:
+\begin{itemize}
+    \item Podczas edytowania istniejącej notatki.
+    \item Podczas deszyfrowania pliku.
+\end{itemize}
+Pliki te występują w formie opisane w sekcji \textbf{Dane wyjściowe}.
+
 \subsection{Dane wyjściowe}
-Program zapisuje pliki wymienione w punktach \ref{pKonf} i \ref{pUzy} wcześniej je szyfrując. Program umożliwia również zaszyfrowanie pliku podanego przez użytkownika. W takim przypadku w pliku znajduje się zaszyfrowana zawartość wpisywana ciągiem.
+Program zapisuje pliki wymienione w punktach \ref{pKonf} i \ref{pUzy} wcześniej je szyfrując. Program umożliwia również zaszyfrowanie pliku podanego przez użytkownika. W obu przypadkach do pliku zapisywana jest zaszyfrowana zawartość ciągiem.
 
 \section{Scenariusz działania programu}
 
@@ -165,7 +174,6 @@ Program zapisuje pliki wymienione w punktach \ref{pKonf} i \ref{pUzy} wcześniej
         \end{enumerate}
     \end{enumerate}
     \item Wybranie opcji \textit{Zaszyfruj}.
-    \item Aplikacja szyfruje, a następnie nadpisuje wszystkie dane z aplikacji.
     \item Wybranie opcji \textit{Wyloguj}.
     \item Wyświetlenie ekranu omawianego w punkcie \ref{eGłówny}
     \item Zakończenie działania programu.
@@ -264,6 +272,57 @@ Program zapisuje pliki wymienione w punktach \ref{pKonf} i \ref{pUzy} wcześniej
     \end{itemize}
 \end{enumerate}
 
+\subsubsection{Scenariusz dodawnia notatek} \label{sdn}
+\begin{enumerate}
+    \item Użytkownik, znajdujący się na ekranie głównym, klika przyciski \textit{Notatki}.
+    \item System wyświetla ekran listy notatek.
+    \item Użytkownik klika przycisk dodania notatki.
+    \item System wyświetla ekran dodawania notatki.
+    \item Użytkownik pisze notatkę.
+    \item Użytkownik kilka przycisk \textit{Zapisz}.
+    \item System wyświetla okno dialogowe. \label{zapiszN}
+    \item Użytkownik uzupełnia okno.
+    \item System szyfruje plik.
+    \item System dodaje plik do listy notatek.
+\end{enumerate}
+
+\subsubsection{Scenariusz edytowania notatek}
+\begin{enumerate}
+    \item Użytkownik, znajdujący się na ekranie głównym, klika przyciski \textit{Notatki}.
+    \item System wyświetla ekran listy notatek.
+    \item Użytkownik zaznacza notatkę do edycji na liście notatek.
+    \item Użytkownik klika przycisk \textit{Edytuj}.
+    \item System rozszyfrowuje notatkę.
+    \item System ładuję notatkę do programu.
+    \item System wyświetla ekran edycji notatki.
+    \item Użytkownik edytuje notatkę.
+    \item Użytkownik kilka przycisk \textit{Zapisz}.
+    \item Program działa zgodnie z punktami następującymi po punkcie \ref{zapiszN}. scenariusza numer \ref{sdn}.
+\end{enumerate}
+
+\subsubsection{Scenariusz generowania hasła}
+\begin{enumerate}
+    \item Użytkownik, znajdujący się na ekranie głównym po zalogowaniu lub znajdujący się na ekranie głównym przed zalogowaniem, klika przyciski \textit{Generuj}.
+    \item System wyświetla okno generowania notatek.
+    \item Użytkownik uzupełnia kryteria.
+    \item Użytkownik klika przycisk \textit{Generuj}.
+    \item System pobiera kryteria.
+    \item System generuje hasło.
+    \item Użytkownik klika przycisk \textit{Kopiuj}.
+    \item System kopiuję hasło do schowka.
+\end{enumerate}
+
+\subsubsection{Scenariusz szyfrowania pliku tekstowego}
+\begin{enumerate}
+    \item Użytkownik, znajdujący się na ekranie głównym, klika przyciski \textit{Zaszyfruj}.
+    \item System wyświetla ekran szyfrowania plików.
+    \item Użytkownik klika przycisk \textit{"..."}.
+    \item System wyświetla okno dialogowe.
+    \item Użytkownik wybiera plik.
+    \item System sprawdza czy plik o danym rozszerzeniu jest obsługiwany.W razie błędu wyświetla komunikat.
+    \item Użytkownik klika przycisk \textit{Zaszyfruj}.
+    \item System szyfruje plik.
+\end{enumerate}
 
 \newpage
 
@@ -406,7 +465,7 @@ Dodatkowo w rogu znajduje się przycisk gwiazdki. Gdy jest "zaświecony" obiekt 
 
 \section{Testowanie}
 \subsection{Ogólny przebieg testowania}
-Do przetestowania kodu użyje narzędzi z biblioteki \textit{unittest}. Natomiast GUI przetestuje ręcznie podczas tworzenia aplikacji.
+Do przetestowania kodu użyje narzędzi z biblioteki \textit{unittest}. Natomiast GUI przetestuje ręcznie podczas tworzenia aplikacji. Dodatkowo działanie aplikacji przetestuje udostępniając ją znajomym, a następnie zbierając od nich opinie na jej temat.
 \label{end}
 
 \end{document}
