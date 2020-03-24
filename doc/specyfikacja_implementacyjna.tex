@@ -14,8 +14,8 @@
 \chead{Specyfikacja implementacyjna}
 \cfoot{Strona \thepage \ z \pageref{end}}
 
-\title{Specyfikacja implementacyjna \\ Projekt \textit{Gra Galaxy Defender} w języku Java}
-\author{Jakub Czajka (299239) \\ Daniel Daczko (299241)}
+\title{Specyfikacja implementacyjna \\ Projekt \textit{Aplikacja OnePass} w języku Python}
+\author{Jakub Czajka (299239)}
 
 \begin{document}
 \maketitle
@@ -26,9 +26,9 @@
 
 \section{Informacje ogólne}
 \subsection{Ogólne parametry uruchomieniowe programu}
-Język programowania: \textit{Java}.\medskip\\
-Środowisko uruchomieniowe: \textit{dowolny system operacyjny obsługujący Javę}.\medskip\\
-Wielkość okna: \textit{800 x 600 px}.\medskip\\
+Język programowania: \textit{Python}.\medskip\\
+Środowisko uruchomieniowe: \textit{dowolny system operacyjny obsługujący Pythona}.\medskip\\
+Wielkość okna: \textit{1280 x 720 px}.\medskip\\
 Położenie okna po uruchomieniu: \textit{środek ekranu}.
 
 \subsection{Konwencja pisania kodu}
@@ -37,26 +37,22 @@ Kod programu będzie pisany zgodnie z poniższymi zasadami:
     \item Kod pisany jest z poszanowaniem zasad czystego kodu.
     \item Nazwy są nazwami znaczącymi.
     \item Nazwy są pisane w języku angielskim.
-    \item Nazwy klas są pisane w konwencji \textit{CamelCase}.
-    \item Nazwy metod i zmiennych są pisane w konwencji \textit{lowerCamelCase}.
-    \item Zawsze należy pisać nawiasy klamrowe, nawet jeśli ciało zawiera tylko pojedynczą linię.
+    \item Nazwy klas są pisane w konwencji \textit{UpperCamelCase}.
+    \item Nazwy metod i zmiennych są pisane małymi literami. Jeżeli składają się z kilku słów, słowa oddzielane są znakami \textit{"\_"}.
 \end{itemize}
 
 \section{Opis modułów i danych}
 \subsection{Moduły w programie}
-Nasz program jest podzielony na cztery odrębne moduły:
+Nasz program jest podzielony na trzy odrębne moduły:
 
 \subsubsection{Graficzny interfejs użytkownika}
-Moduł ten odpowiedzialny jest za interaktywną i graficzną komunikację z użytkownikiem programu. Jego głównym zadaniem jest umożliwienie korzystania z~oprogramowania w jak najłatwiejszy sposób, tak aby uniknąć błędów powstałych na skutek podania niewłaściwych argumentów. Z uwagi na charakter projektu jest on również odpowiedzialny za wyświetlania elementów kluczowych dla gry. Moduł ten jako główny połączony jest ze wszystkimi innymi modułami wspierającymi.
+Moduł ten odpowiedzialny jest za interaktywną i graficzną komunikację z użytkownikiem programu. Jego głównym zadaniem jest przedstawianie zawartości aplikacji oraz umożliwienie użytkownikowi komunikację z programem. Moduł ten połączony jest z modułem kontrolerów.
 
-\subsubsection{Animacje}
-Moduł ten odpowiedzialny jest za wyświetlanie animacji związanych z interakcją użytkownika, a dokładniej funkcjonalnością oddanie strzału przez gracza. Posiada on również elementy logiki gry. Jest połączony z modułem graficznego interfejsu użytkownika i sterowaniem programu.
+\subsubsection{Kontrolery}
+Moduł ten odpowiedzialny jest za komunikację aplikacji między modułami. Łączy moduł graficznego interfejsu użytkownika z modułem obilczeń aplikacji.
 
-\subsubsection{Sterowanie programem}
-Moduł ten odpowiedzialny jest za komunikację z urządzeniami wejściowymi komputera jakimi są mysz i klawiatura. Powiązany jest z modułem graficznego interfejsu użytkownika i animacjami. 
-
-\subsubsection{Konfiguracja}
-Moduł ten odpowiedzialny jest za wczytywanie i zapisywanie danych do pliku. W~szczególności za wczytywanie konfiguracji programu i wcześniej zapisanej gry w celu jej kontynuacji lub zapisu niedokończonej rozgrywki. Moduł ten powiązany jest z modułem graficznego interfejsu użytkownika.
+\subsubsection{Obliczenia}
+Moduł ten odpowiedzialny jest za pracę aplikacji. W tym miejscu przetwarzane są dane, wykonuje się szyfrowanie i deszyfrowanie oraz przechowuje się dane. Moduł ten komunikuje się z modułem kontrolerów.
 
 \section{Opis klas}
 \subsection{GalaxyDefender}
