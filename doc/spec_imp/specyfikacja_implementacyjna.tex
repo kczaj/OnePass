@@ -319,59 +319,89 @@ Powyższe klasy nie posiadają żadnych pól i różnią się jedynie implementa
 Na poniższych rysunkach przedstawiających główne ekrany programu można zaobserwować podział poszczególnych scen na panele i stopień ich zagnieżdżenia.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{img/ekran-start-grid.png}
-    \caption{Ekran startowy}
-    \label{fig:start}
+    \includegraphics[width=1\textwidth]{img/ekran_przed_zalogowanie.png}
+    \caption{Ekran startowy -- przed zalogowaniem}
+    \label{fig:startPrzed}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{img/ekran-gracze-grid.png}
-    \caption{Ekran wprowadzania imion graczy}
-    \label{fig:gracze}
+    \includegraphics[width=1\textwidth]{img/ekran_po_zalogowanie.png}
+    \caption{Ekran startowy -- po zalogowaniu}
+    \label{fig:startPo}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{img/ekran-wczytaj-grid.png}
-    \caption{Ekran wczytywania gry}
-    \label{fig:wczytaj}
+    \includegraphics[height=1\textwidth]{img/ekran_logowania.png}
+    \caption{Ekran logowania}
+    \label{fig:logowanie}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{img/ekran-o-grze-grid.png}
-    \caption{Ekran o grze}
-    \label{fig:o grze}
+    \includegraphics[height=1\textwidth]{img/ekran_rej.png}
+    \caption{Ekran rejestracji}
+    \label{fig:rejestracja}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{img/ekran-gry-grid.png}
-    \caption{Ekran gry}
-    \label{fig:gra}
+    \includegraphics[height=1\textwidth]{img/ekran_generacji.png}
+    \caption{Ekran generowania haseł}
+    \label{fig:profil}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{img/ekran-pauza-grid.png}
-    \caption{Ekran zatrzymania gry}
-    \label{fig:pauza}
+    \includegraphics[height=1\textwidth]{img/ekran_profilu.png}
+    \caption{Ekran informacji o profilu}
+    \label{fig:profil}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{img/ekran-wygrana-grid.png}
-    \caption{Ekran wygranej}
-    \label{fig:wygrana}
+    \includegraphics[height=1\textwidth]{img/ekarn_oapp.png}
+    \caption{Ekran o aplikacji}
+    \label{fig:oApp}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{img/ekran-game-over-grid.png}
-    \caption{Ekran przegranej}
-    \label{fig:game over}
+    \includegraphics[width=1\textwidth]{img/ekran_hasel.png}
+    \caption{Ekran haseł}
+    \label{fig:hasla}
 \end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[height=1\textwidth]{img/ekran_dodania.png}
+    \caption{Ekran dodawania obiektu}
+    \label{fig:haslaDodanie}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{img/ekran_notatek.png}
+    \caption{Ekran listy notatek}
+    \label{fig:notatki}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{img/ekran_nowej_not.png}
+    \caption{Ekran dodawania lub edycji notatek}
+    \label{fig:notatkNowe}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{img/ekran_generacji.png}
+    \caption{Ekran szyfrowania plików podanych przez użytkownika}
+    \label{fig:szyfrowanie}
+\end{figure}
+
+
 
 \section{Testowanie}
 \subsection{Użyte narzędzia}
@@ -379,8 +409,6 @@ Do przetestowania kodu użyjemy narzędzi z biblioteki AssertJ. Natomiast GUI pr
 
 \subsection{Konwencja}
 Metody testujące przyjmą nazwy przypominające równoważniki zdań, aby w~jednoznaczny sposób przekazać informację o badaniu konkretnej funkcjonalności.
-
-\newpage
 
 \subsection{Warunki brzegowe}
 \begin{itemize}
