@@ -48,17 +48,22 @@ Program posiada graficzny interfejs użytkownika. Po uruchomieniu należy zalogo
 \subsection{Możliwości programu}
 \begin{enumerate}
     \item Utworzenie nowego użytkownika.
+    \item Edytowanie istniejącego użytkownika.
     \item Haszowanie hasła.
     \item Wczytanie zapisanego pliku z danymi użytkownika.
     \item Sprawdzenie poprawności danych logowania.
     \item Blokowanie konta w przypadku zbyt dużej liczby prób logowania.
     \item Dodanie nowego pola z hasłami.
+    \item Sortowanie listy haseł wyróżniając pola \textit{ulubione}.
+    \item Edytowanie istniejącego pola z hasłami.
     \item Zaszyfrowanie plików algorytmem symetrycznym.
     \item Odszyfrowanie pliku zaszyfrowanego algorytmem symetrycznym.
     \item Wczytanie pliku tekstowego.
     \item Obsługiwanie błędów powstałych przy wczytywaniu plików.
+    \item Obsługiwanie błędów powstałych przy wpisywaniu danych przez użytkownika.
     \item Generacja haseł przy podanych kryteriach.
     \item Tworzenie notatek w aplikacji.
+    \item Edytowanie istniejących notatek.
     \item Analizowanie trudności haseł.
 \end{enumerate}
 
@@ -415,9 +420,9 @@ Program zapisuje pliki wymienione w punktach \ref{pKonf} i \ref{pUzy} wcześniej
 
 \paragraph{}Rysunek \ref{fig:hasłaObiekt}. przedstawia okno opisu obiektu po kliknięciu przycisku \textit{Wybierz} na ekranie z rysunku \ref{fig:hasła}. Na ekranie znajdują się 3 przyciski:
 \begin{enumerate}
-    \item Kopiuj -- przycisk kopiujący do schowka hasło.
+    \item Kopiuj -- przycisk kopiujący hasło do schowka .
     \item Edytuj -- przycisk umożliwiający edycję obiektu.
-    \item Pokaż -- przycisk ujawniające niewidoczne domyślnie hasło.
+    \item Pokaż -- przycisk ujawniające, niewidoczne domyślnie, hasło.
 \end{enumerate}
 Dodatkowo w rogu znajduje się przycisk gwiazdki. Gdy jest "zaświecony" obiekt w liście będzie znajdował się na początku.
 \begin{figure}[H]
