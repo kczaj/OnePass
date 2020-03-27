@@ -55,10 +55,10 @@ Moduł ten odpowiedzialny jest za komunikację aplikacji między modułami. Łą
 Moduł ten odpowiedzialny jest za pracę aplikacji. W tym miejscu przetwarzane są dane, wykonuje się szyfrowanie i deszyfrowanie oraz przechowuje się dane. Moduł ten komunikuje się z modułem kontrolerów.
 
 \section{Opis klas}
-\subsection{GalaxyDefender}
+\subsection{Nazwa}
 \begin{description}
-    \item[Pakiet:] pl.edu.pw.iem.galaxydefender
-    \item[Dziedziczy:] \prog{Application}
+    \item[Pakiet:]
+    \item[Dziedziczy:]
     \item[Konstruktor:] bezargumentowy, inicjujący kontener przechowujące obiekty.
     \item[Pola:] \hfill
     \begin{itemize}
@@ -71,7 +71,127 @@ Moduł ten odpowiedzialny jest za pracę aplikacji. W tym miejscu przetwarzane s
         \item \textbf{Prototyp:} \prog{public void start()}\\\textbf{Zadanie:} przygotowanie ramki okna aplikacji oraz wyświetlenie jej.
         \item \textbf{Prototyp:} \prog{public void stop()}\\\textbf{Zadanie:} zatrzymanie pracy programu oraz wszystkich utworzonych wątków.
         \item \textbf{Prototyp:} \prog{public void main()}\\\textbf{Zadanie:} uruchomienie programu, wywołanie metod inicjujących kontenery przechowujące obiekty.
-    \end{itemize} 
+    \end{itemize}
+\end{description}
+
+\subsection{MProfile}
+\begin{description}
+    \item[Pakiet:] model
+    \item[Dziedziczy:] --
+    \item[Konstruktor:] otrzymuje zmienne typu \prog{string} zawierające dane osobowe. Ustawia je w odpowiednie pola klasy.
+    \item[Pola:] \hfill
+    \begin{itemize}
+        \item \prog{string name} -- przechowuje imię użytkownika.
+        \item \prog{string surname} -- przechowuje nazwisko użytkownika.
+        \item \prog{string email} -- przechowuje email użytkownika.
+        \item \prog{string login} -- przechowuje login użytkownika.
+        \item \prog{string hasło} -- przechowuje hasło użytkownika.
+        \item \prog{List passwords} -- przechowuje obiekty haseł użytkownika.
+        \item \prog{List notes} -- przechowuje notatki użytkownika.
+    \end{itemize}
+    \item[Metody:] \hfill
+    \begin{itemize}
+        \item \textbf{Prototyp:} \prog{public void update(string update)}\\\textbf{Zadanie:} z aktualizowanie informacji o uzytkowniku.
+        \item \textbf{Prototyp:} \prog{public void update\_passwords(string update)}\\\textbf{Zadanie:} zaktualizowanie informacji o hasłach.
+        \item \textbf{Prototyp:} \prog{public void update\_notes(string update)}\\\textbf{Zadanie:} Z aktualizowanie informacji o notatkach.
+    \end{itemize}
+\end{description}
+
+\subsection{MPassword}
+\begin{description}
+    \item[Pakiet:] model
+    \item[Dziedziczy:] --
+    \item[Konstruktor:] otrzymuje zmienne typu \prog{string} zawierające dane hasła. Ustawia je w odpowiednie pola klasy.
+    \item[Pola:] \hfill
+    \begin{itemize}
+        \item \prog{string name} -- przechowuje nazwę hasła.
+        \item \prog{string login} -- przechowuje login.
+        \item \prog{string password} -- przechowuje hasło.
+        \item \prog{string url} -- przechowuje adres do strony.
+        \item \prog{boolean is\_favourite} -- przechowuje wartość logiczną opisującą to czy element jest elementem \textit{ulubionym}.
+    \end{itemize}
+    \item[Metody:] \hfill
+    \begin{itemize}
+      \item \textbf{Prototyp:} \prog{public void update(string update)}\\\textbf{Zadanie:} zaktualizowanie informacji o obiekcie.
+    \end{itemize}
+\end{description}
+
+\subsection{MNote}
+\begin{description}
+    \item[Pakiet:] model
+    \item[Dziedziczy:] --
+    \item[Konstruktor:] otrzymuje zmienne typu \prog{string} zawierające dane notatki. Ustawia je w odpowiednie pola klasy.
+    \item[Pola:] \hfill
+    \begin{itemize}
+        \item \prog{string name} -- przechowuje nazwę pliku (nazwa notatki plus rozszerzenie).
+        \item \prog{sring text} -- przechowuje treść notatki.
+    \end{itemize}
+    \item[Metody:] \hfill
+    \begin{itemize}
+        \item \textbf{Prototyp:} \prog{public void update(string update)}\\\textbf{Zadanie:} zaktualizowanie danych notatki.
+    \end{itemize}
+\end{description}
+
+\subsection{MHasher}
+\begin{description}
+    \item[Pakiet:] model
+    \item[Dziedziczy:] --
+    \item[Konstruktor:] bezargumentowy.
+    \item[Pola:] \hfill --
+    \begin{itemize}
+
+    \end{itemize}
+    \item[Metody:] \hfill
+    \begin{itemize}
+        \item \textbf{Prototyp:} \prog{public string hash(string msg)}\\\textbf{Zadanie:} haszuje podaną jako argument wiadomość.
+    \end{itemize}
+\end{description}
+
+\subsection{MGenerator}
+\begin{description}
+    \item[Pakiet:] model
+    \item[Dziedziczy:] --
+    \item[Konstruktor:] bezargumentowy.
+    \item[Pola:] \hfill --
+    \begin{itemize}
+
+    \end{itemize}
+    \item[Metody:] \hfill
+    \begin{itemize}
+        \item \textbf{Prototyp:} \prog{public string generate(tuple parameters)}\\\textbf{Zadanie:} generuje hasło na podstawie kryteriów przekazanych jako argument w postaci krotki.
+    \end{itemize}
+\end{description}
+
+\subsection{MChecker}
+\begin{description}
+    \item[Pakiet:] model
+    \item[Dziedziczy:] --
+    \item[Konstruktor:] bezargumentowy. Inicjuje pola.
+    \item[Pola:] \hfill
+    \begin{itemize}
+        \item \prog{MHasher hasher} -- przechowuje obiekt typu \prog{MHasher}.
+    \end{itemize}
+    \item[Metody:] \hfill
+    \begin{itemize}
+        \item \textbf{Prototyp:} \prog{public boolean validate\_data(string data)}\\\textbf{Zadanie:} sprawdza poprawność podanego hasła. W tym celu wykorzystuje obiekt typu \prog{MHasher}.
+    \end{itemize}
+\end{description}
+
+\subsection{MProfileMaker}
+\begin{description}
+    \item[Pakiet:] model
+    \item[Dziedziczy:] --
+    \item[Konstruktor:] bezargumentowy.
+    \item[Pola:] \hfill
+    \begin{itemize}
+
+    \end{itemize}
+    \item[Metody:] \hfill
+    \begin{itemize}
+        \item \textbf{Prototyp:} \prog{public boolean check\_data(string data)}\\\textbf{Zadanie:} sprawdza poprawność podanych danych przy rejestracji.
+        \item \textbf{Prototyp:} \prog{public string hash\_password(string password)}\\\textbf{Zadanie:} hashuje podane jako argument hasło.
+        \item \textbf{Prototyp:} \prog{public MProfile make\_profile()}\\\textbf{Zadanie:} utworzenie nowego obiektu typu \prog{MProfile} z danych podanych przy rejestracji.
+    \end{itemize}
 \end{description}
 
 \subsection{GameObject}
@@ -82,7 +202,7 @@ Moduł ten odpowiedzialny jest za pracę aplikacji. W tym miejscu przetwarzane s
     \item[Pola:] \hfill
     \begin{itemize}
         \item \prog{Pane gamePane} -- schemat układu ekranu na którym wyświetlane są animacje.
-    \end{itemize} 
+    \end{itemize}
     \item[Metody:] \hfill
     \begin{itemize}
         \item \textbf{Prototyp:} \prog{public void addToGame(Shape gameObject)}\\\textbf{Zadanie:} dodanie obiektów typu \prog{Shape} do panelu gry.
@@ -113,7 +233,7 @@ Moduł ten odpowiedzialny jest za pracę aplikacji. W tym miejscu przetwarzane s
         \item \textbf{Prototyp:} \prog{public void moveRight()}\\\textbf{Zadanie:} przesunięcie obiektu w prawo.
         \item \textbf{Prototyp:} \prog{public void rotateLeft()}\\\textbf{Zadanie:} obrócenie obiektu w lewo.
         \item \textbf{Prototyp:} \prog{public void rotateRight()}\\\textbf{Zadanie:} obrócenie obiektu w prawo.
-    \end{itemize} 
+    \end{itemize}
 \end{description}
 
 \subsection{Laser}\
@@ -133,7 +253,7 @@ Moduł ten odpowiedzialny jest za pracę aplikacji. W tym miejscu przetwarzane s
     \begin{itemize}
         \item \textbf{Prototyp:} \prog{public void move()}\\\textbf{Zadanie:} przesuwanie graficznej reprezentacji wiązki laserowej po ekranie.
         \item \textbf{Prototyp:} \prog{public boolean isVisible()}\\\textbf{Zadanie:} sprawdzenie czy graficzna reprezentacja wiązki ma zostać przesunięta.\\\textbf{Wartość zwracana:} \prog{true} w przypadku, gdy wiązka nie wyszła poza granice ekranu; \prog{false} w przeciwnym przypadku.
-    \end{itemize} 
+    \end{itemize}
 \end{description}
 
 \subsection{BlockLayout}
@@ -150,7 +270,7 @@ Moduł ten odpowiedzialny jest za pracę aplikacji. W tym miejscu przetwarzane s
     \begin{itemize}
         \item \textbf{Prototyp:} \prog{public void move()}\\\textbf{Zadanie:} przesuwanie graficznej reprezentacji konstrukcji klocków po ekranie.
         \item \textbf{Prototyp:} \prog{public void setPosition()}\\\textbf{Zadanie:} losowanie ułożenia konstrukcji klocków w graficznej reprezentacji.
-    \end{itemize} 
+    \end{itemize}
 \end{description}
 
 \subsection{Block}
@@ -282,7 +402,7 @@ Powyższe klasy nie posiadają żadnych pól i różnią się jedynie implementa
 
 \subsubsection{Ekran wczytywania gry}
 \begin{itemize}
-    \item \prog{ImageView nextButton} -- przechwytywacz zdarzenia typu kliknięcie lewego przycisku myszy, wywołanie metody odpowiedzialnej za wczytanie stanu gry i zmiana sceny. 
+    \item \prog{ImageView nextButton} -- przechwytywacz zdarzenia typu kliknięcie lewego przycisku myszy, wywołanie metody odpowiedzialnej za wczytanie stanu gry i zmiana sceny.
 \end{itemize}
 
 \subsubsection{Ekran o grze}
@@ -300,7 +420,7 @@ Powyższe klasy nie posiadają żadnych pól i różnią się jedynie implementa
 \begin{itemize}
     \item \prog{ImageView resumeGameButton} -- przechwytywacz zdarzenia typu kliknięcie lewego przycisku myszy, wznowienie pracy programu i zmiana sceny.
     \item \prog{ImageView saveGameButton} -- przechwytywacz zdarzenia typu kliknięcie lewego przycisku myszy, wywołanie metody odpowiedzialnej za zapis stanu gry.
-    \item \prog{ImageView quitGameButton} -- przechwytywacz zdarzenia typu kliknięcie lewego przycisku myszy, zmiana sceny.    
+    \item \prog{ImageView quitGameButton} -- przechwytywacz zdarzenia typu kliknięcie lewego przycisku myszy, zmiana sceny.
 \end{itemize}
 
 \subsubsection{Ekran wygranej}
@@ -312,7 +432,7 @@ Powyższe klasy nie posiadają żadnych pól i różnią się jedynie implementa
 \subsubsection{Ekran przegranej}
 \begin{itemize}
     \item \prog{ImageView playAgainButton} -- przechwytywacz zdarzenia typu kliknięcie lewego przycisku myszy, zmiana sceny i rozpoczęcie nowej rozgrywki.
-    \item \prog{ImageView quitButton} -- przechwytywacz zdarzenia typu kliknięcie lewego przycisku myszy, zakończenie działania programu.    
+    \item \prog{ImageView quitButton} -- przechwytywacz zdarzenia typu kliknięcie lewego przycisku myszy, zakończenie działania programu.
 \end{itemize}
 
 \subsection{Budowa wewnętrzna GUI}
@@ -409,6 +529,7 @@ Do przetestowania kodu użyjemy narzędzi z biblioteki AssertJ. Natomiast GUI pr
 
 \subsection{Konwencja}
 Metody testujące przyjmą nazwy przypominające równoważniki zdań, aby w~jednoznaczny sposób przekazać informację o badaniu konkretnej funkcjonalności.
+
 
 \subsection{Warunki brzegowe}
 \begin{itemize}
