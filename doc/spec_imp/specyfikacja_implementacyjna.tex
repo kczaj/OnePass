@@ -379,7 +379,29 @@ Klasa \prog{PMainWin} jest klasą abstrakcyjną, po której dziedziczą następu
     \end{itemize}
 \end{description}
 
-\subsubsection{PNoteListWin}
+\subsubsection{PNoteWin}
+\begin{description}
+    \item[Pakiet:] presenter
+    \item[Dziedziczy:] --
+    \item[Konstruktor:] bezargumentowy. Inicjuje pola.
+    \item[Pola:] \hfill
+    \begin{itemize}
+        \item \prog{MProfile profile} -- przechowuje obiekt zawierający informacje o profilu.
+    \end{itemize}
+    \item[Metody:] \hfill
+    \begin{itemize}
+        \item Metody odpowiedzialne za reakcje na kliknięcie przycisku:
+        \begin{itemize}
+            \item add\_button\_handle()
+            \item delete\_button\_handle()
+            \item edit\_button\_handle()
+            \item save\_button\_handle()
+        \end{itemize}
+        \item \textbf{Prototyp:} \prog{private void update(List notes)}\\\textbf{Zadanie:} aktualizuje listę notatek.
+    \end{itemize}
+\end{description}
+
+\subsubsection{PEncrypWin}
 \begin{description}
     \item[Pakiet:] presenter
     \item[Dziedziczy:] --
@@ -403,68 +425,161 @@ Klasa \prog{PMainWin} jest klasą abstrakcyjną, po której dziedziczą następu
 Pakiet ten zawiera klasy odpowiedzialne za wygląd okien aplikacji. Każda z tych klas ma metody odpowiedzialne za reagowanie na akcję. Dodatkowo jedynymi polami jakie przechowują te klasy są elementy GUI oraz kontroler.
 
 \section{Budowa GUI}
-\subsection{Opis pól i słuchaczy}
-\subsubsection{Ekran startowy}
+\subsection{Opis pól}
+\subsubsection{Ekran startowy -- przed zalogowaniem}
 \begin{itemize}
-    \item \prog{ImageView newGameButton} -- przechwytywacz zdarzenia typu kliknięcie lewego przycisku myszy, zmiana sceny.
-    \item \prog{ImageView loadGameButton} -- przechwytywacz zdarzenia typu kliknięcie lewego przycisku myszy, zmiana sceny.
-    \item \prog{ImageView aboutGameButton} -- przechwytywacz zdarzenia typu kliknięcie lewego przycisku myszy, zmiana sceny.
+    \item \prog{QPushButton sign\_in\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{sign\_in\_button\_pressed()}.
+    \item \prog{QPushButton sign\_up\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{sign\_up\_button\_pressed()}.
+    \item \prog{QPushButton generate\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{generate\_button\_pressed()}.
+    \item \prog{QPushButton about\_app\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{about\_app\_button\_pressed()}.
 \end{itemize}
 
-\subsubsection{Ekran wprowadzania imion graczy}
+\subsubsection{Ekran startowy -- po zalogowaniu}
 \begin{itemize}
-    \item \prog{TextField playerOneTextField} -- przechwytywacz zdarzenia typu wykonana akcja, ustawienie zmiennej w obiekcie Ship.
-    \item \prog{TextField playerTwoTextField} -- przechwytywacz zdarzenia typu wykonana akcja, ustawienie zmiennej w obiekcie Ship.
-    \item \prog{ImageView nextButton} -- przechwytywacz zdarzenia typu kliknięcie lewego przycisku myszy, zmiana sceny.
+    \item \prog{QPushButton profile\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{profile\_button\_pressed()}.
+    \item \prog{QPushButton log\_out\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{log\_out\_button\_pressed()}.
+    \item \prog{QPushButton encrypt\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{encrypt\_button\_pressed()}.
+    \item \prog{QPushButton about\_app\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{about\_app\_button\_pressed()}.
+    \item \prog{QPushButton home\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{home\_button\_pressed()}.
+    \item \prog{QPushButton password\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{password\_button\_pressed()}.
+    \item \prog{QPushButton note\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{note\_button\_pressed()}.
+    \item \prog{QPushButton generate\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{generate\_button\_pressed()}.
+    \item \prog{QPushButton encrypt\_file\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{encrypt\_file\_button\_pressed()}.
 \end{itemize}
 
-\subsubsection{Ekran wczytywania gry}
+\subsubsection{Ekran logowania}
 \begin{itemize}
-    \item \prog{ImageView nextButton} -- przechwytywacz zdarzenia typu kliknięcie lewego przycisku myszy, wywołanie metody odpowiedzialnej za wczytanie stanu gry i zmiana sceny.
+    \item \prog{QPushButton sign\_in\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{sign\_in\_button\_pressed()}.
+    \item \prog{QPushButton sign\_up\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{sign\_up\_button\_pressed()}.
+    \item \prog{QPushButton forget\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{forget\_button\_pressed()}.
+    \item \prog{QPushButton arrow\_button} -- przycisk, po kliknięciu zamykane jest okno.
+    \item \prog{QLineEdit login\_frame} -- okienko wpisywania loginu.
+    \item \prog{QLineEdit password\_frame} -- okienko wpisywania hasła.
 \end{itemize}
 
-\subsubsection{Ekran o grze}
+\subsubsection{Ekran rejestracji}
 \begin{itemize}
-    \item \prog{ImageView backButton} -- przechwytywacz zdarzenia typu kliknięcie lewego przycisku myszy, zmiana sceny.
+    \item \prog{QPushButton sign\_up\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{sign\_up\_button\_pressed()}.
+    \item \prog{QPushButton arrow\_button} -- przycisk, po kliknięciu zamykane jest okno.
+    \item \prog{QLineEdit name\_frame} -- okienko wpisywania imienia.
+    \item \prog{QLineEdit surname\_frame} -- okienko wpisywania nazwiska.
+    \item \prog{QLineEdit email\_frame} -- okienko wpisywania emailu.
+    \item \prog{QLineEdit login\_frame} -- okienko wpisywania loginu.
+    \item \prog{QLineEdit password\_frame} -- okienko wpisywania hasła.
 \end{itemize}
 
-\subsubsection{Ekran gry}
+\subsubsection{Ekran generowania haseł}
 \begin{itemize}
-    \item \prog{ImageView saveGameButton} -- przechwytywacz zdarzenia typu kliknięcie lewego przycisku myszy, wywołanie metody odpowiedzialnej za zapis stanu gry.
-    \item \prog{ImageView pauseGameButton} -- przechwytywacz zdarzenia typu kliknięcie lewego przycisku myszy, zawieszenie działania programu i zmiana sceny.
+    \item \prog{QPushButton generate\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{generate\_button\_pressed()}.
+    \item \prog{QPushButton arrow\_button} -- przycisk, po kliknięciu zamykane jest okno.
+    \item \prog{QPushButton close\_button} -- przycisk, po kliknięciu zamykane jest okno.
+    \item \prog{QPushButton copy\_button} -- przycisk, po kliknięciu kopiowana jest zawartość pola \prog{password\_label} do schowka.
+    \item \prog{QPushButton lower\_button} -- przycisk, po kliknięciu zmienia swoją ikonę oraz ikony przycisków znajdujących się w jednym rzędzie.
+    \item \prog{QPushButton upper\_button} -- przycisk, po kliknięciu zmienia swoją ikonę oraz ikony przycisków znajdujących się w jednym rzędzie.
+    \item \prog{QPushButton mix\_button} -- przycisk, po kliknięciu zmienia swoją ikonę oraz ikony przycisków znajdujących się w jednym rzędzie.
+    \item \prog{QPushButton no\_dig\_button} -- przycisk, po kliknięciu zmienia swoją ikonę oraz ikony przycisków znajdujących się w jednym rzędzie.
+    \item \prog{QPushButton yes\_dig\_button} -- przycisk, po kliknięciu zmienia swoją ikonę oraz ikony przycisków znajdujących się w jednym rzędzie.
+    \item \prog{QPushButton no\_spec\_button} -- przycisk, po kliknięciu zmienia swoją ikonę oraz ikony przycisków znajdujących się w jednym rzędzie.
+    \item \prog{QPushButton yes\_spec\_button} -- przycisk, po kliknięciu zmienia swoją ikonę oraz ikony przycisków znajdujących się w jednym rzędzie.
+    \item \prog{QPushButton no\_state\_button} -- przycisk, po kliknięciu zmienia swoją ikonę oraz ikony przycisków znajdujących się w jednym rzędzie.
+    \item \prog{QPushButton yes\_state\_button} -- przycisk, po kliknięciu zmienia swoją ikonę oraz ikony przycisków znajdujących się w jednym rzędzie.
+    \item \prog{QLineEdit state\_frame} -- okienko wpisywania części stałej.
 \end{itemize}
 
-\subsubsection{Ekran zatrzymania gry}
+\subsubsection{Ekran informacji o profilu}
 \begin{itemize}
-    \item \prog{ImageView resumeGameButton} -- przechwytywacz zdarzenia typu kliknięcie lewego przycisku myszy, wznowienie pracy programu i zmiana sceny.
-    \item \prog{ImageView saveGameButton} -- przechwytywacz zdarzenia typu kliknięcie lewego przycisku myszy, wywołanie metody odpowiedzialnej za zapis stanu gry.
-    \item \prog{ImageView quitGameButton} -- przechwytywacz zdarzenia typu kliknięcie lewego przycisku myszy, zmiana sceny.
+    \item \prog{QPushButton edit\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{edit\_button\_pressed()}.
+    \item \prog{QPushButton save\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{save\_button\_pressed()}.
+    \item \prog{QPushButton arrow\_button} -- przycisk, po kliknięciu zamykane jest okno.
+    \item \prog{QLineEdit name\_frame} -- okienko wpisywania lub wyświetlenia imienia.
+    \item \prog{QLineEdit surname\_frame} -- okienko wpisywania lub wyświetlenia nazwiska.
+    \item \prog{QLineEdit email\_frame} -- okienko wpisywania lub wyświetlenia emailu.
+    \item \prog{QLineEdit login\_frame} -- okienko wpisywania lub wyświetlenia loginu.
+    \item \prog{QLineEdit password\_frame} -- okienko wpisywania lub wyświetlenia hasła.
 \end{itemize}
 
-\subsubsection{Ekran wygranej}
+\subsubsection{Ekran o aplikacji}
 \begin{itemize}
-    \item \prog{ImageView playAgainButton} -- przechwytywacz zdarzenia typu kliknięcie lewego przycisku myszy, zmiana sceny i rozpoczęcie nowej rozgrywki.
-    \item \prog{ImageView quitButton} -- przechwytywacz zdarzenia typu kliknięcie lewego przycisku myszy, zakończenie działania programu.
+    \item \prog{QPushButton home\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{home\_button\_pressed()}.
+    \item \prog{QPushButton password\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{password\_button\_pressed()}.
+    \item \prog{QPushButton note\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{note\_button\_pressed()}.
+    \item \prog{QPushButton generate\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{generate\_button\_pressed()}.
+    \item \prog{QPushButton encrypt\_file\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{encrypt\_file\_button\_pressed()}.
 \end{itemize}
 
-\subsubsection{Ekran przegranej}
+\subsubsection{Ekran haseł}
 \begin{itemize}
-    \item \prog{ImageView playAgainButton} -- przechwytywacz zdarzenia typu kliknięcie lewego przycisku myszy, zmiana sceny i rozpoczęcie nowej rozgrywki.
-    \item \prog{ImageView quitButton} -- przechwytywacz zdarzenia typu kliknięcie lewego przycisku myszy, zakończenie działania programu.
+    \item \prog{QPushButton choose\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{choose\_button\_pressed()}.
+    \item \prog{QPushButton add\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{add\_button\_pressed()}.
+    \item \prog{QListWidget password\_list} --lista wyświetlająca hasła.
+    \item \prog{QPushButton home\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{home\_button\_pressed()}.
+    \item \prog{QPushButton password\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{password\_button\_pressed()}.
+    \item \prog{QPushButton note\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{note\_button\_pressed()}.
+    \item \prog{QPushButton generate\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{generate\_button\_pressed()}.
+    \item \prog{QPushButton encrypt\_file\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{encrypt\_file\_button\_pressed()}.
+\end{itemize}
+
+\subsubsection{Ekran generowania haseł}
+\begin{itemize}
+    \item \prog{QPushButton generate\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{generate\_button\_pressed()}.
+    \item \prog{QPushButton save\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{save\_button\_pressed()}.
+    \item \prog{QPushButton arrow\_button} -- przycisk, po kliknięciu zamykane jest okno.
+    \item \prog{QLineEdit name\_frame} -- okienko wpisywania nazwy.
+    \item \prog{QLineEdit login\_frame} -- okienko wpisywania loginu.
+    \item \prog{QLineEdit password\_frame} -- okienko wpisywania hasła.
+    \item \prog{QLineEdit url\_frame} -- okienko wpisywania adresu do strony.
+    \item \prog{QComboBox category\_combo\_box} -- okienko z możliwością wyboru kategorii~z listy.
+\end{itemize}
+
+\subsubsection{Ekran listy notatek}
+\begin{itemize}
+    \item \prog{QPushButton edit\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{edit\_button\_pressed()}.
+    \item \prog{QPushButton add\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{add\_button\_pressed()}.
+    \item \prog{QListWidget note\_list} --lista wyświetlająca notatki.
+    \item \prog{QPushButton home\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{home\_button\_pressed()}.
+    \item \prog{QPushButton password\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{password\_button\_pressed()}.
+    \item \prog{QPushButton note\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{note\_button\_pressed()}.
+    \item \prog{QPushButton generate\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{generate\_button\_pressed()}.
+    \item \prog{QPushButton encrypt\_file\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{encrypt\_file\_button\_pressed()}.
+\end{itemize}
+
+\subsubsection{Ekran dodawania lub edycji notatek}
+\begin{itemize}
+    \item \prog{QPushButton delete\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{delete\_button\_pressed()}.
+    \item \prog{QPushButton save\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{save\_button\_pressed()}.
+    \item \prog{QPlainTextEdit note\_frame} -- okienko wpisywania lub edytowania treści notatki.
+    \item \prog{QPushButton home\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{home\_button\_pressed()}.
+    \item \prog{QPushButton password\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{password\_button\_pressed()}.
+    \item \prog{QPushButton note\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{note\_button\_pressed()}.
+    \item \prog{QPushButton generate\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{generate\_button\_pressed()}.
+    \item \prog{QPushButton encrypt\_file\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{encrypt\_file\_button\_pressed()}.
+\end{itemize}
+
+\subsubsection{Ekran szyfrowania plików podanych przez użytkownika}
+\begin{itemize}
+    \item \prog{QPushButton decrypt\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{decrypt\_button\_pressed()}.
+    \item \prog{QPushButton encrypt\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{encrypt\_button\_pressed()}.
+    \item \prog{QPushButton three\_dot\_button} -- przycisk, po kliknięciu otwierane jest okno dialogowe z możliwością wyboru pliku do szyfrowania.
+    \item \prog{QListWidget file\_list} --lista wyświetlająca pliki zaszyfrowane.
+    \item \prog{QPushButton home\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{home\_button\_pressed()}.
+    \item \prog{QPushButton password\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{password\_button\_pressed()}.
+    \item \prog{QPushButton note\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{note\_button\_pressed()}.
+    \item \prog{QPushButton generate\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{generate\_button\_pressed()}.
+    \item \prog{QPushButton encrypt\_file\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{encrypt\_file\_button\_pressed()}.
 \end{itemize}
 
 \subsection{Budowa wewnętrzna GUI}
 Na poniższych rysunkach przedstawiających główne ekrany programu można zaobserwować podział poszczególnych scen na panele i stopień ich zagnieżdżenia.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{img/ekran_przed_zalogowanie.png}
+    \includegraphics[width=1\textwidth]{img/ekran_przed_zalogowaniem.png}
     \caption{Ekran startowy -- przed zalogowaniem}
     \label{fig:startPrzed}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{img/ekran_po_zalogowanie.png}
+    \includegraphics[width=1\textwidth]{img/ekran_po_zalogowaniu.png}
     \caption{Ekran startowy -- po zalogowaniu}
     \label{fig:startPo}
 \end{figure}
@@ -499,7 +614,7 @@ Na poniższych rysunkach przedstawiających główne ekrany programu można zaob
 
 \begin{figure}[H]
     \centering
-    \includegraphics[height=1\textwidth]{img/ekarn_oapp.png}
+    \includegraphics[width=1\textwidth]{img/ekarn_oapp.png}
     \caption{Ekran o aplikacji}
     \label{fig:oApp}
 \end{figure}
@@ -534,7 +649,7 @@ Na poniższych rysunkach przedstawiających główne ekrany programu można zaob
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{img/ekran_generacji.png}
+    \includegraphics[width=1\textwidth]{img/ekran_szyfrowania.png}
     \caption{Ekran szyfrowania plików podanych przez użytkownika}
     \label{fig:szyfrowanie}
 \end{figure}
@@ -543,7 +658,7 @@ Na poniższych rysunkach przedstawiających główne ekrany programu można zaob
 
 \section{Testowanie}
 \subsection{Użyte narzędzia}
-Do przetestowania kodu użyjemy narzędzi z biblioteki AssertJ. Natomiast GUI przetestujemy ręcznie podczas tworzenia aplikacji. Dodatkowo gotowy program przetestujemy sami, grając w niego oraz przekażemy go do testów znajomym.
+Do przetestowania kodu użyje narzędzi z modułu unittest. Natomiast GUI przetestuje ręcznie podczas tworzenia aplikacji. Dodatkowo gotowy program przetestuje sam używając go oraz przekaże go do testów znajomym.
 
 \subsection{Konwencja}
 Metody testujące przyjmą nazwy przypominające równoważniki zdań, aby w~jednoznaczny sposób przekazać informację o badaniu konkretnej funkcjonalności.
@@ -551,11 +666,19 @@ Metody testujące przyjmą nazwy przypominające równoważniki zdań, aby w~jed
 
 \subsection{Warunki brzegowe}
 \begin{itemize}
-    \item Możliwość otwarcia pliku konfiguracyjnego.
+    \item Możliwość otwarcia pliku z loginami.
+    \item Możliwość otwarcia pliku z profilem.
+    \item Możliwość otwarcia pliku zaszyfrowanego.
+    \item Możliwość zapisu pliku z loginami.
+    \item Możliwość zapisu pliku z profilem.
+    \item Możliwość zahashowania łańcucha.
+    \item Możliwość zaszyfrowania łańcucha.
+    \item Możliwość odszyfrowania łańcucha.
     \item Możliwość otwarcia i zapisu pliku stanu gry.
-    \item Odpowiednie działanie programu w przypadku spotkania się wiązki laserowej i spadającego klocka.
-    \item Odpowiednie działania programu w kontekście zliczania punktów gracza.
-    \item Odpowiednie działanie programu w przypadku spotkania się statków.
+    \item Odpowiednie działanie programu przy podaniu złego loginu.
+    \item Odpowiednie działanie programu przy podaniu złych danych przy rejestracji.
+    \item Odpowiednie działanie programu przy podaniu ścieżki do pliku nie obsługiwanego.
+    \item Odpowiednie działanie programu przy wybieraniu ulubionych haseł.
 \end{itemize}
 
 \section{Diagram klas}
