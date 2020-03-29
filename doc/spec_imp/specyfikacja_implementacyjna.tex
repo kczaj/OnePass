@@ -28,7 +28,7 @@
 \subsection{Ogólne parametry uruchomieniowe programu}
 Język programowania: \textit{Python}.\medskip\\
 Środowisko uruchomieniowe: \textit{dowolny system operacyjny obsługujący Pythona}.\medskip\\
-Wielkość okna: \textit{1280 x 720 px}.\medskip\\
+Wielkość okna: \textit{800 x 600 px}.\medskip\\
 Położenie okna po uruchomieniu: \textit{środek ekranu}.
 
 \subsection{Konwencja pisania kodu}
@@ -43,10 +43,10 @@ Kod programu będzie pisany zgodnie z poniższymi zasadami:
 
 \section{Opis modułów i danych}
 \subsection{Moduły w programie}
-Nasz program jest podzielony na trzy odrębne moduły:
+Mój program jest podzielony na trzy odrębne moduły:
 
 \subsubsection{Graficzny interfejs użytkownika}
-Moduł ten odpowiedzialny jest za interaktywną i graficzną komunikację z użytkownikiem programu. Jego głównym zadaniem jest przedstawianie zawartości aplikacji oraz umożliwienie użytkownikowi komunikację z programem. Moduł ten połączony jest z modułem kontrolerów.
+Moduł ten odpowiedzialny jest za interaktywną i graficzną komunikację z użytkownikiem programu. Jego głównym zadaniem jest przedstawianie zawartości aplikacji oraz umożliwienie użytkownikowi komunikację z programem w łatwy sposób. Moduł ten połączony jest z modułem kontrolerów.
 
 \subsubsection{Kontrolery}
 Moduł ten odpowiedzialny jest za komunikację aplikacji między modułami. Łączy moduł graficznego interfejsu użytkownika z modułem obilczeń aplikacji.
@@ -74,9 +74,9 @@ Moduł ten odpowiedzialny jest za pracę aplikacji. W tym miejscu przetwarzane s
     \end{itemize}
     \item[Metody:] \hfill
     \begin{itemize}
-        \item \textbf{Prototyp:} \prog{public void update(string update)}\\\textbf{Zadanie:} z aktualizowanie informacji o uzytkowniku.
+        \item \textbf{Prototyp:} \prog{public void update(string update)}\\\textbf{Zadanie:} zaktualizowanie informacji o użytkowniku.
         \item \textbf{Prototyp:} \prog{public void update\_passwords(List update)}\\\textbf{Zadanie:} zaktualizowanie informacji o hasłach.
-        \item \textbf{Prototyp:} \prog{public void update\_notes(List update)}\\\textbf{Zadanie:} Z aktualizowanie informacji o notatkach.
+        \item \textbf{Prototyp:} \prog{public void update\_notes(List update)}\\\textbf{Zadanie:} zaktualizowanie informacji o notatkach.
     \end{itemize}
 \end{description}
 
@@ -91,7 +91,7 @@ Moduł ten odpowiedzialny jest za pracę aplikacji. W tym miejscu przetwarzane s
         \item \prog{string login} -- przechowuje login.
         \item \prog{string password} -- przechowuje hasło.
         \item \prog{string url} -- przechowuje adres do strony.
-        \item \prog{boolean is\_favourite} -- przechowuje wartość logiczną opisującą to czy element jest elementem \textit{ulubionym}.
+        \item \prog{boolean is\_favourite} -- przechowuje wartość logiczną opisującą to~czy element jest elementem \textit{ulubionym}.
     \end{itemize}
     \item[Metody:] \hfill
     \begin{itemize}
@@ -123,7 +123,7 @@ Moduł ten odpowiedzialny jest za pracę aplikacji. W tym miejscu przetwarzane s
     \item[Pola:] brak
     \item[Metody:] \hfill
     \begin{itemize}
-        \item \textbf{Prototyp:} \prog{public string hash(string msg)}\\\textbf{Zadanie:} haszuje podaną jako argument wiadomość.
+        \item \textbf{Prototyp:} \prog{public string hash(string msg)}\\\textbf{Zadanie:} haszowanie podanej jako argument wiadomość.\\\textbf{Algortym:} SHA256
     \end{itemize}
 \end{description}
 
@@ -135,7 +135,7 @@ Moduł ten odpowiedzialny jest za pracę aplikacji. W tym miejscu przetwarzane s
     \item[Pola:] brak
     \item[Metody:] \hfill
     \begin{itemize}
-        \item \textbf{Prototyp:} \prog{public string generate(tuple parameters)}\\\textbf{Zadanie:} generuje hasło na podstawie kryteriów przekazanych jako argument w postaci krotki.
+        \item \textbf{Prototyp:} \prog{public string generate(tuple parameters)}\\\textbf{Zadanie:} generowanie hasła na podstawie kryteriów przekazanych jako argument w postaci krotki.
     \end{itemize}
 \end{description}
 
@@ -150,7 +150,7 @@ Moduł ten odpowiedzialny jest za pracę aplikacji. W tym miejscu przetwarzane s
     \end{itemize}
     \item[Metody:] \hfill
     \begin{itemize}
-        \item \textbf{Prototyp:} \prog{public boolean verify\_data(string data)}\\\textbf{Zadanie:} sprawdza poprawność podanego hasła. W tym celu wykorzystuje obiekt typu \prog{MHasher}.
+        \item \textbf{Prototyp:} \prog{public boolean verify\_data(string data)}\\\textbf{Zadanie:} sprawdzenie poprawność podanego hasła. W tym celu wykorzystuje obiekt typu \prog{MHasher}.
     \end{itemize}
 \end{description}
 
@@ -165,8 +165,8 @@ Moduł ten odpowiedzialny jest za pracę aplikacji. W tym miejscu przetwarzane s
     \end{itemize}
     \item[Metody:] \hfill
     \begin{itemize}
-        \item \textbf{Prototyp:} \prog{public boolean check\_data(string data)}\\\textbf{Zadanie:} sprawdza poprawność podanych danych przy rejestracji.
-        \item \textbf{Prototyp:} \prog{private string hash\_password(string password)}\\\textbf{Zadanie:} hashuje podane jako argument hasło.
+        \item \textbf{Prototyp:} \prog{public boolean check\_data(string data)}\\\textbf{Zadanie:} sprawdzenie poprawność podanych danych przy rejestracji.
+        \item \textbf{Prototyp:} \prog{private string hash\_password(string password)}\\\textbf{Zadanie:} hashowanie podanego jako argument hasła.
         \item \textbf{Prototyp:} \prog{private MProfile make\_profile()}\\\textbf{Zadanie:} utworzenie nowego obiektu typu \prog{MProfile} z danych podanych przy rejestracji.
     \end{itemize}
 \end{description}
@@ -183,8 +183,8 @@ Moduł ten odpowiedzialny jest za pracę aplikacji. W tym miejscu przetwarzane s
     \end{itemize}
     \item[Metody:] \hfill
     \begin{itemize}
-        \item \textbf{Prototyp:} \prog{public void load\_logins()}\\\textbf{Zadanie:} załadowuje plik z loginami do programu.
-        \item \textbf{Prototyp:} \prog{public MProfile load\_profiles()}\\\textbf{Zadanie:} załadowuje plik z profilem do programu.
+        \item \textbf{Prototyp:} \prog{public void load\_logins()}\\\textbf{Zadanie:} załadowanie plik z loginami do programu.
+        \item \textbf{Prototyp:} \prog{public MProfile load\_profiles()}\\\textbf{Zadanie:} załadowanie plik z profilem do programu.
     \end{itemize}
 \end{description}
 
@@ -195,14 +195,14 @@ Moduł ten odpowiedzialny jest za pracę aplikacji. W tym miejscu przetwarzane s
     \item[Konstruktor:] bezargumentowy.
     \item[Pola:] \hfill
     \begin{itemize}
-        \item \prog{List notes} -- przechowuje listę nazw plików z notatkami
+        \item \prog{List notes} -- przechowuje listę nazw plików z notatkami.
         \item \prog{List passwords} -- przechowuje listę haseł do zaszyfrowania.
-        \item \prog{MProfile profile} -- przechowuje obiekt zawierający informacje o profilu.
+        \item \prog{MProfile profile} -- przechowuje obiekt zawierający informacje o~profilu.
     \end{itemize}
     \item[Metody:] \hfill
     \begin{itemize}
-        \item \textbf{Prototyp:} \prog{public string decrypt(string file)}\\\textbf{Zadanie:} rozszyfrowuje podany plik.
-        \item \textbf{Prototyp:} \prog{public string encrypt(string file)}\\\textbf{Zadanie:} szyfruje podany łańcuch.
+        \item \textbf{Prototyp:} \prog{public string decrypt(string file)}\\\textbf{Zadanie:} rozszyfrowanie podanego pliku.\\\textbf{Algorytm:} AES128
+        \item \textbf{Prototyp:} \prog{public string encrypt(string file)}\\\textbf{Zadanie:} szyfrowanie podanego łańcucha.\\\textbf{Algorytm:} AES128
     \end{itemize}
 \end{description}
 
@@ -218,11 +218,11 @@ Każda klasa ma w sobie pola ekranów które może wyświetlić.
     \item[Pola:]brak
     \item[Metody:] \hfill
     \begin{itemize}
-        \item \textbf{Prototyp:} \prog{public void encrypt\_file\_button\_handle()}\\\textbf{Zadanie:} zmienia bieżącą scenę na ekran szyfrowania plików podanych przez użytkownika.
-        \item \textbf{Prototyp:} \prog{public void generate\_button\_handle()}\\\textbf{Zadanie:} zmienia bieżącą scenę na ekran generowania hasła.
-        \item \textbf{Prototyp:} \prog{public void home\_button\_handle()}\\\textbf{Zadanie:} zmienia bieżącą scenę na ekran główny po zalogowaniu.
-        \item \textbf{Prototyp:} \prog{public void note\_button\_handle()}\\\textbf{Zadanie:} zmienia bieżącą scenę na ekran z listą notatek.
-        \item \textbf{Prototyp:} \prog{public void password\_button\_handle()}\\\textbf{Zadanie:} zmienia bieżącą scenę na ekran z listą haseł.
+        \item \textbf{Prototyp:} \prog{public void encrypt\_file\_button\_handle()}\\\textbf{Zadanie:} zamiana bieżącej sceny na ekran szyfrowania plików podanych przez użytkownika.
+        \item \textbf{Prototyp:} \prog{public void generate\_button\_handle()}\\\textbf{Zadanie:} zamiana bieżącej sceny na ekran generowania hasła.
+        \item \textbf{Prototyp:} \prog{public void home\_button\_handle()}\\\textbf{Zadanie:} zamiana bieżącej sceny na ekran główny po zalogowaniu.
+        \item \textbf{Prototyp:} \prog{public void note\_button\_handle()}\\\textbf{Zadanie:} zamiana bieżącej sceny na ekran z listą notatek.
+        \item \textbf{Prototyp:} \prog{public void password\_button\_handle()}\\\textbf{Zadanie:} zamiana bieżącej sceny na ekran z listą haseł.
     \end{itemize}
 \end{description}
 Klasa \prog{PMainWin} jest klasą abstrakcyjną, po której dziedziczą następujące klasy:
@@ -252,7 +252,7 @@ Klasa \prog{PMainWin} jest klasą abstrakcyjną, po której dziedziczą następu
             \item sign\_in\_button\_handle()
             \item generate\_button\_handle()
         \end{itemize}
-        \item \textbf{Prototyp:} \prog{private string load\_logins()}\\\textbf{Zadanie:} wpisanie w pole \prog{logins} pliku z loginami.
+        \item \textbf{Prototyp:} \prog{private string load\_logins()}\\\textbf{Zadanie:} wpisanie w pole \prog{logins} zawartości pliku z loginami.
     \end{itemize}
 \end{description}
 
@@ -276,9 +276,8 @@ Klasa \prog{PMainWin} jest klasą abstrakcyjną, po której dziedziczą następu
             \item sign\_up\_button\_handle()
             \item sign\_in\_button\_handle()
         \end{itemize}
-        \item \textbf{Prototyp:} \prog{private void validate\_data(string data)}\\\textbf{Zadanie:} wywołuje metodę sprawdzającą poprawność danych.
-        \item \textbf{Prototyp:} \prog{private void validate\_data(string data)}\\\textbf{Zadanie:} wywołuje metodę sprawdzającą poprawność danych.
-        \item \textbf{Prototyp:} \prog{private void load\_profile(string data)}\\\textbf{Zadanie:} wywołuje metodę pobierającą dane, deszyfrującą je i tworzy obiekt typu \prog{MProfile}.
+        \item \textbf{Prototyp:} \prog{private void validate\_data(string data)}\\\textbf{Zadanie:} wywołanie metody sprawdzającej poprawność danych.
+        \item \textbf{Prototyp:} \prog{private void load\_profile(string data)}\\\textbf{Zadanie:} wywołanie metody pobierającej dane, deszyfrującej je i tworzącej obiekt typu \prog{MProfile}.
     \end{itemize}
 \end{description}
 
@@ -297,7 +296,7 @@ Klasa \prog{PMainWin} jest klasą abstrakcyjną, po której dziedziczą następu
         \begin{itemize}
             \item sign\_up\_button\_handle()
         \end{itemize}
-        \item \textbf{Prototyp:} \prog{private void validate\_data(string data)}\\\textbf{Zadanie:} wywołuje metodę sprawdzającą poprawność danych.
+        \item \textbf{Prototyp:} \prog{private void validate\_data(string data)}\\\textbf{Zadanie:} wywołanie metody sprawdzającej poprawność danych.
     \end{itemize}
 \end{description}
 
@@ -355,7 +354,7 @@ Klasa \prog{PMainWin} jest klasą abstrakcyjną, po której dziedziczą następu
             \item save\_button\_handle()
             \item show\_button\_handle()
         \end{itemize}
-        \item \textbf{Prototyp:} \prog{private void update(List passwords)}\\\textbf{Zadanie:} aktualizuje listę haseł.
+        \item \textbf{Prototyp:} \prog{private void update(List passwords)}\\\textbf{Zadanie:} aktualizowanie listy haseł.
     \end{itemize}
 \end{description}
 
@@ -367,7 +366,7 @@ Klasa \prog{PMainWin} jest klasą abstrakcyjną, po której dziedziczą następu
     \item[Pola:] \hfill
     \begin{itemize}
         \item \prog{MPassword password} -- przechowuje obiekt zwierający hasło.
-        \item \prog{MProfile profile} -- przechowuje obiekt zawierający informacje o profilu.
+        \item \prog{MProfile profile} -- przechowuje obiekt zawierający informacje o~profilu.
     \end{itemize}
     \item[Metody:] \hfill
     \begin{itemize}
@@ -386,7 +385,7 @@ Klasa \prog{PMainWin} jest klasą abstrakcyjną, po której dziedziczą następu
     \item[Konstruktor:] bezargumentowy. Inicjuje pola.
     \item[Pola:] \hfill
     \begin{itemize}
-        \item \prog{MProfile profile} -- przechowuje obiekt zawierający informacje o profilu.
+        \item \prog{MProfile profile} -- przechowuje obiekt zawierający informacje o~profilu.
     \end{itemize}
     \item[Metody:] \hfill
     \begin{itemize}
@@ -397,7 +396,7 @@ Klasa \prog{PMainWin} jest klasą abstrakcyjną, po której dziedziczą następu
             \item edit\_button\_handle()
             \item save\_button\_handle()
         \end{itemize}
-        \item \textbf{Prototyp:} \prog{private void update(List notes)}\\\textbf{Zadanie:} aktualizuje listę notatek.
+        \item \textbf{Prototyp:} \prog{private void update(List notes)}\\\textbf{Zadanie:} aktualizowanie listy notatek.
     \end{itemize}
 \end{description}
 
@@ -568,6 +567,8 @@ Pakiet ten zawiera klasy odpowiedzialne za wygląd okien aplikacji. Każda z tyc
     \item \prog{QPushButton encrypt\_file\_button} -- przycisk, po kliknięciu uruchamiana jest metoda \prog{encrypt\_file\_button\_pressed()}.
 \end{itemize}
 
+\newpage
+
 \subsection{Budowa wewnętrzna GUI}
 Na poniższych rysunkach przedstawiających główne ekrany programu można zaobserwować podział poszczególnych scen na panele i stopień ich zagnieżdżenia.
 \begin{figure}[H]
@@ -658,7 +659,7 @@ Na poniższych rysunkach przedstawiających główne ekrany programu można zaob
 
 \section{Testowanie}
 \subsection{Użyte narzędzia}
-Do przetestowania kodu użyje narzędzi z modułu unittest. Natomiast GUI przetestuje ręcznie podczas tworzenia aplikacji. Dodatkowo gotowy program przetestuje sam używając go oraz przekaże go do testów znajomym.
+Do przetestowania kodu użyje narzędzi z modułu \textit{unittest}. Natomiast GUI przetestuje ręcznie podczas tworzenia aplikacji. Dodatkowo gotowy program przetestuje sam używając go oraz przekaże go do testów znajomym.
 
 \subsection{Konwencja}
 Metody testujące przyjmą nazwy przypominające równoważniki zdań, aby w~jednoznaczny sposób przekazać informację o badaniu konkretnej funkcjonalności.
