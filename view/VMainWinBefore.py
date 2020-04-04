@@ -26,3 +26,7 @@ class VMainWinBefore:
 
     def __sign_up_button_pressed(self):
         pass
+
+
+if __name__ == '__main__':
+    print("Hej")
