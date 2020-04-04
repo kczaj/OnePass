@@ -7,13 +7,13 @@
 # Original author: KUBA
 # 
 #######################################################
-from OnePass.VProfileWin import VProfileWin
-from OnePass.VNoteListWin import VNoteListWin
-from OnePass.VGenerateWin import VGenerateWin
-from OnePass.VMainWinBefore import VMainWinBefore
-from OnePass.VAboutAppWin import VAboutAppWin
-from OnePass.MEncryptor import MEncryptor
-from OnePass.PMainWin import PMainWin
+from view.VProfileWin import VProfileWin
+from view.VNoteListWin import VNoteListWin
+from view.VGenerateWin import VGenerateWin
+from view.VMainWinBefore import VMainWinBefore
+from view.VAboutAppWin import VAboutAppWin
+from model.MEncryptor import MEncryptor
+from controller.PMainWin import PMainWin
 
 class PMainWinAfter(PMainWin):
     m_VProfileWin= VProfileWin()

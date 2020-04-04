@@ -7,13 +7,13 @@
 # Original author: KUBA
 # 
 #######################################################
-from OnePass.VGenerateWin import VGenerateWin
-from OnePass.VEncrypWin import VEncrypWin
-from OnePass.VPasswordsListWin import VPasswordsListWin
-from OnePass.VMainWinAfter import VMainWinAfter
-from OnePass.VAddNoteWin import VAddNoteWin
-from OnePass.MProfile import MProfile
-from OnePass.PMainWin import PMainWin
+from view.VGenerateWin import VGenerateWin
+from view.VEncrypWin import VEncrypWin
+from view.VPasswordsListWin import VPasswordsListWin
+from view.VMainWinAfter import VMainWinAfter
+from view.VAddNoteWin import VAddNoteWin
+from model.MProfile import MProfile
+from controller.PMainWin import PMainWin
 
 class PNoteWin(PMainWin):
     m_VGenerateWin= VGenerateWin()

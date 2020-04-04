@@ -7,8 +7,8 @@
 # Original author: KUBA
 # 
 #######################################################
-from OnePass.MPassword import MPassword
-from OnePass.VPasswordWin import VPasswordWin
+from model.MPassword import MPassword
+from view.VPasswordWin import VPasswordWin
 
 class PPasswordWin:
     m_MPassword= MPassword()

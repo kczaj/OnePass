@@ -7,7 +7,7 @@
 # Original author: KUBA
 # 
 #######################################################
-from OnePass.VMainWin import VMainWin
+from view.VMainWin import VMainWin
 
 class VNoteListWin(VMainWin):
     def add_button_pressed():

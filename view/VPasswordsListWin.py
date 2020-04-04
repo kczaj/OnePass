@@ -7,8 +7,8 @@
 # Original author: KUBA
 # 
 #######################################################
-from OnePass.PPasswordsListWin import PPasswordsListWin
-from OnePass.VMainWin import VMainWin
+from controller.PPasswordsListWin import PPasswordsListWin
+from view.VMainWin import VMainWin
 
 class VPasswordsListWin(VMainWin):
     m_PPasswordsListWin= PPasswordsListWin()

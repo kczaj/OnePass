@@ -7,11 +7,11 @@
 # Original author: KUBA
 # 
 #######################################################
-from OnePass.VEncrypWin import VEncrypWin
-from OnePass.VMainWinAfter import VMainWinAfter
-from OnePass.VNoteListWin import VNoteListWin
-from OnePass.VPasswordsListWin import VPasswordsListWin
-from OnePass.VGenerateWin import VGenerateWin
+from view.VEncrypWin import VEncrypWin
+from view.VMainWinAfter import VMainWinAfter
+from view.VNoteListWin import VNoteListWin
+from view.VPasswordsListWin import VPasswordsListWin
+from view.VGenerateWin import VGenerateWin
 
 class PMainWin:
     m_VEncrypWin= VEncrypWin()

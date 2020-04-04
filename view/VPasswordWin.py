@@ -7,7 +7,7 @@
 # Original author: KUBA
 # 
 #######################################################
-from OnePass.PPasswordWin import PPasswordWin
+from controller.PPasswordWin import PPasswordWin
 
 class VPasswordWin:
     m_PPasswordWin= PPasswordWin()

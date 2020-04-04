@@ -7,7 +7,7 @@
 # Original author: KUBA
 # 
 #######################################################
-from OnePass.PProfileWin import PProfileWin
+from controller.PProfileWin import PProfileWin
 
 class VProfileWin:
     m_PProfileWin= PProfileWin()

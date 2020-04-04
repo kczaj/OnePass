@@ -7,7 +7,7 @@
 # Original author: KUBA
 # 
 #######################################################
-from OnePass.PMainWin import PMainWin
+from controller.PMainWin import PMainWin
 
 class VMainWin:
     m_PMainWin= PMainWin()

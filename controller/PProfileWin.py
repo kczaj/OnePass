@@ -7,8 +7,8 @@
 # Original author: KUBA
 # 
 #######################################################
-from OnePass.VProfileWin import VProfileWin
-from OnePass.MProfile import MProfile
+from view.VProfileWin import VProfileWin
+from model.MProfile import MProfile
 
 class PProfileWin:
     m_VProfileWin= VProfileWin()
