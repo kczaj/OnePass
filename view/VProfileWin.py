@@ -12,11 +12,11 @@ from controller.PProfileWin import PProfileWin
 class VProfileWin:
     m_PProfileWin= PProfileWin()
 
-    def edit_button_pressed():
+    def edit_button_pressed(self):
         pass
 
-    def save_button_pressed():
+    def save_button_pressed(self):
         pass
 
-    def show(profile):
+    def show(self,profile):
         pass

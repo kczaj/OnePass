@@ -15,8 +15,8 @@ class VGenerateWin:
 
     m_PGenerateWin= PGenerateWin()
 
-    def generate_button_pressed():
+    def generate_button_pressed(self):
         pass
 
-    def show():
+    def show(self):
         pass

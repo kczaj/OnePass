@@ -13,17 +13,17 @@ from view.VMainWin import VMainWin
 class VMainWinAfter(VMainWin):
     m_PMainWinAfter= PMainWinAfter()
 
-    def about_app_button_pressed():
+    def about_app_button_pressed(self):
         pass
 
-    def encrypt_button_pressed():
+    def encrypt_button_pressed(self):
         pass
 
-    def log_out_button_pressed():
+    def log_out_button_pressed(self):
         pass
 
-    def profile_button_pressed():
+    def profile_button_pressed(self):
         pass
 
-    def show(profile):
+    def show(self,profile):
         pass

@@ -7,16 +7,16 @@
 # Original author: KUBA
 # 
 #######################################################
-from OnePass.PAddPasswordWin import PAddPasswordWin
+from controller.PAddPasswordWin import PAddPasswordWin
 
 class VAddPasswordWin:
     m_PAddPasswordWin= PAddPasswordWin()
 
-    def generate_button_pressed():
+    def generate_button_pressed(self):
         pass
 
-    def save_button_pressed():
+    def save_button_pressed(self):
         pass
 
-    def show():
+    def show(self):
         pass

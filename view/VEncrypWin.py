@@ -7,17 +7,17 @@
 # Original author: KUBA
 # 
 #######################################################
-from OnePass.PEncrypWin import PEncrypWin
-from OnePass.VMainWin import VMainWin
+from controller.PEncrypWin import PEncrypWin
+from view.VMainWin import VMainWin
 
 class VEncrypWin(VMainWin):
     m_PEncrypWin= PEncrypWin()
 
-    def decrypt_button_pressed():
+    def decrypt_button_pressed(self):
         pass
 
-    def encrypt_button_pressed():
+    def encrypt_button_pressed(self):
         pass
 
-    def show():
+    def show(self):
         pass

@@ -12,17 +12,17 @@ from controller.PMainWinBefore import PMainWinBefore
 class VMainWinBefore:
     m_PMainWinBefore= PMainWinBefore()
 
-    def __about_app_button_pressed():
+    def __about_app_button_pressed(self):
         pass
 
-    def __generate_button_pressed():
+    def __generate_button_pressed(self):
         pass
 
-    def show():
+    def show(self):
         pass
 
-    def __sign_in_button_pressed():
+    def __sign_in_button_pressed(self):
         pass
 
-    def __sign_up_button_pressed():
+    def __sign_up_button_pressed(self):
         pass

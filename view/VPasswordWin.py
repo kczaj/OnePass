@@ -12,17 +12,17 @@ from controller.PPasswordWin import PPasswordWin
 class VPasswordWin:
     m_PPasswordWin= PPasswordWin()
 
-    def copy_button_pressed():
+    def copy_button_pressed(self):
         pass
 
-    def edit_button_pressed():
+    def edit_button_pressed(self):
         pass
 
-    def save_button_pressed():
+    def save_button_pressed(self):
         pass
 
-    def show():
+    def show(self):
         pass
 
-    def show_button_pressed():
+    def show_button_pressed(self):
         pass

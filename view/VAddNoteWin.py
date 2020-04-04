@@ -7,17 +7,17 @@
 # Original author: KUBA
 # 
 #######################################################
-from OnePass.PNoteWin import PNoteWin
-from OnePass.VMainWin import VMainWin
+from controller.PNoteWin import PNoteWin
+from view.VMainWin import VMainWin
 
 class VAddNoteWin(VMainWin):
     m_PNoteWin= PNoteWin()
 
-    def delete_button_pressed():
+    def delete_button_pressed(self):
         pass
 
-    def save_button_pressed():
+    def save_button_pressed(self):
         pass
 
-    def show():
+    def show(self):
         pass

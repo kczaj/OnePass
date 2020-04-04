@@ -12,17 +12,17 @@ from controller.PMainWin import PMainWin
 class VMainWin:
     m_PMainWin= PMainWin()
 
-    def encrypt_file_button_pressed():
+    def encrypt_file_button_pressed(self):
         pass
 
-    def generate_button_pressed():
+    def generate_button_pressed(self):
         pass
 
-    def home_button_pressed():
+    def home_button_pressed(self):
         pass
 
-    def note_button_pressed():
+    def note_button_pressed(self):
         pass
 
-    def password_button_pressed():
+    def password_button_pressed(self):
         pass

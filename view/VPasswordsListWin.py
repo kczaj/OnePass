@@ -13,11 +13,11 @@ from view.VMainWin import VMainWin
 class VPasswordsListWin(VMainWin):
     m_PPasswordsListWin= PPasswordsListWin()
 
-    def add_button_pressed():
+    def add_button_pressed(self):
         pass
 
-    def choose_button_pressed():
+    def choose_button_pressed(self):
         pass
 
-    def show():
+    def show(self):
         pass

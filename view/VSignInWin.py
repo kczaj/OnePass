@@ -12,14 +12,14 @@ from controller.PSignInWin import PSignInWin
 class VSignInWin:
     m_PSignInWin= PSignInWin()
 
-    def forget_button_pressed():
+    def forget_button_pressed(self):
         pass
 
-    def show(logins):
+    def show(self,logins):
         pass
 
-    def sign_in_button_pressed():
+    def sign_in_button_pressed(self):
         pass
 
-    def sign_up_button_pressed():
+    def sign_up_button_pressed(self):
         pass

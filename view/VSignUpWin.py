@@ -12,8 +12,8 @@ from controller.PSignUpWin import PSignUpWin
 class VSignUpWin:
     m_PSignUpWin= PSignUpWin()
 
-    def show():
+    def show(self):
         pass
 
-    def sign_up_button_pressed():
+    def sign_up_button_pressed(self):
         pass
