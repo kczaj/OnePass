@@ -13,11 +13,11 @@ from model.MProfile import MProfile
 class MProfileMaker(MProfile):
     m_MHasher= MHasher()
 
-    def check_data(string):
+    def check_data(self, string):
         pass
 
-    def __hash_password(string):
+    def __hash_password(self, string):
         pass
 
-    def __make_profile():
+    def __make_profile(self):
         pass

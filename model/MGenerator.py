@@ -10,5 +10,5 @@
 
 
 class MGenerator:
-    def generate(parameters):
+    def generate(self, parameters):
         pass

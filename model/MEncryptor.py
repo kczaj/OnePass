@@ -12,8 +12,8 @@ from model.MProfile import MProfile
 class MEncryptor:
     m_MProfile= MProfile()
 
-    def decrypt(file):
+    def decrypt(self, file):
         pass
 
-    def encrypt(file):
+    def encrypt(self, file):
         pass

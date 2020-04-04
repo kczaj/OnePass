@@ -10,5 +10,5 @@
 
 
 class MPassword:
-    def update(update):
+    def update(self, update):
         pass

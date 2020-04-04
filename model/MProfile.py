@@ -15,11 +15,11 @@ class MProfile:
 
     m_MNote= MNote()
 
-    def update(update):
+    def update(self, update):
         pass
 
-    def update_notes(notes):
+    def update_notes(self, notes):
         pass
 
-    def update_passwords(passwords):
+    def update_passwords(self, passwords):
         pass

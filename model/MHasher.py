@@ -10,5 +10,5 @@
 
 
 class MHasher:
-    def hash(string):
+    def hash(self, string):
         pass

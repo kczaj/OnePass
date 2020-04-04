@@ -12,5 +12,5 @@ from model.MHasher import MHasher
 class MChecker:
     m_MHasher= MHasher()
 
-    def verify_data(data):
+    def verify_data(self, data):
         pass

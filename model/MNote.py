@@ -10,5 +10,5 @@
 
 
 class MNote:
-    def update(update):
+    def update(self, update):
         pass

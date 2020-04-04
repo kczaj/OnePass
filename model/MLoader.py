@@ -11,8 +11,8 @@
 from model.MProfile import MProfile
 
 class MLoader:
-    def load_logins():
+    def load_logins(self):
         pass
 
-    def load_profile(name):
+    def load_profile(self, name):
         pass
