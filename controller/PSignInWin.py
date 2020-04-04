@@ -7,25 +7,19 @@
 # Original author: KUBA
 # 
 #######################################################
-from view.VMainWinBefore import VMainWinBefore
 from view.VMainWinAfter import VMainWinAfter
 from model.MChecker import MChecker
-from model.MLoader import MLoader
 from model.MEncryptor import MEncryptor
-from view.VSignUpWin import VSignUpWin
+
 
 class PSignInWin:
-    m_VMainWinBefore= VMainWinBefore()
 
-    m_VMainWinAfter= VMainWinAfter()
-
-    m_MChecker= MChecker()
-
-    m_MLoader= MLoader()
-
-    m_MEncryptor= MEncryptor()
-
-    m_VSignUpWin= VSignUpWin()
+    def __init__(self, loader, sign_up_win):
+        _window_after = VMainWinAfter()
+        _loader = loader
+        _checker = MChecker()
+        _encryptor = MEncryptor()
+        _sign_up_window = sign_up_win
 
     def forget_button_handle(self):
         pass

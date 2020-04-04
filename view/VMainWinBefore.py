@@ -10,7 +10,9 @@
 from controller.PMainWinBefore import PMainWinBefore
 
 class VMainWinBefore:
-    m_PMainWinBefore= PMainWinBefore()
+
+    def __init__(self):
+        _controller = PMainWinBefore()
 
     def __about_app_button_pressed(self):
         pass

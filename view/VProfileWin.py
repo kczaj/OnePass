@@ -9,8 +9,9 @@
 #######################################################
 from controller.PProfileWin import PProfileWin
 
+
 class VProfileWin:
-    m_PProfileWin= PProfileWin()
+    m_PProfileWin = PProfileWin(object)
 
     def edit_button_pressed(self):
         pass
@@ -18,5 +19,5 @@ class VProfileWin:
     def save_button_pressed(self):
         pass
 
-    def show(self,profile):
+    def show(self, profile):
         pass

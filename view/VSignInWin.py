@@ -9,13 +9,16 @@
 #######################################################
 from controller.PSignInWin import PSignInWin
 
+
 class VSignInWin:
-    m_PSignInWin= PSignInWin()
+
+    def __init__(self,loader):
+        controller = PSignInWin(loader,sign_up_win)
 
     def forget_button_pressed(self):
         pass
 
-    def show(self,logins):
+    def show(self, logins):
         pass
 
     def sign_in_button_pressed(self):

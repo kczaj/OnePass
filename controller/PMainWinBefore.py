@@ -14,15 +14,10 @@ from view.VAboutAppWin import VAboutAppWin
 from model.MLoader import MLoader
 
 class PMainWinBefore:
-    m_VSignInWin= VSignInWin()
 
-    m_VSignUpWin= VSignUpWin()
-
-    m_VGenerateWin= VGenerateWin()
-
-    m_VAboutAppWin= VAboutAppWin()
-
-    m_MLoader= MLoader()
+    def __init__(self):
+        _loader = MLoader()
+        _windows_before = [VAboutAppWin(), VGenerateWin(), VSignInWin(), VSignUpWin()]
 
     def about_app_button_handle(self):
         pass
