@@ -28,17 +28,17 @@ class PNoteWin(PMainWin):
 
     m_MProfile= MProfile()
 
-    def add_button_handle():
+    def add_button_handle(self):
         pass
 
-    def delete_button_handle(note):
+    def delete_button_handle(self, note):
         pass
 
-    def edit_button_handle():
+    def edit_button_handle(self):
         pass
 
-    def save_button_handle(note):
+    def save_button_handle(self, note):
         pass
 
-    def __update(notes):
+    def __update(self, notes):
         pass

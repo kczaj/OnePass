@@ -24,17 +24,17 @@ class PMainWinBefore:
 
     m_MLoader= MLoader()
 
-    def about_app_button_handle():
+    def about_app_button_handle(self):
         pass
 
-    def generate_button_handle():
+    def generate_button_handle(self):
         pass
 
-    def __load_logins():
+    def __load_logins(self):
         pass
 
-    def sign_in_button_handle():
+    def sign_in_button_handle(self):
         pass
 
-    def sign_up_button_handle():
+    def sign_up_button_handle(self):
         pass

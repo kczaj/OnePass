@@ -21,8 +21,8 @@ class PSignUpWin:
 
     m_MProfileMaker= MProfileMaker()
 
-    def sign_up_button_handle():
+    def sign_up_button_handle(self):
         pass
 
-    def __validate_data():
+    def __validate_data(self):
         pass

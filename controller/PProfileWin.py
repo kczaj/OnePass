@@ -8,15 +8,15 @@
 # 
 #######################################################
 from view.VProfileWin import VProfileWin
-from model.MProfile import MProfile
+from modelself.MProfile import MProfile
 
 class PProfileWin:
     m_VProfileWin= VProfileWin()
 
     m_MProfile= MProfile()
 
-    def edit_button_handle():
+    def edit_button_handle(self):
         pass
 
-    def save_button_handle(parameters):
+    def save_button_handle(self, parameters):
         pass

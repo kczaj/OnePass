@@ -15,8 +15,8 @@ class PPasswordWin:
 
     m_VPasswordWin= VPasswordWin()
 
-    def save_button_handle():
+    def save_button_handle(self):
         pass
 
-    def show_button_handle():
+    def show_button_handle(self):
         pass

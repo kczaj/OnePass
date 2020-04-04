@@ -28,14 +28,14 @@ class PMainWinAfter(PMainWin):
 
     m_MEncryptor= MEncryptor()
 
-    def about_app_button_handle():
+    def about_app_button_handle(self):
         pass
 
-    def encrypt_button_handle():
+    def encrypt_button_handle(self):
         pass
 
-    def log_out_button_handle():
+    def log_out_button_handle(self):
         pass
 
-    def profile_button_handle():
+    def profile_button_handle(self):
         pass

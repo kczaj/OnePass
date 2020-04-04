@@ -7,13 +7,13 @@
 # Original author: KUBA
 # 
 #######################################################
-from OnePass.MLoader import MLoader
-from OnePass.VNoteListWin import VNoteListWin
-from OnePass.VGenerateWin import VGenerateWin
-from OnePass.VMainWinAfter import VMainWinAfter
-from OnePass.VPasswordsListWin import VPasswordsListWin
-from OnePass.MEncryptor import MEncryptor
-from OnePass.PMainWin import PMainWin
+from model.MLoader import MLoader
+from view.VNoteListWin import VNoteListWin
+from view.VGenerateWin import VGenerateWin
+from view.VMainWinAfter import VMainWinAfter
+from view.VPasswordsListWin import VPasswordsListWin
+from model.MEncryptor import MEncryptor
+from controller.PMainWin import PMainWin
 
 class PEncrypWin(PMainWin):
     m_VNoteListWin= VNoteListWin()
@@ -28,8 +28,8 @@ class PEncrypWin(PMainWin):
 
     m_MLoader= MLoader()
 
-    def decrypt_button_handle():
+    def decrypt_button_handle(self):
         pass
 
-    def encrypt_button_handle():
+    def encrypt_button_handle(self):
         pass

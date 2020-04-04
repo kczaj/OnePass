@@ -24,17 +24,17 @@ class PMainWin:
 
     m_VGenerateWin= VGenerateWin()
 
-    def encrypt_file_button_handle():
+    def encrypt_file_button_handle(self):
         pass
 
-    def generate_button_handle():
+    def generate_button_handle(self):
         pass
 
-    def home_button_handle():
+    def home_button_handle(self):
         pass
 
-    def note_button_handle():
+    def note_button_handle(self):
         pass
 
-    def password_button_handle():
+    def password_button_handle(self):
         pass

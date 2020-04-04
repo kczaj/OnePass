@@ -15,5 +15,5 @@ class PGenerateWin:
 
     m_MGenerator= MGenerator()
 
-    def generate_button_handle(parameters):
+    def generate_button_handle(self, parameters):
         pass

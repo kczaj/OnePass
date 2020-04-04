@@ -7,9 +7,9 @@
 # Original author: KUBA
 # 
 #######################################################
-from OnePass.VGenerateWin import VGenerateWin
-from OnePass.MPassword import MPassword
-from OnePass.MProfile import MProfile
+from view.VGenerateWin import VGenerateWin
+from model.MPassword import MPassword
+from model.MProfile import MProfile
 
 class PAddPasswordWin:
     m_VGenerateWin= VGenerateWin()
@@ -18,11 +18,11 @@ class PAddPasswordWin:
 
     m_MProfile= MProfile()
 
-    def generate_button_handle():
+    def generate_button_handle(self):
         pass
 
-    def save_button_handle():
+    def save_button_handle(self):
         pass
 
-    def __update(passwords):
+    def __update(self, passwords):
         pass

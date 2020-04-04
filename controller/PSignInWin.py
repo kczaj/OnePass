@@ -27,17 +27,17 @@ class PSignInWin:
 
     m_VSignUpWin= VSignUpWin()
 
-    def forget_button_handle():
+    def forget_button_handle(self):
         pass
 
-    def __load_profile(login):
+    def __load_profile(self, login):
         pass
 
-    def sign_in_button_handle():
+    def sign_in_button_handle(self):
         pass
 
-    def sign_up_button_handle():
+    def sign_up_button_handle(self):
         pass
 
-    def __validate_data(data):
+    def __validate_data(self, data):
         pass

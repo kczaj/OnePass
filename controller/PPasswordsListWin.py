@@ -28,8 +28,8 @@ class PPasswordsListWin(PMainWin):
 
     m_MProfile= MProfile()
 
-    def add_button_handle():
+    def add_button_handle(self):
         pass
 
-    def choose_button_handle():
+    def choose_button_handle(self):
         pass
