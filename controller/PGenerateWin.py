@@ -7,13 +7,15 @@
 # Original author: KUBA
 # 
 #######################################################
-from view.VGenerateWin import VGenerateWin
+
 from model.MGenerator import MGenerator
 
-class PGenerateWin:
-    m_VGenerateWin= VGenerateWin()
 
-    m_MGenerator= MGenerator()
+class PGenerateWin:
+
+    def __init__(self, generate_win):
+        _generate_win = generate_win
+        _generator = MGenerator()
 
     def generate_button_handle(self, parameters):
         pass

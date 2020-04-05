@@ -7,13 +7,14 @@
 # Original author: KUBA
 # 
 #######################################################
-from controller.PMainWinBefore import PMainWinBefore
+
 from controller.PGenerateWin import PGenerateWin
 
-class VGenerateWin:
-    m_PMainWinBefore= PMainWinBefore()
 
-    m_PGenerateWin= PGenerateWin()
+class VGenerateWin:
+
+    def __init__(self):
+        _controller = PGenerateWin(self)
 
     def generate_button_pressed(self):
         pass

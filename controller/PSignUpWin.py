@@ -7,19 +7,18 @@
 # Original author: KUBA
 # 
 #######################################################
-from view.VSignUpWin import VSignUpWin
-from view.VMainWinAfter import VMainWinAfter
-from view.VMainWinBefore import VMainWinBefore
+
+#from view.VMainWinAfter import VMainWinAfter
 from model.MProfileMaker import MProfileMaker
 
+
+# remember about MainWinAfter
+
 class PSignUpWin:
-    m_VSignUpWin= VSignUpWin()
 
-    m_VMainWinAfter= VMainWinAfter()
-
-    m_VMainWinBefore= VMainWinBefore()
-
-    m_MProfileMaker= MProfileMaker()
+    def __init__(self, sign_up_win):
+        _profile_maker = MProfileMaker()
+        _sign_up_win = sign_up_win
 
     def sign_up_button_handle(self):
         pass

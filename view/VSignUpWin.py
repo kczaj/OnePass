@@ -9,8 +9,12 @@
 #######################################################
 from controller.PSignUpWin import PSignUpWin
 
+
+
 class VSignUpWin:
-    m_PSignUpWin= PSignUpWin()
+
+    def __init__(self):
+        controller = PSignUpWin(self)
 
     def show(self):
         pass

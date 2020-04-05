@@ -12,7 +12,7 @@ from controller.PSignInWin import PSignInWin
 
 class VSignInWin:
 
-    def __init__(self,loader):
+    def __init__(self,loader,sign_up_win):
         controller = PSignInWin(loader,sign_up_win)
 
     def forget_button_pressed(self):

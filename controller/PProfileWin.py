@@ -8,12 +8,15 @@
 # 
 #######################################################
 from view.VProfileWin import VProfileWin
-from modelself.MProfile import MProfile
+from model.MProfile import MProfile
+
 
 class PProfileWin:
-    m_VProfileWin= VProfileWin()
 
-    m_MProfile= MProfile()
+    m_MProfile = MProfile()
+
+    def __init__(self, win):
+        m_profile_window = win
 
     def edit_button_handle(self):
         pass

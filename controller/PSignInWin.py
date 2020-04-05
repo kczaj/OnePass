@@ -7,15 +7,16 @@
 # Original author: KUBA
 # 
 #######################################################
-from view.VMainWinAfter import VMainWinAfter
+#from view.VMainWinAfter import VMainWinAfter
 from model.MChecker import MChecker
 from model.MEncryptor import MEncryptor
 
 
 class PSignInWin:
 
+    #remember about MainWinAfter
+
     def __init__(self, loader, sign_up_win):
-        _window_after = VMainWinAfter()
         _loader = loader
         _checker = MChecker()
         _encryptor = MEncryptor()

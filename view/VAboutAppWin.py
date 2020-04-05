@@ -10,5 +10,6 @@
 
 
 class VAboutAppWin:
+
     def show(self):
         pass
