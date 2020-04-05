@@ -7,6 +7,8 @@
 # Original author: KUBA
 # 
 #######################################################
+from PyQt5 import QtWidgets
+
 from view.VSignInWin import VSignInWin
 from view.VSignUpWin import VSignUpWin
 from view.VGenerateWin import VGenerateWin
@@ -16,13 +18,17 @@ from model.MLoader import MLoader
 
 class PMainWinBefore:
 
-    def __init__(self):
-        _loader = MLoader()
-        _about_app_win = VAboutAppWin()
-        _generate_win = VGenerateWin()
-        _sign_up_win = VSignUpWin()
-        _sign_in_win = VSignInWin(_loader, _sign_up_win)
-        _windows_before = [_about_app_win, _generate_win, _sign_in_win, _sign_up_win]
+    def __init__(self, main_win_before, main_window):
+        self.main_window = main_window
+        self._loader = MLoader()
+        self._main_win_before = main_win_before
+        self._about_app_win = VAboutAppWin()
+        self._generate_win = VGenerateWin()
+        self._sign_up_win = VSignUpWin()
+        self._sign_in_win = VSignInWin(self._loader, self._sign_up_win)
+        self._windows_before = [self._about_app_win, self._generate_win, self._sign_in_win, self._sign_up_win]
+        self._main_win_before.show(self.main_window)
+        self.main_window.show()
 
     def about_app_button_handle(self):
         pass
@@ -34,7 +40,8 @@ class PMainWinBefore:
         pass
 
     def sign_in_button_handle(self):
-        pass
+        self._sign_in_win.show(self.main_window)
+        self.main_window.show()
 
     def sign_up_button_handle(self):
         pass
