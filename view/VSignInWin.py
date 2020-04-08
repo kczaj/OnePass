@@ -14,164 +14,98 @@ from controller.PSignInWin import PSignInWin
 
 class VSignInWin:
 
-    def __init__(self,loader,sign_up_win):
-        self.controller = PSignInWin(loader,sign_up_win)
-
+    def __init__(self, loader, sign_up_win):
+        self.controller = PSignInWin(loader, sign_up_win)
 
     def forget_button_pressed(self):
         pass
 
-    def show(self,where, logins=''):
+    def show(self, where, logins=''):
         self.setupUi(where)
 
     def sign_in_button_pressed(self):
         pass
 
-    def sign_up_button_pressed(self):
+    def sign_up_button_press(self):
         pass
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(800, 600)
-        MainWindow.setMinimumSize(QtCore.QSize(800, 600))
-        MainWindow.setMaximumSize(QtCore.QSize(800, 600))
-        MainWindow.setStyleSheet("QPushButton{\n"
-        "    backgroung-color:transparent;\n"
-        "}\n"
-        "")
+        MainWindow.resize(360, 600)
+        MainWindow.setStyleSheet("QLabel{\n"
+                                 "    font: 12pt \"Rubik\";\n"
+                                 "    color:white;\n"
+                                 "}\n"
+                                 "QLineEdit{\n"
+                                 "    font: 12pt \"Rubik\";\n"
+                                 "    color:white;\n"
+                                 "    background: rgb(119,119,119);\n"
+                                 "    border-radius: 10px;\n"
+                                 "}\n"
+                                 "QPushButton{\n"
+                                 "    font: 8pt \"Rubik\";\n"
+                                 "    color:white;\n"
+                                 "    background: transparent;\n"
+                                 "    border-radius:10px\n"
+                                 "}")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setStyleSheet("QPushButton{\n"
-        "    background-color:transparent;\n"
-        "}")
         self.centralwidget.setObjectName("centralwidget")
         self.bg = QtWidgets.QLabel(self.centralwidget)
-        self.bg.setEnabled(True)
-        self.bg.setGeometry(QtCore.QRect(0, 0, 800, 600))
-        self.bg.setMinimumSize(QtCore.QSize(800, 600))
-        self.bg.setMaximumSize(QtCore.QSize(800, 600))
+        self.bg.setGeometry(QtCore.QRect(0, 0, 360, 600))
         self.bg.setText("")
-        self.bg.setPixmap(QtGui.QPixmap("img/tło.png"))
-        self.bg.setScaledContents(False)
+        self.bg.setPixmap(QtGui.QPixmap("img/tło_logowanie.png"))
         self.bg.setObjectName("bg")
-        self.greeting_label = QtWidgets.QLabel(self.centralwidget)
-        self.greeting_label.setGeometry(QtCore.QRect(90, 20, 481, 31))
-        font = QtGui.QFont()
-        font.setFamily("Rubik")
-        font.setPointSize(22)
-        self.greeting_label.setFont(font)
-        self.greeting_label.setStyleSheet("color: white")
-        self.greeting_label.setObjectName("greeting_label")
         self.gridLayoutWidget = QtWidgets.QWidget(self.centralwidget)
-        self.gridLayoutWidget.setGeometry(QtCore.QRect(110, 115, 611, 468))
+        self.gridLayoutWidget.setGeometry(QtCore.QRect(10, 240, 341, 161))
         self.gridLayoutWidget.setObjectName("gridLayoutWidget")
         self.gridLayout = QtWidgets.QGridLayout(self.gridLayoutWidget)
-        self.gridLayout.setSizeConstraint(QtWidgets.QLayout.SetMinAndMaxSize)
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
         self.gridLayout.setObjectName("gridLayout")
-        self.profile_button = QtWidgets.QPushButton(self.gridLayoutWidget)
-        self.profile_button.setText("")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("img/main_win_after/przycisk_profil.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.profile_button.setIcon(icon)
-        self.profile_button.setIconSize(QtCore.QSize(202, 199))
-        self.profile_button.setObjectName("profile_button")
-        self.gridLayout.addWidget(self.profile_button, 0, 1, 1, 1)
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem, 0, 4, 1, 1)
-        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem1, 0, 2, 1, 1)
-        self.about_app_button = QtWidgets.QPushButton(self.gridLayoutWidget)
-        self.about_app_button.setText("")
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("img/main_win_after/przycisk_oapp.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.about_app_button.setIcon(icon1)
-        self.about_app_button.setIconSize(QtCore.QSize(202, 199))
-        self.about_app_button.setObjectName("about_app_button")
-        self.gridLayout.addWidget(self.about_app_button, 0, 3, 1, 1)
-        self.log_out_button = QtWidgets.QPushButton(self.gridLayoutWidget)
-        self.log_out_button.setText("")
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("img/main_win_after/przycisk_wyloguj.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.log_out_button.setIcon(icon2)
-        self.log_out_button.setIconSize(QtCore.QSize(202, 199))
-        self.log_out_button.setObjectName("log_out_button")
-        self.gridLayout.addWidget(self.log_out_button, 2, 3, 1, 1)
-        self.encrypt_button = QtWidgets.QPushButton(self.gridLayoutWidget)
-        self.encrypt_button.setStyleSheet("background-color:transparent")
-        self.encrypt_button.setText("")
-        icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap("img/main_win_after/przycisk_zaszyfruj.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.encrypt_button.setIcon(icon3)
-        self.encrypt_button.setIconSize(QtCore.QSize(202, 199))
-        self.encrypt_button.setObjectName("encrypt_button")
-        self.gridLayout.addWidget(self.encrypt_button, 2, 1, 1, 1)
-        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem2, 0, 0, 1, 1)
+        self.password_label = QtWidgets.QLabel(self.gridLayoutWidget)
+        self.password_label.setAlignment(QtCore.Qt.AlignCenter)
+        self.password_label.setObjectName("password_label")
+        self.gridLayout.addWidget(self.password_label, 3, 0, 1, 1)
+        self.forget_button = QtWidgets.QPushButton(self.gridLayoutWidget)
+        self.forget_button.setObjectName("forget_button")
+        self.gridLayout.addWidget(self.forget_button, 4, 1, 1, 1)
+        spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.gridLayout.addItem(spacerItem, 0, 1, 1, 1)
+        spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.gridLayout.addItem(spacerItem1, 6, 1, 1, 1)
+        self.password_frame = QtWidgets.QLineEdit(self.gridLayoutWidget)
+        self.password_frame.setObjectName("password_frame")
+        self.gridLayout.addWidget(self.password_frame, 3, 1, 1, 1)
+        spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.gridLayout.addItem(spacerItem2, 7, 1, 1, 1)
+        self.login_frame = QtWidgets.QLineEdit(self.gridLayoutWidget)
+        self.login_frame.setObjectName("login_frame")
+        self.gridLayout.addWidget(self.login_frame, 1, 1, 1, 1)
+        self.sign_up_button = QtWidgets.QPushButton(self.gridLayoutWidget)
+        self.sign_up_button.setObjectName("sign_up_button")
+        self.gridLayout.addWidget(self.sign_up_button, 5, 1, 1, 1)
+        self.login_label = QtWidgets.QLabel(self.gridLayoutWidget)
+        self.login_label.setAlignment(QtCore.Qt.AlignCenter)
+        self.login_label.setObjectName("login_label")
+        self.gridLayout.addWidget(self.login_label, 1, 0, 1, 1)
         spacerItem3 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.gridLayout.addItem(spacerItem3, 1, 1, 1, 1)
-        self.gridLayoutWidget_2 = QtWidgets.QWidget(self.centralwidget)
-        self.gridLayoutWidget_2.setGeometry(QtCore.QRect(0, 9, 61, 581))
-        self.gridLayoutWidget_2.setObjectName("gridLayoutWidget_2")
-        self.gridLayout_2 = QtWidgets.QGridLayout(self.gridLayoutWidget_2)
-        self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.gridLayout_2.setObjectName("gridLayout_2")
-        spacerItem4 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.gridLayout_2.addItem(spacerItem4, 6, 0, 1, 1)
-        self.note_button = QtWidgets.QPushButton(self.gridLayoutWidget_2)
-        self.note_button.setText("")
-        icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap("img/main_win_after/przycisk_notatki.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.note_button.setIcon(icon4)
-        self.note_button.setIconSize(QtCore.QSize(41, 46))
-        self.note_button.setObjectName("note_button")
-        self.gridLayout_2.addWidget(self.note_button, 3, 0, 1, 1)
-        self.logo = QtWidgets.QLabel(self.gridLayoutWidget_2)
-        self.logo.setText("")
-        self.logo.setPixmap(QtGui.QPixmap("img/logo_male.png"))
-        self.logo.setAlignment(QtCore.Qt.AlignCenter)
-        self.logo.setObjectName("logo")
-        self.gridLayout_2.addWidget(self.logo, 0, 0, 1, 1)
-        self.option_button = QtWidgets.QPushButton(self.gridLayoutWidget_2)
-        self.option_button.setEnabled(False)
-        self.option_button.setText("")
-        icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap("img/przycisk_opcje.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.option_button.setIcon(icon5)
-        self.option_button.setIconSize(QtCore.QSize(32, 34))
-        self.option_button.setObjectName("option_button")
-        self.gridLayout_2.addWidget(self.option_button, 7, 0, 1, 1)
-        self.password_button = QtWidgets.QPushButton(self.gridLayoutWidget_2)
-        self.password_button.setText("")
-        icon6 = QtGui.QIcon()
-        icon6.addPixmap(QtGui.QPixmap("img/main_win_after/przycisk_hasla.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.password_button.setIcon(icon6)
-        self.password_button.setIconSize(QtCore.QSize(34, 46))
-        self.password_button.setObjectName("password_button")
-        self.gridLayout_2.addWidget(self.password_button, 2, 0, 1, 1)
-        self.home_button = QtWidgets.QPushButton(self.gridLayoutWidget_2)
-        self.home_button.setText("")
-        icon7 = QtGui.QIcon()
-        icon7.addPixmap(QtGui.QPixmap("img/main_win_after/przycisk_home.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.home_button.setIcon(icon7)
-        self.home_button.setIconSize(QtCore.QSize(32, 46))
-        self.home_button.setObjectName("home_button")
-        self.gridLayout_2.addWidget(self.home_button, 1, 0, 1, 1)
-        self.generate_button = QtWidgets.QPushButton(self.gridLayoutWidget_2)
-        self.generate_button.setText("")
-        icon8 = QtGui.QIcon()
-        icon8.addPixmap(QtGui.QPixmap("img/main_win_after/przycisk_generuj_maly.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.generate_button.setIcon(icon8)
-        self.generate_button.setIconSize(QtCore.QSize(45, 52))
-        self.generate_button.setObjectName("generate_button")
-        self.gridLayout_2.addWidget(self.generate_button, 4, 0, 1, 1)
-        self.encrypt_file_button = QtWidgets.QPushButton(self.gridLayoutWidget_2)
-        self.encrypt_file_button.setText("")
-        icon9 = QtGui.QIcon()
-        icon9.addPixmap(QtGui.QPixmap("img/main_win_after/przycisk_szyfruj.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.encrypt_file_button.setIcon(icon9)
-        self.encrypt_file_button.setIconSize(QtCore.QSize(42, 52))
-        self.encrypt_file_button.setObjectName("encrypt_file_button")
-        self.gridLayout_2.addWidget(self.encrypt_file_button, 5, 0, 1, 1)
+        self.gridLayout.addItem(spacerItem3, 2, 1, 1, 1)
+        self.sign_in_button = QtWidgets.QPushButton(self.centralwidget)
+        self.sign_in_button.setGeometry(QtCore.QRect(160, 440, 161, 31))
+        self.sign_in_button.setText("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("img/sign_in/przycisk_zaloguj.png"), QtGui.QIcon.Normal,
+                       QtGui.QIcon.Off)
+        self.sign_in_button.setIcon(icon)
+        self.sign_in_button.setIconSize(QtCore.QSize(161, 34))
+        self.sign_in_button.setObjectName("sign_in_button")
+        self.arrow_button = QtWidgets.QPushButton(self.centralwidget)
+        self.arrow_button.setGeometry(QtCore.QRect(15, 15, 41, 41))
+        self.arrow_button.setText("")
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("img/przycisk_strzałka.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.arrow_button.setIcon(icon1)
+        self.arrow_button.setIconSize(QtCore.QSize(34, 31))
+        self.arrow_button.setObjectName("arrow_button")
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -179,5 +113,8 @@ class VSignInWin:
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.greeting_label.setText(_translate("MainWindow", "WITAJ KUBA"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "LOGOWANIE"))
+        self.password_label.setText(_translate("MainWindow", "HASŁO"))
+        self.forget_button.setText(_translate("MainWindow", "Nie pamiętasz hasła?"))
+        self.sign_up_button.setText(_translate("MainWindow", "Załóż konto!"))
+        self.login_label.setText(_translate("MainWindow", "LOGIN"))

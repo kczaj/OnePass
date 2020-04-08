@@ -40,6 +40,7 @@ class PMainWinBefore:
         pass
 
     def sign_in_button_handle(self):
+
         self._sign_in_win.show(self.main_window)
         self.main_window.show()
 

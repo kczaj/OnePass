@@ -149,7 +149,6 @@ class VMainWinBefore:
 
 
 if __name__ == '__main__':
-    print("Hej")
     app = QtWidgets.QApplication(sys.argv)
     main_window = QtWidgets.QMainWindow()
     w = VMainWinBefore(main_window)
