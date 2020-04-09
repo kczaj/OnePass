@@ -8,7 +8,8 @@
 # 
 #######################################################
 
-#from view.VMainWinAfter import VMainWinAfter
+# from view.VMainWinAfter import VMainWinAfter
+from PyQt5 import QtWidgets
 from model.MProfileMaker import MProfileMaker
 
 
@@ -16,12 +17,24 @@ from model.MProfileMaker import MProfileMaker
 
 class PSignUpWin:
 
-    def __init__(self, sign_up_win):
-        _profile_maker = MProfileMaker()
-        _sign_up_win = sign_up_win
+    def __init__(self, sign_up_win, main_window, main_win_before):
+        self.main_window = main_window
+        self._profile_maker = MProfileMaker()
+        self._sign_up_win = sign_up_win
+        self._main_win_before = main_win_before
 
     def sign_up_button_handle(self):
         pass
+
+    def arrow_button_handle(self):
+        self.main_window.close()
+        self.main_window = QtWidgets.QMainWindow()
+        self._main_win_before.update_main_window(self.main_window)
+        self._main_win_before.show(self.main_window)
+        self.main_window.show()
+
+    def set_main_window(self, main_win):
+        self.main_window = main_win
 
     def __validate_data(self):
         pass

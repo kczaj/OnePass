@@ -31,7 +31,10 @@ class VMainWinBefore:
         self.controller.sign_in_button_handle()
 
     def __sign_up_button_pressed(self):
-        pass
+        self.controller.sign_up_button_handle()
+
+    def update_main_window(self, main_win):
+        self.controller.set_main_window(main_win)
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -141,6 +144,7 @@ class VMainWinBefore:
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
         self.sign_in_button.clicked.connect(self._sign_in_button_pressed)
+        self.sign_up_button.clicked.connect(self.__sign_up_button_pressed)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate

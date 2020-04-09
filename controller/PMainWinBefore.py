@@ -7,6 +7,8 @@
 # Original author: KUBA
 # 
 #######################################################
+import sys
+
 from PyQt5 import QtWidgets
 
 from view.VSignInWin import VSignInWin
@@ -24,8 +26,8 @@ class PMainWinBefore:
         self._main_win_before = main_win_before
         self._about_app_win = VAboutAppWin()
         self._generate_win = VGenerateWin()
-        self._sign_up_win = VSignUpWin()
-        self._sign_in_win = VSignInWin(self._loader, self._sign_up_win)
+        self._sign_up_win = VSignUpWin(main_window, self._main_win_before)
+        self._sign_in_win = VSignInWin(main_window, self._loader, self._sign_up_win, main_win_before)
         self._windows_before = [self._about_app_win, self._generate_win, self._sign_in_win, self._sign_up_win]
         self._main_win_before.show(self.main_window)
         self.main_window.show()
@@ -39,10 +41,19 @@ class PMainWinBefore:
     def __load_logins(self):
         pass
 
-    def sign_in_button_handle(self):
+    def set_main_window(self, main_win):
+        self.main_window = main_win
 
+    def sign_in_button_handle(self):
+        self.main_window.close()
+        self.main_window = QtWidgets.QMainWindow()
+        self._sign_in_win.update_main_window(self.main_window)
         self._sign_in_win.show(self.main_window)
         self.main_window.show()
 
     def sign_up_button_handle(self):
-        pass
+        self.main_window.close()
+        self.main_window = QtWidgets.QMainWindow()
+        self._sign_up_win.update_main_window(self.main_window)
+        self._sign_up_win.show(self.main_window)
+        self.main_window.show()
