@@ -38,6 +38,8 @@ class VSignInWin:
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(360, 600)
+        MainWindow.setMinimumSize(QtCore.QSize(360, 600))
+        MainWindow.setMaximumSize(QtCore.QSize(360, 600))
         MainWindow.setStyleSheet("QLabel{\n"
                                  "    font: 12pt \"Rubik\";\n"
                                  "    color:white;\n"

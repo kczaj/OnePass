@@ -9,7 +9,7 @@
 #######################################################
 from model.MLoader import MLoader
 from view.VNoteListWin import VNoteListWin
-from view.VGenerateWin import VGenerateWin
+from view.VGenerateWinBefore import VGenerateWinBefore
 from view.VMainWinAfter import VMainWinAfter
 from view.VPasswordsListWin import VPasswordsListWin
 from model.MEncryptor import MEncryptor
@@ -18,7 +18,7 @@ from controller.PMainWin import PMainWin
 class PEncrypWin(PMainWin):
     m_VNoteListWin= VNoteListWin()
 
-    m_VGenerateWin= VGenerateWin()
+    m_VGenerateWin= VGenerateWinBefore()
 
     m_VMainWinAfter= VMainWinAfter()
 

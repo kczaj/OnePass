@@ -13,7 +13,7 @@ from PyQt5 import QtWidgets
 
 from view.VSignInWin import VSignInWin
 from view.VSignUpWin import VSignUpWin
-from view.VGenerateWin import VGenerateWin
+from view.VGenerateWinBefore import VGenerateWinBefore
 from view.VAboutAppWin import VAboutAppWin
 from model.MLoader import MLoader
 
@@ -25,10 +25,9 @@ class PMainWinBefore:
         self._loader = MLoader()
         self._main_win_before = main_win_before
         self._about_app_win = VAboutAppWin()
-        self._generate_win = VGenerateWin()
+        self._generate_win = VGenerateWinBefore(main_window, self._main_win_before)
         self._sign_up_win = VSignUpWin(main_window, self._main_win_before)
         self._sign_in_win = VSignInWin(main_window, self._loader, self._sign_up_win, main_win_before)
-        self._windows_before = [self._about_app_win, self._generate_win, self._sign_in_win, self._sign_up_win]
         self._main_win_before.show(self.main_window)
         self.main_window.show()
 
@@ -36,7 +35,11 @@ class PMainWinBefore:
         pass
 
     def generate_button_handle(self):
-        pass
+        self.main_window.close()
+        self.main_window = QtWidgets.QMainWindow()
+        self._generate_win.update_main_window(self.main_window)
+        self._generate_win.show(self.main_window)
+        self.main_window.show()
 
     def __load_logins(self):
         pass

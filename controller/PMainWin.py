@@ -11,7 +11,7 @@ from view.VEncrypWin import VEncrypWin
 from view.VMainWinAfter import VMainWinAfter
 from view.VNoteListWin import VNoteListWin
 from view.VPasswordsListWin import VPasswordsListWin
-from view.VGenerateWin import VGenerateWin
+from view.VGenerateWinBefore import VGenerateWinBefore
 
 class PMainWin:
     m_VEncrypWin= VEncrypWin()
@@ -22,7 +22,7 @@ class PMainWin:
 
     m_VPasswordsListWin= VPasswordsListWin()
 
-    m_VGenerateWin= VGenerateWin()
+    m_VGenerateWin= VGenerateWinBefore()
 
     def encrypt_file_button_handle(self):
         pass

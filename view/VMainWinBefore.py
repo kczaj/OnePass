@@ -22,7 +22,8 @@ class VMainWinBefore:
         pass
 
     def __generate_button_pressed(self):
-        pass
+        print("clicked")
+        self.controller.generate_button_handle()
 
     def show(self, where):
         self.setupUi(where)
@@ -145,6 +146,7 @@ class VMainWinBefore:
 
         self.sign_in_button.clicked.connect(self._sign_in_button_pressed)
         self.sign_up_button.clicked.connect(self.__sign_up_button_pressed)
+        self.generate_button.clicked.connect(self.__generate_button_pressed)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate

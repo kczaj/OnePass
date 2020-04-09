@@ -7,12 +7,12 @@
 # Original author: KUBA
 # 
 #######################################################
-from view.VGenerateWin import VGenerateWin
+from view.VGenerateWinBefore import VGenerateWinBefore
 from model.MPassword import MPassword
 from model.MProfile import MProfile
 
 class PAddPasswordWin:
-    m_VGenerateWin= VGenerateWin()
+    m_VGenerateWin= VGenerateWinBefore()
 
     m_MPassword= MPassword()
 

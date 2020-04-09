@@ -7,7 +7,7 @@
 # Original author: KUBA
 # 
 #######################################################
-from view.VGenerateWin import VGenerateWin
+from view.VGenerateWinBefore import VGenerateWinBefore
 from view.VEncrypWin import VEncrypWin
 from view.VPasswordsListWin import VPasswordsListWin
 from view.VMainWinAfter import VMainWinAfter
@@ -16,7 +16,7 @@ from model.MProfile import MProfile
 from controller.PMainWin import PMainWin
 
 class PNoteWin(PMainWin):
-    m_VGenerateWin= VGenerateWin()
+    m_VGenerateWin= VGenerateWinBefore()
 
     m_VEncrypWin= VEncrypWin()
 

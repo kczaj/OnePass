@@ -9,7 +9,7 @@
 #######################################################
 from view.VProfileWin import VProfileWin
 from view.VNoteListWin import VNoteListWin
-from view.VGenerateWin import VGenerateWin
+from view.VGenerateWinBefore import VGenerateWinBefore
 from view.VMainWinBefore import VMainWinBefore
 from view.VAboutAppWin import VAboutAppWin
 from model.MEncryptor import MEncryptor
@@ -20,7 +20,7 @@ class PMainWinAfter(PMainWin):
 
     m_VNoteListWin= VNoteListWin()
 
-    m_VGenerateWin= VGenerateWin()
+    m_VGenerateWin= VGenerateWinBefore()
 
     m_VMainWinBefore= VMainWinBefore()
 
