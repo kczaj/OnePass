@@ -10,23 +10,17 @@
 from controller.PSignUpWin import PSignUpWin
 from PyQt5 import QtWidgets, QtCore, QtGui
 
+from view.VWindow import VWindow
 
-class VSignUpWin:
+
+class VSignUpWin(VWindow):
 
     def __init__(self, main_win, main_win_before):
+        super().__init__()
         self.controller = PSignUpWin(self, main_win, main_win_before)
-
-    def show(self, where):
-        self.setupUi(where)
 
     def sign_up_button_pressed(self):
         pass
-
-    def arrow_button_pressed(self):
-        self.controller.arrow_button_handle()
-
-    def update_main_window(self, main_win):
-        self.controller.set_main_window(main_win)
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -137,7 +131,7 @@ class VSignUpWin:
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "REJESTRACJA"))
         self.surname_label.setText(_translate("MainWindow", "NAZWISKO"))
         self.password_label.setText(_translate("MainWindow", "HASŁO"))
         self.login_label.setText(_translate("MainWindow", "LOGIN"))

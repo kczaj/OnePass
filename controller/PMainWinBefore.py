@@ -11,6 +11,7 @@ import sys
 
 from PyQt5 import QtWidgets
 
+from controller.PController import PController
 from view.VSignInWin import VSignInWin
 from view.VSignUpWin import VSignUpWin
 from view.VGenerateWinBefore import VGenerateWinBefore
@@ -18,17 +19,17 @@ from view.VAboutAppWin import VAboutAppWin
 from model.MLoader import MLoader
 
 
-class PMainWinBefore:
+class PMainWinBefore(PController):
 
     def __init__(self, main_win_before, main_window):
-        self.main_window = main_window
+        super().__init__(main_window, main_win_before)
+
         self._loader = MLoader()
-        self._main_win_before = main_win_before
         self._about_app_win = VAboutAppWin()
-        self._generate_win = VGenerateWinBefore(main_window, self._main_win_before)
-        self._sign_up_win = VSignUpWin(main_window, self._main_win_before)
+        self._generate_win = VGenerateWinBefore(main_window, self.main_win_before)
+        self._sign_up_win = VSignUpWin(main_window, self.main_win_before)
         self._sign_in_win = VSignInWin(main_window, self._loader, self._sign_up_win, main_win_before)
-        self._main_win_before.show(self.main_window)
+        self.main_win_before.show(self.main_window)
         self.main_window.show()
 
     def about_app_button_handle(self):
@@ -43,9 +44,6 @@ class PMainWinBefore:
 
     def __load_logins(self):
         pass
-
-    def set_main_window(self, main_win):
-        self.main_window = main_win
 
     def sign_in_button_handle(self):
         self.main_window.close()

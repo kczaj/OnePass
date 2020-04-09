@@ -10,11 +10,13 @@
 from PyQt5 import QtWidgets, QtCore, QtGui
 
 from controller.PSignInWin import PSignInWin
+from view.VWindow import VWindow
 
 
-class VSignInWin:
+class VSignInWin(VWindow):
 
     def __init__(self, main_window, loader, sign_up_win, main_win_before):
+        super().__init__()
         self.controller = PSignInWin(main_window, loader, sign_up_win, main_win_before)
 
     def forget_button_pressed(self):
@@ -26,14 +28,8 @@ class VSignInWin:
     def sign_in_button_pressed(self):
         pass
 
-    def sign_up_button_press(self):
+    def sign_up_button_pressed(self):
         pass
-
-    def arrow_button_press(self):
-        self.controller.arrow_button_handle()
-
-    def update_main_window(self, main_win):
-        self.controller.set_main_window(main_win)
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -119,7 +115,7 @@ class VSignInWin:
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-        self.arrow_button.clicked.connect(self.arrow_button_press)
+        self.arrow_button.clicked.connect(self.arrow_button_pressed)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate

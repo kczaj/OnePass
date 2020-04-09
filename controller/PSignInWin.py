@@ -8,22 +8,22 @@
 # 
 #######################################################
 # from view.VMainWinAfter import VMainWinAfter
+from controller.PController import PController
 from model.MChecker import MChecker
 from model.MEncryptor import MEncryptor
 from PyQt5 import QtWidgets
 
 
-class PSignInWin:
+class PSignInWin(PController):
 
     # remember about MainWinAfter
 
     def __init__(self, main_window, loader, sign_up_win, main_win_before):
-        self.main_window = main_window
+        super().__init__(main_window,main_win_before)
         self._loader = loader
         self._checker = MChecker()
         self._encryptor = MEncryptor()
         self._sign_up_window = sign_up_win
-        self._main_win_before = main_win_before
 
     def forget_button_handle(self):
         pass
@@ -36,16 +36,6 @@ class PSignInWin:
 
     def sign_up_button_handle(self):
         pass
-
-    def arrow_button_handle(self):
-        self.main_window.close()
-        self.main_window = QtWidgets.QMainWindow()
-        self._main_win_before.update_main_window(self.main_window)
-        self._main_win_before.show(self.main_window)
-        self.main_window.show()
-
-    def set_main_window(self, main_win):
-        self.main_window = main_win
 
     def __validate_data(self, data):
         pass

@@ -11,20 +11,17 @@
 from controller.PGenerateWinBefore import PGenerateWinBefore
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+from view.VWindow import VWindow
 
-class VGenerateWinBefore:
+
+class VGenerateWinBefore(VWindow):
 
     def __init__(self, main_window, main_win_before):
+        super().__init__()
         self.controller = PGenerateWinBefore(self, main_window, main_win_before)
 
     def generate_button_pressed(self):
         pass
-
-    def show(self, where):
-        self.setupUi(where)
-
-    def update_main_window(self, main_win):
-        self.controller.set_main_window(main_win)
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -244,9 +241,11 @@ class VGenerateWinBefore:
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+        self.arrow_button.clicked.connect(self.arrow_button_pressed)
+
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "GENEROWANIE"))
         self.static_label.setText(_translate("MainWindow", "CZĘŚĆ \n"
                                                            " STAŁA"))
         self.case_label.setText(_translate("MainWindow", "WIELKOŚĆ \n"

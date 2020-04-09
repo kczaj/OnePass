@@ -11,31 +11,26 @@ import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 from controller.PMainWinBefore import PMainWinBefore
+from view.VWindow import VWindow
 
 
-class VMainWinBefore:
+class VMainWinBefore(VWindow):
 
     def __init__(self, main_window):
+        super().__init__()
         self.controller = PMainWinBefore(self, main_window)
 
     def __about_app_button_pressed(self):
         pass
 
     def __generate_button_pressed(self):
-        print("clicked")
         self.controller.generate_button_handle()
-
-    def show(self, where):
-        self.setupUi(where)
 
     def _sign_in_button_pressed(self):
         self.controller.sign_in_button_handle()
 
     def __sign_up_button_pressed(self):
         self.controller.sign_up_button_handle()
-
-    def update_main_window(self, main_win):
-        self.controller.set_main_window(main_win)
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -44,6 +39,9 @@ class VMainWinBefore:
         MainWindow.setMaximumSize(QtCore.QSize(800, 600))
         MainWindow.setStyleSheet("QPushButton{\n"
                                  "    backgroung-color:transparent;\n"
+                                 "}\n"
+                                 "QPushButton:hover{\n"
+                                 "    qproperty-icon: url(:/img/main_win_before/przycisk_zaloguj_hovered.png);\n"
                                  "}\n"
                                  "")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -150,7 +148,7 @@ class VMainWinBefore:
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "ONEPASS"))
         self.greeting_label.setText(_translate("MainWindow", "WITAJ W ONEPASS"))
 
 

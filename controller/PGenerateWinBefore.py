@@ -7,23 +7,17 @@
 # Original author: KUBA
 # 
 #######################################################
-
+from controller.PController import PController
 from model.MGenerator import MGenerator
+from PyQt5 import QtWidgets
 
 
-class PGenerateWinBefore:
+class PGenerateWinBefore(PController):
 
     def __init__(self, generate_win, main_window, main_win_before):
-        self.main_window = main_window
-        self.main_win_before = main_win_before
+        super().__init__(main_window, main_win_before)
         self._generate_win = generate_win
         self._generator = MGenerator()
 
     def generate_button_handle(self, parameters):
         pass
-
-    def arrow_button_handle(self):
-        pass
-
-    def set_main_window(self, main_win):
-        self.main_window = main_win
