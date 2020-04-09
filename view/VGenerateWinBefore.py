@@ -21,7 +21,19 @@ class VGenerateWinBefore(VWindow):
         self.controller = PGenerateWinBefore(self, main_window, main_win_before)
 
     def generate_button_pressed(self):
-        pass
+        self.controller.generate_button_handle()
+
+    def case_pressed(self):
+        self.controller.case_handle()
+
+    def dig_pressed(self):
+        self.controller.dig_handle()
+
+    def spec_pressed(self):
+        self.controller.spec_handle()
+
+    def static_pressed(self):
+        self.controller.static_handle()
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -124,6 +136,8 @@ class VGenerateWinBefore(VWindow):
         self.gridLayout_2.addItem(spacerItem4, 2, 0, 1, 1)
         self.spin_box = QtWidgets.QSpinBox(self.gridLayoutWidget_2)
         self.spin_box.setObjectName("spin_box")
+        self.spin_box.setMinimum(1)
+        self.spin_box.setMaximum(25)
         self.gridLayout_2.addWidget(self.spin_box, 1, 2, 1, 1)
         spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.gridLayout_2.addItem(spacerItem5, 3, 4, 1, 1)
@@ -218,6 +232,7 @@ class VGenerateWinBefore(VWindow):
         self.static_frame = QtWidgets.QLineEdit(self.centralwidget)
         self.static_frame.setGeometry(QtCore.QRect(190, 510, 211, 21))
         self.static_frame.setObjectName("static_frame")
+        self.static_frame.setMaxLength(25)
         self.generate_button = QtWidgets.QPushButton(self.centralwidget)
         self.generate_button.setGeometry(QtCore.QRect(80, 560, 171, 41))
         self.generate_button.setText("")
@@ -241,7 +256,24 @@ class VGenerateWinBefore(VWindow):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+        # setting default values of buttons
+        self.case_small_button.setChecked(True)
+        self.dig_no_button.setChecked(True)
+        self.spec_no_button.setChecked(True)
+        self.static_no_button.setChecked(True)
+
+        # connecting buttons to methods
+        self.generate_button.clicked.connect(self.generate_button_pressed)
         self.arrow_button.clicked.connect(self.arrow_button_pressed)
+        self.case_small_button.clicked.connect(self.case_pressed)
+        self.case_big_button.clicked.connect(self.case_pressed)
+        self.case_mix_button.clicked.connect(self.case_pressed)
+        self.dig_no_button.clicked.connect(self.dig_pressed)
+        self.dig_yes_button.clicked.connect(self.dig_pressed)
+        self.spec_no_button.clicked.connect(self.spec_pressed)
+        self.spec_yes_button.clicked.connect(self.spec_pressed)
+        self.static_no_button.clicked.connect(self.static_pressed)
+        self.static_yes_button.clicked.connect(self.static_pressed)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate

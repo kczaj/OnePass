@@ -18,6 +18,107 @@ class PGenerateWinBefore(PController):
         super().__init__(main_window, main_win_before)
         self._generate_win = generate_win
         self._generator = MGenerator()
+        self.setting = [10, 1, 1, 1, 1]
 
-    def generate_button_handle(self, parameters):
-        pass
+    def case_handle(self):
+        sender = self.main_window.sender()
+        if sender == self._generate_win.case_small_button:
+            if not self._generate_win.case_small_button.isChecked():
+                self._generate_win.case_small_button.setChecked(False)
+                self._generate_win.case_big_button.setChecked(True)
+                self._generate_win.case_mix_button.setChecked(False)
+                self.setting[1] = 2
+            else:
+                self._generate_win.case_small_button.setChecked(True)
+                self._generate_win.case_big_button.setChecked(False)
+                self._generate_win.case_mix_button.setChecked(False)
+                self.setting[1] = 1
+        elif sender == self._generate_win.case_big_button:
+            if not self._generate_win.case_big_button.isChecked():
+                self._generate_win.case_small_button.setChecked(False)
+                self._generate_win.case_big_button.setChecked(False)
+                self._generate_win.case_mix_button.setChecked(True)
+                self.setting[1] = 3
+            else:
+                self._generate_win.case_small_button.setChecked(False)
+                self._generate_win.case_big_button.setChecked(True)
+                self._generate_win.case_mix_button.setChecked(False)
+                self.setting[1] = 2
+        else:
+            if not self._generate_win.case_mix_button.isChecked():
+                self._generate_win.case_small_button.setChecked(True)
+                self._generate_win.case_big_button.setChecked(False)
+                self._generate_win.case_mix_button.setChecked(False)
+                self.setting[1] = 1
+            else:
+                self._generate_win.case_small_button.setChecked(False)
+                self._generate_win.case_big_button.setChecked(False)
+                self._generate_win.case_mix_button.setChecked(True)
+                self.setting[1] = 3
+
+    def dig_handle(self):
+        sender = self.main_window.sender()
+        if sender == self._generate_win.dig_no_button:
+            if not self._generate_win.dig_no_button.isChecked():
+                self._generate_win.dig_no_button.setChecked(False)
+                self._generate_win.dig_yes_button.setChecked(True)
+                self.setting[2] = 2
+            else:
+                self._generate_win.dig_no_button.setChecked(True)
+                self._generate_win.dig_yes_button.setChecked(False)
+                self.setting[2] = 1
+        else:
+            if not self._generate_win.dig_yes_button.isChecked():
+                self._generate_win.dig_no_button.setChecked(True)
+                self._generate_win.dig_yes_button.setChecked(False)
+                self.setting[2] = 1
+            else:
+                self._generate_win.dig_no_button.setChecked(False)
+                self._generate_win.dig_yes_button.setChecked(True)
+                self.setting[2] = 2
+
+    def spec_handle(self):
+        sender = self.main_window.sender()
+        if sender == self._generate_win.spec_no_button:
+            if not self._generate_win.spec_no_button.isChecked():
+                self._generate_win.spec_no_button.setChecked(False)
+                self._generate_win.spec_yes_button.setChecked(True)
+                self.setting[3] = 2
+            else:
+                self._generate_win.spec_no_button.setChecked(True)
+                self._generate_win.spec_yes_button.setChecked(False)
+                self.setting[3] = 1
+        else:
+            if not self._generate_win.spec_yes_button.isChecked():
+                self._generate_win.spec_no_button.setChecked(True)
+                self._generate_win.spec_yes_button.setChecked(False)
+                self.setting[3] = 1
+            else:
+                self._generate_win.spec_no_button.setChecked(False)
+                self._generate_win.spec_yes_button.setChecked(True)
+                self.setting[3] = 2
+
+    def static_handle(self):
+        sender = self.main_window.sender()
+        if sender == self._generate_win.static_no_button:
+            if not self._generate_win.static_no_button.isChecked():
+                self._generate_win.static_no_button.setChecked(False)
+                self._generate_win.static_yes_button.setChecked(True)
+                self.setting[4] = 2
+            else:
+                self._generate_win.static_no_button.setChecked(True)
+                self._generate_win.static_yes_button.setChecked(False)
+                self.setting[4] = 1
+        else:
+            if not self._generate_win.static_yes_button.isChecked():
+                self._generate_win.static_no_button.setChecked(True)
+                self._generate_win.static_yes_button.setChecked(False)
+                self.setting[4] = 1
+            else:
+                self._generate_win.static_no_button.setChecked(False)
+                self._generate_win.static_yes_button.setChecked(True)
+                self.setting[4] = 2
+
+    def generate_button_handle(self):
+        self.setting[0] = self._generate_win.spin_box.value()
+        print(self.setting)
