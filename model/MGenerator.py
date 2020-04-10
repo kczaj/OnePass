@@ -7,8 +7,48 @@
 # Original author: KUBA
 # 
 #######################################################
+import string
+import secrets
 
 
 class MGenerator:
+    special_symols = '!@#$%^&*()_-+={[}]\:;<,>.?/'
+
     def generate(self, parameters):
-        pass
+        length = parameters[0]
+        case = parameters[1]
+        dig = parameters[2]
+        spec = parameters[3]
+        static = parameters[4]
+        alphabet = ''
+        password = ''
+
+        # cases of letters
+        if case == 1:
+            alphabet = string.ascii_lowercase
+        elif case == 2:
+            alphabet = string.ascii_uppercase
+        else:
+            alphabet = string.ascii_letters
+
+        # digits
+        if dig == 2:
+            alphabet = alphabet + string.digits
+
+        # special symbols
+        if spec == 2:
+            alphabet = alphabet + self.special_symols
+
+        # generate password
+        if static == 2:
+            position = secrets.randbelow(length - len(parameters[5]) + 1)
+            for i in range(position):
+                password = password + secrets.choice(alphabet)
+            password = password + parameters[5]
+            for i in range(parameters[0] - len(password)):
+                password = password + secrets.choice(alphabet)
+        else:
+            for i in range(length):
+                password = password + secrets.choice(alphabet)
+
+        return password

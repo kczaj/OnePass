@@ -71,6 +71,7 @@ class VGenerateWinBefore(VWindow):
         self.bg.setObjectName("bg")
         self.password_frame = QtWidgets.QLineEdit(self.centralwidget)
         self.password_frame.setGeometry(QtCore.QRect(40, 130, 531, 25))
+        self.password_frame.setAlignment(QtCore.Qt.AlignCenter)
         self.password_frame.setFrame(False)
         self.password_frame.setReadOnly(True)
         self.password_frame.setObjectName("password_frame")

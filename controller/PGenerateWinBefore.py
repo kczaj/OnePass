@@ -126,6 +126,9 @@ class PGenerateWinBefore(PController):
             self._generate_win.static_frame.setReadOnly(False)
 
     def generate_button_handle(self):
-        self.setting[0] = self._generate_win.spin_box.value()
         self.setting[5] = self._generate_win.static_frame.text()
-        print(self.setting)
+        if self.setting[4] == 2:
+            self._generate_win.spin_box.setValue(self._generate_win.spin_box.value() + len(self.setting[5]))
+        self.setting[0] = self._generate_win.spin_box.value()
+        password = self._generator.generate(self.setting)
+        self._generate_win.password_frame.setText(password)
