@@ -90,6 +90,7 @@ class VSignUpWin(VWindow):
         self.gridLayout.addWidget(self.email_label, 4, 0, 1, 1)
         self.password_frame = QtWidgets.QLineEdit(self.gridLayoutWidget)
         self.password_frame.setObjectName("password_frame")
+        self.password_frame.setEchoMode(QtWidgets.QLineEdit.Password)
         self.gridLayout.addWidget(self.password_frame, 8, 1, 1, 1)
         self.name_label = QtWidgets.QLabel(self.gridLayoutWidget)
         self.name_label.setAlignment(QtCore.Qt.AlignCenter)

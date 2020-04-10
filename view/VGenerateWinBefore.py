@@ -7,7 +7,6 @@
 # Original author: KUBA
 # 
 #######################################################
-
 from controller.PGenerateWinBefore import PGenerateWinBefore
 from PyQt5 import QtCore, QtGui, QtWidgets
 

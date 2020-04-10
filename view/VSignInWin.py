@@ -78,6 +78,7 @@ class VSignInWin(VWindow):
         self.gridLayout.addItem(spacerItem1, 6, 1, 1, 1)
         self.password_frame = QtWidgets.QLineEdit(self.gridLayoutWidget)
         self.password_frame.setObjectName("password_frame")
+        self.password_frame.setEchoMode(QtWidgets.QLineEdit.Password)
         self.gridLayout.addWidget(self.password_frame, 3, 1, 1, 1)
         spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.gridLayout.addItem(spacerItem2, 7, 1, 1, 1)
