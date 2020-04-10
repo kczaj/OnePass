@@ -9,7 +9,7 @@
 #######################################################
 from controller.PController import PController
 from model.MGenerator import MGenerator
-from PyQt5 import QtWidgets
+import pyperclip
 
 
 class PGenerateWinBefore(PController):
@@ -132,3 +132,7 @@ class PGenerateWinBefore(PController):
         self.setting[0] = self._generate_win.spin_box.value()
         password = self._generator.generate(self.setting)
         self._generate_win.password_frame.setText(password)
+
+    def copy_button_handle(self):
+        text = self._generate_win.password_frame.text()
+        pyperclip.copy(text)

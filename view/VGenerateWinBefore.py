@@ -23,6 +23,9 @@ class VGenerateWinBefore(VWindow):
     def generate_button_pressed(self):
         self.controller.generate_button_handle()
 
+    def copy_button_pressed(self):
+        self.controller.copy_button_handle()
+
     def case_pressed(self):
         self.controller.case_handle()
 
@@ -266,6 +269,7 @@ class VGenerateWinBefore(VWindow):
 
         # connecting buttons to methods
         self.generate_button.clicked.connect(self.generate_button_pressed)
+        self.copy_button.clicked.connect(self.copy_button_pressed)
         self.arrow_button.clicked.connect(self.arrow_button_pressed)
         self.case_small_button.clicked.connect(self.case_pressed)
         self.case_big_button.clicked.connect(self.case_pressed)
