@@ -18,7 +18,7 @@ class PGenerateWinBefore(PController):
         super().__init__(main_window, main_win_before)
         self._generate_win = generate_win
         self._generator = MGenerator()
-        self.setting = [10, 1, 1, 1, 1]
+        self.setting = [10, 1, 1, 1, 1, ""]
 
     def case_handle(self):
         sender = self.main_window.sender()
@@ -119,6 +119,13 @@ class PGenerateWinBefore(PController):
                 self._generate_win.static_yes_button.setChecked(True)
                 self.setting[4] = 2
 
+        if self._generate_win.static_no_button.isChecked():
+            self._generate_win.static_frame.clear()
+            self._generate_win.static_frame.setReadOnly(True)
+        else:
+            self._generate_win.static_frame.setReadOnly(False)
+
     def generate_button_handle(self):
         self.setting[0] = self._generate_win.spin_box.value()
+        self.setting[5] = self._generate_win.static_frame.text()
         print(self.setting)

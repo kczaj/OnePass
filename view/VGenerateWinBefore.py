@@ -233,6 +233,7 @@ class VGenerateWinBefore(VWindow):
         self.static_frame.setGeometry(QtCore.QRect(190, 510, 211, 21))
         self.static_frame.setObjectName("static_frame")
         self.static_frame.setMaxLength(25)
+        self.static_frame.setReadOnly(True)
         self.generate_button = QtWidgets.QPushButton(self.centralwidget)
         self.generate_button.setGeometry(QtCore.QRect(80, 560, 171, 41))
         self.generate_button.setText("")
