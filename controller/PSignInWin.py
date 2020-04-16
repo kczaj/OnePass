@@ -23,7 +23,7 @@ class PSignInWin(PController):
     # remember about MainWinAfter
 
     def __init__(self, main_window, loader, sign_up_win, main_win_before, generate_win):
-        super().__init__(main_window,main_win_before)
+        super().__init__(main_window, main_win_before)
         self._generate_win = generate_win
         self._loader = loader
         self._checker = MChecker()
@@ -37,10 +37,15 @@ class PSignInWin(PController):
         pass
 
     def sign_in_button_handle(self):
-        win_list = [VMainWinAfter(self.main_window), VPasswordsListWin(self.main_window), VNoteListWin(self.main_window), VEncrypWin(self.main_window)]
+        win_list = [VMainWinAfter(self.main_window, self.main_win_before), VPasswordsListWin(self.main_window),
+                    VNoteListWin(self.main_window), VEncrypWin(self.main_window)]
         for i in range(len(win_list)):
             win_list[i].set_window_list(win_list)
-
+        self.main_window.close()
+        self.main_window = QtWidgets.QMainWindow()
+        win_list[0].update_main_window(self.main_window)
+        win_list[0].show(self.main_window)
+        self.main_window.show()
 
     def sign_up_button_handle(self):
         self.main_window.close()

@@ -26,7 +26,7 @@ class VSignInWin(VWindow):
         self.setupUi(where)
 
     def sign_in_button_pressed(self):
-        pass
+        self.controller.sign_in_button_handle()
 
     def sign_up_button_pressed(self):
         self.controller.sign_up_button_handle()
@@ -118,6 +118,7 @@ class VSignInWin(VWindow):
 
         self.arrow_button.clicked.connect(self.arrow_button_pressed)
         self.sign_up_button.clicked.connect(self.sign_up_button_pressed)
+        self.sign_in_button.clicked.connect(self.sign_in_button_pressed)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate

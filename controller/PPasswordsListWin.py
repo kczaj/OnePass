@@ -19,7 +19,7 @@ from controller.PMainWin import PMainWin
 class PPasswordsListWin(PMainWin):
 
     def __init__(self, main_window):
-        self.__init__(main_window)
+        super().__init__(main_window)
 
     def add_button_handle(self):
         pass

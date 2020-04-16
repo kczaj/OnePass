@@ -14,6 +14,8 @@ from view.VMainWinBefore import VMainWinBefore
 from view.VAboutAppWin import VAboutAppWin
 from model.MEncryptor import MEncryptor'''
 from controller.PMainWin import PMainWin
+from PyQt5 import QtWidgets
+
 
 class PMainWinAfter(PMainWin):
 
@@ -28,7 +30,11 @@ class PMainWinAfter(PMainWin):
         pass
 
     def log_out_button_handle(self):
-        pass
+        self.main_window.close()
+        self.main_window = QtWidgets.QMainWindow()
+        self.main_win_before.update_main_window(self.main_window)
+        self.main_win_before.show(self.main_window)
+        self.main_window.show()
 
     def profile_button_handle(self):
         pass
