@@ -10,8 +10,12 @@
 from controller.PMainWinAfter import PMainWinAfter
 from view.VMainWin import VMainWin
 
+
 class VMainWinAfter(VMainWin):
-    m_PMainWinAfter= PMainWinAfter()
+
+    def __init__(self, main_window, main_win_before):
+        super().__init__()
+        self.controller = PMainWinAfter(main_window, main_win_before)
 
     def about_app_button_pressed(self):
         pass

@@ -16,17 +16,9 @@ from model.MEncryptor import MEncryptor
 from controller.PMainWin import PMainWin
 
 class PEncrypWin(PMainWin):
-    m_VNoteListWin= VNoteListWin()
 
-    m_VGenerateWin= VGenerateWinBefore()
-
-    m_VMainWinAfter= VMainWinAfter()
-
-    m_VPasswordsListWin= VPasswordsListWin()
-
-    m_MEncryptor= MEncryptor()
-
-    m_MLoader= MLoader()
+    def __init__(self, main_window):
+        super().__init__(main_window)
 
     def decrypt_button_handle(self):
         pass

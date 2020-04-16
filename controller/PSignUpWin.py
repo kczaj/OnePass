@@ -19,10 +19,11 @@ from model.MProfileMaker import MProfileMaker
 
 class PSignUpWin(PController):
 
-    def __init__(self, sign_up_win, main_window, main_win_before):
+    def __init__(self, sign_up_win, main_window, main_win_before, generate_win):
         super().__init__(main_window, main_win_before)
         self._profile_maker = MProfileMaker()
         self._sign_up_win = sign_up_win
+        self._generate_win = generate_win
 
     def sign_up_button_handle(self):
         pass

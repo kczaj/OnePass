@@ -4,7 +4,7 @@ from PyQt5 import QtWidgets
 
 class PController(ABC):
 
-    def __init__(self, main_win, main_win_before):
+    def __init__(self, main_win, main_win_before=None):
         self.main_window = main_win
         self.main_win_before = main_win_before
 

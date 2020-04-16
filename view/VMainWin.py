@@ -7,10 +7,16 @@
 # Original author: KUBA
 # 
 #######################################################
-from controller.PMainWin import PMainWin
+from view.VWindow import VWindow
 
-class VMainWin:
-    m_PMainWin= PMainWin()
+
+class VMainWin(VWindow):
+
+    def __init__(self):
+        super().__init__()
+
+    def setupUi(self, where):
+        pass
 
     def encrypt_file_button_pressed(self):
         pass
@@ -26,3 +32,6 @@ class VMainWin:
 
     def password_button_pressed(self):
         pass
+
+    def set_window_list(self, win_list):
+        self.controller.set_window_list(win_list)

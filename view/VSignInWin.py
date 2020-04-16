@@ -15,9 +15,9 @@ from view.VWindow import VWindow
 
 class VSignInWin(VWindow):
 
-    def __init__(self, main_window, loader, sign_up_win, main_win_before):
+    def __init__(self, main_window, loader, sign_up_win, main_win_before, generate_win):
         super().__init__()
-        self.controller = PSignInWin(main_window, loader, sign_up_win, main_win_before)
+        self.controller = PSignInWin(main_window, loader, sign_up_win, main_win_before, generate_win)
 
     def forget_button_pressed(self):
         pass
@@ -29,7 +29,7 @@ class VSignInWin(VWindow):
         pass
 
     def sign_up_button_pressed(self):
-        pass
+        self.controller.sign_up_button_handle()
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -76,15 +76,15 @@ class VSignInWin(VWindow):
         self.gridLayout.addItem(spacerItem, 0, 1, 1, 1)
         spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.gridLayout.addItem(spacerItem1, 6, 1, 1, 1)
+        self.login_frame = QtWidgets.QLineEdit(self.gridLayoutWidget)
+        self.login_frame.setObjectName("login_frame")
+        self.gridLayout.addWidget(self.login_frame, 1, 1, 1, 1)
         self.password_frame = QtWidgets.QLineEdit(self.gridLayoutWidget)
         self.password_frame.setObjectName("password_frame")
         self.password_frame.setEchoMode(QtWidgets.QLineEdit.Password)
         self.gridLayout.addWidget(self.password_frame, 3, 1, 1, 1)
         spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.gridLayout.addItem(spacerItem2, 7, 1, 1, 1)
-        self.login_frame = QtWidgets.QLineEdit(self.gridLayoutWidget)
-        self.login_frame.setObjectName("login_frame")
-        self.gridLayout.addWidget(self.login_frame, 1, 1, 1, 1)
         self.sign_up_button = QtWidgets.QPushButton(self.gridLayoutWidget)
         self.sign_up_button.setObjectName("sign_up_button")
         self.gridLayout.addWidget(self.sign_up_button, 5, 1, 1, 1)
@@ -117,6 +117,7 @@ class VSignInWin(VWindow):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
         self.arrow_button.clicked.connect(self.arrow_button_pressed)
+        self.sign_up_button.clicked.connect(self.sign_up_button_pressed)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate

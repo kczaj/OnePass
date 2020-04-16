@@ -7,9 +7,16 @@
 # Original author: KUBA
 # 
 #######################################################
+from controller.PNoteWin import PNoteWin
 from view.VMainWin import VMainWin
 
+
 class VNoteListWin(VMainWin):
+
+    def __init__(self, main_window):
+        super().__init__()
+        self.controller = PNoteWin(main_window)
+
     def add_button_pressed(self):
         pass
 

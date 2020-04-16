@@ -11,7 +11,10 @@ from controller.PEncrypWin import PEncrypWin
 from view.VMainWin import VMainWin
 
 class VEncrypWin(VMainWin):
-    m_PEncrypWin= PEncrypWin()
+
+    def __init__(self, main_window):
+        super().__init__()
+        self.controller = PEncrypWin(main_window)
 
     def decrypt_button_pressed(self):
         pass

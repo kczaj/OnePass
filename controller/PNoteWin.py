@@ -7,26 +7,19 @@
 # Original author: KUBA
 # 
 #######################################################
-from view.VGenerateWinBefore import VGenerateWinBefore
+'''from view.VGenerateWinBefore import VGenerateWinBefore
 from view.VEncrypWin import VEncrypWin
 from view.VPasswordsListWin import VPasswordsListWin
 from view.VMainWinAfter import VMainWinAfter
 from view.VAddNoteWin import VAddNoteWin
-from model.MProfile import MProfile
+from model.MProfile import MProfile'''
 from controller.PMainWin import PMainWin
 
+
 class PNoteWin(PMainWin):
-    m_VGenerateWin= VGenerateWinBefore()
 
-    m_VEncrypWin= VEncrypWin()
-
-    m_VPasswordsListWin= VPasswordsListWin()
-
-    m_VMainWinAfter= VMainWinAfter()
-
-    m_VAddNoteWin= VAddNoteWin()
-
-    m_MProfile= MProfile()
+    def __init__(self, main_window):
+        super().__init__(main_window)
 
     def add_button_handle(self):
         pass
@@ -40,5 +33,5 @@ class PNoteWin(PMainWin):
     def save_button_handle(self, note):
         pass
 
-    def __update(self, notes):
+    def _update(self, notes):
         pass

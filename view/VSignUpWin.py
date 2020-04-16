@@ -15,9 +15,9 @@ from view.VWindow import VWindow
 
 class VSignUpWin(VWindow):
 
-    def __init__(self, main_win, main_win_before):
+    def __init__(self, main_win, main_win_before, generate_win):
         super().__init__()
-        self.controller = PSignUpWin(self, main_win, main_win_before)
+        self.controller = PSignUpWin(self, main_win, main_win_before, generate_win)
 
     def sign_up_button_pressed(self):
         pass
@@ -60,15 +60,18 @@ class VSignUpWin(VWindow):
         self.surname_label.setAlignment(QtCore.Qt.AlignCenter)
         self.surname_label.setObjectName("surname_label")
         self.gridLayout.addWidget(self.surname_label, 2, 0, 1, 1)
+        self.name_frame = QtWidgets.QLineEdit(self.gridLayoutWidget)
+        self.name_frame.setObjectName("name_frame")
+        self.gridLayout.addWidget(self.name_frame, 0, 1, 1, 1)
+        self.surname_frame = QtWidgets.QLineEdit(self.gridLayoutWidget)
+        self.surname_frame.setObjectName("surname_frame")
+        self.gridLayout.addWidget(self.surname_frame, 2, 1, 1, 1)
         self.email_frame = QtWidgets.QLineEdit(self.gridLayoutWidget)
         self.email_frame.setObjectName("email_frame")
         self.gridLayout.addWidget(self.email_frame, 4, 1, 1, 1)
         self.login_frame = QtWidgets.QLineEdit(self.gridLayoutWidget)
         self.login_frame.setObjectName("login_frame")
         self.gridLayout.addWidget(self.login_frame, 6, 1, 1, 1)
-        self.name_frame = QtWidgets.QLineEdit(self.gridLayoutWidget)
-        self.name_frame.setObjectName("name_frame")
-        self.gridLayout.addWidget(self.name_frame, 0, 1, 1, 1)
         spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.gridLayout.addItem(spacerItem, 3, 1, 1, 1)
         spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
@@ -81,9 +84,7 @@ class VSignUpWin(VWindow):
         self.login_label.setAlignment(QtCore.Qt.AlignCenter)
         self.login_label.setObjectName("login_label")
         self.gridLayout.addWidget(self.login_label, 6, 0, 1, 1)
-        self.surname_frame = QtWidgets.QLineEdit(self.gridLayoutWidget)
-        self.surname_frame.setObjectName("surname_frame")
-        self.gridLayout.addWidget(self.surname_frame, 2, 1, 1, 1)
+
         self.email_label = QtWidgets.QLabel(self.gridLayoutWidget)
         self.email_label.setAlignment(QtCore.Qt.AlignCenter)
         self.email_label.setObjectName("email_label")

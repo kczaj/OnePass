@@ -11,7 +11,10 @@ from controller.PPasswordsListWin import PPasswordsListWin
 from view.VMainWin import VMainWin
 
 class VPasswordsListWin(VMainWin):
-    m_PPasswordsListWin= PPasswordsListWin()
+
+    def __init__(self, main_window):
+        super().__init__()
+        self.controller = PPasswordsListWin(main_window)
 
     def add_button_pressed(self):
         pass

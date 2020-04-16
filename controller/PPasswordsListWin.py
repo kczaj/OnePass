@@ -7,26 +7,19 @@
 # Original author: KUBA
 # 
 #######################################################
-from view.VPasswordWin import VPasswordWin
+'''from view.VPasswordWin import VPasswordWin
 from view.VAddPasswordWin import VAddPasswordWin
 from view.VAboutAppWin import VAboutAppWin
 from view.VNoteListWin import VNoteListWin
 from view.VEncrypWin import VEncrypWin
-from model.MProfile import MProfile
+from model.MProfile import MProfile'''
 from controller.PMainWin import PMainWin
 
+
 class PPasswordsListWin(PMainWin):
-    m_VPasswordWin= VPasswordWin()
 
-    m_VAddPasswordWin= VAddPasswordWin()
-
-    m_VAboutAppWin= VAboutAppWin()
-
-    m_VNoteListWin= VNoteListWin()
-
-    m_VEncrypWin= VEncrypWin()
-
-    m_MProfile= MProfile()
+    def __init__(self, main_window):
+        self.__init__(main_window)
 
     def add_button_handle(self):
         pass

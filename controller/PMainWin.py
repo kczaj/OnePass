@@ -7,22 +7,14 @@
 # Original author: KUBA
 # 
 #######################################################
-from view.VEncrypWin import VEncrypWin
-from view.VMainWinAfter import VMainWinAfter
-from view.VNoteListWin import VNoteListWin
-from view.VPasswordsListWin import VPasswordsListWin
-from view.VGenerateWinBefore import VGenerateWinBefore
+from controller.PController import PController
 
-class PMainWin:
-    m_VEncrypWin= VEncrypWin()
 
-    m_VMainWinAfter= VMainWinAfter()
+class PMainWin(PController):
 
-    m_VNoteListWin= VNoteListWin()
-
-    m_VPasswordsListWin= VPasswordsListWin()
-
-    m_VGenerateWin= VGenerateWinBefore()
+    def __init__(self, main_window):
+        super().__init__(main_window)
+        self.window_list = None
 
     def encrypt_file_button_handle(self):
         pass
@@ -38,3 +30,11 @@ class PMainWin:
 
     def password_button_handle(self):
         pass
+
+    # [0] -- main_win_after
+    # [1] -- password_list_win
+    # [2] -- note_list_win
+    # [3] -- generate_win
+    # [4] -- encryp_win
+    def set_window_list(self, win_list):
+        self.window_list = win_list

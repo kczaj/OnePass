@@ -7,26 +7,19 @@
 # Original author: KUBA
 # 
 #######################################################
-from view.VProfileWin import VProfileWin
+'''from view.VProfileWin import VProfileWin
 from view.VNoteListWin import VNoteListWin
 from view.VGenerateWinBefore import VGenerateWinBefore
 from view.VMainWinBefore import VMainWinBefore
 from view.VAboutAppWin import VAboutAppWin
-from model.MEncryptor import MEncryptor
+from model.MEncryptor import MEncryptor'''
 from controller.PMainWin import PMainWin
 
 class PMainWinAfter(PMainWin):
-    m_VProfileWin= VProfileWin()
 
-    m_VNoteListWin= VNoteListWin()
-
-    m_VGenerateWin= VGenerateWinBefore()
-
-    m_VMainWinBefore= VMainWinBefore()
-
-    m_VAboutAppWin= VAboutAppWin()
-
-    m_MEncryptor= MEncryptor()
+    def __init__(self, main_window, main_win_before):
+        super().__init__(main_window)
+        self.main_win_before = main_win_before
 
     def about_app_button_handle(self):
         pass

@@ -16,5 +16,5 @@ class VWindow(ABC):
         self.setupUi(where)
 
     @abstractmethod
-    def setupUi(self,where):
+    def setupUi(self, where):
         pass
