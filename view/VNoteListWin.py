@@ -127,6 +127,7 @@ class VNoteListWin(VMainWin):
         self.encrypt_file_button.setObjectName("encrypt_file_button")
         self.gridLayout_2.addWidget(self.encrypt_file_button, 5, 0, 1, 1)
         self.note_list = QtWidgets.QListView(self.centralwidget)
+        self.note_list.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.note_list.setGeometry(QtCore.QRect(105, 101, 631, 411))
         self.note_list.setStyleSheet("background:transparent")
         self.note_list.setViewMode(QtWidgets.QListView.IconMode)

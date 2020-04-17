@@ -128,6 +128,7 @@ class VPasswordsListWin(VMainWin):
         self.gridLayout_2.addWidget(self.encrypt_file_button, 5, 0, 1, 1)
         self.password_list = QtWidgets.QListView(self.centralwidget)
         self.password_list.setGeometry(QtCore.QRect(105, 101, 631, 411))
+        self.password_list.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.password_list.setStyleSheet("background:transparent")
         self.password_list.setViewMode(QtWidgets.QListView.IconMode)
         self.password_list.setObjectName("password_list")

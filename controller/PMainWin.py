@@ -17,13 +17,13 @@ class PMainWin(PController):
         super().__init__(main_window)
         self.window_list = None
 
+    # Pamiętać by zmienić na 4 gdy dodam generate_win działające
     def encrypt_file_button_handle(self):
         self.main_window.close()
         self.main_window = QtWidgets.QMainWindow()
-        self.window_list[4].update_main_window(self.main_window)
-        self.window_list[4].show(self.main_window)
+        self.window_list[3].update_main_window(self.main_window)
+        self.window_list[3].show(self.main_window)
         self.main_window.show()
-        pass
 
     def generate_button_handle(self):
         self.main_window.close()
@@ -46,7 +46,6 @@ class PMainWin(PController):
         self.window_list[2].update_main_window(self.main_window)
         self.window_list[2].show(self.main_window)
         self.main_window.show()
-
 
     def password_button_handle(self):
         self.main_window.close()

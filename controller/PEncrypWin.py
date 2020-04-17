@@ -15,6 +15,7 @@ from view.VPasswordsListWin import VPasswordsListWin
 from model.MEncryptor import MEncryptor
 from controller.PMainWin import PMainWin
 
+
 class PEncrypWin(PMainWin):
 
     def __init__(self, main_window):
