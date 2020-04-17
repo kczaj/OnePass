@@ -46,7 +46,7 @@ class PMainWin(PController):
         self.window_list[2].update_main_window(self.main_window)
         self.window_list[2].show(self.main_window)
         self.main_window.show()
-        pass
+
 
     def password_button_handle(self):
         self.main_window.close()
