@@ -19,19 +19,26 @@ class VMainWin(VWindow):
         pass
 
     def encrypt_file_button_pressed(self):
-        pass
+        self.controller.encrypt_file_button_handle()
 
     def generate_button_pressed(self):
-        pass
+        self.controller.generate_button_handle()
 
     def home_button_pressed(self):
-        pass
+        self.controller.home_button_handle()
 
     def note_button_pressed(self):
-        pass
+        self.controller.note_button_handle()
 
     def password_button_pressed(self):
-        pass
+        self.controller.password_button_handle()
+
+    def set_button_action(self, home_button, password_button, note_button, generate_button, encrypt_button):
+        home_button.clicked.connect(self.home_button_pressed)
+        password_button.clicked.connect(self.password_button_pressed)
+        note_button.clicked.connect(self.note_button_pressed)
+        generate_button.clicked.connect(self.generate_button_pressed)
+        encrypt_button.clicked.connect(self.encrypt_file_button_pressed)
 
     def set_window_list(self, win_list):
         self.controller.set_window_list(win_list)

@@ -30,8 +30,6 @@ class VMainWinAfter(VMainWin):
     def profile_button_pressed(self):
         pass
 
-
-
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(800, 600)
@@ -188,6 +186,8 @@ class VMainWinAfter(VMainWin):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+        self.set_button_action(self.home_button, self.password_button, self.note_button, self.generate_button,
+                               self.encrypt_file_button)
         self.log_out_button.clicked.connect(self.log_out_button_pressed)
 
     def retranslateUi(self, MainWindow):
