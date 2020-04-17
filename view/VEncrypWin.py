@@ -136,7 +136,7 @@ class VEncrypWin(VMainWin):
         self.file_list.setViewMode(QtWidgets.QListView.ListMode)
         self.file_list.setObjectName("file_list")
         self.encryp_button = QtWidgets.QPushButton(self.centralwidget)
-        self.encryp_button.setGeometry(QtCore.QRect(600, 540, 131, 31))
+        self.encryp_button.setGeometry(QtCore.QRect(600, 540, 132, 28))
         self.encryp_button.setText("")
         icon6 = QtGui.QIcon()
         icon6.addPixmap(QtGui.QPixmap("img/encryp_file_win/szyfruj_button.png"),
@@ -145,7 +145,7 @@ class VEncrypWin(VMainWin):
         self.encryp_button.setIconSize(QtCore.QSize(132, 28))
         self.encryp_button.setObjectName("encryp_button")
         self.decryp_button = QtWidgets.QPushButton(self.centralwidget)
-        self.decryp_button.setGeometry(QtCore.QRect(600, 490, 131, 31))
+        self.decryp_button.setGeometry(QtCore.QRect(600, 490, 132, 28))
         self.decryp_button.setText("")
         icon7 = QtGui.QIcon()
         icon7.addPixmap(QtGui.QPixmap("img/encryp_file_win/deszyfruj_button.png"),
