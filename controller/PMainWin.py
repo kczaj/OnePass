@@ -13,8 +13,8 @@ from PyQt5 import QtWidgets
 
 class PMainWin(PController):
 
-    def __init__(self, main_window):
-        super().__init__(main_window)
+    def __init__(self, main_window, window_before=None):
+        super().__init__(main_window, window_before)
         self.window_list = None
 
     # Pamiętać by zmienić na 4 gdy dodam generate_win działające
@@ -28,8 +28,8 @@ class PMainWin(PController):
     def generate_button_handle(self):
         self.main_window.close()
         self.main_window = QtWidgets.QMainWindow()
-        self.window_list[3].update_main_window(self.main_window)
-        self.window_list[3].show(self.main_window)
+        self.window_list[4].update_main_window(self.main_window)
+        self.window_list[4].show(self.main_window)
         self.main_window.show()
         pass
 

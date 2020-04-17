@@ -13,6 +13,8 @@ from model.MChecker import MChecker
 from model.MEncryptor import MEncryptor
 from PyQt5 import QtWidgets
 from view.VEncrypWin import VEncrypWin
+from view.VGenerateWinAfter import VGenerateWinAfter
+from view.VGenerateWinBefore import VGenerateWinBefore
 from view.VMainWinAfter import VMainWinAfter
 from view.VNoteListWin import VNoteListWin
 from view.VPasswordsListWin import VPasswordsListWin
@@ -37,8 +39,10 @@ class PSignInWin(PController):
         pass
 
     def sign_in_button_handle(self):
-        win_list = [VMainWinAfter(self.main_window, self.main_win_before), VPasswordsListWin(self.main_window),
-                    VNoteListWin(self.main_window), VEncrypWin(self.main_window)]
+        main_win_after = VMainWinAfter(self.main_window, self.main_win_before)
+        win_list = [main_win_after, VPasswordsListWin(self.main_window),
+                    VNoteListWin(self.main_window), VEncrypWin(self.main_window),
+                    VGenerateWinAfter(self.main_window, main_win_after)]
         for i in range(len(win_list)):
             win_list[i].set_window_list(win_list)
         self.main_window.close()
