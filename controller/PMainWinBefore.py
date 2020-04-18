@@ -33,7 +33,11 @@ class PMainWinBefore(PController):
         self.main_window.show()
 
     def about_app_button_handle(self):
-        pass
+        self.main_window.close()
+        self.main_window = QtWidgets.QMainWindow()
+        self._about_app_win.update_main_window(self.main_window)
+        self._about_app_win.show(self.main_window)
+        self.main_window.show()
 
     def generate_button_handle(self):
         self.main_window.close()
