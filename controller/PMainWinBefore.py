@@ -15,7 +15,7 @@ from controller.PController import PController
 from view.VSignInWin import VSignInWin
 from view.VSignUpWin import VSignUpWin
 from view.VGenerateWinBefore import VGenerateWinBefore
-from view.VAboutAppWin import VAboutAppWin
+from view.VAboutAppWinBefore import VAboutAppWinBefore
 from model.MLoader import MLoader
 
 
@@ -25,7 +25,7 @@ class PMainWinBefore(PController):
         super().__init__(main_window, main_win_before)
 
         self._loader = MLoader()
-        self._about_app_win = VAboutAppWin()
+        self._about_app_win = VAboutAppWinBefore(main_window, self.main_win_before)
         self._generate_win = VGenerateWinBefore(main_window, self.main_win_before)
         self._sign_up_win = VSignUpWin(main_window, self.main_win_before, self._generate_win)
         self._sign_in_win = VSignInWin(main_window, self._loader, self._sign_up_win, main_win_before, self._generate_win)

@@ -16,15 +16,22 @@ from model.MEncryptor import MEncryptor'''
 from controller.PMainWin import PMainWin
 from PyQt5 import QtWidgets
 
+from view.VAboutAppWinAfter import VAboutAppWinAfter
+
 
 class PMainWinAfter(PMainWin):
 
     def __init__(self, main_window, main_win_before):
         super().__init__(main_window)
         self.main_win_before = main_win_before
+        self.about_app_win = VAboutAppWinAfter(main_window)
 
     def about_app_button_handle(self):
-        pass
+        self.main_window.close()
+        self.main_window = QtWidgets.QMainWindow()
+        self.about_app_win.update_main_window(self.main_window)
+        self.about_app_win.show(self.main_window)
+        self.main_window.show()
 
     def encrypt_button_handle(self):
         pass
@@ -38,3 +45,6 @@ class PMainWinAfter(PMainWin):
 
     def profile_button_handle(self):
         pass
+
+    def set_window_list_in_subwindow(self):
+        self.about_app_win.set_window_list(self.window_list)

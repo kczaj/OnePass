@@ -45,6 +45,7 @@ class PSignInWin(PController):
                     VGenerateWinAfter(self.main_window, main_win_after)]
         for i in range(len(win_list)):
             win_list[i].set_window_list(win_list)
+        win_list[0].set_window_list_in_subwindow()
         self.main_window.close()
         self.main_window = QtWidgets.QMainWindow()
         win_list[0].update_main_window(self.main_window)
