@@ -16,7 +16,7 @@ class VMainWinAfter(VMainWin):
 
     def __init__(self, main_window, main_win_before):
         super().__init__()
-        self.controller = PMainWinAfter(main_window, main_win_before)
+        self.controller = PMainWinAfter(main_window, main_win_before, self)
 
     def about_app_button_pressed(self):
         self.controller.about_app_button_handle()
@@ -28,7 +28,7 @@ class VMainWinAfter(VMainWin):
         self.controller.log_out_button_handle()
 
     def profile_button_pressed(self):
-        pass
+        self.controller.profile_button_handle()
 
     def set_window_list_in_subwindow(self):
         self.controller.set_window_list_in_subwindow()
@@ -193,6 +193,7 @@ class VMainWinAfter(VMainWin):
                                self.encrypt_file_button)
         self.log_out_button.clicked.connect(self.log_out_button_pressed)
         self.about_app_button.clicked.connect(self.about_app_button_pressed)
+        self.profile_button.clicked.connect(self.profile_button_pressed)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate

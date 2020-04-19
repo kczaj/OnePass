@@ -17,14 +17,17 @@ from controller.PMainWin import PMainWin
 from PyQt5 import QtWidgets
 
 from view.VAboutAppWinAfter import VAboutAppWinAfter
+from view.VProfileWin import VProfileWin
 
 
 class PMainWinAfter(PMainWin):
 
-    def __init__(self, main_window, main_win_before):
+    def __init__(self, main_window, main_win_before, main_win_after):
         super().__init__(main_window)
         self.main_win_before = main_win_before
+        self.main_win_after = main_win_after
         self.about_app_win = VAboutAppWinAfter(main_window)
+        self.profile_win = VProfileWin(self.main_window, self.main_win_after)
 
     def about_app_button_handle(self):
         self.main_window.close()
@@ -44,7 +47,11 @@ class PMainWinAfter(PMainWin):
         self.main_window.show()
 
     def profile_button_handle(self):
-        pass
+        self.main_window.close()
+        self.main_window = QtWidgets.QMainWindow()
+        self.profile_win.update_main_window(self.main_window)
+        self.profile_win.show(self.main_window)
+        self.main_window.show()
 
     def set_window_list_in_subwindow(self):
         self.about_app_win.set_window_list(self.window_list)

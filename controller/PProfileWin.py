@@ -7,19 +7,21 @@
 # Original author: KUBA
 # 
 #######################################################
-from view.VProfileWin import VProfileWin
-from model.MProfile import MProfile
+# from view.VProfileWin import VProfileWin
+# from model.MProfile import MProfile
+from controller.PController import PController
 
 
-class PProfileWin:
+class PProfileWin(PController):
 
-    m_MProfile = MProfile()
-
-    def __init__(self, win):
-        m_profile_window = win
+    def __init__(self, main_window, main_win_after):
+        super().__init__(main_window, main_win_after)
 
     def edit_button_handle(self):
         pass
 
     def save_button_handle(self, parameters):
+        pass
+
+    def show_button_pressed(self):
         pass

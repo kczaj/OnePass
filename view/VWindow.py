@@ -1,9 +1,12 @@
 from abc import ABC, abstractmethod
 
+from PyQt5.QtCore import QObject
 
-class VWindow(ABC):
+
+class VWindow(QObject):
 
     def __init__(self):
+        super().__init__()
         self.controller = None
 
     def update_main_window(self, main_win):
@@ -15,6 +18,6 @@ class VWindow(ABC):
     def show(self, where):
         self.setupUi(where)
 
-    @abstractmethod
+    '''@abstractmethod
     def setupUi(self, where):
-        pass
+        pass'''
