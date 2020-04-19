@@ -14,12 +14,14 @@ from view.VMainWinAfter import VMainWinAfter
 from view.VAddNoteWin import VAddNoteWin
 from model.MProfile import MProfile'''
 from sample.controller.PMainWin import PMainWin
+from sample.view.VAddNoteWin import VAddNoteWin
 
 
 class PNoteWin(PMainWin):
 
     def __init__(self, main_window):
         super().__init__(main_window)
+        self.add_note_window = VAddNoteWin(self)
 
     def add_button_handle(self):
         pass
@@ -28,7 +30,7 @@ class PNoteWin(PMainWin):
         pass
 
     def edit_button_handle(self):
-        pass
+        self.change_window(self.add_note_window)
 
     def save_button_handle(self, note):
         pass

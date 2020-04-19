@@ -22,7 +22,7 @@ class VNoteListWin(VMainWin):
         pass
 
     def edit_button_pressed(self):
-        pass
+        self.controller.edit_button_handle()
 
     # Nadpisać show(self)
 
@@ -157,6 +157,8 @@ class VNoteListWin(VMainWin):
 
         self.set_button_action(self.home_button, self.password_button, self.note_button, self.generate_button,
                                self.encrypt_file_button)
+
+        self.edit_button.clicked.connect(self.edit_button_pressed)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
