@@ -30,28 +30,16 @@ class PMainWinAfter(PMainWin):
         self.profile_win = VProfileWin(self.main_window, self.main_win_after)
 
     def about_app_button_handle(self):
-        self.main_window.close()
-        self.main_window = QtWidgets.QMainWindow()
-        self.about_app_win.update_main_window(self.main_window)
-        self.about_app_win.show(self.main_window)
-        self.main_window.show()
+        self.change_window(self.about_app_win)
 
     def encrypt_button_handle(self):
         pass
 
     def log_out_button_handle(self):
-        self.main_window.close()
-        self.main_window = QtWidgets.QMainWindow()
-        self.main_win_before.update_main_window(self.main_window)
-        self.main_win_before.show(self.main_window)
-        self.main_window.show()
+        self.change_window(self.main_win_before)
 
     def profile_button_handle(self):
-        self.main_window.close()
-        self.main_window = QtWidgets.QMainWindow()
-        self.profile_win.update_main_window(self.main_window)
-        self.profile_win.show(self.main_window)
-        self.main_window.show()
+        self.change_window(self.profile_win)
 
     def set_window_list_in_subwindow(self):
         self.about_app_win.set_window_list(self.window_list)

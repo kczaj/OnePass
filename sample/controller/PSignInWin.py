@@ -45,18 +45,10 @@ class PSignInWin(PController):
         for i in range(len(win_list)):
             win_list[i].set_window_list(win_list)
         win_list[0].set_window_list_in_subwindow()
-        self.main_window.close()
-        self.main_window = QtWidgets.QMainWindow()
-        win_list[0].update_main_window(self.main_window)
-        win_list[0].show(self.main_window)
-        self.main_window.show()
+        self.change_window(win_list[0])
 
     def sign_up_button_handle(self):
-        self.main_window.close()
-        self.main_window = QtWidgets.QMainWindow()
-        self._sign_up_window.update_main_window(self.main_window)
-        self._sign_up_window.show(self.main_window)
-        self.main_window.show()
+        self.change_window(self._sign_up_window)
 
     def __validate_data(self, data):
         pass

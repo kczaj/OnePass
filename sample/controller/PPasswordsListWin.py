@@ -14,15 +14,18 @@ from view.VNoteListWin import VNoteListWin
 from view.VEncrypWin import VEncrypWin
 from model.MProfile import MProfile'''
 from sample.controller.PMainWin import PMainWin
+from sample.view.VAddPasswordWin import VAddPasswordWin
 
 
 class PPasswordsListWin(PMainWin):
 
-    def __init__(self, main_window):
+    def __init__(self, main_window, password_list_win):
         super().__init__(main_window)
+        self.password_list_win = password_list_win
+        self.add_password_window = VAddPasswordWin(self.main_window, self.password_list_win)
 
     def add_button_handle(self):
-        pass
+        self.change_window(self.add_password_window)
 
     def choose_button_handle(self):
         pass

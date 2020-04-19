@@ -7,16 +7,16 @@
 # Original author: KUBA
 # 
 #######################################################
+from sample.controller.PController import PController
 from sample.view.VGenerateWinBefore import VGenerateWinBefore
 from sample.model.MPassword import MPassword
 from sample.model.MProfile import MProfile
 
-class PAddPasswordWin:
-    m_VGenerateWin= VGenerateWinBefore()
 
-    m_MPassword= MPassword()
+class PAddPasswordWin(PController):
 
-    m_MProfile= MProfile()
+    def __init__(self, main_window, password_list_window):
+        super().__init__(main_window, password_list_window)
 
     def generate_button_handle(self):
         pass

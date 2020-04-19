@@ -27,37 +27,22 @@ class PMainWinBefore(PController):
         self._about_app_win = VAboutAppWinBefore(main_window, self.main_win_before)
         self._generate_win = VGenerateWinBefore(main_window, self.main_win_before)
         self._sign_up_win = VSignUpWin(main_window, self.main_win_before, self._generate_win)
-        self._sign_in_win = VSignInWin(main_window, self._loader, self._sign_up_win, main_win_before, self._generate_win)
+        self._sign_in_win = VSignInWin(main_window, self._loader, self._sign_up_win, main_win_before,
+                                       self._generate_win)
         self.main_win_before.show(self.main_window)
         self.main_window.show()
 
     def about_app_button_handle(self):
-        self.main_window.close()
-        self.main_window = QtWidgets.QMainWindow()
-        self._about_app_win.update_main_window(self.main_window)
-        self._about_app_win.show(self.main_window)
-        self.main_window.show()
+        self.change_window(self._about_app_win)
 
     def generate_button_handle(self):
-        self.main_window.close()
-        self.main_window = QtWidgets.QMainWindow()
-        self._generate_win.update_main_window(self.main_window)
-        self._generate_win.show(self.main_window)
-        self.main_window.show()
+        self.change_window(self._generate_win)
 
     def __load_logins(self):
         pass
 
     def sign_in_button_handle(self):
-        self.main_window.close()
-        self.main_window = QtWidgets.QMainWindow()
-        self._sign_in_win.update_main_window(self.main_window)
-        self._sign_in_win.show(self.main_window)
-        self.main_window.show()
+        self.change_window(self._sign_in_win)
 
     def sign_up_button_handle(self):
-        self.main_window.close()
-        self.main_window = QtWidgets.QMainWindow()
-        self._sign_up_win.update_main_window(self.main_window)
-        self._sign_up_win.show(self.main_window)
-        self.main_window.show()
+        self.change_window(self._sign_up_win)

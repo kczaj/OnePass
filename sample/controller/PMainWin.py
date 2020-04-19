@@ -19,40 +19,19 @@ class PMainWin(PController):
 
     # Pamiętać by zmienić na 4 gdy dodam generate_win działające
     def encrypt_file_button_handle(self):
-        self.main_window.close()
-        self.main_window = QtWidgets.QMainWindow()
-        self.window_list[3].update_main_window(self.main_window)
-        self.window_list[3].show(self.main_window)
-        self.main_window.show()
+        self.change_window(self.window_list[3])
 
     def generate_button_handle(self):
-        self.main_window.close()
-        self.main_window = QtWidgets.QMainWindow()
-        self.window_list[4].update_main_window(self.main_window)
-        self.window_list[4].show(self.main_window)
-        self.main_window.show()
-        pass
+        self.change_window(self.window_list[4])
 
     def home_button_handle(self):
-        self.main_window.close()
-        self.main_window = QtWidgets.QMainWindow()
-        self.window_list[0].update_main_window(self.main_window)
-        self.window_list[0].show(self.main_window)
-        self.main_window.show()
+        self.change_window(self.window_list[0])
 
     def note_button_handle(self):
-        self.main_window.close()
-        self.main_window = QtWidgets.QMainWindow()
-        self.window_list[2].update_main_window(self.main_window)
-        self.window_list[2].show(self.main_window)
-        self.main_window.show()
+        self.change_window(self.window_list[2])
 
     def password_button_handle(self):
-        self.main_window.close()
-        self.main_window = QtWidgets.QMainWindow()
-        self.window_list[1].update_main_window(self.main_window)
-        self.window_list[1].show(self.main_window)
-        self.main_window.show()
+        self.change_window(self.window_list[1])
 
     # [0] -- main_win_after
     # [1] -- password_list_win

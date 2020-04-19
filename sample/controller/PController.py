@@ -12,8 +12,11 @@ class PController(ABC):
         self.main_window = main_win
 
     def arrow_button_handle(self):
+        self.change_window(self.main_win_before)
+
+    def change_window(self, window):
         self.main_window.close()
         self.main_window = QtWidgets.QMainWindow()
-        self.main_win_before.update_main_window(self.main_window)
-        self.main_win_before.show(self.main_window)
+        window.update_main_window(self.main_window)
+        window.show(self.main_window)
         self.main_window.show()
