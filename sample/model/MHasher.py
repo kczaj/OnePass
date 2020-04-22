@@ -10,5 +10,6 @@
 
 
 class MHasher:
+
     def hash(self, string):
         pass
