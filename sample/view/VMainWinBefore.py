@@ -15,9 +15,9 @@ from sample.view.VWindow import VWindow
 
 class VMainWinBefore(VWindow):
 
-    def __init__(self, main_window):
+    def __init__(self, main_window, hasher):
         super().__init__()
-        self.controller = PMainWinBefore(self, main_window)
+        self.controller = PMainWinBefore(self, main_window,hasher)
 
     def __about_app_button_pressed(self):
         self.controller.about_app_button_handle()

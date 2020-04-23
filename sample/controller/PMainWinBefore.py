@@ -20,15 +20,16 @@ from sample.model.MLoader import MLoader
 
 class PMainWinBefore(PController):
 
-    def __init__(self, main_win_before, main_window):
+    def __init__(self, main_win_before, main_window, hasher):
         super().__init__(main_window, main_win_before)
 
         self._loader = MLoader()
+        self._loader.load_logins()
         self._about_app_win = VAboutAppWinBefore(main_window, self.main_win_before)
         self._generate_win = VGenerateWinBefore(main_window, self.main_win_before)
         self._sign_up_win = VSignUpWin(main_window, self.main_win_before, self._generate_win)
-        self._sign_in_win = VSignInWin(main_window, self._loader, self._sign_up_win, main_win_before,
-                                       self._generate_win)
+        self._sign_in_win = VSignInWin(main_window, self._loader, self._sign_up_win, self.main_win_before,
+                                       self._generate_win, hasher)
         self.main_win_before.show(self.main_window)
         self.main_window.show()
 

@@ -23,11 +23,11 @@ class PSignInWin(PController):
 
     # remember about MainWinAfter
 
-    def __init__(self, main_window, loader, sign_up_win, main_win_before, generate_win):
+    def __init__(self, main_window, loader, sign_up_win, main_win_before, generate_win, hasher):
         super().__init__(main_window, main_win_before)
         self._generate_win = generate_win
         self._loader = loader
-        self._checker = MChecker()
+        self._checker = MChecker(self._loader, hasher)
         self._encryptor = MEncryptor()
         self._sign_up_window = sign_up_win
 
@@ -37,18 +37,21 @@ class PSignInWin(PController):
     def __load_profile(self, login):
         pass
 
-    def sign_in_button_handle(self):
-        main_win_after = VMainWinAfter(self.main_window, self.main_win_before)
-        win_list = [main_win_after, VPasswordsListWin(self.main_window),
-                    VNoteListWin(self.main_window), VEncrypWin(self.main_window),
-                    VGenerateWinAfter(self.main_window, main_win_after)]
-        for i in range(len(win_list)):
-            win_list[i].set_window_list(win_list)
-        win_list[0].set_window_list_in_subwindow()
-        self.change_window(win_list[0])
+    def sign_in_button_handle(self, login, password):
+        if self.__validate_data((login, password)):
+            main_win_after = VMainWinAfter(self.main_window, self.main_win_before)
+            win_list = [main_win_after, VPasswordsListWin(self.main_window),
+                        VNoteListWin(self.main_window), VEncrypWin(self.main_window),
+                        VGenerateWinAfter(self.main_window, main_win_after)]
+            for i in range(len(win_list)):
+                win_list[i].set_window_list(win_list)
+            win_list[0].set_window_list_in_subwindow()
+            self.change_window(win_list[0])
+        else:
+            print("Error. Wrong login or passoword")
 
     def sign_up_button_handle(self):
         self.change_window(self._sign_up_window)
 
     def __validate_data(self, data):
-        pass
+        return self._checker.verify_data(data)

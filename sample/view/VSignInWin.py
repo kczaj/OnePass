@@ -15,9 +15,9 @@ from sample.view.VWindow import VWindow
 
 class VSignInWin(VWindow):
 
-    def __init__(self, main_window, loader, sign_up_win, main_win_before, generate_win):
+    def __init__(self, main_window, loader, sign_up_win, main_win_before, generate_win, hasher):
         super().__init__()
-        self.controller = PSignInWin(main_window, loader, sign_up_win, main_win_before, generate_win)
+        self.controller = PSignInWin(main_window, loader, sign_up_win, main_win_before, generate_win, hasher)
 
     def forget_button_pressed(self):
         pass
@@ -26,7 +26,9 @@ class VSignInWin(VWindow):
         self.setupUi(where)
 
     def sign_in_button_pressed(self):
-        self.controller.sign_in_button_handle()
+        login = self.login_frame.text()
+        password = self.password_frame.text()
+        self.controller.sign_in_button_handle(login, password)
 
     def sign_up_button_pressed(self):
         self.controller.sign_up_button_handle()

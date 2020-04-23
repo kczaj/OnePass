@@ -9,8 +9,23 @@
 #######################################################
 from sample.model.MHasher import MHasher
 
+
 class MChecker:
-    m_MHasher= MHasher()
+
+    def __init__(self, loader, hasher):
+        self._loader = loader
+        self._hasher = hasher
 
     def verify_data(self, data):
-        pass
+        login = data[0]
+        password = data[1]
+        logins = self._loader.get_logins()
+        if login in logins:
+            hashed_password = self._hasher.hash(password)
+            print(hashed_password)
+            if logins[login] == hashed_password:
+                return True
+            else:
+                return False
+        else:
+            return False

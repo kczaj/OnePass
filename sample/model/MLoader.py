@@ -9,9 +9,23 @@
 #######################################################
 
 class MLoader:
+    login_file = 'data/logins'
+
+    def __init__(self):
+        self._logins = {}
 
     def load_logins(self):
-        pass
+        with open(self.login_file, 'r') as f:
+            data = f.readlines()
+            for line in data:
+                words = line.split(';')
+                password = words[1]
+                if password[-1] == '\n':
+                    password = password[:-1]
+                self._logins[words[0]] = password
 
     def load_profile(self, name):
         pass
+
+    def get_logins(self):
+        return self._logins

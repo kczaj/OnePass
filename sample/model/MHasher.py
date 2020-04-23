@@ -7,9 +7,12 @@
 # Original author: KUBA
 # 
 #######################################################
+import hashlib
 
 
 class MHasher:
+    hasher = hashlib.sha256()
 
     def hash(self, string):
-        pass
+        self.hasher.update(string.encode())
+        return self.hasher.hexdigest()
