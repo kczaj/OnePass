@@ -11,8 +11,11 @@ import hashlib
 
 
 class MHasher:
-    hasher = hashlib.sha256()
 
     def hash(self, string):
+        self.hasher = hashlib.sha256()
         self.hasher.update(string.encode())
         return self.hasher.hexdigest()
+
+    def clear_hasher(self):
+        self.hasher.update(b'')
