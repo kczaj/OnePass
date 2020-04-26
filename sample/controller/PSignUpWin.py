@@ -12,20 +12,56 @@
 
 from sample.controller.PController import PController
 from sample.model.MProfileMaker import MProfileMaker
+import string
 
 
 # remember about MainWinAfter
+from sample.view.VEncrypWin import VEncrypWin
+from sample.view.VGenerateWinAfter import VGenerateWinAfter
+from sample.view.VMainWinAfter import VMainWinAfter
+from sample.view.VNoteListWin import VNoteListWin
+from sample.view.VPasswordsListWin import VPasswordsListWin
+
 
 class PSignUpWin(PController):
+    NAME_ERROR = -1001
+    SURNAME_ERROR = -1002
+    LOGIN_ERROR = -1004
+    PASSWORD_ERROR = -1005
 
-    def __init__(self, sign_up_win, main_window, main_win_before, generate_win):
+    def __init__(self, sign_up_win, main_window, _loader, main_win_before, generate_win,hasher):
         super().__init__(main_window, main_win_before)
+        self._loader = _loader
         self._profile_maker = MProfileMaker()
         self._sign_up_win = sign_up_win
         self._generate_win = generate_win
+        self._hasher = hasher
 
-    def sign_up_button_handle(self):
-        pass
+    def sign_up_button_handle(self, name, surname, email, login, password):
+        if self.__validate_data(name, surname, email, login, password) == 1:
+            logins = self._loader.get_logins()
+            logins[login] = self._hasher.hash(password)
+            #self._loader.set_logins(logins)
+            main_win_after = VMainWinAfter(self.main_window, self.main_win_before)
+            win_list = [main_win_after, VPasswordsListWin(self.main_window),
+                        VNoteListWin(self.main_window), VEncrypWin(self.main_window),
+                        VGenerateWinAfter(self.main_window, main_win_after)]
+            for i in range(len(win_list)):
+                win_list[i].set_window_list(win_list)
+            win_list[0].set_window_list_in_subwindow()
+            self.change_window(win_list[0])
+        else:
+            print('ERROR')
 
-    def __validate_data(self):
-        pass
+    def __validate_data(self, name, surname, email, login, password):
+        special_symols = '!@#$%^&*()_-+={[}]\:;<,>.?/'
+        digits = string.digits
+        for c in special_symols + digits:
+            if c in name:
+                return self.NAME_ERROR
+            if c in surname:
+                return self.SURNAME_ERROR
+        for c in special_symols:
+            if c in login:
+                return self.LOGIN_ERROR
+        return 1

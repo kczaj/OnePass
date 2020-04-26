@@ -23,7 +23,6 @@ class MChecker:
         if login in logins:
             hashed_password = self._hasher.hash(password)
             if logins[login] == hashed_password:
-                self._hasher.clear_hasher()
                 return True
             else:
                 return False

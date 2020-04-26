@@ -15,12 +15,17 @@ from sample.view.VWindow import VWindow
 
 class VSignUpWin(VWindow):
 
-    def __init__(self, main_win, main_win_before, generate_win):
+    def __init__(self, main_win, _loader, main_win_before, generate_win, hasher):
         super().__init__()
-        self.controller = PSignUpWin(self, main_win, main_win_before, generate_win)
+        self.controller = PSignUpWin(self, main_win, _loader, main_win_before, generate_win, hasher)
 
     def sign_up_button_pressed(self):
-        pass
+        name = self.name_frame.text()
+        surname = self.surname_frame.text()
+        email = self.email_frame.text()
+        login = self.login_frame.text()
+        password = self.password_frame.text()
+        self.controller.sign_up_button_handle(name, surname, email, login, password)
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -107,7 +112,7 @@ class VSignUpWin(VWindow):
         self.label.setObjectName("label")
         self.gridLayout.addWidget(self.label, 9, 1, 1, 1)
         self.sign_up_button = QtWidgets.QPushButton(self.centralwidget)
-        self.sign_up_button.setGeometry(QtCore.QRect(170, 470, 161, 31))
+        self.sign_up_button.setGeometry(QtCore.QRect(170, 470, 161, 34))
         self.sign_up_button.setText("")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("view/img/sign_up/przycisk_rej.png"), QtGui.QIcon.Normal,
@@ -130,6 +135,7 @@ class VSignUpWin(VWindow):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
         self.arrow_button.clicked.connect(self.arrow_button_pressed)
+        self.sign_up_button.clicked.connect(self.sign_up_button_pressed)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate

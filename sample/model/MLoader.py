@@ -29,3 +29,6 @@ class MLoader:
 
     def get_logins(self):
         return self._logins
+
+    def set_logins(self, logins):
+        self._logins = logins

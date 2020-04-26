@@ -27,7 +27,7 @@ class PMainWinBefore(PController):
         self._loader.load_logins()
         self._about_app_win = VAboutAppWinBefore(main_window, self.main_win_before)
         self._generate_win = VGenerateWinBefore(main_window, self.main_win_before)
-        self._sign_up_win = VSignUpWin(main_window, self.main_win_before, self._generate_win)
+        self._sign_up_win = VSignUpWin(main_window, self._loader, self.main_win_before, self._generate_win, hasher)
         self._sign_in_win = VSignInWin(main_window, self._loader, self._sign_up_win, self.main_win_before,
                                        self._generate_win, hasher)
         self.main_win_before.show(self.main_window)

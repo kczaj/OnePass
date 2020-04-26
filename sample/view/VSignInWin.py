@@ -97,7 +97,7 @@ class VSignInWin(VWindow):
         spacerItem3 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.gridLayout.addItem(spacerItem3, 2, 1, 1, 1)
         self.sign_in_button = QtWidgets.QPushButton(self.centralwidget)
-        self.sign_in_button.setGeometry(QtCore.QRect(160, 440, 161, 31))
+        self.sign_in_button.setGeometry(QtCore.QRect(160, 440, 161, 34))
         self.sign_in_button.setText("")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("view/img/sign_in/przycisk_zaloguj.png"), QtGui.QIcon.Normal,

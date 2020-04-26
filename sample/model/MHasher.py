@@ -16,6 +16,3 @@ class MHasher:
         self.hasher = hashlib.sha256()
         self.hasher.update(string.encode())
         return self.hasher.hexdigest()
-
-    def clear_hasher(self):
-        self.hasher.update(b'')
