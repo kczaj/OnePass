@@ -10,10 +10,17 @@
 from sample.model.MPassword import MPassword
 from sample.model.MNote import MNote
 
-class MProfile:
-    m_MPassword= MPassword()
 
-    m_MNote= MNote()
+class MProfile:
+
+    def __init__(self, name, surname, email, login, password, passwords={}, notes={}):
+        self._name = name
+        self._surname = surname
+        self._email = email
+        self._login = login
+        self._password = password
+        self._passwords = passwords
+        self._notes = notes
 
     def update(self, update):
         pass

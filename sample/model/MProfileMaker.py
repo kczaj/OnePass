@@ -7,17 +7,10 @@
 # Original author: KUBA
 # 
 #######################################################
-from sample.model.MHasher import MHasher
 from sample.model.MProfile import MProfile
 
-class MProfileMaker(MProfile):
-    m_MHasher= MHasher()
 
-    def check_data(self, string):
-        pass
+class MProfileMaker():
 
-    def __hash_password(self, string):
-        pass
-
-    def __make_profile(self):
-        pass
+    def make_profile(self, name, surname, email, login, password):
+        return  MProfile(name, surname, email, login, password)

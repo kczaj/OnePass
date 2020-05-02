@@ -40,3 +40,6 @@ class PMainWin(PController):
     # [4] -- encryp_win
     def set_window_list(self, win_list):
         self.window_list = win_list
+
+    def set_profile(self, profile):
+        self._profile = profile

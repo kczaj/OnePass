@@ -39,15 +39,16 @@ class PSignUpWin(PController):
 
     def sign_up_button_handle(self, name, surname, email, login, password):
         if self.__validate_data(name, surname, email, login, password) == 1:
+            profile = self._profile_maker.make_profile(name, surname, email, login, password)
             logins = self._loader.get_logins()
             logins[login] = self._hasher.hash(password)
-            #self._loader.set_logins(logins)
             main_win_after = VMainWinAfter(self.main_window, self.main_win_before)
             win_list = [main_win_after, VPasswordsListWin(self.main_window),
                         VNoteListWin(self.main_window), VEncrypWin(self.main_window),
                         VGenerateWinAfter(self.main_window, main_win_after)]
             for i in range(len(win_list)):
                 win_list[i].set_window_list(win_list)
+                win_list[i].set_profile(profile)
             win_list[0].set_window_list_in_subwindow()
             self.change_window(win_list[0])
         else:

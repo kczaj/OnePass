@@ -42,3 +42,6 @@ class VMainWin(VWindow):
 
     def set_window_list(self, win_list):
         self.controller.set_window_list(win_list)
+
+    def set_profile(self, profile):
+        self.controller.set_profile(profile)

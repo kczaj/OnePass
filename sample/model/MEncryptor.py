@@ -10,7 +10,7 @@
 from sample.model.MProfile import MProfile
 
 class MEncryptor:
-    m_MProfile= MProfile()
+
 
     def decrypt(self, file):
         pass
