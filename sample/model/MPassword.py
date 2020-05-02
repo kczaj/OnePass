@@ -10,5 +10,13 @@
 
 
 class MPassword:
+
+    def __init__(self, name, login, password, type, isFavourite):
+        self._name = name
+        self._login = login
+        self._password = password
+        self._type = type
+        self._isFavourite = isFavourite
+
     def update(self, update):
         pass

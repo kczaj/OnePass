@@ -7,12 +7,16 @@
 # Original author: KUBA
 # 
 #######################################################
+from sample.model.MPassword import MPassword
+from sample.model.MProfileMaker import MProfileMaker
+
 
 class MLoader:
     login_file = 'data/logins'
 
     def __init__(self):
         self._logins = {}
+        self._profile_maker = MProfileMaker()
 
     def load_logins(self):
         with open(self.login_file, 'r') as f:
@@ -24,8 +28,35 @@ class MLoader:
                     password = password[:-1]
                 self._logins[words[0]] = password
 
-    def load_profile(self, name):
-        pass
+    def load_profile(self, login_instance):
+        info = 'data/' + login_instance + '/info'
+        passwords = 'data/' + login_instance + '/passwords'
+        notes = 'data/' + login_instance + '/notes'
+
+        with open(info, 'r') as f:
+            data = f.readline()
+            words = data.split(';')
+            name_instance = words[0]
+            surname_instance = words[1]
+            email_instance = words[2]
+            login_instance = words[3]
+
+        passwords_list = {}
+
+        with open(passwords, 'r') as f:
+            data = f.readlines()
+            for line in data:
+                words = line.split(';')
+                name = words[0]
+                login = words[1]
+                password = words[2]
+                type = words[3]
+                isFavourite = True if words[4] == '1' else False
+                password = MPassword(name, login, password, type, isFavourite)
+                passwords_list[name] = password
+
+        return self._profile_maker.make_profile(name_instance, surname_instance, email_instance, login_instance,
+                                                passwords_list)
 
     def get_logins(self):
         return self._logins

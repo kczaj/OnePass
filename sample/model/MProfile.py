@@ -13,12 +13,11 @@ from sample.model.MNote import MNote
 
 class MProfile:
 
-    def __init__(self, name, surname, email, login, password, passwords={}, notes={}):
+    def __init__(self, name, surname, email, login, passwords={}, notes={}):
         self._name = name
         self._surname = surname
         self._email = email
         self._login = login
-        self._password = password
         self._passwords = passwords
         self._notes = notes
 

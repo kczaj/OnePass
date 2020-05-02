@@ -39,7 +39,7 @@ class PSignUpWin(PController):
 
     def sign_up_button_handle(self, name, surname, email, login, password):
         if self.__validate_data(name, surname, email, login, password) == 1:
-            profile = self._profile_maker.make_profile(name, surname, email, login, password)
+            profile = self._profile_maker.make_profile(name, surname, email, login)
             logins = self._loader.get_logins()
             logins[login] = self._hasher.hash(password)
             main_win_after = VMainWinAfter(self.main_window, self.main_win_before)

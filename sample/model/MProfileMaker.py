@@ -12,5 +12,5 @@ from sample.model.MProfile import MProfile
 
 class MProfileMaker():
 
-    def make_profile(self, name, surname, email, login, password):
-        return  MProfile(name, surname, email, login, password)
+    def make_profile(self, name, surname, email, login, password_list={}):
+        return MProfile(name, surname, email, login, password_list)
