@@ -24,7 +24,8 @@ class VPasswordsListWin(VMainWin):
     def choose_button_pressed(self):
         pass
 
-    # Nadpisać show(self)
+    def show(self, where):
+        super(VPasswordsListWin, self).show(where)
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
