@@ -7,6 +7,8 @@
 # Original author: KUBA
 # 
 #######################################################
+from PyQt5.QtWidgets import QListWidgetItem
+
 from sample.controller.PPasswordsListWin import PPasswordsListWin
 from sample.view.VMainWin import VMainWin
 from PyQt5 import QtCore, QtGui, QtWidgets
@@ -23,6 +25,9 @@ class VPasswordsListWin(VMainWin):
 
     def choose_button_pressed(self):
         pass
+
+    def _add_items_to_list(self,password_list):
+        self.controller.add_item_to_list(password_list)
 
     def show(self, where):
         super(VPasswordsListWin, self).show(where)
@@ -127,7 +132,7 @@ class VPasswordsListWin(VMainWin):
         self.encrypt_file_button.setIconSize(QtCore.QSize(42, 52))
         self.encrypt_file_button.setObjectName("encrypt_file_button")
         self.gridLayout_2.addWidget(self.encrypt_file_button, 5, 0, 1, 1)
-        self.password_list = QtWidgets.QListView(self.centralwidget)
+        self.password_list = QtWidgets.QListWidget(self.centralwidget)
         self.password_list.setGeometry(QtCore.QRect(105, 101, 631, 411))
         self.password_list.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.password_list.setStyleSheet("background:transparent")
@@ -155,6 +160,8 @@ class VPasswordsListWin(VMainWin):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+        self._add_items_to_list(self.password_list)
 
         self.set_button_action(self.home_button, self.password_button, self.note_button, self.generate_button,
                                self.encrypt_file_button)

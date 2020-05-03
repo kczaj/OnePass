@@ -42,4 +42,4 @@ class PMainWin(PController):
         self.window_list = win_list
 
     def set_profile(self, profile):
-        self._profile = profile
+        self.profile = profile

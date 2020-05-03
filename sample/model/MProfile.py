@@ -29,3 +29,6 @@ class MProfile:
 
     def update_passwords(self, passwords):
         pass
+
+    def get_passwords(self):
+        return self._passwords

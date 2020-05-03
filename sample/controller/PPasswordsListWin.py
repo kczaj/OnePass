@@ -8,13 +8,13 @@
 # 
 #######################################################
 '''from view.VPasswordWin import VPasswordWin
-from view.VAddPasswordWin import VAddPasswordWin
-from view.VAboutAppWin import VAboutAppWin
-from view.VNoteListWin import VNoteListWin
 from view.VEncrypWin import VEncrypWin
-from model.MProfile import MProfile'''
+'''
+from PyQt5.QtWidgets import QListWidgetItem
+
 from sample.controller.PMainWin import PMainWin
 from sample.view.VAddPasswordWin import VAddPasswordWin
+from PyQt5 import QtGui, QtWidgets
 
 
 class PPasswordsListWin(PMainWin):
@@ -29,3 +29,39 @@ class PPasswordsListWin(PMainWin):
 
     def choose_button_handle(self):
         pass
+
+    def add_item_to_list(self, password_list):
+        icon_names = ['view/img/icons/mail.png','view/img/icons/rozrywka.png']
+        icons = []
+        for name in icon_names:
+            icon = QtGui.QIcon()
+            icon.addPixmap(QtGui.QPixmap(name), QtGui.QIcon.Normal,
+                       QtGui.QIcon.Off)
+            icons.append(icon)
+
+        passwords = self.profile.get_passwords()
+        favourites = []
+        not_favourites = []
+        for password in passwords.values():
+            isFavourite = password.get_isFavourite()
+            if isFavourite:
+                favourites.append(password)
+            else:
+                not_favourites.append(password)
+
+        for password in not_favourites:
+            type = password.get_type()
+            index = -1
+            if type == 'mail':
+                index = 0
+            elif type == 'rozrywka':
+                index = 1
+            else:
+                raise Exception("Type not supported")
+
+            item = QListWidgetItem()
+            item.setIcon(icons[index])
+            item.setText(password.get_name())
+            password_list.addItem(item)
+
+
