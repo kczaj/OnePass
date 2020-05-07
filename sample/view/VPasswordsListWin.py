@@ -135,7 +135,7 @@ class VPasswordsListWin(VMainWin):
         self.password_list = QtWidgets.QListWidget(self.centralwidget)
         self.password_list.setGeometry(QtCore.QRect(105, 101, 631, 411))
         self.password_list.setFrameShape(QtWidgets.QFrame.NoFrame)
-        self.password_list.setStyleSheet("background:transparent")
+        self.password_list.setStyleSheet("background:transparent; font: 12pt \"Rubik\"; color:white;")
         self.password_list.setViewMode(QtWidgets.QListView.IconMode)
         self.password_list.setObjectName("password_list")
         self.choose_button = QtWidgets.QPushButton(self.centralwidget)
@@ -160,6 +160,8 @@ class VPasswordsListWin(VMainWin):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+        self.password_list.setIconSize(QtCore.QSize(99,98))
 
         self._add_items_to_list(self.password_list)
 

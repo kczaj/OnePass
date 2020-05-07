@@ -14,7 +14,7 @@ from PyQt5.QtWidgets import QListWidgetItem
 
 from sample.controller.PMainWin import PMainWin
 from sample.view.VAddPasswordWin import VAddPasswordWin
-from PyQt5 import QtGui, QtWidgets
+from PyQt5 import QtGui, QtCore
 
 
 class PPasswordsListWin(PMainWin):
@@ -31,12 +31,13 @@ class PPasswordsListWin(PMainWin):
         pass
 
     def add_item_to_list(self, password_list):
-        icon_names = ['view/img/icons/mail.png','view/img/icons/rozrywka.png']
+        icon_names = ['view/img/icons/mail.png', 'view/img/icons/rozrywka.png']
         icons = []
         for name in icon_names:
             icon = QtGui.QIcon()
             icon.addPixmap(QtGui.QPixmap(name), QtGui.QIcon.Normal,
                        QtGui.QIcon.Off)
+            icon.actualSize(QtCore.QSize(99, 98))
             icons.append(icon)
 
         passwords = self.profile.get_passwords()
@@ -60,6 +61,7 @@ class PPasswordsListWin(PMainWin):
                 raise Exception("Type not supported")
 
             item = QListWidgetItem()
+            item.setSizeHint(QtCore.QSize(150,150))
             item.setIcon(icons[index])
             item.setText(password.get_name())
             password_list.addItem(item)
