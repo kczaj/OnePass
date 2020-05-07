@@ -27,6 +27,12 @@ class VProfileWin(VWindow):
     def show_button_pressed(self):
         pass
 
+    def _show_data(self, frames):
+        self.controller.show_data(frames)
+
+    def set_profile(self, profile):
+        self.controller.set_profile(profile)
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(512, 600)
@@ -159,6 +165,8 @@ class VProfileWin(VWindow):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+        self._show_data((self.name_frame, self.surname_frame, self.email_frame, self.login_frame, self.password_frame))
 
         self.arrow_button.clicked.connect(self.arrow_button_pressed)
 

@@ -35,3 +35,15 @@ class MProfile:
 
     def get_notes(self):
         return self._notes
+
+    def get_name(self):
+        return self._name
+
+    def get_surname(self):
+        return self._surname
+
+    def get_email(self):
+        return self._email
+
+    def get_login(self):
+        return self._login

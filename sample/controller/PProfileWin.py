@@ -25,3 +25,18 @@ class PProfileWin(PController):
 
     def show_button_pressed(self):
         pass
+
+    def show_data(self, frames):
+        name_frame = frames[0]
+        surname_frame = frames[1]
+        email_frame = frames[2]
+        login_frame = frames[3]
+        password_frame = frames[4]
+
+        name_frame.setText(self._profile.get_name())
+        surname_frame.setText(self._profile.get_surname())
+        email_frame.setText(self._profile.get_email())
+        login_frame.setText(self._profile.get_login())
+
+    def set_profile(self, profile):
+        self._profile = profile

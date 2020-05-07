@@ -43,3 +43,4 @@ class PMainWinAfter(PMainWin):
 
     def set_window_list_in_subwindow(self):
         self.about_app_win.set_window_list(self.window_list)
+        self.profile_win.set_profile(self.profile)
