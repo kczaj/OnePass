@@ -7,6 +7,7 @@
 # Original author: KUBA
 # 
 #######################################################
+from sample.model.MNote import MNote
 from sample.model.MPassword import MPassword
 from sample.model.MProfileMaker import MProfileMaker
 
@@ -55,8 +56,18 @@ class MLoader:
                 password = MPassword(name, login, password, type, isFavourite)
                 passwords_list[name] = password
 
+        notes_list = {}
+
+        with open(notes, 'r') as f:
+            data = f.readlines()
+            for line in data:
+                word = line.split('\\n')
+                path = 'data/' + login_instance + 'note' + word[0]
+                note = MNote(word[0], path)
+                notes_list[word[0]] = note
+
         return self._profile_maker.make_profile(name_instance, surname_instance, email_instance, login_instance,
-                                                passwords_list)
+                                                passwords_list, notes_list)
 
     def get_logins(self):
         return self._logins

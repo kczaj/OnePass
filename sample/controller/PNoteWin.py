@@ -15,6 +15,8 @@ from view.VAddNoteWin import VAddNoteWin
 from model.MProfile import MProfile'''
 from sample.controller.PMainWin import PMainWin
 from sample.view.VAddNoteWin import VAddNoteWin
+from PyQt5 import QtGui, QtCore
+from PyQt5.QtWidgets import QListWidgetItem
 
 
 class PNoteWin(PMainWin):
@@ -37,3 +39,17 @@ class PNoteWin(PMainWin):
 
     def _update(self, notes):
         pass
+
+    def add_notes(self, note_list):
+        notes = self.profile.get_notes()
+
+        for note in notes.values():
+            item = QListWidgetItem()
+            item.setSizeHint(QtCore.QSize(150, 150))
+            icon = QtGui.QIcon()
+            icon.addPixmap(QtGui.QPixmap('view/img/icons/notatki.png'), QtGui.QIcon.Normal,
+                           QtGui.QIcon.Off)
+            icon.actualSize(QtCore.QSize(99, 98))
+            item.setIcon(icon)
+            item.setText(note.get_name())
+            note_list.addItem(item)

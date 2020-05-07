@@ -10,5 +10,13 @@
 
 
 class MNote:
+
+    def __init__(self, name, path):
+        self._name = name
+        self._path = path
+
     def update(self, update):
         pass
+
+    def get_name(self):
+        return self._name

@@ -24,6 +24,9 @@ class VNoteListWin(VMainWin):
     def edit_button_pressed(self):
         self.controller.edit_button_handle()
 
+    def _add_note_list(self, note_list):
+        self.controller.add_notes(note_list)
+
     # Nadpisać show(self)
 
     def setupUi(self, MainWindow):
@@ -126,10 +129,10 @@ class VNoteListWin(VMainWin):
         self.encrypt_file_button.setIconSize(QtCore.QSize(42, 52))
         self.encrypt_file_button.setObjectName("encrypt_file_button")
         self.gridLayout_2.addWidget(self.encrypt_file_button, 5, 0, 1, 1)
-        self.note_list = QtWidgets.QListView(self.centralwidget)
+        self.note_list = QtWidgets.QListWidget(self.centralwidget)
         self.note_list.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.note_list.setGeometry(QtCore.QRect(105, 101, 631, 411))
-        self.note_list.setStyleSheet("background:transparent")
+        self.note_list.setStyleSheet("background:transparent; font: 12pt \"Rubik\"; color:white;")
         self.note_list.setViewMode(QtWidgets.QListView.IconMode)
         self.note_list.setObjectName("note_list")
         self.edit_button = QtWidgets.QPushButton(self.centralwidget)
@@ -158,9 +161,14 @@ class VNoteListWin(VMainWin):
         self.set_button_action(self.home_button, self.password_button, self.note_button, self.generate_button,
                                self.encrypt_file_button)
 
+        self.note_list.setIconSize(QtCore.QSize(99, 98))
+
+        self._add_note_list(self.note_list)
+
         self.edit_button.clicked.connect(self.edit_button_pressed)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "TWOJE NOTATKI"))
         self.greeting_label.setText(_translate("MainWindow", "TWOJE NOTATKI"))
+

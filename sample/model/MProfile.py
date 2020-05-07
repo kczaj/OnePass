@@ -32,3 +32,6 @@ class MProfile:
 
     def get_passwords(self):
         return self._passwords
+
+    def get_notes(self):
+        return self._notes
