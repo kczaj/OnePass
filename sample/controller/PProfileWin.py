@@ -21,7 +21,7 @@ class PProfileWin(PController):
         pass
 
     def save_button_handle(self, parameters):
-        pass
+        self._profile.update(parameters)
 
     def show_button_pressed(self):
         pass

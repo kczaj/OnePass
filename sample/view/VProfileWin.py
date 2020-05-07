@@ -19,10 +19,18 @@ class VProfileWin(VWindow):
         self.controller = PProfileWin(main_window, main_win_after)
 
     def edit_button_pressed(self):
-        pass
+        self.name_frame.setReadOnly(False)
+        self.surname_frame.setReadOnly(False)
+        self.email_frame.setReadOnly(False)
+        self.login_frame.setReadOnly(False)
 
     def save_button_pressed(self):
-        pass
+        self.name_frame.setReadOnly(True)
+        self.surname_frame.setReadOnly(True)
+        self.email_frame.setReadOnly(True)
+        self.login_frame.setReadOnly(True)
+        data = (self.name_frame.text(), self.surname_frame.text(), self.email_frame.text(), self.login_frame.text())
+        self.controller.save_button_handle(data)
 
     def show_button_pressed(self):
         pass
@@ -167,6 +175,9 @@ class VProfileWin(VWindow):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
         self._show_data((self.name_frame, self.surname_frame, self.email_frame, self.login_frame, self.password_frame))
+
+        self.edit_button.clicked.connect(self.edit_button_pressed)
+        self.save_button.clicked.connect(self.save_button_pressed)
 
         self.arrow_button.clicked.connect(self.arrow_button_pressed)
 
