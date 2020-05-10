@@ -7,8 +7,6 @@
 # Original author: KUBA
 # 
 #######################################################
-# from view.VProfileWin import VProfileWin
-# from model.MProfile import MProfile
 from sample.controller.PController import PController
 
 
