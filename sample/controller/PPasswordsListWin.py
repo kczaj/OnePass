@@ -49,21 +49,25 @@ class PPasswordsListWin(PMainWin):
                 favourites.append(password)
             else:
                 not_favourites.append(password)
+        types = []
+        types.append(favourites)
+        types.append(not_favourites)
 
-        for password in not_favourites:
-            type = password.get_type()
-            index = -1
-            if type == 'mail':
-                index = 0
-            elif type == 'rozrywka':
-                index = 1
-            else:
-                raise Exception("Type not supported")
+        for type in types:
+            for password in type:
+                type = password.get_type()
+                index = -1
+                if type == 'mail':
+                    index = 0
+                elif type == 'rozrywka':
+                    index = 1
+                else:
+                    raise Exception("Type not supported")
 
-            item = QListWidgetItem()
-            item.setSizeHint(QtCore.QSize(150,150))
-            item.setIcon(icons[index])
-            item.setText(password.get_name())
-            password_list.addItem(item)
+                item = QListWidgetItem()
+                item.setSizeHint(QtCore.QSize(150,150))
+                item.setIcon(icons[index])
+                item.setText(password.get_name())
+                password_list.addItem(item)
 
 
