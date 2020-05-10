@@ -35,7 +35,7 @@ class MLoader:
     def load_profile(self, login_instance, password):
         info = 'data/' + login_instance + '/infob'
         passwords = 'data/' + login_instance + '/passwordsb'
-        notes = 'data/' + login_instance + '/notes'
+        notes = 'data/' + login_instance + '/notesb'
 
         info_str = self._encryptor.decrypt(info, password)
         words = info_str.split(';')
@@ -53,21 +53,21 @@ class MLoader:
             words = line.split(';')
             name = words[0]
             login = words[1]
-            password = words[2]
+            password_for_instance = words[2]
             type = words[3]
             isFavourite = True if words[4] == '1' else False
-            password = MPassword(name, login, password, type, isFavourite)
-            passwords_list[name] = password
+            password_instance = MPassword(name, login, password_for_instance, type, isFavourite)
+            passwords_list[name] = password_instance
 
         notes_list = {}
 
-        with open(notes, 'r') as f:
-            data = f.readlines()
-            for line in data:
-                word = line.split('\\n')
-                path = 'data/' + login_instance + 'note' + word[0]
-                note = MNote(word[0], path)
-                notes_list[word[0]] = note
+        notes_str = self._encryptor.decrypt(notes, password)
+        words = notes_str.split("\n")
+
+        for word in words:
+            path = 'data/' + login_instance + 'note' + word
+            note = MNote(word, path)
+            notes_list[word] = note
 
         return self._profile_maker.make_profile(name_instance, surname_instance, email_instance, login_instance,
                                                 passwords_list, notes_list)
