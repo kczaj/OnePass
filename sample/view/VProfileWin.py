@@ -30,7 +30,9 @@ class VProfileWin(VWindow):
         self.email_frame.setReadOnly(True)
         self.login_frame.setReadOnly(True)
         data = (self.name_frame.text(), self.surname_frame.text(), self.email_frame.text(), self.login_frame.text())
-        self.controller.save_button_handle(data)
+        if self.controller.save_button_handle(data) != 1:
+            self.error_label.setVisible(True)
+            self._show_data((self.name_frame, self.surname_frame, self.email_frame, self.login_frame))
 
     def show_button_pressed(self):
         pass
@@ -67,6 +69,10 @@ class VProfileWin(VWindow):
         self.bg.setText("")
         self.bg.setPixmap(QtGui.QPixmap("view/img/o_app_tlo.png"))
         self.bg.setObjectName("bg")
+        self.error_label = QtWidgets.QLabel(self.centralwidget)
+        self.error_label.setGeometry(QtCore.QRect(140, 410, 250, 100))
+        self.error_label.setText('Błąd we wprowadzonych danych!')
+        self.error_label.setVisible(False)
         self.arrow_button = QtWidgets.QPushButton(self.centralwidget)
         self.arrow_button.setGeometry(QtCore.QRect(15, 15, 41, 41))
         self.arrow_button.setText("")
@@ -174,7 +180,7 @@ class VProfileWin(VWindow):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-        self._show_data((self.name_frame, self.surname_frame, self.email_frame, self.login_frame, self.password_frame))
+        self._show_data((self.name_frame, self.surname_frame, self.email_frame, self.login_frame))
 
         self.edit_button.clicked.connect(self.edit_button_pressed)
         self.save_button.clicked.connect(self.save_button_pressed)

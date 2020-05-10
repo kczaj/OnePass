@@ -15,11 +15,8 @@ class PProfileWin(PController):
     def __init__(self, main_window, main_win_after):
         super().__init__(main_window, main_win_after)
 
-    def edit_button_handle(self):
-        pass
-
     def save_button_handle(self, parameters):
-        self._profile.update(parameters)
+        return self._profile.update(parameters)
 
     def show_button_pressed(self):
         pass
@@ -29,7 +26,6 @@ class PProfileWin(PController):
         surname_frame = frames[1]
         email_frame = frames[2]
         login_frame = frames[3]
-        password_frame = frames[4]
 
         name_frame.setText(self._profile.get_name())
         surname_frame.setText(self._profile.get_surname())

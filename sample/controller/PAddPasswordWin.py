@@ -15,11 +15,12 @@ from sample.model.MProfile import MProfile
 
 class PAddPasswordWin(PController):
 
-    def __init__(self, main_window, password_list_window):
+    def __init__(self, main_window, password_list_window, add_win):
         super().__init__(main_window, password_list_window)
+        self._generate_win = VGenerateWinBefore(main_window, add_win)
 
     def generate_button_handle(self):
-        pass
+        self.change_window(self._generate_win)
 
     def save_button_handle(self):
         pass

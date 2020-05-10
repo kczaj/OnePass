@@ -7,11 +7,14 @@
 # Original author: KUBA
 # 
 #######################################################
-from sample.model.MPassword import MPassword
-from sample.model.MNote import MNote
+import string
 
 
 class MProfile:
+    NAME_ERROR = -1001
+    SURNAME_ERROR = -1002
+    LOGIN_ERROR = -1004
+    PASSWORD_ERROR = -1005
 
     def __init__(self, name, surname, email, login, passwords={}, notes={}):
         self._name = name
@@ -22,13 +25,33 @@ class MProfile:
         self._notes = notes
 
     def update(self, update):
-        pass
+        if self._verify(update) == 1:
+            self._name = update[0]
+            self._surname = update[1]
+            self._email = update[2]
+            self._login = update[3]
+            return 1
+        else:
+            return self._verify(update)
 
     def update_notes(self, notes):
         pass
 
     def update_passwords(self, passwords):
         pass
+
+    def _verify(self, update):
+        special_symols = '!@#$%^&*()_-+={[}]\:;<,>.?/'
+        digits = string.digits
+        for c in special_symols + digits:
+            if c in update[0]:
+                return self.NAME_ERROR
+            if c in update[1]:
+                return self.SURNAME_ERROR
+        for c in special_symols:
+            if c in update[3]:
+                return self.LOGIN_ERROR
+        return 1
 
     def get_passwords(self):
         return self._passwords

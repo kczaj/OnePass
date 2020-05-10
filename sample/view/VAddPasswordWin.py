@@ -9,6 +9,7 @@
 #######################################################
 from PyQt5 import QtCore, QtGui, QtWidgets
 from sample.controller.PAddPasswordWin import PAddPasswordWin
+from sample.view.VGenerateWinBefore import VGenerateWinBefore
 from sample.view.VWindow import VWindow
 
 
@@ -16,10 +17,10 @@ class VAddPasswordWin(VWindow):
 
     def __init__(self, main_window, password_list_window):
         super().__init__()
-        self.controller = PAddPasswordWin(main_window, password_list_window)
+        self.controller = PAddPasswordWin(main_window, password_list_window, self)
 
     def generate_button_pressed(self):
-        pass
+        self.controller.generate_button_handle()
 
     def save_button_pressed(self):
         pass
@@ -128,6 +129,7 @@ class VAddPasswordWin(VWindow):
         self.comboBox.setMaxVisibleItems(5)
         self.comboBox.setFrame(False)
         self.comboBox.setObjectName("comboBox")
+        self.comboBox.addItems(['mail', 'rozrywka'])
         self.gridLayout.addWidget(self.comboBox, 7, 1, 1, 1)
         self.generate_button = QtWidgets.QPushButton(self.centralwidget)
         self.generate_button.setGeometry(QtCore.QRect(60, 490, 161, 34))
@@ -157,6 +159,7 @@ class VAddPasswordWin(VWindow):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
         self.arrow_button.clicked.connect(self.arrow_button_pressed)
+        self.generate_button.clicked.connect(self.generate_button_pressed)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
