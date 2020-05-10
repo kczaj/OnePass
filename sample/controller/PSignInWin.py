@@ -34,12 +34,12 @@ class PSignInWin(PController):
     def forget_button_handle(self):
         pass
 
-    def _load_profile(self, login):
-        return self._loader.load_profile(login)
+    def _load_profile(self, login, password):
+        return self._loader.load_profile(login, password)
 
     def sign_in_button_handle(self, login, password):
         if self.__validate_data((login, password)):
-            profile = self._load_profile(login)
+            profile = self._load_profile(login, password)
             main_win_after = VMainWinAfter(self.main_window, self.main_win_before)
             win_list = [main_win_after, VPasswordsListWin(self.main_window),
                         VNoteListWin(self.main_window), VEncrypWin(self.main_window),
