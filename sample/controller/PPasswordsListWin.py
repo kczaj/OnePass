@@ -22,7 +22,8 @@ class PPasswordsListWin(PMainWin):
     def __init__(self, main_window, password_list_win):
         super().__init__(main_window)
         self.password_list_win = password_list_win
-        self.add_password_window = VAddPasswordWin(self.main_window, self.password_list_win)
+        #nie ma profilu tutaj
+        self.add_password_window = VAddPasswordWin(self.main_window, self.password_list_win, self.profile)
 
     def add_button_handle(self):
         self.change_window(self.add_password_window)

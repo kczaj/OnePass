@@ -15,15 +15,16 @@ from sample.view.VWindow import VWindow
 
 class VAddPasswordWin(VWindow):
 
-    def __init__(self, main_window, password_list_window):
+    def __init__(self, main_window, password_list_window, profile):
         super().__init__()
-        self.controller = PAddPasswordWin(main_window, password_list_window, self)
+        self.controller = PAddPasswordWin(main_window, password_list_window, self, profile)
 
     def generate_button_pressed(self):
         self.controller.generate_button_handle()
 
     def save_button_pressed(self):
-        pass
+        data = (self.name_frame.text(), self.login_frame.text(), self.password_frame.text(),self.comboBox.currentText(), self.url_frame.text())
+        self.controller.save_button_handle(data)
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -92,26 +93,26 @@ class VAddPasswordWin(VWindow):
         self.gridLayout.addWidget(self.url_label, 9, 0, 1, 1)
         spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.gridLayout.addItem(spacerItem, 2, 0, 1, 1)
-        self.surname_frame = QtWidgets.QLineEdit(self.gridLayoutWidget)
-        self.surname_frame.setReadOnly(False)
-        self.surname_frame.setObjectName("surname_frame")
-        self.gridLayout.addWidget(self.surname_frame, 3, 1, 1, 1)
+        self.login_frame = QtWidgets.QLineEdit(self.gridLayoutWidget)
+        self.login_frame.setReadOnly(False)
+        self.login_frame.setObjectName("login_frame")
+        self.gridLayout.addWidget(self.login_frame, 3, 1, 1, 1)
         self.category_label = QtWidgets.QLabel(self.gridLayoutWidget)
         self.category_label.setAlignment(QtCore.Qt.AlignCenter)
         self.category_label.setObjectName("category_label")
         self.gridLayout.addWidget(self.category_label, 7, 0, 1, 1)
         spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.gridLayout.addItem(spacerItem1, 8, 0, 1, 1)
+        self.url_frame = QtWidgets.QLineEdit(self.gridLayoutWidget)
+        self.url_frame.setReadOnly(False)
+        self.url_frame.setObjectName("url_frame")
+        self.gridLayout.addWidget(self.url_frame, 9, 1, 1, 1)
+        spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.gridLayout.addItem(spacerItem2, 6, 0, 1, 1)
         self.password_frame = QtWidgets.QLineEdit(self.gridLayoutWidget)
         self.password_frame.setReadOnly(False)
         self.password_frame.setObjectName("password_frame")
-        self.gridLayout.addWidget(self.password_frame, 9, 1, 1, 1)
-        spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.gridLayout.addItem(spacerItem2, 6, 0, 1, 1)
-        self.email_frame = QtWidgets.QLineEdit(self.gridLayoutWidget)
-        self.email_frame.setReadOnly(False)
-        self.email_frame.setObjectName("email_frame")
-        self.gridLayout.addWidget(self.email_frame, 5, 1, 1, 1)
+        self.gridLayout.addWidget(self.password_frame, 5, 1, 1, 1)
         spacerItem3 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.gridLayout.addItem(spacerItem3, 4, 0, 1, 1)
         self.password_label = QtWidgets.QLabel(self.gridLayoutWidget)
@@ -160,6 +161,7 @@ class VAddPasswordWin(VWindow):
 
         self.arrow_button.clicked.connect(self.arrow_button_pressed)
         self.generate_button.clicked.connect(self.generate_button_pressed)
+        self.save_button.clicked.connect(self.save_button_pressed)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
