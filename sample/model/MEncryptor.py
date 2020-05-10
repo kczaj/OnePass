@@ -8,12 +8,26 @@
 # 
 #######################################################
 from sample.model.MProfile import MProfile
+from Crypto.Cipher import AES
+from Crypto.Util.Padding import pad, unpad
 
 class MEncryptor:
 
+    def decrypt(self, file, key):
+        file_in = open(file, 'rb')
+        iv = file_in.read(16)
+        msg = file_in.read()
+        file_in.close()
 
-    def decrypt(self, file):
-        pass
+        cipher = AES.new(key, AES.MODE_CBC, iv=iv)
+        og_data = unpad(cipher.decrypt(msg), AES.block_size)
+        return og_data
 
-    def encrypt(self, file):
-        pass
+    def encrypt(self, file, key, data):
+        msg = data.encode()
+        cipher = AES.new(key, AES.MODE_CBC)
+        ciphered_data = cipher.encrypt(pad(msg, AES.block_size))
+        output_file = open(file, 'wb')
+        output_file.write(cipher.iv)
+        output_file.write(ciphered_data)
+        output_file.close()
