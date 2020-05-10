@@ -7,6 +7,7 @@
 # Original author: KUBA
 # 
 #######################################################
+from sample.model.MEncryptor import MEncryptor
 from sample.model.MNote import MNote
 from sample.model.MPassword import MPassword
 from sample.model.MProfileMaker import MProfileMaker
@@ -14,33 +15,34 @@ from sample.model.MProfileMaker import MProfileMaker
 
 class MLoader:
     login_file = 'data/logins'
+    key = b'\xcf>\'E\x9f\x9e\xe78\x07"\xad\xee\xb0%\x88\xb69\xc4\xe5P-\x95\xf6\xe7\x0b\n\x14\xa1j\xbb!\x92'
 
     def __init__(self):
         self._logins = {}
         self._profile_maker = MProfileMaker()
+        self._encryptor = MEncryptor()
 
     def load_logins(self):
-        with open(self.login_file, 'r') as f:
-            data = f.readlines()
-            for line in data:
-                words = line.split(';')
-                password = words[1]
-                if password[-1] == '\n':
-                    password = password[:-1]
-                self._logins[words[0]] = password
+        logins = self._encryptor.decrypt('data/log')
+        lines = logins.split('\n')
+        for line in lines:
+            words = line.split(';')
+            password = words[1]
+            if password[-1] == '\n':
+                password = password[:-1]
+            self._logins[words[0]] = password
 
-    def load_profile(self, login_instance):
-        info = 'data/' + login_instance + '/info'
+    def load_profile(self, login_instance, password):
+        info = 'data/' + login_instance + '/infob'
         passwords = 'data/' + login_instance + '/passwords'
         notes = 'data/' + login_instance + '/notes'
 
-        with open(info, 'r') as f:
-            data = f.readline()
-            words = data.split(';')
-            name_instance = words[0]
-            surname_instance = words[1]
-            email_instance = words[2]
-            login_instance = words[3]
+        info_str = self._encryptor.decrypt(info, password)
+        words = info_str.split(';')
+        name_instance = words[0]
+        surname_instance = words[1]
+        email_instance = words[2]
+        login_instance = words[3]
 
         passwords_list = {}
 
