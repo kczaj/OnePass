@@ -49,8 +49,9 @@ class PSignInWin(PController):
                 win_list[i].set_profile(profile)
             win_list[0].set_window_list_in_subwindow()
             self.change_window(win_list[0])
+            return 1
         else:
-            print("Error. Wrong login or passoword")
+            return -1
 
     def sign_up_button_handle(self):
         self.change_window(self._sign_up_window)

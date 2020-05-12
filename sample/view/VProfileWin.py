@@ -70,6 +70,10 @@ class VProfileWin(VWindow):
         self.error_label = QtWidgets.QLabel(self.centralwidget)
         self.error_label.setGeometry(QtCore.QRect(140, 410, 250, 100))
         self.error_label.setText('Błąd we wprowadzonych danych!')
+        self.error_label.setStyleSheet("QLabel{\n"
+                                 "    font: 12pt \"Rubik\";\n"
+                                 "    color:rgb(245,0,0);\n"
+                                 "}\n")
         self.error_label.setVisible(False)
         self.arrow_button = QtWidgets.QPushButton(self.centralwidget)
         self.arrow_button.setGeometry(QtCore.QRect(15, 15, 41, 41))

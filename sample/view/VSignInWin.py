@@ -28,7 +28,8 @@ class VSignInWin(VWindow):
     def sign_in_button_pressed(self):
         login = self.login_frame.text()
         password = self.password_frame.text()
-        self.controller.sign_in_button_handle(login, password)
+        if self.controller.sign_in_button_handle(login, password) == -1:
+            self.error_label.setVisible(True)
 
     def sign_up_button_pressed(self):
         self.controller.sign_up_button_handle()
@@ -61,6 +62,14 @@ class VSignInWin(VWindow):
         self.bg.setText("")
         self.bg.setPixmap(QtGui.QPixmap("view/img/tło_logowanie.png"))
         self.bg.setObjectName("bg")
+        self.error_label = QtWidgets.QLabel(self.centralwidget)
+        self.error_label.setGeometry(QtCore.QRect(100, 300, 250, 100))
+        self.error_label.setText('Podano zły login lub hasło!')
+        self.error_label.setStyleSheet("QLabel{\n"
+                                 "    font: 12pt \"Rubik\";\n"
+                                 "    color:rgb(245,0,0);\n"
+                                 "}\n")
+        self.error_label.setVisible(False)
         self.gridLayoutWidget = QtWidgets.QWidget(self.centralwidget)
         self.gridLayoutWidget.setGeometry(QtCore.QRect(10, 240, 341, 161))
         self.gridLayoutWidget.setObjectName("gridLayoutWidget")
@@ -71,11 +80,6 @@ class VSignInWin(VWindow):
         self.password_label.setAlignment(QtCore.Qt.AlignCenter)
         self.password_label.setObjectName("password_label")
         self.gridLayout.addWidget(self.password_label, 3, 0, 1, 1)
-        self.forget_button = QtWidgets.QPushButton(self.gridLayoutWidget)
-        self.forget_button.setObjectName("forget_button")
-        self.gridLayout.addWidget(self.forget_button, 4, 1, 1, 1)
-        spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.gridLayout.addItem(spacerItem, 0, 1, 1, 1)
         spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.gridLayout.addItem(spacerItem1, 6, 1, 1, 1)
         self.login_frame = QtWidgets.QLineEdit(self.gridLayoutWidget)
@@ -89,7 +93,7 @@ class VSignInWin(VWindow):
         self.gridLayout.addItem(spacerItem2, 7, 1, 1, 1)
         self.sign_up_button = QtWidgets.QPushButton(self.gridLayoutWidget)
         self.sign_up_button.setObjectName("sign_up_button")
-        self.gridLayout.addWidget(self.sign_up_button, 5, 1, 1, 1)
+        self.gridLayout.addWidget(self.sign_up_button, 4, 1, 1, 1)
         self.login_label = QtWidgets.QLabel(self.gridLayoutWidget)
         self.login_label.setAlignment(QtCore.Qt.AlignCenter)
         self.login_label.setObjectName("login_label")
@@ -126,6 +130,5 @@ class VSignInWin(VWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "LOGOWANIE"))
         self.password_label.setText(_translate("MainWindow", "HASŁO"))
-        self.forget_button.setText(_translate("MainWindow", "Nie pamiętasz hasła?"))
         self.sign_up_button.setText(_translate("MainWindow", "Załóż konto!"))
         self.login_label.setText(_translate("MainWindow", "LOGIN"))
