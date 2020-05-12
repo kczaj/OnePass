@@ -15,10 +15,9 @@ from sample.model.MProfile import MProfile
 
 class PAddPasswordWin(PController):
 
-    def __init__(self, main_window, password_list_window, add_win, proflie):
+    def __init__(self, main_window, password_list_window, add_win):
         super().__init__(main_window, password_list_window)
         self._generate_win = VGenerateWinBefore(main_window, add_win)
-        self._profile = proflie
 
     def generate_button_handle(self):
         self.change_window(self._generate_win)
@@ -36,6 +35,10 @@ class PAddPasswordWin(PController):
         password = MPassword(name, login, password, category, False)
         passwords[name] = password
 
+        self.arrow_button_handle()
+
     def __update(self, passwords):
         pass
 
+    def set_profile(self, profile):
+        self._profile = profile

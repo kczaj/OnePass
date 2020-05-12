@@ -15,9 +15,9 @@ from sample.view.VWindow import VWindow
 
 class VAddPasswordWin(VWindow):
 
-    def __init__(self, main_window, password_list_window, profile):
+    def __init__(self, main_window, password_list_window):
         super().__init__()
-        self.controller = PAddPasswordWin(main_window, password_list_window, self, profile)
+        self.controller = PAddPasswordWin(main_window, password_list_window, self)
 
     def generate_button_pressed(self):
         self.controller.generate_button_handle()
@@ -25,6 +25,9 @@ class VAddPasswordWin(VWindow):
     def save_button_pressed(self):
         data = (self.name_frame.text(), self.login_frame.text(), self.password_frame.text(),self.comboBox.currentText(), self.url_frame.text())
         self.controller.save_button_handle(data)
+
+    def set_profile(self, profile):
+        self.controller.set_profile(profile)
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")

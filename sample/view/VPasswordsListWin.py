@@ -26,7 +26,7 @@ class VPasswordsListWin(VMainWin):
     def choose_button_pressed(self):
         pass
 
-    def _add_items_to_list(self,password_list):
+    def _add_items_to_list(self, password_list):
         self.controller.add_item_to_list(password_list)
 
     def show(self, where):
