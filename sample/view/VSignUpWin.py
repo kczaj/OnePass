@@ -25,7 +25,10 @@ class VSignUpWin(VWindow):
         email = self.email_frame.text()
         login = self.login_frame.text()
         password = self.password_frame.text()
-        self.controller.sign_up_button_handle(name, surname, email, login, password)
+        status = self.controller.sign_up_button_handle(name, surname, email, login, password)
+        if status != '1':
+            self.error_label.setText(status)
+            self.error_label.setVisible(True)
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -55,6 +58,13 @@ class VSignUpWin(VWindow):
         self.bg.setText("")
         self.bg.setPixmap(QtGui.QPixmap("view/img/tło_logowanie.png"))
         self.bg.setObjectName("bg")
+        self.error_label = QtWidgets.QLabel(self.centralwidget)
+        self.error_label.setGeometry(QtCore.QRect(85, 405, 255, 100))
+        self.error_label.setStyleSheet("QLabel{\n"
+                                       "    font: 12pt \"Rubik\";\n"
+                                       "    color:rgb(245,0,0);\n"
+                                       "}\n")
+        self.error_label.setVisible(False)
         self.gridLayoutWidget = QtWidgets.QWidget(self.centralwidget)
         self.gridLayoutWidget.setGeometry(QtCore.QRect(10, 240, 341, 201))
         self.gridLayoutWidget.setObjectName("gridLayoutWidget")
