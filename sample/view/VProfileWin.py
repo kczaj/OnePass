@@ -22,14 +22,12 @@ class VProfileWin(VWindow):
         self.name_frame.setReadOnly(False)
         self.surname_frame.setReadOnly(False)
         self.email_frame.setReadOnly(False)
-        self.login_frame.setReadOnly(False)
 
     def save_button_pressed(self):
         self.name_frame.setReadOnly(True)
         self.surname_frame.setReadOnly(True)
         self.email_frame.setReadOnly(True)
-        self.login_frame.setReadOnly(True)
-        data = (self.name_frame.text(), self.surname_frame.text(), self.email_frame.text(), self.login_frame.text())
+        data = (self.name_frame.text(), self.surname_frame.text(), self.email_frame.text())
         if self.controller.save_button_handle(data) != 1:
             self.error_label.setVisible(True)
             self._show_data((self.name_frame, self.surname_frame, self.email_frame, self.login_frame))

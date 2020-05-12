@@ -13,7 +13,6 @@ import string
 class MProfile:
     NAME_ERROR = -1001
     SURNAME_ERROR = -1002
-    LOGIN_ERROR = -1004
     PASSWORD_ERROR = -1005
 
     def __init__(self, name, surname, email, login, passwords={}, notes={}):
@@ -29,7 +28,6 @@ class MProfile:
             self._name = update[0]
             self._surname = update[1]
             self._email = update[2]
-            self._login = update[3]
             return 1
         else:
             return self._verify(update)
@@ -48,9 +46,6 @@ class MProfile:
                 return self.NAME_ERROR
             if c in update[1]:
                 return self.SURNAME_ERROR
-        for c in special_symols:
-            if c in update[3]:
-                return self.LOGIN_ERROR
         return 1
 
     def get_passwords(self):
