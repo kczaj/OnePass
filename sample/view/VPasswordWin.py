@@ -8,9 +8,16 @@
 # 
 #######################################################
 from sample.controller.PPasswordWin import PPasswordWin
+from PyQt5 import QtCore, QtGui, QtWidgets
 
-class VPasswordWin:
-    m_PPasswordWin= PPasswordWin()
+from sample.view.VWindow import VWindow
+
+
+class VPasswordWin(VWindow):
+
+    def __init__(self, main_window, password_list_win):
+        super().__init__()
+        self.controller = PPasswordWin(main_window, password_list_win)
 
     def copy_button_pressed(self):
         pass
@@ -18,11 +25,122 @@ class VPasswordWin:
     def edit_button_pressed(self):
         pass
 
-    def save_button_pressed(self):
-        pass
-
-    def show(self):
-        pass
-
     def show_button_pressed(self):
         pass
+
+    def set_password_data(self, password):
+        self.controller.set_password_data(password, self.name_label, self.login_frame, self.password_frame, self.star_button)
+
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(356, 205)
+        MainWindow.setStyleSheet("QLabel{\n"
+                                 "    font: 12pt \"Rubik\";\n"
+                                 "    color:white;\n"
+                                 "}\n"
+                                 "QPushButton{\n"
+                                 "    background: transparent;\n"
+                                 "    border-radius:10px\n"
+                                 "}\n"
+                                 "QLineEdit{\n"
+                                 "    background: transparent;\n"
+                                 "    font: 12pt \"Rubik\";\n"
+                                 "    color:white;\n"
+                                 "}")
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+        self.bg = QtWidgets.QLabel(self.centralwidget)
+        self.bg.setGeometry(QtCore.QRect(0, 0, 356, 205))
+        self.bg.setText("")
+        self.bg.setPixmap(QtGui.QPixmap("view/img/password_win/tlo.png"))
+        self.bg.setObjectName("bg")
+        self.arrow_button = QtWidgets.QPushButton(self.centralwidget)
+        self.arrow_button.setGeometry(QtCore.QRect(10, 10, 41, 41))
+        self.arrow_button.setText("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("view/img/przycisk_strzałka.png"), QtGui.QIcon.Normal,
+                       QtGui.QIcon.Off)
+        self.arrow_button.setIcon(icon)
+        self.arrow_button.setIconSize(QtCore.QSize(34, 31))
+        self.arrow_button.setObjectName("arrow_button")
+        self.name_label = QtWidgets.QLabel(self.centralwidget)
+        self.name_label.setGeometry(QtCore.QRect(60, 20, 381, 31))
+        self.name_label.setStyleSheet("    font: 18pt \"Rubik\";\n"
+                                           "    color:white;")
+        self.name_label.setObjectName("about_app_label")
+        self.star_button = QtWidgets.QPushButton(self.centralwidget)
+        self.star_button.setGeometry(QtCore.QRect(320, 10, 23, 22))
+        self.star_button.setText("")
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("view/img/password_win/gwiazdka_nie.png"), QtGui.QIcon.Normal,
+                        QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap("view/img/password_win/gwiazdka.png"), QtGui.QIcon.Active,
+                        QtGui.QIcon.On)
+        self.star_button.setIcon(icon1)
+        self.star_button.setIconSize(QtCore.QSize(23, 22))
+        self.star_button.setCheckable(True)
+        self.star_button.setObjectName("star_button")
+        self.gridLayoutWidget = QtWidgets.QWidget(self.centralwidget)
+        self.gridLayoutWidget.setGeometry(QtCore.QRect(50, 60, 291, 71))
+        self.gridLayoutWidget.setObjectName("gridLayoutWidget")
+        self.gridLayout = QtWidgets.QGridLayout(self.gridLayoutWidget)
+        self.gridLayout.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout.setObjectName("gridLayout")
+        self.password_label = QtWidgets.QLabel(self.gridLayoutWidget)
+        self.password_label.setAlignment(QtCore.Qt.AlignCenter)
+        self.password_label.setObjectName("password_label")
+        self.gridLayout.addWidget(self.password_label, 1, 0, 1, 1)
+        self.login_label = QtWidgets.QLabel(self.gridLayoutWidget)
+        self.login_label.setAlignment(QtCore.Qt.AlignCenter)
+        self.login_label.setObjectName("login_label")
+        self.gridLayout.addWidget(self.login_label, 0, 0, 1, 1)
+        self.login_frame = QtWidgets.QLineEdit(self.gridLayoutWidget)
+        self.login_frame.setFrame(False)
+        self.login_frame.setReadOnly(True)
+        self.login_frame.setObjectName("lineEdit")
+        self.gridLayout.addWidget(self.login_frame, 0, 1, 1, 1)
+        self.password_frame = QtWidgets.QLineEdit(self.gridLayoutWidget)
+        self.password_frame.setFrame(False)
+        self.password_frame.setObjectName("lineEdit_2")
+        self.password_frame.setReadOnly(True)
+        self.password_frame.setEchoMode(QtWidgets.QLineEdit.Password)
+        self.gridLayout.addWidget(self.password_frame, 1, 1, 1, 1)
+        self.copy_button = QtWidgets.QPushButton(self.centralwidget)
+        self.copy_button.setGeometry(QtCore.QRect(30, 165, 121, 26))
+        self.copy_button.setText("")
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap("view/img/password_win/kopiuj_button.png"), QtGui.QIcon.Normal,
+                        QtGui.QIcon.Off)
+        self.copy_button.setIcon(icon2)
+        self.copy_button.setIconSize(QtCore.QSize(121, 26))
+        self.copy_button.setObjectName("copy_button")
+        self.edit_button = QtWidgets.QPushButton(self.centralwidget)
+        self.edit_button.setGeometry(QtCore.QRect(210, 165, 121, 26))
+        self.edit_button.setText("")
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap("view/img/password_win/edytuj_button.png"), QtGui.QIcon.Normal,
+                        QtGui.QIcon.Off)
+        self.edit_button.setIcon(icon3)
+        self.edit_button.setIconSize(QtCore.QSize(121, 26))
+        self.edit_button.setObjectName("edit_button")
+        self.show_button = QtWidgets.QPushButton(self.centralwidget)
+        self.show_button.setGeometry(QtCore.QRect(110, 135, 81, 17))
+        self.show_button.setText("")
+        icon4 = QtGui.QIcon()
+        icon4.addPixmap(QtGui.QPixmap("view/img/password_win/pokaz_button.png"), QtGui.QIcon.Normal,
+                        QtGui.QIcon.Off)
+        self.show_button.setIcon(icon4)
+        self.show_button.setIconSize(QtCore.QSize(81, 17))
+        self.show_button.setObjectName("show_button")
+        MainWindow.setCentralWidget(self.centralwidget)
+
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.arrow_button.clicked.connect(self.arrow_button_pressed)
+
+    def retranslateUi(self, MainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle(_translate("MainWindow", "HASŁO"))
+        self.name_label.setText(_translate("MainWindow", "NAZWA"))
+        self.password_label.setText(_translate("MainWindow", "HASŁO"))
+        self.login_label.setText(_translate("MainWindow", "LOGIN"))

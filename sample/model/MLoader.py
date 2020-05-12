@@ -57,7 +57,7 @@ class MLoader:
             type = words[3]
             isFavourite = True if words[4] == '1' else False
             password_instance = MPassword(name, login, password_for_instance, type, isFavourite)
-            passwords_list[name] = password_instance
+            passwords_list[name.lower()] = password_instance
 
         notes_list = {}
 
@@ -67,7 +67,7 @@ class MLoader:
         for word in words:
             path = 'data/' + login_instance + 'note' + word
             note = MNote(word, path)
-            notes_list[word] = note
+            notes_list[word.lower()] = note
 
         return self._profile_maker.make_profile(name_instance, surname_instance, email_instance, login_instance,
                                                 passwords_list, notes_list)

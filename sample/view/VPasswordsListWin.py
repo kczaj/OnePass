@@ -24,7 +24,8 @@ class VPasswordsListWin(VMainWin):
         self.controller.add_button_handle()
 
     def choose_button_pressed(self):
-        pass
+        name = self.password_list.currentItem().text()
+        self.controller.choose_button_handle(name)
 
     def _add_items_to_list(self, password_list):
         self.controller.add_item_to_list(password_list)
@@ -167,7 +168,9 @@ class VPasswordsListWin(VMainWin):
 
         self.set_button_action(self.home_button, self.password_button, self.note_button, self.generate_button,
                                self.encrypt_file_button)
+
         self.add_button.clicked.connect(self.add_button_pressed)
+        self.choose_button.clicked.connect(self.choose_button_pressed)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate

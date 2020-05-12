@@ -16,6 +16,8 @@ from sample.controller.PMainWin import PMainWin
 from sample.view.VAddPasswordWin import VAddPasswordWin
 from PyQt5 import QtGui, QtCore
 
+from sample.view.VPasswordWin import VPasswordWin
+
 
 class PPasswordsListWin(PMainWin):
 
@@ -23,12 +25,16 @@ class PPasswordsListWin(PMainWin):
         super().__init__(main_window)
         self.password_list_win = password_list_win
         self.add_password_window = VAddPasswordWin(self.main_window, self.password_list_win)
+        self.password_win = VPasswordWin(self.main_window, self.password_list_win)
 
     def add_button_handle(self):
         self.change_window(self.add_password_window)
 
-    def choose_button_handle(self):
-        pass
+    def choose_button_handle(self, name):
+        passwords = self.profile.get_passwords()
+        password = passwords[name.lower()]
+        self.change_window(self.password_win)
+        self.password_win.set_password_data(password)
 
     def add_item_to_list(self, password_list):
         icon_names = ['view/img/icons/mail.png', 'view/img/icons/rozrywka.png']
@@ -67,7 +73,8 @@ class PPasswordsListWin(PMainWin):
                 item = QListWidgetItem()
                 item.setSizeHint(QtCore.QSize(150,150))
                 item.setIcon(icons[index])
-                item.setText(password.get_name())
+                pass_name = password.get_name()
+                item.setText(pass_name.upper())
                 password_list.addItem(item)
 
         self.add_password_window.set_profile(self.profile)

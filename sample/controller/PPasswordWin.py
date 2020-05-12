@@ -7,16 +7,28 @@
 # Original author: KUBA
 # 
 #######################################################
-from sample.model.MPassword import MPassword
-from sample.view.VPasswordWin import VPasswordWin
+from sample.controller.PController import PController
 
-class PPasswordWin:
-    m_MPassword= MPassword()
+class PPasswordWin(PController):
 
-    m_VPasswordWin= VPasswordWin()
+    def __init__(self, main_window, password_list_window):
+        super().__init__(main_window, password_list_window)
 
     def save_button_handle(self):
         pass
 
     def show_button_handle(self):
         pass
+
+    def set_password_data(self, password, name_label, login_frame, password_frame, star_button):
+        name_instance = password.get_name()
+        login_instance = password.get_login()
+        password_instance = password.get_password()
+        isFavourite = password.get_isFavourite()
+        name_label.setText(name_instance.upper())
+        login_frame.setText(login_instance)
+        password_frame.setText(password_instance)
+        if isFavourite:
+            star_button.setChecked(True)
+        else:
+            star_button.setChecked(False)

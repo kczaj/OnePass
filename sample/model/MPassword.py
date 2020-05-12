@@ -29,3 +29,9 @@ class MPassword:
 
     def get_type(self):
         return self._type
+
+    def get_login(self):
+        return self._login
+
+    def get_password(self):
+        return self._password

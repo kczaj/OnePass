@@ -33,7 +33,7 @@ class PAddPasswordWin(PController):
             raise Exception
 
         password = MPassword(name, login, password, category, False)
-        passwords[name] = password
+        passwords[name.lower()] = password
 
         self.arrow_button_handle()
 
