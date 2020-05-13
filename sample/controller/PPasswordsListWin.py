@@ -31,6 +31,8 @@ class PPasswordsListWin(PMainWin):
         self.change_window(self.add_password_window)
 
     def choose_button_handle(self, name):
+        if name == '':
+            return
         passwords = self.profile.get_passwords()
         password = passwords[name.lower()]
         self.change_window(self.password_win)

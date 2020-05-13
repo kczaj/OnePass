@@ -24,7 +24,11 @@ class VPasswordsListWin(VMainWin):
         self.controller.add_button_handle()
 
     def choose_button_pressed(self):
-        name = self.password_list.currentItem().text()
+        instance = self.password_list.currentItem()
+        if instance is None:
+            return
+        else:
+            name = instance.text()
         self.controller.choose_button_handle(name)
 
     def _add_items_to_list(self, password_list):
