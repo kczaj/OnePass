@@ -8,19 +8,33 @@
 # 
 #######################################################
 from sample.controller.PController import PController
+from PyQt5 import QtWidgets
+import pyperclip
 
 class PPasswordWin(PController):
 
     def __init__(self, main_window, password_list_window):
         super().__init__(main_window, password_list_window)
+        self._password = None
+        self._is_password_in_password_mode = True
 
     def save_button_handle(self):
         pass
 
-    def show_button_handle(self):
-        pass
+    def copy_button_handel(self, password_frame):
+        text = password_frame.text()
+        pyperclip.copy(text)
+
+    def show_button_handle(self, password_frame):
+        if self._is_password_in_password_mode:
+            password_frame.setEchoMode(QtWidgets.QLineEdit.Normal)
+            self._is_password_in_password_mode = False
+        else:
+            password_frame.setEchoMode(QtWidgets.QLineEdit.Password)
+            self._is_password_in_password_mode = True
 
     def set_password_data(self, password, name_label, login_frame, password_frame, star_button):
+        self._password = password
         name_instance = password.get_name()
         login_instance = password.get_login()
         password_instance = password.get_password()

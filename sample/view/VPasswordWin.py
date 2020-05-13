@@ -20,16 +20,17 @@ class VPasswordWin(VWindow):
         self.controller = PPasswordWin(main_window, password_list_win)
 
     def copy_button_pressed(self):
-        pass
+        self.controller.copy_button_handel(self.password_frame)
 
     def edit_button_pressed(self):
         pass
 
     def show_button_pressed(self):
-        pass
+        self.controller.show_button_handle(self.password_frame)
 
     def set_password_data(self, password):
-        self.controller.set_password_data(password, self.name_label, self.login_frame, self.password_frame, self.star_button)
+        self.controller.set_password_data(password, self.name_label, self.login_frame, self.password_frame,
+                                          self.star_button)
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -66,7 +67,7 @@ class VPasswordWin(VWindow):
         self.name_label = QtWidgets.QLabel(self.centralwidget)
         self.name_label.setGeometry(QtCore.QRect(60, 20, 381, 31))
         self.name_label.setStyleSheet("    font: 18pt \"Rubik\";\n"
-                                           "    color:white;")
+                                      "    color:white;")
         self.name_label.setObjectName("about_app_label")
         self.star_button = QtWidgets.QPushButton(self.centralwidget)
         self.star_button.setGeometry(QtCore.QRect(320, 10, 23, 22))
@@ -137,6 +138,8 @@ class VPasswordWin(VWindow):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         self.arrow_button.clicked.connect(self.arrow_button_pressed)
+        self.show_button.clicked.connect(self.show_button_pressed)
+        self.copy_button.clicked.connect(self.copy_button_pressed)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
