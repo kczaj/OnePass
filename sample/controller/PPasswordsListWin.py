@@ -52,7 +52,7 @@ class PPasswordsListWin(PMainWin):
         favourites = []
         not_favourites = []
         for password in passwords.values():
-            isFavourite = password.get_isFavourite()
+            isFavourite = password.get_is_favourite()
             if isFavourite:
                 favourites.append(password)
             else:

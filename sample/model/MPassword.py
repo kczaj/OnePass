@@ -11,21 +11,23 @@
 
 class MPassword:
 
-    def __init__(self, name, login, password, type, isFavourite):
+    def __init__(self, name, login, password, type, is_favourite):
         self._name = name
         self._login = login
         self._password = password
         self._type = type
-        self._isFavourite = isFavourite
+        self._is_favourite = is_favourite
 
     def update(self, update):
-        pass
+        self._login = update[0]
+        self._password = update[1]
+        self._is_favourite = update[2]
 
     def get_name(self):
         return self._name
 
-    def get_isFavourite(self):
-        return self._isFavourite
+    def get_is_favourite(self):
+        return self._is_favourite
 
     def get_type(self):
         return self._type

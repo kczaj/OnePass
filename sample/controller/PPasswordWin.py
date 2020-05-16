@@ -11,15 +11,22 @@ from sample.controller.PController import PController
 from PyQt5 import QtWidgets
 import pyperclip
 
+from sample.view.VAddPasswordWin import VAddPasswordWin
+
+
 class PPasswordWin(PController):
 
-    def __init__(self, main_window, password_list_window):
+    def __init__(self, main_window, password_list_window, password_win):
         super().__init__(main_window, password_list_window)
+        self._edit_win = VAddPasswordWin(self.main_window, password_win)
         self._password = None
         self._is_password_in_password_mode = True
 
-    def save_button_handle(self):
-        pass
+    def save_button_handle(self, login_frame, password_frame, star_button):
+        login = login_frame.text()
+        password = password_frame.text()
+        is_favourite = star_button.isChecked()
+        self._password.update((login, password, is_favourite))
 
     def copy_button_handel(self, password_frame):
         text = password_frame.text()
@@ -33,12 +40,13 @@ class PPasswordWin(PController):
             password_frame.setEchoMode(QtWidgets.QLineEdit.Password)
             self._is_password_in_password_mode = True
 
-    def set_password_data(self, password, name_label, login_frame, password_frame, star_button):
-        self._password = password
-        name_instance = password.get_name()
-        login_instance = password.get_login()
-        password_instance = password.get_password()
-        isFavourite = password.get_isFavourite()
+    def set_password_data(self, name_label, login_frame, password_frame, star_button, password=None):
+        if password != None:
+            self._password = password
+        name_instance = self._password.get_name()
+        login_instance = self._password.get_login()
+        password_instance = self._password.get_password()
+        isFavourite = self._password.get_is_favourite()
         name_label.setText(name_instance.upper())
         login_frame.setText(login_instance)
         password_frame.setText(password_instance)

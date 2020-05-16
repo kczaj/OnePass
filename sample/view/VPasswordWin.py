@@ -17,20 +17,43 @@ class VPasswordWin(VWindow):
 
     def __init__(self, main_window, password_list_win):
         super().__init__()
-        self.controller = PPasswordWin(main_window, password_list_win)
+        self.controller = PPasswordWin(main_window, password_list_win, self)
+        self.editable = False
 
     def copy_button_pressed(self):
         self.controller.copy_button_handel(self.password_frame)
 
     def edit_button_pressed(self):
-        pass
+        if not self.editable:
+            self.editable = True
+            self.login_frame.setReadOnly(False)
+            self.password_frame.setReadOnly(False)
+            self.password_frame.setEchoMode(QtWidgets.QLineEdit.Normal)
+            self.arrow_button.setDisabled(True)
+            self.copy_button.setDisabled(True)
+            self.show_button.setDisabled(True)
+            icon = QtGui.QIcon()
+            icon.addPixmap(QtGui.QPixmap("view/img/password_win/zapisz_button.png"), QtGui.QIcon.Normal,
+                            QtGui.QIcon.Off)
+            self.edit_button.setIcon(icon)
+        else:
+            self.editable = False
+            self.arrow_button.setDisabled(False)
+            self.copy_button.setDisabled(False)
+            self.show_button.setDisabled(False)
+            self.password_frame.setEchoMode(QtWidgets.QLineEdit.Password)
+            icon = QtGui.QIcon()
+            icon.addPixmap(QtGui.QPixmap("view/img/password_win/edytuj_button.png"), QtGui.QIcon.Normal,
+                           QtGui.QIcon.Off)
+            self.edit_button.setIcon(icon)
+            self.controller.save_button_handle(self.login_frame, self.password_frame, self.star_button)
 
     def show_button_pressed(self):
         self.controller.show_button_handle(self.password_frame)
 
-    def set_password_data(self, password):
-        self.controller.set_password_data(password, self.name_label, self.login_frame, self.password_frame,
-                                          self.star_button)
+    def set_password_data(self, password=None):
+        self.controller.set_password_data(self.name_frame, self.login_frame, self.password_frame,
+                                          self.star_button, password)
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -64,11 +87,13 @@ class VPasswordWin(VWindow):
         self.arrow_button.setIcon(icon)
         self.arrow_button.setIconSize(QtCore.QSize(34, 31))
         self.arrow_button.setObjectName("arrow_button")
-        self.name_label = QtWidgets.QLabel(self.centralwidget)
-        self.name_label.setGeometry(QtCore.QRect(60, 20, 381, 31))
-        self.name_label.setStyleSheet("    font: 18pt \"Rubik\";\n"
+        self.name_frame = QtWidgets.QLineEdit(self.centralwidget)
+        self.name_frame.setGeometry(QtCore.QRect(60, 20, 381, 31))
+        self.name_frame.setStyleSheet("    font: 18pt \"Rubik\";\n"
                                       "    color:white;")
-        self.name_label.setObjectName("about_app_label")
+        self.name_frame.setObjectName("name_frame")
+        self.name_frame.setFrame(False)
+        self.name_frame.setReadOnly(True)
         self.star_button = QtWidgets.QPushButton(self.centralwidget)
         self.star_button.setGeometry(QtCore.QRect(320, 10, 23, 22))
         self.star_button.setText("")
@@ -140,10 +165,11 @@ class VPasswordWin(VWindow):
         self.arrow_button.clicked.connect(self.arrow_button_pressed)
         self.show_button.clicked.connect(self.show_button_pressed)
         self.copy_button.clicked.connect(self.copy_button_pressed)
+        self.edit_button.clicked.connect(self.edit_button_pressed)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "HASŁO"))
-        self.name_label.setText(_translate("MainWindow", "NAZWA"))
+        self.name_frame.setText(_translate("MainWindow", "NAZWA"))
         self.password_label.setText(_translate("MainWindow", "HASŁO"))
         self.login_label.setText(_translate("MainWindow", "LOGIN"))
