@@ -8,11 +8,10 @@
 # 
 #######################################################
 
-# from view.VMainWinAfter import VMainWinAfter
-
 from sample.controller.PController import PController
 from sample.model.MProfileMaker import MProfileMaker
 import string
+import os
 
 # remember about MainWinAfter
 from sample.view.VEncrypWin import VEncrypWin
@@ -44,6 +43,8 @@ class PSignUpWin(PController):
             profile = self._profile_maker.make_profile(name, surname, email, login, password)
             logins = self._loader.get_logins()
             logins[login] = self._hasher.hash(password)
+            os.mkdir('data/' + login)
+            os.mkdir('data/' + login + "/note")
             main_win_after = VMainWinAfter(self.main_window, self.main_win_before)
             win_list = [main_win_after, VPasswordsListWin(self.main_window),
                         VNoteListWin(self.main_window), VEncrypWin(self.main_window),
@@ -69,6 +70,9 @@ class PSignUpWin(PController):
             for c in special_symols:
                 if c in login:
                     return self.LOGIN_ERROR
+            logins = self._loader.get_logins()
+            if login in logins:
+                return self.LOGIN_ERROR
             return '1'
         else:
             return self.NOT_ALL_GAPS_FILLED_ERROR

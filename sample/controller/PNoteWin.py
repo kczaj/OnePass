@@ -31,7 +31,7 @@ class PNoteWin(PMainWin):
 
     def delete_button_handle(self, name):
         notes = self.profile.get_notes()
-        notes.pop(name)
+        notes.pop(name.lower())
         self.change_window(self._note_list_win)
 
     def save_button_handle(self, note):
@@ -41,7 +41,7 @@ class PNoteWin(PMainWin):
             notes = self.profile.get_notes()
             if name in notes:
                 return
-            path = 'data/' + self.profile.get_login() + '/note/' + name + '_b'
+            path = 'data/' + self.profile.get_login() + '/note/' + name.lower() + '_b'
             note_instance = MNote(name, path)
             notes[name.lower()] = note_instance
             salt = get_random_bytes(32)
