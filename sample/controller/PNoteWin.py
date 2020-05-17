@@ -45,7 +45,10 @@ class PNoteWin(PMainWin):
             self._encryptor.encrypt(path, msg, salt, self.profile.get_password())
             self.change_window(self._note_list_win)
         else:
-            print("hej")
+            path = self._note.get_path()
+            salt = get_random_bytes(32)
+            self._encryptor.encrypt(path,msg,salt,self.profile.get_password())
+            self.change_window(self._note_list_win)
 
     def edit_button_handle(self, name):
         if name == '':
