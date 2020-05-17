@@ -10,7 +10,6 @@
 from sample.controller.PController import PController
 from sample.view.VGenerateWinBefore import VGenerateWinBefore
 from sample.model.MPassword import MPassword
-from sample.model.MProfile import MProfile
 
 
 class PAddPasswordWin(PController):

@@ -19,9 +19,6 @@ class VSignInWin(VWindow):
         super().__init__()
         self.controller = PSignInWin(main_window, loader, sign_up_win, main_win_before, generate_win, hasher)
 
-    def forget_button_pressed(self):
-        pass
-
     def show(self, where, logins=''):
         self.setupUi(where)
 

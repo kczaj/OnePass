@@ -7,7 +7,6 @@
 # Original author: KUBA
 # 
 #######################################################
-from sample.model.MProfile import MProfile
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad, unpad
 from Crypto.Protocol.KDF import PBKDF2

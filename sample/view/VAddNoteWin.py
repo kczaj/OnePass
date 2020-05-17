@@ -23,8 +23,6 @@ class VAddNoteWin(VMainWin):
     def save_button_pressed(self):
         pass
 
-    # Nadpisać show
-
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(800, 600)
@@ -164,3 +162,8 @@ class VAddNoteWin(VMainWin):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "NOTATKA"))
         self.note_name_frame.setText(_translate("MainWindow", "NOWA_NOTATKA"))
+
+    def set_note(self, note, msg):
+        self.note_name_frame.setText(note.get_name())
+        self.textEdit.setText(msg)
+

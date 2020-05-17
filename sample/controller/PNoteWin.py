@@ -7,13 +7,8 @@
 # Original author: KUBA
 # 
 #######################################################
-'''from view.VGenerateWinBefore import VGenerateWinBefore
-from view.VEncrypWin import VEncrypWin
-from view.VPasswordsListWin import VPasswordsListWin
-from view.VMainWinAfter import VMainWinAfter
-from view.VAddNoteWin import VAddNoteWin
-from model.MProfile import MProfile'''
 from sample.controller.PMainWin import PMainWin
+from sample.model.MEncryptor import MEncryptor
 from sample.view.VAddNoteWin import VAddNoteWin
 from PyQt5 import QtGui, QtCore
 from PyQt5.QtWidgets import QListWidgetItem
@@ -24,6 +19,7 @@ class PNoteWin(PMainWin):
     def __init__(self, main_window):
         super().__init__(main_window)
         self.add_note_window = VAddNoteWin(self)
+        self._encryptor = MEncryptor()
 
     def add_button_handle(self):
         pass
@@ -31,8 +27,19 @@ class PNoteWin(PMainWin):
     def delete_button_handle(self, note):
         pass
 
-    def edit_button_handle(self):
+    def edit_button_handle(self, name):
+        if name == '':
+            return
+        notes = self.profile.get_notes()
+        self._note = notes[name.lower()]
+        msg = self.get_msg(self._note)
         self.change_window(self.add_note_window)
+        self.add_note_window.set_note(self._note, msg)
+
+    def get_msg(self, note):
+        path = note.get_path()
+        msg = self._encryptor.decrypt(path, self.profile.get_password())
+        return msg
 
     def save_button_handle(self, note):
         pass

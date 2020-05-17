@@ -15,11 +15,12 @@ class MProfile:
     SURNAME_ERROR = -1002
     PASSWORD_ERROR = -1005
 
-    def __init__(self, name, surname, email, login, passwords={}, notes={}):
+    def __init__(self, name, surname, email, login, password, passwords={}, notes={}):
         self._name = name
         self._surname = surname
         self._email = email
         self._login = login
+        self._password = password
         self._passwords = passwords
         self._notes = notes
 
@@ -65,3 +66,6 @@ class MProfile:
 
     def get_login(self):
         return self._login
+
+    def get_password(self):
+        return self._password

@@ -20,3 +20,6 @@ class MNote:
 
     def get_name(self):
         return self._name
+
+    def get_path(self):
+        return self._path

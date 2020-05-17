@@ -39,9 +39,6 @@ class PMainWinBefore(PController):
     def generate_button_handle(self):
         self.change_window(self._generate_win)
 
-    def __load_logins(self):
-        pass
-
     def sign_in_button_handle(self):
         self.change_window(self._sign_in_win)
 

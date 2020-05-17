@@ -65,12 +65,12 @@ class MLoader:
         words = notes_str.split("\n")
 
         for word in words:
-            path = 'data/' + login_instance + 'note' + word
+            path = 'data/' + login_instance + '/note/' + word + '_b'
             note = MNote(word, path)
             notes_list[word.lower()] = note
 
         return self._profile_maker.make_profile(name_instance, surname_instance, email_instance, login_instance,
-                                                passwords_list, notes_list)
+                                                password, passwords_list, notes_list)
 
     def get_logins(self):
         return self._logins

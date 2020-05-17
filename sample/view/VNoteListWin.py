@@ -22,12 +22,15 @@ class VNoteListWin(VMainWin):
         pass
 
     def edit_button_pressed(self):
-        self.controller.edit_button_handle()
+        instance = self.note_list.currentItem()
+        if instance is None:
+            return
+        else:
+            name = instance.text()
+        self.controller.edit_button_handle(name)
 
     def _add_note_list(self, note_list):
         self.controller.add_notes(note_list)
-
-    # Nadpisać show(self)
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
