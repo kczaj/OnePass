@@ -16,10 +16,10 @@ class VNoteListWin(VMainWin):
 
     def __init__(self, main_window):
         super().__init__()
-        self.controller = PNoteWin(main_window)
+        self.controller = PNoteWin(main_window,self)
 
     def add_button_pressed(self):
-        pass
+        self.controller.add_button_handle()
 
     def edit_button_pressed(self):
         instance = self.note_list.currentItem()
@@ -169,6 +169,7 @@ class VNoteListWin(VMainWin):
         self._add_note_list(self.note_list)
 
         self.edit_button.clicked.connect(self.edit_button_pressed)
+        self.add_button.clicked.connect(self.add_button_pressed)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate

@@ -18,10 +18,12 @@ class VAddNoteWin(VMainWin):
         self.controller = note_controller
 
     def delete_button_pressed(self):
-        pass
+        self.controller.delete_button_handle()
 
     def save_button_pressed(self):
-        pass
+        name = self.note_name_frame.text()
+        msg = self.textEdit.toPlainText()
+        self.controller.save_button_handle((name, msg))
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -157,6 +159,9 @@ class VAddNoteWin(VMainWin):
 
         self.set_button_action(self.home_button, self.password_button, self.note_button, self.generate_button,
                                self.encrypt_file_button)
+
+        self.save_button.clicked.connect(self.save_button_pressed)
+        self.delete_button.clicked.connect(self.delete_button_pressed)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate

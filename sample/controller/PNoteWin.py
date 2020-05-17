@@ -9,23 +9,43 @@
 #######################################################
 from sample.controller.PMainWin import PMainWin
 from sample.model.MEncryptor import MEncryptor
+from sample.model.MNote import MNote
 from sample.view.VAddNoteWin import VAddNoteWin
 from PyQt5 import QtGui, QtCore
 from PyQt5.QtWidgets import QListWidgetItem
+from Crypto.Random import get_random_bytes
 
 
 class PNoteWin(PMainWin):
 
-    def __init__(self, main_window):
+    def __init__(self, main_window, note_list_win):
         super().__init__(main_window)
-        self.add_note_window = VAddNoteWin(self)
+        self._note_list_win = note_list_win
+        self._add_note_window = VAddNoteWin(self)
         self._encryptor = MEncryptor()
 
     def add_button_handle(self):
-        pass
+        self._note = None
+        self.change_window(self._add_note_window)
 
     def delete_button_handle(self, note):
         pass
+
+    def save_button_handle(self, note):
+        name = note[0]
+        msg = note[1]
+        if self._note is None:
+            notes = self.profile.get_notes()
+            if name in notes:
+                return
+            path = 'data/' + self.profile.get_login() + '/note/' + name + '_b'
+            note_instance = MNote(name, path)
+            notes[name.lower()] = note_instance
+            salt = get_random_bytes(32)
+            self._encryptor.encrypt(path, msg, salt, self.profile.get_password())
+            self.change_window(self._note_list_win)
+        else:
+            print("hej")
 
     def edit_button_handle(self, name):
         if name == '':
@@ -33,16 +53,13 @@ class PNoteWin(PMainWin):
         notes = self.profile.get_notes()
         self._note = notes[name.lower()]
         msg = self.get_msg(self._note)
-        self.change_window(self.add_note_window)
-        self.add_note_window.set_note(self._note, msg)
+        self.change_window(self._add_note_window)
+        self._add_note_window.set_note(self._note, msg)
 
     def get_msg(self, note):
         path = note.get_path()
         msg = self._encryptor.decrypt(path, self.profile.get_password())
         return msg
-
-    def save_button_handle(self, note):
-        pass
 
     def _update(self, notes):
         pass
