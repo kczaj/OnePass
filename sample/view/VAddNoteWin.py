@@ -18,7 +18,8 @@ class VAddNoteWin(VMainWin):
         self.controller = note_controller
 
     def delete_button_pressed(self):
-        self.controller.delete_button_handle()
+        name = self.note_name_frame.text()
+        self.controller.delete_button_handle(name)
 
     def save_button_pressed(self):
         name = self.note_name_frame.text()
@@ -29,6 +30,9 @@ class VAddNoteWin(VMainWin):
         self.note_name_frame.setText(note.get_name())
         self.note_name_frame.setReadOnly(True)
         self.textEdit.setText(msg)
+
+    def new_note_settings(self):
+        self.delete_button.setDisabled(True)
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -172,6 +176,8 @@ class VAddNoteWin(VMainWin):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "NOTATKA"))
         self.note_name_frame.setText(_translate("MainWindow", "NOWA_NOTATKA"))
+
+
 
 
 

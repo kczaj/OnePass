@@ -27,9 +27,12 @@ class PNoteWin(PMainWin):
     def add_button_handle(self):
         self._note = None
         self.change_window(self._add_note_window)
+        self._add_note_window.new_note_settings()
 
-    def delete_button_handle(self, note):
-        pass
+    def delete_button_handle(self, name):
+        notes = self.profile.get_notes()
+        notes.pop(name)
+        self.change_window(self._note_list_win)
 
     def save_button_handle(self, note):
         name = note[0]
@@ -47,7 +50,7 @@ class PNoteWin(PMainWin):
         else:
             path = self._note.get_path()
             salt = get_random_bytes(32)
-            self._encryptor.encrypt(path,msg,salt,self.profile.get_password())
+            self._encryptor.encrypt(path, msg, salt, self.profile.get_password())
             self.change_window(self._note_list_win)
 
     def edit_button_handle(self, name):
@@ -63,9 +66,6 @@ class PNoteWin(PMainWin):
         path = note.get_path()
         msg = self._encryptor.decrypt(path, self.profile.get_password())
         return msg
-
-    def _update(self, notes):
-        pass
 
     def add_notes(self, note_list):
         notes = self.profile.get_notes()
