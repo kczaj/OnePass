@@ -10,10 +10,14 @@ from Crypto.Random import get_random_bytes
 if __name__ == '__main__':
     hasher = MHasher()
     encryptor = MEncryptor()
-    #salt = get_random_bytes(32)
-    #file = open('data/admin/notatka_3', 'r')
-    #msg = file.read()
-    #encryptor.encrypt('data/admin/notatka_3_b', msg, salt, 'passwrd1')
+    '''salt = get_random_bytes(32)
+    file = open('data/admin/notes', 'r')
+    msg = file.read()
+    encryptor.encrypt('data/admin/notesb', msg, salt, 'passwrd1')
+    salt = get_random_bytes(32)
+    file = open('data/admin/passwords', 'r')
+    msg = file.read()
+    encryptor.encrypt('data/admin/passwordsb', msg, salt, 'passwrd1')'''
     app = QtWidgets.QApplication(sys.argv)
     main_window = QtWidgets.QMainWindow()
     w = VMainWinBefore(main_window, hasher)

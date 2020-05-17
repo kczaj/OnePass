@@ -7,15 +7,11 @@
 # Original author: KUBA
 # 
 #######################################################
-'''from view.VProfileWin import VProfileWin
-from view.VNoteListWin import VNoteListWin
-from view.VGenerateWinBefore import VGenerateWinBefore
-from view.VMainWinBefore import VMainWinBefore
-from view.VAboutAppWin import VAboutAppWin
-from model.MEncryptor import MEncryptor'''
-from sample.controller.PMainWin import PMainWin
-from PyQt5 import QtWidgets
 
+from sample.controller.PMainWin import PMainWin
+from Crypto.Random import get_random_bytes
+
+from sample.model.MEncryptor import MEncryptor
 from sample.view.VAboutAppWinAfter import VAboutAppWinAfter
 from sample.view.VProfileWin import VProfileWin
 
@@ -28,14 +24,26 @@ class PMainWinAfter(PMainWin):
         self.main_win_after = main_win_after
         self.about_app_win = VAboutAppWinAfter(main_window)
         self.profile_win = VProfileWin(self.main_window, self.main_win_after)
+        self._encryptor = MEncryptor()
 
     def about_app_button_handle(self):
         self.change_window(self.about_app_win)
 
     def encrypt_button_handle(self):
-        pass
+        passwords = self.profile.get_passwords()
+        notes = self.profile.get_notes()
+        password = self.profile.get_password()
+        name = self.profile.get_name()
+        surname = self.profile.get_surname()
+        email = self.profile.get_email()
+        login = self.profile.get_login()
+
+        self.write_info_file(name, surname, email, login, password)
+        self.write_passwords_file(passwords, login, password)
+        self.write_notes_file(notes, login, password)
 
     def log_out_button_handle(self):
+        self.encrypt_button_handle()
         self.change_window(self.main_win_before)
 
     def profile_button_handle(self):
@@ -44,3 +52,32 @@ class PMainWinAfter(PMainWin):
     def set_window_list_in_subwindow(self):
         self.about_app_win.set_window_list(self.window_list)
         self.profile_win.set_profile(self.profile)
+
+    def write_info_file(self, name, surname, email, login, password):
+        msg = name + ';' + surname + ';' + email + ';' + login
+        salt = get_random_bytes(32)
+        path = "data/" + login + "/infob"
+        self._encryptor.encrypt(path, msg, salt, password)
+
+    def write_passwords_file(self, passwords, login, password):
+        path = "data/" + login + "/passwordsb"
+        msg = ""
+        for password_instance in passwords.values():
+            name = password_instance.get_name()
+            login = password_instance.get_login()
+            passwrd = password_instance.get_password()
+            type = password_instance.get_type()
+            is_favourite = '1' if password_instance.get_is_favourite() else "0"
+            msg = msg + name + ';' + login + ';' + passwrd + ';' + type + ';' + is_favourite + "\n"
+        salt = get_random_bytes(32)
+        msg = msg[:-1]
+        self._encryptor.encrypt(path, msg, salt, password)
+
+    def write_notes_file(self, notes, login, password):
+        path = "data/" + login + "/notesb"
+        msg = ''
+        for note in notes:
+            msg = msg + note + '\n'
+        msg = msg[:-1]
+        salt = get_random_bytes(32)
+        self._encryptor.encrypt(path, msg, salt, password)

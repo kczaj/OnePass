@@ -22,7 +22,7 @@ class VMainWinAfter(VMainWin):
         self.controller.about_app_button_handle()
 
     def encrypt_button_pressed(self):
-        pass
+        self.controller.encrypt_button_handle()
 
     def log_out_button_pressed(self):
         self.controller.log_out_button_handle()
@@ -194,6 +194,7 @@ class VMainWinAfter(VMainWin):
         self.log_out_button.clicked.connect(self.log_out_button_pressed)
         self.about_app_button.clicked.connect(self.about_app_button_pressed)
         self.profile_button.clicked.connect(self.profile_button_pressed)
+        self.encrypt_button.clicked.connect(self.encrypt_button_pressed)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
