@@ -39,6 +39,10 @@ class VProfileWin(VWindow):
             self.error_label.setVisible(True)
             self.password_frame.setText('')
             self.error_label.setText('Musisz podać hasło, aby je zmienić')
+        else:
+            self.error_label.setVisible(True)
+            self.password_frame.setText('')
+            self.error_label.setText('Hasło zmieniono pomyślnie')
 
     def _show_data(self, frames):
         self.controller.show_data(frames)

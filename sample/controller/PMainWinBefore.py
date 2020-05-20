@@ -7,10 +7,11 @@
 # Original author: KUBA
 # 
 #######################################################
-
+from Crypto.Random import get_random_bytes
 from PyQt5 import QtWidgets
 
 from sample.controller.PController import PController
+from sample.model.MEncryptor import MEncryptor
 from sample.view.VSignInWin import VSignInWin
 from sample.view.VSignUpWin import VSignUpWin
 from sample.view.VGenerateWinBefore import VGenerateWinBefore
@@ -46,4 +47,13 @@ class PMainWinBefore(PController):
         self.change_window(self._sign_up_win)
 
     def close_button_handle(self):
-        pass
+        logins = self._loader.get_logins()
+        msg = ''
+        for login in logins:
+            str = login +';'+logins[login]+'\n'
+            msg = msg + str
+        msg = msg[:-1]
+        encryptor = MEncryptor()
+        salt = get_random_bytes(32)
+        encryptor.encrypt('data/log', msg, salt)
+        self.main_window.close()

@@ -11,10 +11,10 @@ if __name__ == '__main__':
     hasher = MHasher()
     print(hasher.hash('passwrd12'))
     encryptor = MEncryptor()
-    salt = get_random_bytes(32)
+    '''salt = get_random_bytes(32)
     file = open('data/logins', 'r')
     msg = file.read()
-    encryptor.encrypt('data/log', msg, salt)
+    encryptor.encrypt('data/log', msg, salt)'''
     app = QtWidgets.QApplication(sys.argv)
     main_window = QtWidgets.QMainWindow()
     w = VMainWinBefore(main_window, hasher)
