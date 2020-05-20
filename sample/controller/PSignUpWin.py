@@ -28,6 +28,7 @@ class PSignUpWin(PController):
     EMAIL_ERROR = 'Podany mail jest niepoprawny'
     LOGIN_ERROR = 'Podany login jest niepoprawny'
     PASSWORD_ERROR = 'Podane hasło nie spełnia wymogów'
+    LOGIN_WRONG_NAME_ERROR = "Podany login istnieje już w bazie"
 
     def __init__(self, sign_up_win, main_window, _loader, main_win_before, generate_win, hasher):
         super().__init__(main_window, main_win_before)
@@ -72,7 +73,7 @@ class PSignUpWin(PController):
                     return self.LOGIN_ERROR
             logins = self._loader.get_logins()
             if login in logins:
-                return self.LOGIN_ERROR
+                return self.LOGIN_WRONG_NAME_ERROR
             return '1'
         else:
             return self.NOT_ALL_GAPS_FILLED_ERROR
