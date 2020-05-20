@@ -30,10 +30,15 @@ class VProfileWin(VWindow):
         data = (self.name_frame.text(), self.surname_frame.text(), self.email_frame.text())
         if self.controller.save_button_handle(data) != 1:
             self.error_label.setVisible(True)
+            self.error_label.setText('Błąd we wprowadzonych danych!')
             self._show_data((self.name_frame, self.surname_frame, self.email_frame, self.login_frame))
 
-    def show_button_pressed(self):
-        pass
+    def change_password_button_pressed(self):
+        password = self.password_frame.text()
+        if not self.controller.change_password_button_pressed(password):
+            self.error_label.setVisible(True)
+            self.password_frame.setText('')
+            self.error_label.setText('Musisz podać hasło, aby je zmienić')
 
     def _show_data(self, frames):
         self.controller.show_data(frames)
@@ -69,7 +74,6 @@ class VProfileWin(VWindow):
         self.bg.setObjectName("bg")
         self.error_label = QtWidgets.QLabel(self.centralwidget)
         self.error_label.setGeometry(QtCore.QRect(140, 410, 250, 100))
-        self.error_label.setText('Błąd we wprowadzonych danych!')
         self.error_label.setStyleSheet("QLabel{\n"
                                  "    font: 12pt \"Rubik\";\n"
                                  "    color:rgb(245,0,0);\n"
@@ -121,7 +125,7 @@ class VProfileWin(VWindow):
         spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.gridLayout.addItem(spacerItem1, 8, 0, 1, 1)
         self.password_frame = QtWidgets.QLineEdit(self.gridLayoutWidget)
-        self.password_frame.setReadOnly(True)
+        self.password_frame.setReadOnly(False)
         self.password_frame.setObjectName("password_frame")
         self.gridLayout.addWidget(self.password_frame, 9, 1, 1, 1)
         spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
@@ -146,15 +150,15 @@ class VProfileWin(VWindow):
         self.gridLayout.addWidget(self.name_frame, 1, 1, 1, 1)
         spacerItem4 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.gridLayout.addItem(spacerItem4, 0, 0, 1, 1)
-        self.show_button = QtWidgets.QPushButton(self.centralwidget)
-        self.show_button.setGeometry(QtCore.QRect(135, 420, 84, 18))
-        self.show_button.setText("")
+        self.change_password_button = QtWidgets.QPushButton(self.centralwidget)
+        self.change_password_button.setGeometry(QtCore.QRect(135, 420, 84, 18))
+        self.change_password_button.setText("")
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap("view/img/profile_win/pokaz_przycisk.png"), QtGui.QIcon.Normal,
                         QtGui.QIcon.Off)
-        self.show_button.setIcon(icon1)
-        self.show_button.setIconSize(QtCore.QSize(84, 18))
-        self.show_button.setObjectName("show_button")
+        self.change_password_button.setIcon(icon1)
+        self.change_password_button.setIconSize(QtCore.QSize(84, 18))
+        self.change_password_button.setObjectName("show_button")
         self.edit_button = QtWidgets.QPushButton(self.centralwidget)
         self.edit_button.setGeometry(QtCore.QRect(60, 490, 161, 34))
         self.edit_button.setText("")
@@ -186,6 +190,7 @@ class VProfileWin(VWindow):
 
         self.edit_button.clicked.connect(self.edit_button_pressed)
         self.save_button.clicked.connect(self.save_button_pressed)
+        self.change_password_button.clicked.connect(self.change_password_button_pressed)
 
         self.arrow_button.clicked.connect(self.arrow_button_pressed)
 

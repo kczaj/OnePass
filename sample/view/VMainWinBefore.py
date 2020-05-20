@@ -31,6 +31,9 @@ class VMainWinBefore(VWindow):
     def __sign_up_button_pressed(self):
         self.controller.sign_up_button_handle()
 
+    def close_button_handle(self):
+        self.controller.close_button_handle()
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(800, 600)
@@ -126,14 +129,14 @@ class VMainWinBefore(VWindow):
         self.logo.setAlignment(QtCore.Qt.AlignCenter)
         self.logo.setObjectName("logo")
         self.gridLayout_2.addWidget(self.logo, 0, 0, 1, 1)
-        self.option_button = QtWidgets.QPushButton(self.gridLayoutWidget_2)
-        self.option_button.setText("")
+        self.close_button = QtWidgets.QPushButton(self.gridLayoutWidget_2)
+        self.close_button.setText("")
         icon4 = QtGui.QIcon()
         icon4.addPixmap(QtGui.QPixmap("view/img/przycisk_opcje.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.option_button.setIcon(icon4)
-        self.option_button.setIconSize(QtCore.QSize(32, 34))
-        self.option_button.setObjectName("option_button")
-        self.gridLayout_2.addWidget(self.option_button, 2, 0, 1, 1)
+        self.close_button.setIcon(icon4)
+        self.close_button.setIconSize(QtCore.QSize(32, 34))
+        self.close_button.setObjectName("option_button")
+        self.gridLayout_2.addWidget(self.close_button, 2, 0, 1, 1)
         spacerItem3 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.gridLayout_2.addItem(spacerItem3, 1, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
@@ -145,11 +148,13 @@ class VMainWinBefore(VWindow):
         self.sign_up_button.clicked.connect(self.__sign_up_button_pressed)
         self.generate_button.clicked.connect(self.__generate_button_pressed)
         self.about_app_button.clicked.connect(self.__about_app_button_pressed)
+        self.close_button.clicked.connect(self.close_button_handle)
 
         self.sign_in_button.installEventFilter(self)
         self.sign_up_button.installEventFilter(self)
         self.about_app_button.installEventFilter(self)
         self.generate_button.installEventFilter(self)
+
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -211,3 +216,4 @@ class VMainWinBefore(VWindow):
 
 
         return super(VMainWinBefore, self).eventFilter(source, event)
+

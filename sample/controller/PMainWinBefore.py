@@ -44,3 +44,6 @@ class PMainWinBefore(PController):
 
     def sign_up_button_handle(self):
         self.change_window(self._sign_up_win)
+
+    def close_button_handle(self):
+        pass

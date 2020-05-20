@@ -18,8 +18,12 @@ class PProfileWin(PController):
     def save_button_handle(self, parameters):
         return self._profile.update(parameters)
 
-    def show_button_pressed(self):
-        pass
+    def change_password_button_pressed(self, password):
+        if password == '':
+            return False
+        else:
+            self._profile.update_password(password)
+            return True
 
     def show_data(self, frames):
         name_frame = frames[0]

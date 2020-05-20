@@ -18,8 +18,10 @@ from sample.view.VProfileWin import VProfileWin
 
 class PMainWinAfter(PMainWin):
 
-    def __init__(self, main_window, main_win_before, main_win_after):
+    def __init__(self, main_window, main_win_before, main_win_after, loader, hasher):
         super().__init__(main_window)
+        self._loader = loader
+        self._hasher = hasher
         self.main_win_before = main_win_before
         self.main_win_after = main_win_after
         self.about_app_win = VAboutAppWinAfter(main_window)
@@ -41,6 +43,8 @@ class PMainWinAfter(PMainWin):
         self.write_info_file(name, surname, email, login, password)
         self.write_passwords_file(passwords, login, password)
         self.write_notes_file(notes, login, password)
+        logins = self._loader.get_logins()
+        logins[login] = self._hasher.hash(password)
 
     def log_out_button_handle(self):
         self.encrypt_button_handle()

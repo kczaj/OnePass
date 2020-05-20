@@ -14,9 +14,9 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 class VMainWinAfter(VMainWin):
 
-    def __init__(self, main_window, main_win_before):
+    def __init__(self, main_window, main_win_before, loader, hasher):
         super().__init__()
-        self.controller = PMainWinAfter(main_window, main_win_before, self)
+        self.controller = PMainWinAfter(main_window, main_win_before, self, loader, hasher)
 
     def about_app_button_pressed(self):
         self.controller.about_app_button_handle()

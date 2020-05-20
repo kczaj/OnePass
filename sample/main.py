@@ -9,15 +9,12 @@ from Crypto.Random import get_random_bytes
 
 if __name__ == '__main__':
     hasher = MHasher()
+    print(hasher.hash('passwrd12'))
     encryptor = MEncryptor()
-    '''salt = get_random_bytes(32)
-    file = open('data/admin/notes', 'r')
-    msg = file.read()
-    encryptor.encrypt('data/admin/notesb', msg, salt, 'passwrd1')
     salt = get_random_bytes(32)
-    file = open('data/admin/passwords', 'r')
+    file = open('data/logins', 'r')
     msg = file.read()
-    encryptor.encrypt('data/admin/passwordsb', msg, salt, 'passwrd1')'''
+    encryptor.encrypt('data/log', msg, salt)
     app = QtWidgets.QApplication(sys.argv)
     main_window = QtWidgets.QMainWindow()
     w = VMainWinBefore(main_window, hasher)

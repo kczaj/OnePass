@@ -27,12 +27,10 @@ class PSignInWin(PController):
         super().__init__(main_window, main_win_before)
         self._generate_win = generate_win
         self._loader = loader
+        self._hasher = hasher
         self._checker = MChecker(self._loader, hasher)
         self._encryptor = MEncryptor()
         self._sign_up_window = sign_up_win
-
-    def forget_button_handle(self):
-        pass
 
     def _load_profile(self, login, password):
         return self._loader.load_profile(login, password)
@@ -40,7 +38,7 @@ class PSignInWin(PController):
     def sign_in_button_handle(self, login, password):
         if self.__validate_data((login, password)):
             profile = self._load_profile(login, password)
-            main_win_after = VMainWinAfter(self.main_window, self.main_win_before)
+            main_win_after = VMainWinAfter(self.main_window, self.main_win_before, self._loader, self._hasher )
             win_list = [main_win_after, VPasswordsListWin(self.main_window),
                         VNoteListWin(self.main_window), VEncrypWin(self.main_window),
                         VGenerateWinAfter(self.main_window, main_win_after)]

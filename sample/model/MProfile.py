@@ -33,12 +33,6 @@ class MProfile:
         else:
             return self._verify(update)
 
-    def update_notes(self, notes):
-        pass
-
-    def update_passwords(self, passwords):
-        pass
-
     def _verify(self, update):
         special_symols = '!@#$%^&*()_-+={[}]\:;<,>.?/'
         digits = string.digits
@@ -48,6 +42,9 @@ class MProfile:
             if c in update[1]:
                 return self.SURNAME_ERROR
         return 1
+
+    def update_password(self,password):
+        self._password = password
 
     def get_passwords(self):
         return self._passwords
