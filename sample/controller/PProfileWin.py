@@ -7,7 +7,10 @@
 # Original author: KUBA
 # 
 #######################################################
+from Crypto.Random import get_random_bytes
+
 from sample.controller.PController import PController
+from sample.model.MEncryptor import MEncryptor
 
 
 class PProfileWin(PController):
@@ -22,6 +25,15 @@ class PProfileWin(PController):
         if password == '':
             return False
         else:
+            old_password = self._profile.get_password()
+            notes = self._profile.get_notes()
+            encryptor = MEncryptor()
+            login = self._profile.get_login()
+            for note in notes:
+                file = notes[note].get_path()
+                msg = encryptor.decrypt(file, old_password)
+                salt = get_random_bytes(32)
+                encryptor.encrypt(file, msg, salt, password)
             self._profile.update_password(password)
             return True
 

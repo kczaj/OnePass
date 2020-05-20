@@ -134,7 +134,7 @@ class VMainWinBefore(VWindow):
         icon4 = QtGui.QIcon()
         icon4.addPixmap(QtGui.QPixmap("view/img/przycisk_opcje.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.close_button.setIcon(icon4)
-        self.close_button.setIconSize(QtCore.QSize(32, 34))
+        self.close_button.setIconSize(QtCore.QSize(44, 36))
         self.close_button.setObjectName("option_button")
         self.gridLayout_2.addWidget(self.close_button, 2, 0, 1, 1)
         spacerItem3 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
