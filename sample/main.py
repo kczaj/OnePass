@@ -9,7 +9,6 @@ from Crypto.Random import get_random_bytes
 
 if __name__ == '__main__':
     hasher = MHasher()
-    print(hasher.hash('passwrd12'))
     encryptor = MEncryptor()
     #encryptor.decrypt('dtfygui')
     '''salt = get_random_bytes(32)

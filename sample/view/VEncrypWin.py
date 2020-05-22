@@ -24,8 +24,6 @@ class VEncrypWin(VMainWin):
     def encrypt_button_pressed(self):
         pass
 
-    # Nadpisać show(self)
-
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(800, 600)

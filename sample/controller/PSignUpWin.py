@@ -62,6 +62,9 @@ class PSignUpWin(PController):
     def __validate_data(self, name, surname, email, login, password):
         special_symols = '!@#$%^&*()_-+={[}]\:;<,>.?/'
         digits = string.digits
+        upper = string.ascii_uppercase
+        lower = string.ascii_lowercase
+        status = 0
         if name != '' and surname != '' and email != '' and login != '' and password != '':
             for c in special_symols + digits:
                 if c in name:
@@ -72,8 +75,26 @@ class PSignUpWin(PController):
                 if c in login:
                     return self.LOGIN_ERROR
             logins = self._loader.get_logins()
+            if '@' not in email:
+                return self.EMAIL_ERROR
             if login in logins:
                 return self.LOGIN_WRONG_NAME_ERROR
+            if len(password) > 8:
+                for c in password:
+                    if c in upper:
+                        status = status + 1
+                        break
+                for c in password:
+                    if c in lower:
+                        status = status + 1
+                        break
+                for c in password:
+                    if c in digits:
+                        status = status + 1
+                if status != 3:
+                    return self.PASSWORD_ERROR
+            else:
+                return self.PASSWORD_ERROR
             return '1'
         else:
             return self.NOT_ALL_GAPS_FILLED_ERROR
