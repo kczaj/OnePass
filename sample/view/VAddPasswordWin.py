@@ -23,7 +23,9 @@ class VAddPasswordWin(VWindow):
         self.controller.generate_button_handle()
 
     def save_button_pressed(self):
-        data = (self.name_frame.text(), self.login_frame.text(), self.password_frame.text(),self.comboBox.currentText(), self.url_frame.text())
+        data = (
+        self.name_frame.text(), self.login_frame.text(), self.password_frame.text(), self.comboBox.currentText(),
+        self.url_frame.text())
         self.controller.save_button_handle(data)
 
     def set_profile(self, profile):

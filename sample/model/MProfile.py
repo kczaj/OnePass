@@ -13,6 +13,7 @@ import string
 class MProfile:
     NAME_ERROR = -1001
     SURNAME_ERROR = -1002
+    EMAIL_ERROR = -1003
     PASSWORD_ERROR = -1005
 
     def __init__(self, name, surname, email, login, password, passwords={}, notes={}):
@@ -41,6 +42,8 @@ class MProfile:
                 return self.NAME_ERROR
             if c in update[1]:
                 return self.SURNAME_ERROR
+            if '@' not in update[2]:
+                return self.EMAIL_ERROR
         return 1
 
     def update_password(self,password):
