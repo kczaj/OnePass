@@ -10,6 +10,7 @@
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad, unpad
 from Crypto.Protocol.KDF import PBKDF2
+import sys
 
 
 class MEncryptor:
@@ -18,16 +19,21 @@ class MEncryptor:
     def decrypt(self, file, password=None):
         if password is None:
             password = self.password
-        file_in = open(file, 'rb')
-        salt = file_in.read(32)
-        iv = file_in.read(16)
-        msg = file_in.read()
-        file_in.close()
+        try:
+            file_in = open(file, 'rb')
+            salt = file_in.read(32)
+            iv = file_in.read(16)
+            msg = file_in.read()
+            file_in.close()
 
-        key = PBKDF2(password, salt, dkLen=32)
-        cipher = AES.new(key, AES.MODE_CBC, iv=iv)
-        og_data = unpad(cipher.decrypt(msg), AES.block_size)
-        return og_data.decode('utf-8')
+            key = PBKDF2(password, salt, dkLen=32)
+            cipher = AES.new(key, AES.MODE_CBC, iv=iv)
+            og_data = unpad(cipher.decrypt(msg), AES.block_size)
+            return og_data.decode('utf-8')
+        except FileNotFoundError:
+            print('Nie znaleziono pliku ' + file )
+            sys.exit()
+
 
     def encrypt(self, file, data, salt, password=None):
         if password is None:
