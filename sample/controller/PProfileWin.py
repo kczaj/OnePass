@@ -34,9 +34,10 @@ class PProfileWin(PController):
                 msg = encryptor.decrypt(file, old_password)
                 salt = get_random_bytes(32)
                 encryptor.encrypt(file, msg, salt, password)
-            self._profile.update_password(password)
-            return True
-
+            if self._profile.update_password(password):
+                return True
+            else:
+                return False
     def show_data(self, frames):
         name_frame = frames[0]
         surname_frame = frames[1]

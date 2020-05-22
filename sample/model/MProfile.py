@@ -46,8 +46,29 @@ class MProfile:
                 return self.EMAIL_ERROR
         return 1
 
-    def update_password(self,password):
+    def update_password(self, password):
+        digits = string.digits
+        upper = string.ascii_uppercase
+        lower = string.ascii_lowercase
+        status = 0
+        if len(password) > 8:
+            for c in password:
+                if c in upper:
+                    status = status + 1
+                    break
+            for c in password:
+                if c in lower:
+                    status = status + 1
+                    break
+            for c in password:
+                if c in digits:
+                    status = status + 1
+            if status != 3:
+                return False
+        else:
+            return False
         self._password = password
+        return True
 
     def get_passwords(self):
         return self._passwords
