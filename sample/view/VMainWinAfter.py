@@ -199,4 +199,4 @@ class VMainWinAfter(VMainWin):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "ONEPASS"))
-        self.greeting_label.setText(_translate("MainWindow", "WITAJ W KUBA"))
+        self.greeting_label.setText(_translate("MainWindow", "WITAJ"))
