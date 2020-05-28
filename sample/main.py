@@ -10,11 +10,10 @@ from Crypto.Random import get_random_bytes
 if __name__ == '__main__':
     hasher = MHasher()
     encryptor = MEncryptor()
-    #encryptor.decrypt('dtfygui')
     '''salt = get_random_bytes(32)
-    file = open('data/logins', 'r')
+    file = open('data/admin/encrypteds', 'r')
     msg = file.read()
-    encryptor.encrypt('data/log', msg, salt)'''
+    encryptor.encrypt('data/admin/encryptedsb', msg, salt, 'passwrd1')'''
     app = QtWidgets.QApplication(sys.argv)
     main_window = QtWidgets.QMainWindow()
     w = VMainWinBefore(main_window, hasher)

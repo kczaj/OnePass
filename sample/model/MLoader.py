@@ -36,6 +36,7 @@ class MLoader:
         info = 'data/' + login_instance + '/infob'
         passwords = 'data/' + login_instance + '/passwordsb'
         notes = 'data/' + login_instance + '/notesb'
+        encrytped = 'data/' + login_instance + '/encryptedsb'
 
         info_str = self._encryptor.decrypt(info, password)
         words = info_str.split(';')
@@ -69,8 +70,13 @@ class MLoader:
             note = MNote(word, path)
             notes_list[word.lower()] = note
 
+        encrypted_list = []
+
+        encrypted_str = self._encryptor.decrypt(encrytped, password)
+        encrypted_list = encrypted_str.split(';')
+
         return self._profile_maker.make_profile(name_instance, surname_instance, email_instance, login_instance,
-                                                password, passwords_list, notes_list)
+                                                password, passwords_list, notes_list, encrypted_list)
 
     def get_logins(self):
         return self._logins

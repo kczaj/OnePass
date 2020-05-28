@@ -7,9 +7,6 @@
 # Original author: KUBA
 # 
 #######################################################
-'''from view.VPasswordWin import VPasswordWin
-from view.VEncrypWin import VEncrypWin
-'''
 from PyQt5.QtWidgets import QListWidgetItem
 
 from sample.controller.PMainWin import PMainWin

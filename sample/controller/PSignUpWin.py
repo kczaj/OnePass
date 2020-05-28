@@ -45,7 +45,8 @@ class PSignUpWin(PController):
             logins = self._loader.get_logins()
             logins[login] = self._hasher.hash(password)
             os.mkdir('data/' + login)
-            os.mkdir('data/' + login + "/note")
+            os.mkdir('data/' + login + '/note')
+            os.mkdir('data/' + login + '/encrypted')
             main_win_after = VMainWinAfter(self.main_window, self.main_win_before, self._loader, self._hasher)
             win_list = [main_win_after, VPasswordsListWin(self.main_window),
                         VNoteListWin(self.main_window), VEncrypWin(self.main_window),

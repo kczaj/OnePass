@@ -16,7 +16,7 @@ class MProfile:
     EMAIL_ERROR = -1003
     PASSWORD_ERROR = -1005
 
-    def __init__(self, name, surname, email, login, password, passwords={}, notes={}):
+    def __init__(self, name, surname, email, login, password, passwords={}, notes={}, encrypted_list=[]):
         self._name = name
         self._surname = surname
         self._email = email
@@ -24,6 +24,7 @@ class MProfile:
         self._password = password
         self._passwords = passwords
         self._notes = notes
+        self._encrypted_list = encrypted_list
 
     def update(self, update):
         if self._verify(update) == 1:
@@ -90,3 +91,6 @@ class MProfile:
 
     def get_password(self):
         return self._password
+
+    def get_encrypted_list(self):
+        return self._encrypted_list

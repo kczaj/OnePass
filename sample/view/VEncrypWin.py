@@ -7,6 +7,8 @@
 # Original author: KUBA
 # 
 #######################################################
+from PyQt5.QtWidgets import QFileDialog
+
 from sample.controller.PEncrypWin import PEncrypWin
 from sample.view.VMainWin import VMainWin
 from PyQt5 import QtCore, QtGui, QtWidgets
@@ -22,7 +24,13 @@ class VEncrypWin(VMainWin):
         pass
 
     def encrypt_button_pressed(self):
-        pass
+        path = self.file_label.text()
+        self.controller.encrypt_button_handle(path)
+        self._add_to_list()
+
+    def show(self, where):
+        super().show(where)
+        self._add_to_list()
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -124,14 +132,14 @@ class VEncrypWin(VMainWin):
         self.encrypt_file_button.setIconSize(QtCore.QSize(42, 52))
         self.encrypt_file_button.setObjectName("encrypt_file_button")
         self.gridLayout_2.addWidget(self.encrypt_file_button, 5, 0, 1, 1)
-        self.file_list = QtWidgets.QListView(self.centralwidget)
+        self.file_list = QtWidgets.QListWidget(self.centralwidget)
         self.file_list.setGeometry(QtCore.QRect(105, 101, 631, 361))
         font = QtGui.QFont()
         font.setFamily("Rubik")
         self.file_list.setFont(font)
-        self.file_list.setStyleSheet("background:transparent")
+        self.file_list.setStyleSheet("background:transparent; font: 12pt \"Rubik\"; color:white;")
         self.file_list.setFrameShape(QtWidgets.QFrame.NoFrame)
-        self.file_list.setViewMode(QtWidgets.QListView.ListMode)
+        self.file_list.setViewMode(QtWidgets.QListWidget.ListMode)
         self.file_list.setObjectName("file_list")
         self.encryp_button = QtWidgets.QPushButton(self.centralwidget)
         self.encryp_button.setGeometry(QtCore.QRect(600, 540, 132, 28))
@@ -181,8 +189,17 @@ class VEncrypWin(VMainWin):
 
         self.set_button_action(self.home_button, self.password_button, self.note_button, self.generate_button,
                                self.encrypt_file_button)
+        self.file_choose_button.pressed.connect(self.file_choose_button_pressed)
+        self.encryp_button.pressed.connect(self.encrypt_button_pressed)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "TWOJE PLIKI"))
         self.greeting_label.setText(_translate("MainWindow", "TWOJE PLIKI"))
+
+    def file_choose_button_pressed(self):
+        file_dialog = QFileDialog.getOpenFileName(None, 'Hej', '', "Image files (*.txt)")
+        self.file_label.setText(file_dialog[0])
+
+    def _add_to_list(self):
+        self.controller.add_to_list(self.file_list)

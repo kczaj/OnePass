@@ -8,15 +8,40 @@
 # 
 #######################################################
 from sample.controller.PMainWin import PMainWin
+from sample.model.MEncryptor import MEncryptor
+from Crypto.Random import get_random_bytes
+
 
 
 class PEncrypWin(PMainWin):
 
     def __init__(self, main_window):
         super().__init__(main_window)
+        self._encryptor = MEncryptor()
 
     def decrypt_button_handle(self):
         pass
 
-    def encrypt_button_handle(self):
-        pass
+    def encrypt_button_handle(self, path):
+        if path == '':
+            return
+        try:
+            file = open(path, 'r')
+            msg = file.read()
+        except FileNotFoundError:
+            print('Nie znaleziono pliku')
+            return
+        words = path.split("/")
+        file_name = words[len(words) - 1]
+        file_name = file_name.split('.')
+        file_name = file_name[0]
+        new_path = 'data/' + self.profile.get_login() + '/encrypted/' + file_name + '.ope'
+        salt = get_random_bytes(32)
+        self._encryptor.encrypt(new_path, msg, salt, self.profile.get_password())
+        encrypted_list = self.profile.get_encrypted_list()
+        encrypted_list.append(file_name)
+
+    def add_to_list(self, file_list):
+        encrypted_list = self.profile.get_encrypted_list()
+        for file in encrypted_list:
+            file_list.addItem(file)
