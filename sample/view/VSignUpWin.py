@@ -143,6 +143,7 @@ class VSignUpWin(VWindow):
         self.sign_up_button.clicked.connect(self.sign_up_button_pressed)
 
         self.arrow_button.installEventFilter(self)
+        self.sign_up_button.installEventFilter(self)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -167,5 +168,21 @@ class VSignUpWin(VWindow):
                                            QtGui.QIcon.Off)
             self.arrow_button.setIcon(icon_sign_in)
             self.arrow_button.setIconSize(QtCore.QSize(34, 31))
+
+        if event.type() == QtCore.QEvent.HoverEnter and source is self.sign_up_button:
+            icon_hovered_sign_in = QtGui.QIcon()
+            icon_hovered_sign_in.addPixmap(QtGui.QPixmap("view/img/sign_up/przycisk_rej_hovered.png"),
+                                           QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.sign_up_button.setIcon(icon_hovered_sign_in)
+            self.sign_up_button.setGeometry(QtCore.QRect(167, 469, 167, 36))
+            self.sign_up_button.setIconSize(QtCore.QSize(167, 36))
+        if event.type() == QtCore.QEvent.HoverLeave and source is self.sign_up_button:
+            icon_sign_in = QtGui.QIcon()
+            icon_sign_in.addPixmap(QtGui.QPixmap("view/img/sign_up/przycisk_rej.png"), QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.sign_up_button.setIcon(icon_sign_in)
+            self.sign_up_button.setGeometry(QtCore.QRect(170, 470, 161, 34))
+            self.sign_up_button.setIconSize(QtCore.QSize(161, 34))
 
         return super(VSignUpWin, self).eventFilter(source, event)
