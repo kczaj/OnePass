@@ -197,6 +197,7 @@ class VProfileWin(VWindow):
         self.change_password_button.clicked.connect(self.change_password_button_pressed)
 
         self.arrow_button.clicked.connect(self.arrow_button_pressed)
+        self.arrow_button.installEventFilter(self)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -207,3 +208,20 @@ class VProfileWin(VWindow):
         self.password_label.setText(_translate("MainWindow", "HASŁO"))
         self.login_label.setText(_translate("MainWindow", "LOGIN"))
         self.email_label.setText(_translate("MainWindow", "EMAIL"))
+
+    def eventFilter(self, source, event) -> bool:
+        if event.type() == QtCore.QEvent.HoverEnter and source is self.arrow_button:
+            icon_hovered_sign_in = QtGui.QIcon()
+            icon_hovered_sign_in.addPixmap(QtGui.QPixmap("view/img/przycisk_strzałka_hovered.png"),
+                                           QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.arrow_button.setIcon(icon_hovered_sign_in)
+            self.arrow_button.setIconSize(QtCore.QSize(34, 31))
+        if event.type() == QtCore.QEvent.HoverLeave and source is self.arrow_button:
+            icon_sign_in = QtGui.QIcon()
+            icon_sign_in.addPixmap(QtGui.QPixmap("view/img/przycisk_strzałka.png"), QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.arrow_button.setIcon(icon_sign_in)
+            self.arrow_button.setIconSize(QtCore.QSize(34, 31))
+
+        return super(VProfileWin, self).eventFilter(source, event)

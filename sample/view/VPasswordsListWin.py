@@ -180,3 +180,5 @@ class VPasswordsListWin(VMainWin):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "TWOJE HASŁA"))
         self.greeting_label.setText(_translate("MainWindow", "TWOJE HASŁA"))
+
+

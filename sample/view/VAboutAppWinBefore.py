@@ -64,6 +64,7 @@ class VAboutAppWinBefore(VWindow):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
         self.arrow_button.clicked.connect(self.arrow_button_pressed)
+        self.arrow_button.installEventFilter(self)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -75,3 +76,20 @@ class VAboutAppWinBefore(VWindow):
                                             "p, li { white-space: pre-wrap; }\n"
                                             "</style></head><body style=\" font-family:\'Rubik\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
                                             "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">wadopkkooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p></body></html>"))
+
+    def eventFilter(self, source, event) -> bool:
+        if event.type() == QtCore.QEvent.HoverEnter and source is self.arrow_button:
+            icon_hovered_sign_in = QtGui.QIcon()
+            icon_hovered_sign_in.addPixmap(QtGui.QPixmap("view/img/przycisk_strzałka_hovered.png"),
+                                           QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.arrow_button.setIcon(icon_hovered_sign_in)
+            self.arrow_button.setIconSize(QtCore.QSize(34, 31))
+        if event.type() == QtCore.QEvent.HoverLeave and source is self.arrow_button:
+            icon_sign_in = QtGui.QIcon()
+            icon_sign_in.addPixmap(QtGui.QPixmap("view/img/przycisk_strzałka.png"), QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.arrow_button.setIcon(icon_sign_in)
+            self.arrow_button.setIconSize(QtCore.QSize(34, 31))
+
+        return super(VAboutAppWinBefore, self).eventFilter(source, event)

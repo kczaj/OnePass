@@ -123,9 +123,62 @@ class VSignInWin(VWindow):
         self.sign_up_button.clicked.connect(self.sign_up_button_pressed)
         self.sign_in_button.clicked.connect(self.sign_in_button_pressed)
 
+        self.arrow_button.installEventFilter(self)
+        self.sign_in_button.installEventFilter(self)
+        self.sign_up_button.installEventFilter(self)
+
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "LOGOWANIE"))
         self.password_label.setText(_translate("MainWindow", "HASŁO"))
         self.sign_up_button.setText(_translate("MainWindow", "Załóż konto!"))
         self.login_label.setText(_translate("MainWindow", "LOGIN"))
+
+    def eventFilter(self, source, event) -> bool:
+        if event.type() == QtCore.QEvent.HoverEnter and source is self.arrow_button:
+            icon_hovered_sign_in = QtGui.QIcon()
+            icon_hovered_sign_in.addPixmap(QtGui.QPixmap("view/img/przycisk_strzałka_hovered.png"),
+                                           QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.arrow_button.setIcon(icon_hovered_sign_in)
+            self.arrow_button.setIconSize(QtCore.QSize(34, 31))
+        if event.type() == QtCore.QEvent.HoverLeave and source is self.arrow_button:
+            icon_sign_in = QtGui.QIcon()
+            icon_sign_in.addPixmap(QtGui.QPixmap("view/img/przycisk_strzałka.png"), QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.arrow_button.setIcon(icon_sign_in)
+            self.arrow_button.setIconSize(QtCore.QSize(34, 31))
+
+        if event.type() == QtCore.QEvent.HoverEnter and source is self.sign_in_button:
+            icon_hovered_sign_in = QtGui.QIcon()
+            icon_hovered_sign_in.addPixmap(QtGui.QPixmap("view/img/sign_in/przycisk_zaloguj_hovered.png"),
+                                           QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.sign_in_button.setIcon(icon_hovered_sign_in)
+            self.sign_in_button.setGeometry(QtCore.QRect(157, 439, 167, 36))
+            self.sign_in_button.setIconSize(QtCore.QSize(167, 36))
+        if event.type() == QtCore.QEvent.HoverLeave and source is self.sign_in_button:
+            icon_sign_in = QtGui.QIcon()
+            icon_sign_in.addPixmap(QtGui.QPixmap("view/img/sign_in/przycisk_zaloguj.png"), QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.sign_in_button.setIcon(icon_sign_in)
+            self.sign_in_button.setGeometry(QtCore.QRect(160, 440, 161, 34))
+            self.sign_in_button.setIconSize(QtCore.QSize(161, 34))
+
+        if event.type() == QtCore.QEvent.HoverEnter and source is self.sign_up_button:
+            self.sign_up_button.setStyleSheet("QPushButton{\n"
+                                 "    font: 8pt \"Rubik\";\n"
+                                 "    color:rgb(30,185,84);\n"
+                                 "    background: transparent;\n"
+                                 "    border-radius:10px\n"
+                                 "}")
+        if event.type() == QtCore.QEvent.HoverLeave and source is self.sign_up_button:
+            self.sign_up_button.setStyleSheet("QPushButton{\n"
+                                              "    font: 8pt \"Rubik\";\n"
+                                              "    color:white;\n"
+                                              "    background: transparent;\n"
+                                              "    border-radius:10px\n"
+                                              "}")
+
+
+        return super(VSignInWin, self).eventFilter(source, event)

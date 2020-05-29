@@ -154,6 +154,7 @@ class VMainWinBefore(VWindow):
         self.sign_up_button.installEventFilter(self)
         self.about_app_button.installEventFilter(self)
         self.generate_button.installEventFilter(self)
+        self.close_button.installEventFilter(self)
 
 
     def retranslateUi(self, MainWindow):
@@ -213,6 +214,19 @@ class VMainWinBefore(VWindow):
                                            QtGui.QIcon.Off)
             self.about_app_button.setIcon(icon_about_app)
             self.about_app_button.setIconSize(QtCore.QSize(202, 199))
+
+        if event.type() == QtCore.QEvent.HoverEnter and source is self.close_button:
+            icon_hovered_about_app = QtGui.QIcon()
+            icon_hovered_about_app.addPixmap(QtGui.QPixmap("view/img/przycisk_zamknij_hovered.png"), QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.close_button.setIcon(icon_hovered_about_app)
+            self.close_button.setIconSize(QtCore.QSize(44, 36))
+        if event.type() == QtCore.QEvent.HoverLeave and source is self.close_button:
+            icon_about_app = QtGui.QIcon()
+            icon_about_app.addPixmap(QtGui.QPixmap("view/img/przycisk_zamknij.png"), QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.close_button.setIcon(icon_about_app)
+            self.close_button.setIconSize(QtCore.QSize(44, 36))
 
 
         return super(VMainWinBefore, self).eventFilter(source, event)

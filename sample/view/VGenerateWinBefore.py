@@ -280,6 +280,8 @@ class VGenerateWinBefore(VWindow):
         self.static_no_button.clicked.connect(self.static_pressed)
         self.static_yes_button.clicked.connect(self.static_pressed)
 
+        self.arrow_button.installEventFilter(self)
+
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "GENEROWANIE"))
@@ -300,3 +302,20 @@ class VGenerateWinBefore(VWindow):
         self.dig_yes_label.setText(_translate("MainWindow", "TAK"))
         self.dig_label.setText(_translate("MainWindow", "CYFRY"))
         self.big_label.setText(_translate("MainWindow", "DUŻE"))
+
+    def eventFilter(self, source, event) -> bool:
+        if event.type() == QtCore.QEvent.HoverEnter and source is self.arrow_button:
+            icon_hovered_sign_in = QtGui.QIcon()
+            icon_hovered_sign_in.addPixmap(QtGui.QPixmap("view/img/przycisk_strzałka_hovered.png"),
+                                           QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.arrow_button.setIcon(icon_hovered_sign_in)
+            self.arrow_button.setIconSize(QtCore.QSize(34, 31))
+        if event.type() == QtCore.QEvent.HoverLeave and source is self.arrow_button:
+            icon_sign_in = QtGui.QIcon()
+            icon_sign_in.addPixmap(QtGui.QPixmap("view/img/przycisk_strzałka.png"), QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.arrow_button.setIcon(icon_sign_in)
+            self.arrow_button.setIconSize(QtCore.QSize(34, 31))
+
+        return super(VGenerateWinBefore, self).eventFilter(source, event)
