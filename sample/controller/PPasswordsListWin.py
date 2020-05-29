@@ -36,7 +36,7 @@ class PPasswordsListWin(PMainWin):
         self.password_win.set_password_data(password)
 
     def add_item_to_list(self, password_list):
-        icon_names = ['view/img/icons/mail.png', 'view/img/icons/rozrywka.png']
+        icon_names = ['view/img/icons/mail.png', 'view/img/icons/rozrywka.png', 'view/img/icons/bankowość.png', 'view/img/icons/edukacja.png', 'view/img/icons/informatyka.png']
         icons = []
         for name in icon_names:
             icon = QtGui.QIcon()
@@ -66,11 +66,17 @@ class PPasswordsListWin(PMainWin):
                     index = 0
                 elif type == 'rozrywka':
                     index = 1
+                elif type == 'bankowość':
+                    index = 2
+                elif type == 'edukacja':
+                    index = 3
+                elif type == 'informatyka':
+                    index = 4
                 else:
                     raise Exception("Type not supported")
 
                 item = QListWidgetItem()
-                item.setSizeHint(QtCore.QSize(150,150))
+                item.setSizeHint(QtCore.QSize(150, 150))
                 item.setIcon(icons[index])
                 pass_name = password.get_name()
                 item.setText(pass_name.upper())

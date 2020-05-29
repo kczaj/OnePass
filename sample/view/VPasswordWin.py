@@ -41,6 +41,8 @@ class VPasswordWin(VWindow):
             self.arrow_button.setDisabled(False)
             self.copy_button.setDisabled(False)
             self.show_button.setDisabled(False)
+            self.login_frame.setReadOnly(True)
+            self.password_frame.setReadOnly(True)
             self.password_frame.setEchoMode(QtWidgets.QLineEdit.Password)
             icon = QtGui.QIcon()
             icon.addPixmap(QtGui.QPixmap("view/img/password_win/edytuj_button.png"), QtGui.QIcon.Normal,

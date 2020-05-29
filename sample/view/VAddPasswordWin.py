@@ -135,7 +135,7 @@ class VAddPasswordWin(VWindow):
         self.comboBox.setMaxVisibleItems(5)
         self.comboBox.setFrame(False)
         self.comboBox.setObjectName("comboBox")
-        self.comboBox.addItems(['mail', 'rozrywka'])
+        self.comboBox.addItems(['mail', 'rozrywka', 'bankowość', 'edukacja', 'informatyka'])
         self.gridLayout.addWidget(self.comboBox, 7, 1, 1, 1)
         self.generate_button = QtWidgets.QPushButton(self.centralwidget)
         self.generate_button.setGeometry(QtCore.QRect(60, 490, 161, 34))
