@@ -29,9 +29,15 @@ class PProfileWin(PController):
             notes = self._profile.get_notes()
             encryptor = MEncryptor()
             login = self._profile.get_login()
+            encrypteds = self._profile.get_encrypted_list()
             for note in notes:
                 file = notes[note].get_path()
                 msg = encryptor.decrypt(file, old_password)
+                salt = get_random_bytes(32)
+                encryptor.encrypt(file, msg, salt, password)
+            for file in encrypteds:
+                file = 'data/' + login + '/encrypted/' + file + '.ope'
+                msg = encryptor.decrypt(file,old_password)
                 salt = get_random_bytes(32)
                 encryptor.encrypt(file, msg, salt, password)
             if self._profile.update_password(password):
