@@ -39,10 +39,12 @@ class PMainWinAfter(PMainWin):
         surname = self.profile.get_surname()
         email = self.profile.get_email()
         login = self.profile.get_login()
+        encrypted = self.profile.get_encrypted_list()
 
         self.write_info_file(name, surname, email, login, password)
         self.write_passwords_file(passwords, login, password)
         self.write_notes_file(notes, login, password)
+        self.write_encrypteds_file(encrypted, login, password)
         logins = self._loader.get_logins()
         logins[login] = self._hasher.hash(password)
 
@@ -82,6 +84,15 @@ class PMainWinAfter(PMainWin):
         msg = ''
         for note in notes:
             msg = msg + note + '\n'
+        msg = msg[:-1]
+        salt = get_random_bytes(32)
+        self._encryptor.encrypt(path, msg, salt, password)
+
+    def write_encrypteds_file(self, encrypted, login, password):
+        path = 'data/' + login + '/encryptedsb'
+        msg = ''
+        for name in encrypted:
+            msg = msg + name + ';'
         msg = msg[:-1]
         salt = get_random_bytes(32)
         self._encryptor.encrypt(path, msg, salt, password)

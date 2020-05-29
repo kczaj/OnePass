@@ -10,11 +10,11 @@ from Crypto.Random import get_random_bytes
 if __name__ == '__main__':
     hasher = MHasher()
     encryptor = MEncryptor()
-    salt = get_random_bytes(32)
+    '''salt = get_random_bytes(32)
     file = open('data/admin/encrypteds', 'r')
     msg = file.read()
     encryptor.encrypt('data/admin/encryptedsb', msg, salt, 'passwrd12')
-    '''msg = encryptor.decrypt('data/admin/note/notatka_1_b', 'passwrd12')
+    msg = encryptor.decrypt('data/admin/note/notatka_1_b', 'passwrd12')
     encryptor.encrypt('data/admin/note/notatka_1_b', msg, salt, 'passwrd1')
     msg = encryptor.decrypt('data/admin/note/notatka_2_b', 'passwrd12')
     encryptor.encrypt('data/admin/note/notatka_2_b', msg, salt, 'passwrd1')

@@ -75,6 +75,9 @@ class MLoader:
         encrypted_str = self._encryptor.decrypt(encrytped, password)
         encrypted_list = encrypted_str.split(';')
 
+        if encrypted_list[0] == '':
+            encrypted_list = []
+
         return self._profile_maker.make_profile(name_instance, surname_instance, email_instance, login_instance,
                                                 password, passwords_list, notes_list, encrypted_list)
 
