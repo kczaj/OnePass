@@ -198,6 +198,9 @@ class VProfileWin(VWindow):
 
         self.arrow_button.clicked.connect(self.arrow_button_pressed)
         self.arrow_button.installEventFilter(self)
+        self.change_password_button.installEventFilter(self)
+        self.save_button.installEventFilter(self)
+        self.edit_button.installEventFilter(self)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -223,5 +226,54 @@ class VProfileWin(VWindow):
                                            QtGui.QIcon.Off)
             self.arrow_button.setIcon(icon_sign_in)
             self.arrow_button.setIconSize(QtCore.QSize(34, 31))
+
+        if event.type() == QtCore.QEvent.HoverEnter and source is self.edit_button:
+            icon_hovered_sign_in = QtGui.QIcon()
+            icon_hovered_sign_in.addPixmap(QtGui.QPixmap("view/img/profile_win/edytuj_przycisk_hovered.png"),
+                                           QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.edit_button.setIcon(icon_hovered_sign_in)
+            self.edit_button.setGeometry(QtCore.QRect(52, 488, 177, 38))
+            self.edit_button.setIconSize(QtCore.QSize(177, 38))
+        if event.type() == QtCore.QEvent.HoverLeave and source is self.edit_button:
+            icon_sign_in = QtGui.QIcon()
+            icon_sign_in.addPixmap(QtGui.QPixmap("view/img/profile_win/edytuj_przycisk.png"), QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.edit_button.setIcon(icon_sign_in)
+            self.edit_button.setGeometry(QtCore.QRect(60, 490, 161, 34))
+            self.edit_button.setIconSize(QtCore.QSize(161, 34))
+
+        if event.type() == QtCore.QEvent.HoverEnter and source is self.save_button:
+            icon_hovered_sign_in = QtGui.QIcon()
+            icon_hovered_sign_in.addPixmap(QtGui.QPixmap("view/img/profile_win/zapisz_przycisk_hovered.png"),
+                                           QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.save_button.setIcon(icon_hovered_sign_in)
+            self.save_button.setGeometry(QtCore.QRect(282, 488, 177, 38))
+            self.save_button.setIconSize(QtCore.QSize(177, 38))
+        if event.type() == QtCore.QEvent.HoverLeave and source is self.save_button:
+            icon_sign_in = QtGui.QIcon()
+            icon_sign_in.addPixmap(QtGui.QPixmap("view/img/profile_win/zapisz_przycisk.png"), QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.save_button.setIcon(icon_sign_in)
+            self.save_button.setGeometry(QtCore.QRect(290, 490, 161, 34))
+            self.save_button.setIconSize(QtCore.QSize(161, 34))
+
+        if event.type() == QtCore.QEvent.HoverEnter and source is self.change_password_button:
+            icon_hovered_sign_in = QtGui.QIcon()
+            icon_hovered_sign_in.addPixmap(QtGui.QPixmap("view/img/profile_win/pokaz_przycisk_hovered.png"),
+                                           QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.change_password_button.setIcon(icon_hovered_sign_in)
+            self.change_password_button.setGeometry(QtCore.QRect(131, 419, 92, 20))
+            self.change_password_button.setIconSize(QtCore.QSize(92, 20))
+        if event.type() == QtCore.QEvent.HoverLeave and source is self.change_password_button:
+            icon_sign_in = QtGui.QIcon()
+            icon_sign_in.addPixmap(QtGui.QPixmap("view/img/profile_win/pokaz_przycisk.png"), QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.change_password_button.setIcon(icon_sign_in)
+            self.change_password_button.setGeometry(QtCore.QRect(135, 420, 84, 18))
+            self.change_password_button.setIconSize(QtCore.QSize(84, 18))
+
 
         return super(VProfileWin, self).eventFilter(source, event)
