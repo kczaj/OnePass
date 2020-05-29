@@ -64,6 +64,7 @@ class MProfile:
             for c in password:
                 if c in digits:
                     status = status + 1
+                    break
             if status != 3:
                 return False
         else:

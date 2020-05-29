@@ -26,24 +26,27 @@ class PProfileWin(PController):
             return False
         else:
             old_password = self._profile.get_password()
-            notes = self._profile.get_notes()
-            encryptor = MEncryptor()
-            login = self._profile.get_login()
-            encrypteds = self._profile.get_encrypted_list()
-            for note in notes:
-                file = notes[note].get_path()
-                msg = encryptor.decrypt(file, old_password)
-                salt = get_random_bytes(32)
-                encryptor.encrypt(file, msg, salt, password)
-            for file in encrypteds:
-                file = 'data/' + login + '/encrypted/' + file + '.ope'
-                msg = encryptor.decrypt(file,old_password)
-                salt = get_random_bytes(32)
-                encryptor.encrypt(file, msg, salt, password)
             if self._profile.update_password(password):
+                notes = self._profile.get_notes()
+                encryptor = MEncryptor()
+                login = self._profile.get_login()
+                encrypteds = self._profile.get_encrypted_list()
+
+                for file in encrypteds:
+                    file = 'data/' + login + '/encrypted/' + file + '.ope'
+                    msg = encryptor.decrypt(file,old_password)
+                    salt = get_random_bytes(32)
+                    encryptor.encrypt(file, msg, salt, password)
+
+                for note in notes:
+                    file = notes[note].get_path()
+                    msg = encryptor.decrypt(file, old_password)
+                    salt = get_random_bytes(32)
+                    encryptor.encrypt(file, msg, salt, password)
                 return True
             else:
                 return False
+
     def show_data(self, frames):
         name_frame = frames[0]
         surname_frame = frames[1]

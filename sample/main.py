@@ -13,13 +13,17 @@ if __name__ == '__main__':
     '''salt = get_random_bytes(32)
     file = open('data/admin/encrypteds', 'r')
     msg = file.read()
-    encryptor.encrypt('data/admin/encryptedsb', msg, salt, 'passwrd12')
-    msg = encryptor.decrypt('data/admin/note/notatka_1_b', 'passwrd12')
-    encryptor.encrypt('data/admin/note/notatka_1_b', msg, salt, 'passwrd1')
-    msg = encryptor.decrypt('data/admin/note/notatka_2_b', 'passwrd12')
-    encryptor.encrypt('data/admin/note/notatka_2_b', msg, salt, 'passwrd1')
-    msg = encryptor.decrypt('data/admin/note/notatka_3_b', 'passwrd12')
-    encryptor.encrypt('data/admin/note/notatka_3_b', msg, salt, 'passwrd1')'''
+    encryptor.encrypt('data/admin/encryptedsb', msg, salt, 'passwrd12')'''
+
+    '''salt = get_random_bytes(32)
+    msg = encryptor.decrypt('data/admin/encrypted/jezyki.txt.ope', 'passwrd1')
+    encryptor.encrypt('data/admin/encrypted/jezyki.txt.ope', msg, salt, 'passwrd12')
+    msg = encryptor.decrypt('data/admin/note/notatka_1_b', 'passwrd1')
+    encryptor.encrypt('data/admin/note/notatka_1_b', msg, salt, 'passwrd12')
+    msg = encryptor.decrypt('data/admin/note/notatka_2_b', 'passwrd1')
+    encryptor.encrypt('data/admin/note/notatka_2_b', msg, salt, 'passwrd12')
+    msg = encryptor.decrypt('data/admin/note/notatka_3_b', 'passwrd1')
+    encryptor.encrypt('data/admin/note/notatka_3_b', msg, salt, 'passwrd12')'''
     app = QtWidgets.QApplication(sys.argv)
     main_window = QtWidgets.QMainWindow()
     w = VMainWinBefore(main_window, hasher)
