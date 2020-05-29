@@ -21,7 +21,13 @@ class VEncrypWin(VMainWin):
         self.controller = PEncrypWin(main_window)
 
     def decrypt_button_pressed(self):
-        pass
+        instance = self.file_list.currentItem()
+        if instance is None:
+            return
+        else:
+            name = instance.text()
+        self.controller.decrypt_button_handle(name)
+        self._add_to_list()
 
     def encrypt_button_pressed(self):
         path = self.file_label.text()
@@ -191,6 +197,7 @@ class VEncrypWin(VMainWin):
                                self.encrypt_file_button)
         self.file_choose_button.pressed.connect(self.file_choose_button_pressed)
         self.encryp_button.pressed.connect(self.encrypt_button_pressed)
+        self.decryp_button.pressed.connect(self.decrypt_button_pressed)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
