@@ -281,6 +281,8 @@ class VGenerateWinAfter(VMainWin):
         self.static_yes_button.clicked.connect(self.static_pressed)
 
         self.arrow_button.installEventFilter(self)
+        self.copy_button.installEventFilter(self)
+        self.generate_button.installEventFilter(self)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -317,5 +319,37 @@ class VGenerateWinAfter(VMainWin):
                                            QtGui.QIcon.Off)
             self.arrow_button.setIcon(icon_sign_in)
             self.arrow_button.setIconSize(QtCore.QSize(34, 31))
+
+        if event.type() == QtCore.QEvent.HoverEnter and source is self.generate_button:
+            icon_hovered_sign_in = QtGui.QIcon()
+            icon_hovered_sign_in.addPixmap(QtGui.QPixmap("view/img/generate_win/generuj_button_hovered.png"),
+                                           QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.generate_button.setIcon(icon_hovered_sign_in)
+            self.generate_button.setGeometry(QtCore.QRect(72, 559, 180, 38))
+            self.generate_button.setIconSize(QtCore.QSize(180, 38))
+        if event.type() == QtCore.QEvent.HoverLeave and source is self.generate_button:
+            icon_sign_in = QtGui.QIcon()
+            icon_sign_in.addPixmap(QtGui.QPixmap("view/img/generate_win/generuj_button.png"), QtGui.QIcon.Normal,
+                                   QtGui.QIcon.Off)
+            self.generate_button.setIcon(icon_sign_in)
+            self.generate_button.setGeometry((QtCore.QRect(80, 560, 171, 41)))
+            self.generate_button.setIconSize(QtCore.QSize(164, 35))
+
+        if event.type() == QtCore.QEvent.HoverEnter and source is self.copy_button:
+            icon_hovered_sign_in = QtGui.QIcon()
+            icon_hovered_sign_in.addPixmap(QtGui.QPixmap("view/img/generate_win/kopiuj_hovered.png"),
+                                           QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.copy_button.setIcon(icon_hovered_sign_in)
+            self.copy_button.setGeometry(QtCore.QRect(342, 559, 180, 38))
+            self.copy_button.setIconSize(QtCore.QSize(180, 38))
+        if event.type() == QtCore.QEvent.HoverLeave and source is self.copy_button:
+            icon_sign_in = QtGui.QIcon()
+            icon_sign_in.addPixmap(QtGui.QPixmap("view/img/generate_win/kopiuj.png"), QtGui.QIcon.Normal,
+                                   QtGui.QIcon.Off)
+            self.copy_button.setIcon(icon_sign_in)
+            self.copy_button.setGeometry(QtCore.QRect(350, 560, 171, 41))
+            self.copy_button.setIconSize(QtCore.QSize(164, 35))
 
         return super(VGenerateWinAfter, self).eventFilter(source, event)
