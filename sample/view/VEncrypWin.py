@@ -213,7 +213,7 @@ class VEncrypWin(VMainWin):
         self.greeting_label.setText(_translate("MainWindow", "TWOJE PLIKI"))
 
     def file_choose_button_pressed(self):
-        file_dialog = QFileDialog.getOpenFileName(None, 'Hej', '', "Image files (*.txt)")
+        file_dialog = QFileDialog.getOpenFileName(None, 'Wybierz plik', '', "Pliki tekstowe(*.txt)")
         self.file_label.setText(file_dialog[0])
 
     def _add_to_list(self):
