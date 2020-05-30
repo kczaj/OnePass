@@ -204,6 +204,8 @@ class VEncrypWin(VMainWin):
         self.note_button.installEventFilter(self)
         self.generate_button.installEventFilter(self)
         self.encrypt_file_button.installEventFilter(self)
+        self.encryp_button.installEventFilter(self)
+        self.decryp_button.installEventFilter(self)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -288,5 +290,37 @@ class VEncrypWin(VMainWin):
                                    QtGui.QIcon.Off)
             self.encrypt_file_button.setIcon(icon_sign_in)
             self.encrypt_file_button.setIconSize(QtCore.QSize(42, 52))
+
+        if event.type() == QtCore.QEvent.HoverEnter and source is self.encryp_button:
+            icon_hovered_sign_in = QtGui.QIcon()
+            icon_hovered_sign_in.addPixmap(QtGui.QPixmap("view/img/encryp_file_win/szyfruj_button_hovered.png"),
+                                           QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.encryp_button.setIcon(icon_hovered_sign_in)
+            self.encryp_button.setGeometry(QtCore.QRect(593, 538, 146, 31))
+            self.encryp_button.setIconSize(QtCore.QSize(146, 31))
+        if event.type() == QtCore.QEvent.HoverLeave and source is self.encryp_button:
+            icon_sign_in = QtGui.QIcon()
+            icon_sign_in.addPixmap(QtGui.QPixmap("view/img/encryp_file_win/szyfruj_button.png"), QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.encryp_button.setIcon(icon_sign_in)
+            self.encryp_button.setGeometry(QtCore.QRect(600, 540, 132, 28))
+            self.encryp_button.setIconSize(QtCore.QSize(132, 28))
+
+        if event.type() == QtCore.QEvent.HoverEnter and source is self.decryp_button:
+            icon_hovered_sign_in = QtGui.QIcon()
+            icon_hovered_sign_in.addPixmap(QtGui.QPixmap("view/img/encryp_file_win/deszyfruj_button_hovered.png"),
+                                           QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.decryp_button.setIcon(icon_hovered_sign_in)
+            self.decryp_button.setGeometry(QtCore.QRect(593, 488, 146, 31))
+            self.decryp_button.setIconSize(QtCore.QSize(146, 31))
+        if event.type() == QtCore.QEvent.HoverLeave and source is self.decryp_button:
+            icon_sign_in = QtGui.QIcon()
+            icon_sign_in.addPixmap(QtGui.QPixmap("view/img/encryp_file_win/deszyfruj_button.png"), QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.decryp_button.setIcon(icon_sign_in)
+            self.decryp_button.setGeometry(QtCore.QRect(600, 490, 132, 28))
+            self.decryp_button.setIconSize(QtCore.QSize(132, 28))
 
         return super(VEncrypWin, self).eventFilter(source, event)
