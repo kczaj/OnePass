@@ -201,6 +201,10 @@ class VMainWinAfter(VMainWin):
         self.note_button.installEventFilter(self)
         self.generate_button.installEventFilter(self)
         self.encrypt_file_button.installEventFilter(self)
+        self.profile_button.installEventFilter(self)
+        self.about_app_button.installEventFilter(self)
+        self.encrypt_button.installEventFilter(self)
+        self.log_out_button.installEventFilter(self)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -278,5 +282,65 @@ class VMainWinAfter(VMainWin):
                                    QtGui.QIcon.Off)
             self.encrypt_file_button.setIcon(icon_sign_in)
             self.encrypt_file_button.setIconSize(QtCore.QSize(42, 52))
+
+        if event.type() == QtCore.QEvent.HoverEnter and source is self.profile_button:
+            icon_hovered_sign_up = QtGui.QIcon()
+            icon_hovered_sign_up.addPixmap(QtGui.QPixmap("view/img/main_win_after/przycisk_profil_hovered.png"),
+                                           QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.profile_button.setIcon(icon_hovered_sign_up)
+            self.profile_button.setIconSize(QtCore.QSize(202, 199))
+        if event.type() == QtCore.QEvent.HoverLeave and source is self.profile_button:
+            icon_sign_up = QtGui.QIcon()
+            icon_sign_up.addPixmap(QtGui.QPixmap("view/img/main_win_after/przycisk_profil.png"),
+                                   QtGui.QIcon.Normal,
+                                   QtGui.QIcon.Off)
+            self.profile_button.setIcon(icon_sign_up)
+            self.profile_button.setIconSize(QtCore.QSize(202, 199))
+
+        if event.type() == QtCore.QEvent.HoverEnter and source is self.about_app_button:
+            icon_hovered_sign_up = QtGui.QIcon()
+            icon_hovered_sign_up.addPixmap(QtGui.QPixmap("view/img/main_win_after/przycisk_oapp_hovered.png"),
+                                           QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.about_app_button.setIcon(icon_hovered_sign_up)
+            self.about_app_button.setIconSize(QtCore.QSize(202, 199))
+        if event.type() == QtCore.QEvent.HoverLeave and source is self.about_app_button:
+            icon_sign_up = QtGui.QIcon()
+            icon_sign_up.addPixmap(QtGui.QPixmap("view/img/main_win_after/przycisk_oapp.png"),
+                                   QtGui.QIcon.Normal,
+                                   QtGui.QIcon.Off)
+            self.about_app_button.setIcon(icon_sign_up)
+            self.about_app_button.setIconSize(QtCore.QSize(202, 199))
+
+        if event.type() == QtCore.QEvent.HoverEnter and source is self.encrypt_button:
+            icon_hovered_sign_up = QtGui.QIcon()
+            icon_hovered_sign_up.addPixmap(QtGui.QPixmap("view/img/main_win_after/przycisk_zaszyfruj_hovered.png"),
+                                           QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.encrypt_button.setIcon(icon_hovered_sign_up)
+            self.encrypt_button.setIconSize(QtCore.QSize(202, 199))
+        if event.type() == QtCore.QEvent.HoverLeave and source is self.encrypt_button:
+            icon_sign_up = QtGui.QIcon()
+            icon_sign_up.addPixmap(QtGui.QPixmap("view/img/main_win_after/przycisk_zaszyfruj.png"),
+                                   QtGui.QIcon.Normal,
+                                   QtGui.QIcon.Off)
+            self.encrypt_button.setIcon(icon_sign_up)
+            self.encrypt_button.setIconSize(QtCore.QSize(202, 199))
+
+        if event.type() == QtCore.QEvent.HoverEnter and source is self.log_out_button:
+            icon_hovered_sign_up = QtGui.QIcon()
+            icon_hovered_sign_up.addPixmap(QtGui.QPixmap("view/img/main_win_after/przycisk_wyloguj_hovered.png"),
+                                           QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.log_out_button.setIcon(icon_hovered_sign_up)
+            self.log_out_button.setIconSize(QtCore.QSize(202, 199))
+        if event.type() == QtCore.QEvent.HoverLeave and source is self.log_out_button:
+            icon_sign_up = QtGui.QIcon()
+            icon_sign_up.addPixmap(QtGui.QPixmap("view/img/main_win_after/przycisk_wyloguj.png"),
+                                   QtGui.QIcon.Normal,
+                                   QtGui.QIcon.Off)
+            self.log_out_button.setIcon(icon_sign_up)
+            self.log_out_button.setIconSize(QtCore.QSize(202, 199))
 
         return super(VMainWinAfter, self).eventFilter(source, event)
