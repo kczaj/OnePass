@@ -156,7 +156,6 @@ class VMainWinBefore(VWindow):
         self.generate_button.installEventFilter(self)
         self.close_button.installEventFilter(self)
 
-
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "ONEPASS"))
@@ -165,69 +164,72 @@ class VMainWinBefore(VWindow):
     def eventFilter(self, source, event) -> bool:
         if event.type() == QtCore.QEvent.HoverEnter and source is self.sign_in_button:
             icon_hovered_sign_in = QtGui.QIcon()
-            icon_hovered_sign_in.addPixmap(QtGui.QPixmap("view/img/main_win_before/przycisk_zaloguj_hovered.png"), QtGui.QIcon.Normal,
+            icon_hovered_sign_in.addPixmap(QtGui.QPixmap("view/img/main_win_before/przycisk_zaloguj_hovered.png"),
+                                           QtGui.QIcon.Normal,
                                            QtGui.QIcon.Off)
             self.sign_in_button.setIcon(icon_hovered_sign_in)
             self.sign_in_button.setIconSize(QtCore.QSize(202, 199))
         if event.type() == QtCore.QEvent.HoverLeave and source is self.sign_in_button:
             icon_sign_in = QtGui.QIcon()
             icon_sign_in.addPixmap(QtGui.QPixmap("view/img/main_win_before/przycisk_zaloguj.png"), QtGui.QIcon.Normal,
-                                           QtGui.QIcon.Off)
+                                   QtGui.QIcon.Off)
             self.sign_in_button.setIcon(icon_sign_in)
             self.sign_in_button.setIconSize(QtCore.QSize(202, 199))
 
         if event.type() == QtCore.QEvent.HoverEnter and source is self.sign_up_button:
             icon_hovered_sign_up = QtGui.QIcon()
-            icon_hovered_sign_up.addPixmap(QtGui.QPixmap("view/img/main_win_before/przycisk_zarejestruj_hovered.png"), QtGui.QIcon.Normal,
+            icon_hovered_sign_up.addPixmap(QtGui.QPixmap("view/img/main_win_before/przycisk_zarejestruj_hovered.png"),
+                                           QtGui.QIcon.Normal,
                                            QtGui.QIcon.Off)
             self.sign_up_button.setIcon(icon_hovered_sign_up)
             self.sign_up_button.setIconSize(QtCore.QSize(202, 199))
         if event.type() == QtCore.QEvent.HoverLeave and source is self.sign_up_button:
             icon_sign_up = QtGui.QIcon()
-            icon_sign_up.addPixmap(QtGui.QPixmap("view/img/main_win_before/przycisk_zarejestruj.png"), QtGui.QIcon.Normal,
-                                           QtGui.QIcon.Off)
+            icon_sign_up.addPixmap(QtGui.QPixmap("view/img/main_win_before/przycisk_zarejestruj.png"),
+                                   QtGui.QIcon.Normal,
+                                   QtGui.QIcon.Off)
             self.sign_up_button.setIcon(icon_sign_up)
             self.sign_up_button.setIconSize(QtCore.QSize(202, 199))
 
         if event.type() == QtCore.QEvent.HoverEnter and source is self.generate_button:
             icon_hovered_generate = QtGui.QIcon()
-            icon_hovered_generate.addPixmap(QtGui.QPixmap("view/img/main_win_before/przycisk_generuj_hovered.png"), QtGui.QIcon.Normal,
-                                           QtGui.QIcon.Off)
+            icon_hovered_generate.addPixmap(QtGui.QPixmap("view/img/main_win_before/przycisk_generuj_hovered.png"),
+                                            QtGui.QIcon.Normal,
+                                            QtGui.QIcon.Off)
             self.generate_button.setIcon(icon_hovered_generate)
             self.generate_button.setIconSize(QtCore.QSize(202, 199))
         if event.type() == QtCore.QEvent.HoverLeave and source is self.generate_button:
             icon_generate = QtGui.QIcon()
             icon_generate.addPixmap(QtGui.QPixmap("view/img/main_win_before/przycisk_generuj.png"), QtGui.QIcon.Normal,
-                                           QtGui.QIcon.Off)
+                                    QtGui.QIcon.Off)
             self.generate_button.setIcon(icon_generate)
             self.generate_button.setIconSize(QtCore.QSize(202, 199))
 
         if event.type() == QtCore.QEvent.HoverEnter and source is self.about_app_button:
             icon_hovered_about_app = QtGui.QIcon()
-            icon_hovered_about_app.addPixmap(QtGui.QPixmap("view/img/main_win_before/przycisk_oapp_hovered.png"), QtGui.QIcon.Normal,
-                                           QtGui.QIcon.Off)
+            icon_hovered_about_app.addPixmap(QtGui.QPixmap("view/img/main_win_before/przycisk_oapp_hovered.png"),
+                                             QtGui.QIcon.Normal,
+                                             QtGui.QIcon.Off)
             self.about_app_button.setIcon(icon_hovered_about_app)
             self.about_app_button.setIconSize(QtCore.QSize(202, 199))
         if event.type() == QtCore.QEvent.HoverLeave and source is self.about_app_button:
             icon_about_app = QtGui.QIcon()
             icon_about_app.addPixmap(QtGui.QPixmap("view/img/main_win_before/przycisk_oapp.png"), QtGui.QIcon.Normal,
-                                           QtGui.QIcon.Off)
+                                     QtGui.QIcon.Off)
             self.about_app_button.setIcon(icon_about_app)
             self.about_app_button.setIconSize(QtCore.QSize(202, 199))
 
         if event.type() == QtCore.QEvent.HoverEnter and source is self.close_button:
             icon_hovered_about_app = QtGui.QIcon()
             icon_hovered_about_app.addPixmap(QtGui.QPixmap("view/img/przycisk_zamknij_hovered.png"), QtGui.QIcon.Normal,
-                                           QtGui.QIcon.Off)
+                                             QtGui.QIcon.Off)
             self.close_button.setIcon(icon_hovered_about_app)
             self.close_button.setIconSize(QtCore.QSize(44, 36))
         if event.type() == QtCore.QEvent.HoverLeave and source is self.close_button:
             icon_about_app = QtGui.QIcon()
             icon_about_app.addPixmap(QtGui.QPixmap("view/img/przycisk_zamknij.png"), QtGui.QIcon.Normal,
-                                           QtGui.QIcon.Off)
+                                     QtGui.QIcon.Off)
             self.close_button.setIcon(icon_about_app)
             self.close_button.setIconSize(QtCore.QSize(44, 36))
 
-
         return super(VMainWinBefore, self).eventFilter(source, event)
-
