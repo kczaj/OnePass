@@ -172,10 +172,125 @@ class VAddNoteWin(VMainWin):
         self.save_button.clicked.connect(self.save_button_pressed)
         self.delete_button.clicked.connect(self.delete_button_pressed)
 
+        self.home_button.installEventFilter(self)
+        self.password_button.installEventFilter(self)
+        self.note_button.installEventFilter(self)
+        self.generate_button.installEventFilter(self)
+        self.encrypt_file_button.installEventFilter(self)
+        self.delete_button.installEventFilter(self)
+        self.save_button.installEventFilter(self)
+
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "NOTATKA"))
         self.note_name_frame.setText(_translate("MainWindow", "NOWA_NOTATKA"))
+
+    def eventFilter(self, source, event) -> bool:
+        if event.type() == QtCore.QEvent.HoverEnter and source is self.home_button:
+            icon_hovered_sign_in = QtGui.QIcon()
+            icon_hovered_sign_in.addPixmap(QtGui.QPixmap("view/img/main_win_after/przycisk_home_hovered.png"),
+                                           QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.home_button.setIcon(icon_hovered_sign_in)
+            self.home_button.setIconSize(QtCore.QSize(32, 46))
+        if event.type() == QtCore.QEvent.HoverLeave and source is self.home_button:
+            icon_sign_in = QtGui.QIcon()
+            icon_sign_in.addPixmap(QtGui.QPixmap("view/img/main_win_after/przycisk_home.png"), QtGui.QIcon.Normal,
+                                   QtGui.QIcon.Off)
+            self.home_button.setIcon(icon_sign_in)
+            self.home_button.setIconSize(QtCore.QSize(32, 46))
+
+        if event.type() == QtCore.QEvent.HoverEnter and source is self.password_button:
+            icon_hovered_sign_in = QtGui.QIcon()
+            icon_hovered_sign_in.addPixmap(QtGui.QPixmap("view/img/main_win_after/przycisk_hasla_hovered.png"),
+                                           QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.password_button.setIcon(icon_hovered_sign_in)
+            self.password_button.setIconSize(QtCore.QSize(34, 46))
+        if event.type() == QtCore.QEvent.HoverLeave and source is self.password_button:
+            icon_sign_in = QtGui.QIcon()
+            icon_sign_in.addPixmap(QtGui.QPixmap("view/img/main_win_after/przycisk_hasla.png"), QtGui.QIcon.Normal,
+                                   QtGui.QIcon.Off)
+            self.password_button.setIcon(icon_sign_in)
+            self.password_button.setIconSize(QtCore.QSize(34, 46))
+
+        if event.type() == QtCore.QEvent.HoverEnter and source is self.note_button:
+            icon_hovered_sign_in = QtGui.QIcon()
+            icon_hovered_sign_in.addPixmap(QtGui.QPixmap("view/img/main_win_after/przycisk_notatki_hovered.png"),
+                                           QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.note_button.setIcon(icon_hovered_sign_in)
+            self.note_button.setIconSize(QtCore.QSize(41, 46))
+        if event.type() == QtCore.QEvent.HoverLeave and source is self.note_button:
+            icon_sign_in = QtGui.QIcon()
+            icon_sign_in.addPixmap(QtGui.QPixmap("view/img/main_win_after/przycisk_notatki.png"), QtGui.QIcon.Normal,
+                                   QtGui.QIcon.Off)
+            self.note_button.setIcon(icon_sign_in)
+            self.note_button.setIconSize(QtCore.QSize(41, 46))
+
+        if event.type() == QtCore.QEvent.HoverEnter and source is self.generate_button:
+            icon_hovered_sign_in = QtGui.QIcon()
+            icon_hovered_sign_in.addPixmap(QtGui.QPixmap("view/img/main_win_after/przycisk_generuj_maly_hovered.png"),
+                                           QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.generate_button.setIcon(icon_hovered_sign_in)
+            self.generate_button.setIconSize(QtCore.QSize(45, 52))
+        if event.type() == QtCore.QEvent.HoverLeave and source is self.generate_button:
+            icon_sign_in = QtGui.QIcon()
+            icon_sign_in.addPixmap(QtGui.QPixmap("view/img/main_win_after/przycisk_generuj_maly.png"),
+                                   QtGui.QIcon.Normal,
+                                   QtGui.QIcon.Off)
+            self.generate_button.setIcon(icon_sign_in)
+            self.generate_button.setIconSize(QtCore.QSize(45, 52))
+
+        if event.type() == QtCore.QEvent.HoverEnter and source is self.encrypt_file_button:
+            icon_hovered_sign_in = QtGui.QIcon()
+            icon_hovered_sign_in.addPixmap(QtGui.QPixmap("view/img/main_win_after/przycisk_szyfruj_hovered.png"),
+                                           QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.encrypt_file_button.setIcon(icon_hovered_sign_in)
+            self.encrypt_file_button.setIconSize(QtCore.QSize(42, 52))
+        if event.type() == QtCore.QEvent.HoverLeave and source is self.encrypt_file_button:
+            icon_sign_in = QtGui.QIcon()
+            icon_sign_in.addPixmap(QtGui.QPixmap("view/img/main_win_after/przycisk_szyfruj.png"), QtGui.QIcon.Normal,
+                                   QtGui.QIcon.Off)
+            self.encrypt_file_button.setIcon(icon_sign_in)
+            self.encrypt_file_button.setIconSize(QtCore.QSize(42, 52))
+
+        if event.type() == QtCore.QEvent.HoverEnter and source is self.save_button:
+            icon_hovered_sign_in = QtGui.QIcon()
+            icon_hovered_sign_in.addPixmap(QtGui.QPixmap("view/img/new_note/zapisz_przycisk_hovered.png"),
+                                           QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.save_button.setIcon(icon_hovered_sign_in)
+            self.save_button.setGeometry(QtCore.QRect(623, 538, 146, 31))
+            self.save_button.setIconSize(QtCore.QSize(146, 31))
+        if event.type() == QtCore.QEvent.HoverLeave and source is self.save_button:
+            icon_sign_in = QtGui.QIcon()
+            icon_sign_in.addPixmap(QtGui.QPixmap("view/img/new_note/zapisz_przycisk.png"), QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.save_button.setIcon(icon_sign_in)
+            self.save_button.setGeometry(QtCore.QRect(630, 540, 132, 28))
+            self.save_button.setIconSize(QtCore.QSize(132, 28))
+
+        if event.type() == QtCore.QEvent.HoverEnter and source is self.delete_button:
+            icon_hovered_sign_in = QtGui.QIcon()
+            icon_hovered_sign_in.addPixmap(QtGui.QPixmap("view/img/new_note/usun_przycisk_hovered.png"),
+                                           QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.delete_button.setIcon(icon_hovered_sign_in)
+            self.delete_button.setGeometry(QtCore.QRect(463, 538, 146, 31))
+            self.delete_button.setIconSize(QtCore.QSize(146, 31))
+        if event.type() == QtCore.QEvent.HoverLeave and source is self.delete_button:
+            icon_sign_in = QtGui.QIcon()
+            icon_sign_in.addPixmap(QtGui.QPixmap("view/img/new_note/usun_przycisk.png"), QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.delete_button.setIcon(icon_sign_in)
+            self.delete_button.setGeometry(QtCore.QRect(470, 540, 132, 28))
+            self.delete_button.setIconSize(QtCore.QSize(132, 28))
+
+        return super(VAddNoteWin, self).eventFilter(source, event)
+
 
 
 
