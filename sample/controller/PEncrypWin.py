@@ -13,7 +13,6 @@ from Crypto.Random import get_random_bytes
 import os
 
 
-
 class PEncrypWin(PMainWin):
 
     def __init__(self, main_window):
@@ -21,13 +20,15 @@ class PEncrypWin(PMainWin):
         self._encryptor = MEncryptor()
 
     def decrypt_button_handle(self, name):
+        encrypteds = self.profile.get_encrypted_list()
+        if name in encrypteds:
+            return
         file_name = name + '.ope'
         path = 'data/' + self.profile.get_login() + '/encrypted/' + file_name
         msg = self._encryptor.decrypt(path, self.profile.get_password())
-        file_path = 'data/'+self.profile.get_login() + '/encrypted/' + name
+        file_path = 'data/' + self.profile.get_login() + '/encrypted/' + name
         file = open(file_path, 'w')
         file.write(msg)
-        encrypteds = self.profile.get_encrypted_list()
         encrypteds.remove(name)
         os.remove(path)
 
