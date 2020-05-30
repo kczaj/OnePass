@@ -181,6 +181,8 @@ class VPasswordsListWin(VMainWin):
         self.note_button.installEventFilter(self)
         self.generate_button.installEventFilter(self)
         self.encrypt_file_button.installEventFilter(self)
+        self.add_button.installEventFilter(self)
+        self.choose_button.installEventFilter(self)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -258,5 +260,37 @@ class VPasswordsListWin(VMainWin):
                                    QtGui.QIcon.Off)
             self.encrypt_file_button.setIcon(icon_sign_in)
             self.encrypt_file_button.setIconSize(QtCore.QSize(42, 52))
+
+        if event.type() == QtCore.QEvent.HoverEnter and source is self.choose_button:
+            icon_hovered_sign_in = QtGui.QIcon()
+            icon_hovered_sign_in.addPixmap(QtGui.QPixmap("view/img/pass_list_win/wybierz_button_hovered.png"),
+                                           QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.choose_button.setIcon(icon_hovered_sign_in)
+            self.choose_button.setGeometry(QtCore.QRect(503, 539, 146, 31))
+            self.choose_button.setIconSize(QtCore.QSize(146, 31))
+        if event.type() == QtCore.QEvent.HoverLeave and source is self.choose_button:
+            icon_sign_in = QtGui.QIcon()
+            icon_sign_in.addPixmap(QtGui.QPixmap("view/img/pass_list_win/wybierz_button.png"), QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.choose_button.setIcon(icon_sign_in)
+            self.choose_button.setGeometry(QtCore.QRect(510, 540, 132, 28))
+            self.choose_button.setIconSize(QtCore.QSize(132, 28))
+
+        if event.type() == QtCore.QEvent.HoverEnter and source is self.add_button:
+            icon_hovered_sign_in = QtGui.QIcon()
+            icon_hovered_sign_in.addPixmap(QtGui.QPixmap("view/img/pass_list_win/dodaj_button_hovered.png"),
+                                           QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.add_button.setIcon(icon_hovered_sign_in)
+            self.add_button.setGeometry(QtCore.QRect(657, 517, 74, 74))
+            self.add_button.setIconSize(QtCore.QSize(74, 74))
+        if event.type() == QtCore.QEvent.HoverLeave and source is self.add_button:
+            icon_sign_in = QtGui.QIcon()
+            icon_sign_in.addPixmap(QtGui.QPixmap("view/img/pass_list_win/dodaj_button.png"), QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.add_button.setIcon(icon_sign_in)
+            self.add_button.setGeometry(QtCore.QRect(660, 520, 71, 71))
+            self.add_button.setIconSize(QtCore.QSize(67, 67))
 
         return super(VPasswordsListWin, self).eventFilter(source, event)
