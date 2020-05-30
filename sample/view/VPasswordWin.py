@@ -170,6 +170,9 @@ class VPasswordWin(VWindow):
         self.edit_button.clicked.connect(self.edit_button_pressed)
 
         self.arrow_button.installEventFilter(self)
+        self.edit_button.installEventFilter(self)
+        self.copy_button.installEventFilter(self)
+        self.show_button.installEventFilter(self)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -192,5 +195,61 @@ class VPasswordWin(VWindow):
                                            QtGui.QIcon.Off)
             self.arrow_button.setIcon(icon_sign_in)
             self.arrow_button.setIconSize(QtCore.QSize(34, 31))
+
+        if event.type() == QtCore.QEvent.HoverEnter and source is self.edit_button:
+            if not self.editable:
+                path = "view/img/password_win/edytuj_button_hovered.png"
+            else:
+                path = "view/img/password_win/zapisz_button_hovered.png"
+            icon_hovered_sign_in = QtGui.QIcon()
+            icon_hovered_sign_in.addPixmap(QtGui.QPixmap(path),
+                                           QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.edit_button.setIcon(icon_hovered_sign_in)
+            self.edit_button.setGeometry(QtCore.QRect(208, 165, 127, 27))
+            self.edit_button.setIconSize(QtCore.QSize(127, 27))
+        if event.type() == QtCore.QEvent.HoverLeave and source is self.edit_button:
+            if not self.editable:
+                path = "view/img/password_win/edytuj_button.png"
+            else:
+                path = "view/img/password_win/zapisz_button.png"
+            icon_sign_in = QtGui.QIcon()
+            icon_sign_in.addPixmap(QtGui.QPixmap(path), QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.edit_button.setIcon(icon_sign_in)
+            self.edit_button.setGeometry(QtCore.QRect(210, 165, 121, 26))
+            self.edit_button.setIconSize(QtCore.QSize(121, 26))
+
+        if event.type() == QtCore.QEvent.HoverEnter and source is self.show_button:
+            icon_hovered_sign_in = QtGui.QIcon()
+            icon_hovered_sign_in.addPixmap(QtGui.QPixmap("view/img/password_win/pokaz_button_hovered.png"),
+                                           QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.show_button.setIcon(icon_hovered_sign_in)
+            self.show_button.setGeometry(QtCore.QRect(106, 134, 89, 19))
+            self.show_button.setIconSize(QtCore.QSize(89, 19))
+        if event.type() == QtCore.QEvent.HoverLeave and source is self.show_button:
+            icon_sign_in = QtGui.QIcon()
+            icon_sign_in.addPixmap(QtGui.QPixmap("view/img/password_win/pokaz_button.png"), QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.show_button.setIcon(icon_sign_in)
+            self.show_button.setGeometry(QtCore.QRect(110, 135, 81, 17))
+            self.show_button.setIconSize(QtCore.QSize(81, 17))
+
+        if event.type() == QtCore.QEvent.HoverEnter and source is self.copy_button:
+            icon_hovered_sign_in = QtGui.QIcon()
+            icon_hovered_sign_in.addPixmap(QtGui.QPixmap("view/img/password_win/kopiuj_button_hovered.png"),
+                                           QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.copy_button.setIcon(icon_hovered_sign_in)
+            self.copy_button.setGeometry(QtCore.QRect(24, 164, 133, 28))
+            self.copy_button.setIconSize(QtCore.QSize(133, 28))
+        if event.type() == QtCore.QEvent.HoverLeave and source is self.copy_button:
+            icon_sign_in = QtGui.QIcon()
+            icon_sign_in.addPixmap(QtGui.QPixmap("view/img/password_win/kopiuj_button.png"), QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.copy_button.setIcon(icon_sign_in)
+            self.copy_button.setGeometry(QtCore.QRect(30, 165, 121, 26))
+            self.copy_button.setIconSize(QtCore.QSize(121, 26))
 
         return super(VPasswordWin, self).eventFilter(source, event)

@@ -169,6 +169,8 @@ class VAddPasswordWin(VWindow):
         self.save_button.clicked.connect(self.save_button_pressed)
 
         self.arrow_button.installEventFilter(self)
+        self.generate_button.installEventFilter(self)
+        self.save_button.installEventFilter(self)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -194,5 +196,37 @@ class VAddPasswordWin(VWindow):
                                            QtGui.QIcon.Off)
             self.arrow_button.setIcon(icon_sign_in)
             self.arrow_button.setIconSize(QtCore.QSize(34, 31))
+
+        if event.type() == QtCore.QEvent.HoverEnter and source is self.save_button:
+            icon_hovered_sign_in = QtGui.QIcon()
+            icon_hovered_sign_in.addPixmap(QtGui.QPixmap("view/img/new_pass/zapisz_przycisk_hovered.png"),
+                                           QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.save_button.setIcon(icon_hovered_sign_in)
+            self.save_button.setGeometry(QtCore.QRect(278, 488, 185, 39))
+            self.save_button.setIconSize(QtCore.QSize(185, 39))
+        if event.type() == QtCore.QEvent.HoverLeave and source is self.save_button:
+            icon_sign_in = QtGui.QIcon()
+            icon_sign_in.addPixmap(QtGui.QPixmap("view/img/new_pass/zapisz_przycisk.png"), QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.save_button.setIcon(icon_sign_in)
+            self.save_button.setGeometry(QtCore.QRect(290, 490, 161, 34))
+            self.save_button.setIconSize(QtCore.QSize(161, 34))
+
+        if event.type() == QtCore.QEvent.HoverEnter and source is self.generate_button:
+            icon_hovered_sign_in = QtGui.QIcon()
+            icon_hovered_sign_in.addPixmap(QtGui.QPixmap("view/img/new_pass/generuj_przycisk_hovered.png"),
+                                           QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.generate_button.setIcon(icon_hovered_sign_in)
+            self.generate_button.setGeometry(QtCore.QRect(48, 488, 185, 39))
+            self.generate_button.setIconSize(QtCore.QSize(185, 39))
+        if event.type() == QtCore.QEvent.HoverLeave and source is self.generate_button:
+            icon_sign_in = QtGui.QIcon()
+            icon_sign_in.addPixmap(QtGui.QPixmap("view/img/new_pass/generuj_przycisk.png"), QtGui.QIcon.Normal,
+                                           QtGui.QIcon.Off)
+            self.generate_button.setIcon(icon_sign_in)
+            self.generate_button.setGeometry(QtCore.QRect(60, 490, 161, 34))
+            self.generate_button.setIconSize(QtCore.QSize(161, 34))
 
         return super(VAddPasswordWin, self).eventFilter(source, event)
