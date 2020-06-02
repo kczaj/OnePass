@@ -1,6 +1,5 @@
 from abc import ABC
-from PyQt5 import QtWidgets
-from PyQt5 import QtGui
+from PyQt5 import QtWidgets, QtGui, QtCore
 
 
 class PController(ABC):
@@ -19,6 +18,7 @@ class PController(ABC):
         self.main_window.close()
         self.main_window = QtWidgets.QMainWindow()
         self.main_window.setWindowIcon(QtGui.QIcon('view/img/ikona.png'))
+        self.main_window.setWindowFlag(QtCore.Qt.WindowCloseButtonHint, False)
         window.update_main_window(self.main_window)
         window.show(self.main_window)
         self.main_window.show()
