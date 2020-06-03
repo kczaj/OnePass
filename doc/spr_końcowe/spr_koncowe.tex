@@ -134,56 +134,46 @@ Struktura pliku z nazwami plików zaszyfrowanych ma postać:\\ \\
 \subsection{Specyfikacja implementacyjna}
 \begin{enumerate}
     \item Rozszerzenie klas o dodatkowe metody oraz pola, tak aby kod był napisany w sposób jak najbardziej optymalny i uniwersalny.
-    \item Zmiana planowanych metod w klasach spowodowana złym zaplanowaniem ich działania.
+    \item Zmiana planowanych metod oraz pól w klasach spowodowana złym zaplanowaniem ich działania.
     \item Dodanie klas \prog{VWindow} i \prog{PController}, po których dziedziczą odpowiednio wszystkie klasy pakietu \textit{view} i \textit{controller}
-    \item Zmiana w klasie \prog{AnimationThread}:
-    \begin{enumerate}
-        \item zmiana nazwy na \prog{GameAnimation}, aby klasa nabrała nazwy znaczącej,
-        \item rozszerzanie klasy \prog{AnimationTimer} spowodowane poznaniem plusów podanej klasy. W odróżnieniu do Threada, klasa ta działa dokładnie raz na klatkę wykonaną w scenie, co przynosi wiele korzyści przy rozpatrywaniu trafienia klocka.
-    \end{enumerate}
-    \item Zmiana układu budowy GUI.
-    \item Wykorzystanie klasy Button do utworzenia przycisków spowodowane zapoznaniem się z mechanizmem plików .css współpracujących z JavaFX.
-    \item Wykorzystanie biblioteki JUnit.
-    \item Zmiana konwencji pisania testów. Klasy testujące mają nazwy klas, które testują z dopiskiem Test.
+    \item Rozdzielenie klasy \prog{VGenerateWin} i \prog{PGenerateWin} na dwie klasy odpowiednio wyświetlane przed oraz po zalogowaniu.
+    \item Rozdzielenie klasy \prog{VAboutAppWin} i \prog{PAboutAppWin} na dwie klasy odpowiednio wyświetlane przed oraz po zalogowaniu.
+    \item Drobne zmiany wyglądu GUI.
+    \item Zmiany rozmieszczenia elementów GUI
+    \item Zmiejsze liczby testów jednostkowych spowodowanych trudnością przeprowadzenia tych testów.
 \end{enumerate}
+\newpage
 
 \section{Aktualna wersja diagramu klas}
-Ze względu na rozmiar diagramu klas rozbiliśmy go na trzy diagramy dla poszczególnych pakietów:
+Ze względu na rozmiar diagramu klas rozbiłem go na trzy diagramy dla poszczególnych pakietów:
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{img/packages.png}
-    \caption{Diagram pakietów}
-    \label{fig:packages}
+    \includegraphics[width=1\textwidth, height=0.2\textheight]{img/diagram_con.png}
+    \caption{Diagram klas pakietu \textit{Controller}}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{img/pakiet-galaxydefender.png}
-    \caption{Diagram klas w pakiecie główny \textit{galaxydefender}}
-    \label{fig:pack1}
+    \includegraphics[width=1\textwidth, height=0.2\textheight]{img/diagram_mod.png}
+    \caption{Diagram klas pakietu \textit{Model}}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{img/pakiet-gameobjects.png}
-    \caption{Diagram klas w pakiecie \textit{galaxydefender.gameobjects}}
-    \label{fig:pack1}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{img/pakiet-gui.png}
-    \caption{Diaram klas w pakiecie \textit{galaxydefender.gui}}
-    \label{fig:pack1}
+    \includegraphics[width=1\textwidth, height=0.2\textheight]{img/diagram_view.png}
+    \caption{Diagram klas pakietu \textit{View}}
 \end{figure}
 
 \section{Testy programu}
-\paragraph{}Funkcjonalność poszczególnych elementów programu sprawdzałem na bieżąco podczas implementacji.
+\paragraph{}
+Funkcjonalność poszczególnych elementów programu sprawdzałem na bieżąco podczas implementacji.
 Jeżeli dany komponent działał zgodnie z założeniami, dołączałem go do programu.
 Dodatkowo dla klas pakietu \textit{model} napisałem testy jednostkowe.
-\paragraph{}Główne testy nastąpiły po zaimplementowaniu podstawowych mechanik rozgrywki.
-W tym momencie nasze testy polegały na przeprowadzeniu rozgrywki i~sprawdzaniu zachowań programu podczas różnych okoliczności.
-\paragraph{}Ostatecznie program oddałem w ręce znajomych, których subiektywna ocena oraz uwagi pozwoliły mi na ulepszenie działania aplikacji.
+\paragraph{}
+Główne testy nastąpiły po napisaniu pierwszych szyfrowań plików. Moje testy polegały na sprawdzaniu poprawności wczytaniu plików użytkowników oraz jak informację były zapisywane do plików.
+\paragraph{}
+Ostatecznie program oddałem w ręce znajomych, których subiektywna ocena oraz uwagi pozwoliły mi na ulepszenie działania aplikacji.
+\paragraph{}
 Wszystkie testy można znaleźć w pakiecie \prog{test} w moim repozytorium.
 
 \section{Podsumowanie i wnioski}
@@ -192,7 +182,7 @@ Wybrany projekt starałem się wykonać najlepiej jak potrafiłem. Starałem si�
 \paragraph{}
 Największe trudności miałem opanowaniem tak dużego projektu. Zaprojektowana przeze mnie struktura okazała się wyłącznie teoretyczna i aby cały program działał należało zmieć wiele rzeczy w nim. Dodatkową trudnością było testowanie programu podczas gdy szyfrowanie plików było już zaimplementowane. Często występowały przez to problemy.
 \paragraph{}
-Znajomość paradygmatów programowania obiektowego oraz praktyczna wiedza z zakresu języka \textit{Java} i \textit{C#} ułatwiła przejście na język \textit{Python}. Po skończonym projekcie mogę stwierdzić, że język \textit{Python} jest jednym z najprzyjemniejszych języków do uczenia się. Kiedy człowiek przestawi się na brak klamer oraz brak średników praca staję się przyjemna. Problem miałem natomiast z tym, że w tym języku dodatkowa spacja albo tabulator może spowodować błędu kompilacji. Dodatkowo zauważyłem, że połączenie projektu z biblioteką \textit{PyQt5} sprawia, że program nie wypisuję nam powodów błędów kompilacji. Dopiero kiedy używałem narzędzi do debbugowania byłem w stanie dostać odpowiedź z czym jest błąd.\\
+Znajomość paradygmatów programowania obiektowego oraz praktyczna wiedza z zakresu języka \textit{Java} i \textit{C\#} ułatwiła przejście na język \textit{Python}. Po skończonym projekcie mogę stwierdzić, że język \textit{Python} jest jednym z najprzyjemniejszych języków do uczenia się. Kiedy człowiek przestawi się na brak klamer oraz brak średników praca staję się przyjemna. Problem miałem natomiast z tym, że w tym języku dodatkowa spacja albo tabulator może spowodować błędu kompilacji. Dodatkowo zauważyłem, że połączenie projektu z biblioteką \textit{PyQt5} sprawia, że program nie wypisuję nam powodów błędów kompilacji. Dopiero kiedy używałem narzędzi do debbugowania byłem w stanie dostać odpowiedź z czym jest błąd.\\
 Jednakże uważam, że \textit{Python} jest na tyle potężnym językiem, że znajomość jego w obecnych czasach jest bardzo ważna. Może do pisania aplikacji okienkowych nie sprawia się najlepiej na rynku, ale użycie go jako języka skryptowego ułatwia życie.
 \paragraph{}
 Pisanie tego projektu uświadomiło mi jak ważne jest używanie systemu kontroli wersji, którym w moim przypadku był Git. Tworzenie dodatkowych gałęzi stało się kluczowym punktem przy prezentacji postępów w projecie. Dodatkowo integracja tego narzędzia do programu \textit{PyCharm} pozwoliło na przyjemne wykorzystanie wszystkich mechanizmów systemu kontroli wersji.
