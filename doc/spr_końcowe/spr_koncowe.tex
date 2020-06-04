@@ -29,7 +29,7 @@ Moim zadaniem było stworzenie aplikacji realizującą usługę menadżera hase�
     \item LastPass
     \item 1Password
 \end{itemize}
-Po uruchomieniu aplikacja pokazuje menu główne. W tym menu możemy wybrać opcje zalogowania się, rejestracji lub przejść do generatora haseł.\\ \\
+Po uruchomieniu aplikacja pokazuje się menu główne. W tym menu możemy wybrać opcje zalogowania się, rejestracji lub przejść do generatora haseł.\\ \\
 Jeżeli mamy już konto założone mamy możliwość zalogowania się do aplikacji i rozpoczęcia w niej pracy. Kiedy pierwszy raz uruchamiamy aplikację musimy się zarejestrować. Aplikacja wymusza na nas utworzenie trudnego do złamania hasła. Po rejestracji przenoszeni jesteśmy do głównego ekranu aplikacji.\\ \\
 W tym miejscu zaczyna się główna funkcjonalność programu. Mamy możliwość przechowywania haseł do różnych serwisów, tworzenie szyfrowanych notatek oraz możemy szyfrować pliki przez nas podane. Dodatkowo aplikacja umożliwia łatwy sposób na skopiowanie hasła, którego akurat potrzebujemy. Wszystko zależy od nas co będziemy przechowywać w aplikacji.\\ \\
 Kiedy skończymy pracę wystarczy kliknąć przycisk \textit{Wyloguj} by wszystkie nasze informacje, które zapisaliśmy w aplikacji, zostały zaszyfrowane. Dostęp do tych plików mamy wyłącznie z aplikacji.
@@ -42,7 +42,7 @@ Kiedy skończymy pracę wystarczy kliknąć przycisk \textit{Wyloguj} by wszystk
 \end{figure}
 
 \section{Jakie założenia wstępne udało się spełnić?}
-Udało mi się zaimplementować w programie prawie wszystkie przewidywane funkcjonalności, jest to:
+Udało mi się zaimplementować w programie prawie wszystkie przewidywane funkcjonalności. Lista poniżej przedstawia jakie one są:
 \begin{enumerate}
     \item Utworzenie nowego użytkownika.
     \item Wczytywanie plików.
@@ -68,6 +68,7 @@ Udało mi się zaimplementować w programie prawie wszystkie przewidywane funkcj
 Niestety nie wszystkie założenia i cele zostały przeze mnie w pełni zrealizowane. Jest to przede wszystkim:
 \begin{enumerate}
     \item Zaimplementowanie mechanizmu blokady / odblokowywania konta w razie niepożądanej próby dostępu.
+    \item Możliwości zaszyfrowania różnych rozszerzeń plików.
     \item Zachowanie systematyczności pisania testów programu.
     \item Uniknięcie zmian podczas kodowania w stosunku do specyfikacji implementacyjnej.
     \item Przetestowanie działania programu w systemie operacyjnym MacOS X i Linux.
@@ -154,7 +155,7 @@ Ze względu na rozmiar diagramu klas rozbiłem go na trzy diagramy dla poszczeg�
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth, height=0.2\textheight]{img/diagram_mod.png}
+    \includegraphics[width=1\textwidth]{img/diagram_mod.png}
     \caption{Diagram klas pakietu \textit{Model}}
 \end{figure}
 
@@ -178,11 +179,11 @@ Wszystkie testy można znaleźć w pakiecie \prog{test} w moim repozytorium.
 
 \section{Podsumowanie i wnioski}
 \paragraph{}
-Wybrany projekt starałem się wykonać najlepiej jak potrafiłem. Starałem się by zaimplementować wszystkie funkcjonalności. Niestety ograniczony czas i ilość pracy związanej z innymi przedmiotami nie pozwoliła mi zaimplementować wszystkiego. W każdym tygodni pracy nad projektem odnotowywałem postęp. Analizując wszystkie te punkty uznaję ten projekt za udany.
+Wybrany projekt wykonywałem najlepiej jak potrafiłem. Starałem się by zaimplementować wszystkie funkcjonalności. Niestety ograniczony czas i ilość pracy związanej z innymi przedmiotami nie pozwoliła mi zaimplementować wszystkiego. W każdym tygodni pracy nad projektem odnotowywałem postęp. Analizując wszystkie te punkty uznaję ten projekt za udany.
 \paragraph{}
-Największe trudności miałem opanowaniem tak dużego projektu. Zaprojektowana przeze mnie struktura okazała się wyłącznie teoretyczna i aby cały program działał należało zmieć wiele rzeczy w nim. Dodatkową trudnością było testowanie programu podczas gdy szyfrowanie plików było już zaimplementowane. Często występowały przez to problemy.
+Największe trudności miałem opanowaniem tak dużego projektu. Zaprojektowana przeze mnie struktura okazała się wyłącznie teoretyczna i aby cały program działał należało zmienić wiele rzeczy. Dodatkową trudnością było testowanie programu podczas gdy szyfrowanie plików było już zaimplementowane. Często występowały przez to problemy.
 \paragraph{}
-Znajomość paradygmatów programowania obiektowego oraz praktyczna wiedza z zakresu języka \textit{Java} i \textit{C\#} ułatwiła przejście na język \textit{Python}. Po skończonym projekcie mogę stwierdzić, że język \textit{Python} jest jednym z najprzyjemniejszych języków do uczenia się. Kiedy człowiek przestawi się na brak klamer oraz brak średników praca staję się przyjemna. Problem miałem natomiast z tym, że w tym języku dodatkowa spacja albo tabulator może spowodować błędu kompilacji. Dodatkowo zauważyłem, że połączenie projektu z biblioteką \textit{PyQt5} sprawia, że program nie wypisuję nam powodów błędów kompilacji. Dopiero kiedy używałem narzędzi do debbugowania byłem w stanie dostać odpowiedź z czym jest błąd.\\
+Znajomość paradygmatów programowania obiektowego oraz praktyczna wiedza z zakresu języka \textit{Java} i \textit{C\#} ułatwiła przejście na język \textit{Python}. Po skończonym projekcie mogę stwierdzić, że język \textit{Python} jest jednym z najprzyjemniejszych języków do uczenia się. Kiedy człowiek przestawi się na brak klamer oraz brak średników praca staję się przyjemna. Problem miałem natomiast z tym, że w tym języku dodatkowa spacja albo tabulator może spowodować błędu kompilacji. Dodatkowo zauważyłem, że połączenie projektu z biblioteką \textit{PyQt5} sprawia, że program nie wypisuję nam powodów błędów kompilacji. Dopiero kiedy używałem narzędzi do debbugowania byłem w stanie dostać odpowiedź z czym jest problem.\\
 Jednakże uważam, że \textit{Python} jest na tyle potężnym językiem, że znajomość jego w obecnych czasach jest bardzo ważna. Może do pisania aplikacji okienkowych nie sprawia się najlepiej na rynku, ale użycie go jako języka skryptowego ułatwia życie.
 \paragraph{}
 Pisanie tego projektu uświadomiło mi jak ważne jest używanie systemu kontroli wersji, którym w moim przypadku był Git. Tworzenie dodatkowych gałęzi stało się kluczowym punktem przy prezentacji postępów w projecie. Dodatkowo integracja tego narzędzia do programu \textit{PyCharm} pozwoliło na przyjemne wykorzystanie wszystkich mechanizmów systemu kontroli wersji.
