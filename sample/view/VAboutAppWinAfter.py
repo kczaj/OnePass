@@ -117,17 +117,14 @@ class VAboutAppWinAfter(VMainWin):
         self.file_list.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.file_list.setViewMode(QtWidgets.QListView.ListMode)
         self.file_list.setObjectName("file_list")
-        self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(105, 101, 611, 361))
-        font = QtGui.QFont()
-        font.setFamily("Rubik")
-        font.setPointSize(12)
-        self.label.setFont(font)
-        self.label.setStyleSheet("color:white")
-        self.label.setTextFormat(QtCore.Qt.RichText)
-        self.label.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignTop)
-        self.label.setWordWrap(False)
-        self.label.setObjectName("label")
+        self.textBrowser = QtWidgets.QTextBrowser(self.centralwidget)
+        self.textBrowser.setGeometry(QtCore.QRect(105, 101, 611, 361))
+        self.textBrowser.setStyleSheet("font: 12pt \"Rubik\";\n"
+                                       "    color:white;\n"
+                                       "    background: transparent;\n"
+                                       "    border-radius: 10px;")
+        self.textBrowser.setAcceptRichText(True)
+        self.textBrowser.setObjectName("textBrowser")
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -146,7 +143,12 @@ class VAboutAppWinAfter(VMainWin):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "O APLIKACJI"))
         self.greeting_label.setText(_translate("MainWindow", "O APLIKACJI"))
-        self.label.setText(_translate("MainWindow", "ojij"))
+        self.textBrowser.setHtml(_translate("MainWindow",
+                                            "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+                                            "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+                                            "p, li { white-space: pre-wrap; }\n"
+                                            "</style></head><body style=\" font-family:\'Rubik\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
+                                            "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><p>One Pass jest aplikacja realizującą usługę menadżera haseł. W aplikacji jesteśmy w stanie przechowywać nasze hasła i szyfrowane notatki, zaszyfrować pliki oraz wygenerować hasło.</p> <p>Używanie aplikacji należy zacząć od zarejestrowaniu się do niej. Rejestracja wymaga od nas utworzenie trudnego hasła (minimalnie 9 znaków, wielka i mała litera, cyfra i znak specjalny). Należy to hasło zapamiętać, ponieważ odzyskanie hasła jest niemozliwe. Po zalogowaniu mamy możliwość na korzystanie z aplikacji w pełni. Po zakończeniu pracy należy przycisnąć przycisk wyloguj, który szyfruje wszystkie pliki.</p><p>Aplikacja stworzona w ramach realizacji przedmiotu Projekt Indywidualny na Politechnice Warszawskiej, której autorem jest Jakub Czajka.</p></body></html>"))
 
     def eventFilter(self, source, event) -> bool:
         if event.type() == QtCore.QEvent.HoverEnter and source is self.home_button:

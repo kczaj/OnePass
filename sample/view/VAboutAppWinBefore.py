@@ -75,7 +75,7 @@ class VAboutAppWinBefore(VWindow):
                                             "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
                                             "p, li { white-space: pre-wrap; }\n"
                                             "</style></head><body style=\" font-family:\'Rubik\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
-                                            "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">wadopkkooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p></body></html>"))
+                                            "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><p>One Pass jest aplikacja realizującą usługę menadżera haseł. W aplikacji jesteśmy w stanie przechowywać nasze hasła i szyfrowane notatki, zaszyfrować pliki oraz wygenerować hasło.</p> <p>Używanie aplikacji należy zacząć od zarejestrowaniu się do niej. Rejestracja wymaga od nas utworzenie trudnego hasła (minimalnie 9 znaków, wielka i mała litera, cyfra i znak specjalny). Należy to hasło zapamiętać, ponieważ odzyskanie hasła jest niemozliwe. Po zalogowaniu mamy możliwość na korzystanie z aplikacji w pełni. Po zakończeniu pracy należy przycisnąć przycisk wyloguj, który szyfruje wszystkie pliki.</p><p>Aplikacja stworzona w ramach realizacji przedmiotu Projekt Indywidualny na Politechnice Warszawskiej, której autorem jest Jakub Czajka.</p></body></html>"))
 
     def eventFilter(self, source, event) -> bool:
         if event.type() == QtCore.QEvent.HoverEnter and source is self.arrow_button:
@@ -88,7 +88,7 @@ class VAboutAppWinBefore(VWindow):
         if event.type() == QtCore.QEvent.HoverLeave and source is self.arrow_button:
             icon_sign_in = QtGui.QIcon()
             icon_sign_in.addPixmap(QtGui.QPixmap("view/img/przycisk_strzałka.png"), QtGui.QIcon.Normal,
-                                           QtGui.QIcon.Off)
+                                   QtGui.QIcon.Off)
             self.arrow_button.setIcon(icon_sign_in)
             self.arrow_button.setIconSize(QtCore.QSize(34, 31))
 
