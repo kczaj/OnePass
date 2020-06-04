@@ -21,7 +21,7 @@ class PEncrypWin(PMainWin):
 
     def decrypt_button_handle(self, name):
         encrypteds = self.profile.get_encrypted_list()
-        if name in encrypteds:
+        if name not in encrypteds:
             return
         file_name = name + '.ope'
         path = 'data/' + self.profile.get_login() + '/encrypted/' + file_name
@@ -30,6 +30,7 @@ class PEncrypWin(PMainWin):
         file = open(file_path, 'w')
         file.write(msg)
         encrypteds.remove(name)
+        file.close()
         os.remove(path)
 
     def encrypt_button_handle(self, path):
@@ -48,6 +49,8 @@ class PEncrypWin(PMainWin):
         self._encryptor.encrypt(new_path, msg, salt, self.profile.get_password())
         encrypted_list = self.profile.get_encrypted_list()
         encrypted_list.append(file_name)
+        file.close()
+        os.remove(path)
 
     def add_to_list(self, file_list):
         file_list.clear()
