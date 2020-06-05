@@ -31,9 +31,8 @@ class MEncryptor:
             og_data = unpad(cipher.decrypt(msg), AES.block_size)
             return og_data.decode('utf-8')
         except FileNotFoundError:
-            print('Nie znaleziono pliku ' + file )
+            print('Nie znaleziono pliku ' + file)
             sys.exit()
-
 
     def encrypt(self, file, data, salt, password=None):
         if password is None:
